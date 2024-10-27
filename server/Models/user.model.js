@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema(
     },
     userName: {
       type: String,
-      required: true,
+      
       unique: true,
     },
     phone: {
@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema(
     },
     college: {
       type: String,
-      required: true,
+      
     },
     gender: {
       type: String,
