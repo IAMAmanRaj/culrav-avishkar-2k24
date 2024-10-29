@@ -8,7 +8,7 @@ import HorizontalRoller from "./HorizontalRoller"
 
 function HeroSection() {
     return (
-        <div className="w-full h-[160vw] xs:h-[50vw] overflow-hidden relative bg-floral_white">
+        <div className="w-full top-10 h-[160vw] xs:h-[50vw] overflow-hidden relative bg-floral_white">
             <div className="h-full w-full absolute z-10">
                 <div className="w-[200vw]  absolute h-[55vw] xs:w-[83vw] xs:left-[9%] xs:h-[45vw] overflow-hidden">
                     <img className="h-[180vw] left-[-25%] top-[-230%] xs:left-0 xs:h-[80vw] w-full xs:top-[-103%] absolute" src={circular_disc} />
