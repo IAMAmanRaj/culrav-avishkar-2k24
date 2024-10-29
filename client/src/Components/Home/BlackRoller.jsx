@@ -2,8 +2,8 @@
 
 const BlackRoller = () => {
     return (
-      <div id="page2" className="bg-black relative z-40 text-[8vw] md:text-[4.3vw] lg:text-[3.4vw] xl:text-[2.8vw] cursor-pointer transform rotate-2 top-[-30px]">
-        <div id="scroller" className="flex font-bionix gap-[2vw] md:gap-[1.5vw]">
+      <div id="page2" className=" relative z-40 text-[8vw] md:text-[4.3vw] lg:text-[3.4vw] xl:text-[2.8vw] cursor-pointer transform rotate-2 top-[-30px]">
+        <div id="scroller" className="flex  font-bionix gap-[2vw] md:gap-[1.5vw]">
           <div className="scroller-in flex gap-[2vw] md:gap-[1.5vw]">
             <h4>TechnoCultural Fest of MNNIT</h4>
             <h4>TechnoCultural Fest of MNNIT</h4>
