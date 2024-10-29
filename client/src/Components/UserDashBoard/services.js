@@ -95,6 +95,19 @@ const rejectInvite = async({userId, teamId, token}) => {
 
 }
 
+const sendInvitation = async({teamName, leaderId, sendToEmail, token}) => {
+    try{
+        const response = await Axios.post(`/team/v1/sendTeamInvite`,
+            {teamName, leaderId, sendToEmail},
+            {headers:{Authorization: `Bearer ${token}`}}
+        )
+        return response?.data
+    }catch(err){
+        console.log(err)
+        return err?.response?.data
+    }
+}
+
 
 export {createTeam, 
     getInvitations, 
@@ -102,6 +115,7 @@ export {createTeam,
     splitTeamsByLeader, 
     updateResume, 
     acceptInvite,
-    rejectInvite
+    rejectInvite,
+    sendInvitation
 }
 
