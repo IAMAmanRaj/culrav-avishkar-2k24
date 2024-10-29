@@ -266,7 +266,7 @@ const sendTeamInvite = async (req, res, next) => {
     }
     // leader can not sent the invite to himself
 
-    if (targetUser._id === leaderId) {
+    if (JSON.stringify(targetUser._id) === JSON.stringify(leaderId)) {
       return res.status(400).json({
         success: false,
         message: "You can not send team invite to yourself",

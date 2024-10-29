@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom"
 import Alert from "@/Components/UserDashboard/shared/Alert"
 import deletUserImg from "../../../assets/userDashBoard/deleteUser.svg"
 import getUser from '../userService'
+import { sendInvitation } from '../services.js'
+import toast from 'react-hot-toast'
 
 function TeamInfo({ team, handleShowAllTeams }) {
     const navigate = useNavigate();
@@ -35,9 +37,19 @@ function TeamInfo({ team, handleShowAllTeams }) {
     }
 
     const handleInvite = async() => {
-        console.log(email)
+        // console.log(email)
+        try{
+            const res = await sendInvitation({leaderId : user._id, sendToEmail : email, teamName: team.teamName, token})
+            if(res?.success){
+                toast.success(res?.message)
+            }else{
+                toast.error(res?.message)
+            }
+        }catch(err){
+            console.log(err)
+        }
     }
-    console.log(team)
+    // console.log("Avinash")
     var isLeader = false;
 
     if(team?.leader === user._id){
@@ -62,7 +74,7 @@ function TeamInfo({ team, handleShowAllTeams }) {
                         />
                         <div>
                             <div className="bg-customOrange hover:cursor-pointer text-white font-normal font-sfText rounded-md hover:bg-customRed text-lg md:text-md text-center p-3" onClick={handleInvite}>
-                                Add team member </div>
+                                Send Invitation </div>
                         </div>
                     </div>}
                     {!isLeader && <div className="w-full h-auto flex flex-col gap-5">
@@ -82,7 +94,7 @@ function TeamInfo({ team, handleShowAllTeams }) {
                         {team?.registeredEvents?.map((event) => {
                             return (
                                 <div className="mb-3 h-auto w-full p-2 md:px-5 md:py-4 bg-Mine_Shaft_900 rounded justify-between items-center inline-flex">
-                                    <div className="text-Mine_Shaft_300 text-md md:text-lg font-normal font-sfText leading-tight">{event}</div>
+                                    <div className="text-Mine_Shaft_300 text-md md:text-lg font-normal font-sfText leading-tight">{event?.name}</div>
                                 </div>
                             )
                         })}
