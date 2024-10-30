@@ -89,7 +89,7 @@ function Team() {
                     <div className="md:px-9 md:h-screen-minus-92 h-auto md:py-7 p-4 justify-center  bg-dark_secondary grid  border-[#202020]/100 border-2 w-full ">
 
                         <div className=' h-[90%] w-full'>
-                            <UserTeams showTeamInfo={showTeamInfo} teamData={AllData} />
+                            <UserTeams showTeamInfo={showTeamInfo} teamData={AllData} setMyTeams = {setMyTeams} />
                         </div>
                     </div>
                 </div > :
