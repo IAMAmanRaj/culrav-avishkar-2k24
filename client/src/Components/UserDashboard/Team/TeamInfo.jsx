@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import Alert from "@/Components/UserDashboard/shared/Alert"
 import deletUserImg from "../../../assets/userDashBoard/deleteUser.svg"
 import getUser from '../userService'
-import { sendInvitation } from '../services.js'
+import { kickMember, sendInvitation } from '../services.js'
 import toast from 'react-hot-toast'
 
 function TeamInfo({ team, handleShowAllTeams }) {
@@ -16,7 +16,20 @@ function TeamInfo({ team, handleShowAllTeams }) {
     const [removeMemberInfo, setRemoveMemebrInfo] = useState(null)
 
     const [email, setEmail] = useState("")
-    function handleRemoveMember() {
+
+    const handleRemoveMember = async()=> {
+        try{
+            const res = await kickMember({leaderId : user._id, userTobeKickedId : removeMemberInfo._id, teamId : team._id, token})
+            if(res?.success){
+                toast.success(res?.message)
+                setOpenRemoveMemberModal(false)
+            }else{
+                toast.error(res?.message)
+            }
+        }catch(err){
+            console.log(err)
+        }
+
     }
 
 
@@ -77,12 +90,12 @@ function TeamInfo({ team, handleShowAllTeams }) {
                                 Send Invitation </div>
                         </div>
                     </div>}
-                    {!isLeader && <div className="w-full h-auto flex flex-col gap-5">
+                    {/* {!isLeader && <div className="w-full h-auto flex flex-col gap-5">
                         <div>
                             <div className="bg-customOrange hover:cursor-pointer text-white font-normal font-sfText rounded-md hover:bg-customRed text-lg md:text-md text-center p-3">
                                 Leave Team </div>
                         </div>
-                    </div>}
+                    </div>} */}
                     <div className="w-full h-auto flex flex-col gap-4 mt-2 text-lg text-white">
                         <div>Team size: {team?.size}</div>
                         <div>Accepted Members: {team?.acceptedMembers.length}</div>
