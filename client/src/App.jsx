@@ -108,9 +108,9 @@ function App() {
         <Route path="/AvishkarEvents" element={<AvishkarEvents />} />
         <Route path="/AvishkarEventPage" element={<AvishkarEvent />} />
         <Route path="/team" element={<Team />} />
-        <Route element={<PrivateRoute />}>
+        {/* <Route element={<PrivateRoute />}> */}
           <Route path="/dashboard" element={<UserProfilePage />} />
-        </Route>
+        {/* </Route> */}
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/sponsors" element={<Sponsors />} />
       </Routes>

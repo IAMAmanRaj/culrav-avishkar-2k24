@@ -132,11 +132,11 @@ const Gallery = () => {
         </Carousel>
       </div>
     </div>
-      <div className="hidden md:block w-[100vw] md:h-[360vh] custom1300:h-[430vh] custom1980:h-[510vh]  relative bottom-16 bg-floralWhite overflow-hidden">
-        <div className="w-full md:h-[51vw]  relative top-16 flex items-center" ref={reelRef1}>
+      <div className="hidden md:block pt-[10vw] w-[100vw] md:h-[560vh] custom1300:h-[590vh] custom1980:h-[510vh]  relative bottom-16 bg-floralWhite overflow-hidden">
+        <div className="w-full md:h-[40vw]  relative top-16 flex items-center" ref={reelRef1}>
           <div className="w-full relative md:h-[51vw] ">
             <img className="w-full md:h-[51vw] custom1300:h-[29vw] " src={tiltedRoll} alt="Reel Image 1" />
-            <div className="relative flex md:gap-3 items-center bottom-[32vw] px-4 transform custom1300:h-[17vw] custom1300:bottom-[17.86vw] custom1300:rotate-[2deg] left-[-7px]  md:rotate-[3.6deg] z-20 w-[400vw] h-[39vw] bg-reelColor">
+            <div className="relative flex md:gap-3 items-center bottom-[32vw] px-4 transform custom1300:h-[17vw] custom1300:bottom-[17.86vw] custom1300:rotate-[2deg] left-[-7px]  md:rotate-[3.6deg] z-20 w-[400vw] h-[31vw] bg-reelColor">
               <img className="h-[90%]  border-0 md:rounded-[16px]" src={test} alt="Gallery Image 1" />
               <img className="h-[90%]  border-0 md:rounded-[16px]" src={test} alt="Gallery Image 2" />
               <img className="h-[90%]  border-0 md:rounded-[16px]" src={test} alt="Gallery Image 3" />
@@ -146,12 +146,12 @@ const Gallery = () => {
           <img className="w-full md:h-[51vw] custom1300:h-[29vw] relative md:top-[12.4vw] custom1300:top-[-4vw]" src={tiltedRoll} alt="Reel Image 3" />
           <img className="w-full md:h-[51vw] custom1300:h-[29vw] relative md:top-[9.5rem]" src={tiltedRoll} alt="Reel Image 4" />
         </div>
-        <div className="w-full h-16 flex justify-center relative top-[11vh]">
+        <div className="w-full h-16 flex justify-center relative top-[23vh]">
           <h1 className="font-bionix text-scheduleOrange text-[6vh]">GALLERY</h1>
         </div>
-        <div className="w-full md:h-[41vw] custom1300:h-[27vw] relative top-[20vh] flex items-center" ref={reelRef2}>
+        <div className="w-full md:h-[41vw] custom1300:h-[27vw] relative top-[27vh] flex items-center" ref={reelRef2}>
           <div className="w-full relative md:h-[41vw]"> 
-            <img className="w-full md:h-[41vw] custom1300:h-[27vw] relative top-[7vw] " src={Roll} alt="Reel Image 5" />
+            <img className="w-full md:h-[41vw] custom1300:h-[27vw] custom1300:top-[7vw] relative top-[0vw] " src={Roll} alt="Reel Image 5" />
             <div className="relative bottom-[35vw] custom1300:bottom-[16vw] flex items-center  md:gap-3 px-4 transform w-[370vw] h-[29.7vw] custom1300:h-[19.4vw] bg-reelColor">
                 <img className="h-[90%] border-0 md:rounded-[16px]" src={test} alt="Gallery Image 4" />
                 <img className="h-[90%] border-0 md:rounded-[16px]" src={test} alt="Gallery Image 5" />
