@@ -24,7 +24,7 @@ const SendPasswordToEmail = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       res.status(400).json({
-        message: "user doesn't exists",
+        message: "Email not registered",
       });
       return;
     }

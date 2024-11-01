@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { signoutSuccess } from "@/redux/auth/authSlice";
 import Team from "../Team/index"
 import Invitations from "../Invitation";
+import toast from 'react-hot-toast';
 
 const Popup = () => {
     const [isOpen, setIsOpen] = useState(false); 
@@ -26,6 +27,11 @@ const Popup = () => {
 
     const handleLogout = () => {
         dispatch(signoutSuccess());
+        toast.success("Logout Successfully!", {
+            style: {
+              marginTop: "50px",
+            },
+          });
         navigate("/login");
     };
 

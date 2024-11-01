@@ -23,9 +23,17 @@ function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
                 const newRemainingMyTeams = myTeams.filter((tm) => JSON.stringify(tm._id) != JSON.stringify(teamToBeDeleted._id))
                 setMyTeams(newRemainingMyTeams)
                 setOpenDeleteTeamModal(false)
-                toast.success(res?.message);
+                toast.success(res?.message, {
+                    style: {
+                      marginTop: "50px",
+                    },
+                  });
             }else{
-                toast.error(res?.message)
+                toast.error(res?.message, {
+                    style: {
+                      marginTop: "50px",
+                    },
+                  })
             }
         }catch(err){
             console.log(err)

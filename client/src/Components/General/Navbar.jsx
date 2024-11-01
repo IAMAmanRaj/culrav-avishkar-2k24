@@ -8,7 +8,7 @@ function Navbar() {
   const isAuthenticated = useAuth();
 
   const handleLogoClick = () => {
-    toast.success("Success, you are on the home page");
+    navigate("/");
   };
 
   return (
@@ -22,10 +22,16 @@ function Navbar() {
         ></div>
 
         <div className="navlinks w-[67%] flex text-navlink h-full items-center justify-between font-bebas md:text-[1.6vw]">
-          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300">
+          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
+          onClick={() => {
+            navigate("/culrav-landing");
+          }}>
             CULRAV
           </h1>
-          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300">
+          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
+           onClick={() => {
+            navigate("/avishkar-landing");
+          }}>
             AVISHKAR
           </h1>
           <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300">

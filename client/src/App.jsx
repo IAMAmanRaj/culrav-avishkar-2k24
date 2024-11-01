@@ -74,8 +74,11 @@ const TitleUpdater = () => {
       case "/team":
         title += " Team";
         break;
-      case "/profile":
-        title += " Profile";
+      case "/dashboard":
+        title += " Dashboard";
+        break;
+        case "/sponsors":
+        title += " Sponsors";
         break;
       default:
         title += "";

@@ -33,10 +33,18 @@ function Team() {
                     const {matchingLeaderTeams, nonMatchingLeaderTeams} = splitTeamsByLeader({totalTeams, givenLeaderId})
                     setMyTeams(matchingLeaderTeams)
                     setJoinedTeams(nonMatchingLeaderTeams)
-                    toast.success("teams fetches successfully!")
+                    toast.success("teams fetches successfully!", {
+                        style: {
+                          marginTop: "50px",
+                        },
+                      })
                 }else{
                     console.log(res?.message)
-                    toast.error(res?.message)
+                    toast.error(res?.message, {
+                        style: {
+                          marginTop: "50px",
+                        },
+                      })
                 }
             }catch(err){
                 console.log(err)

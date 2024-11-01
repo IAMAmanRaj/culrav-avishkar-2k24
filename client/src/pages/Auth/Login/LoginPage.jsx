@@ -35,7 +35,11 @@ function Login() {
 
   const userlogin = async (data) => {
     if (!data.email || !data.password) {
-      toast.error("Please fill all the fields");
+      toast.error("Please fill all the fields", {
+        style: {
+          marginTop: "50px",
+        },
+      });
       return dispatch(signInFailure("Please fill all the fields"));
     }
 
@@ -46,26 +50,50 @@ function Login() {
 
       if (response.status === 200) {
         dispatch(signInSuccess({ user: responseData.user, token: responseData.token }));
-        toast.success("Login successful!");
+        toast.success("Login successful!", {
+          style: {
+            marginTop: "50px",
+          },
+        });
         navigate("/");
       } else if (response.status === 401 && responseData.isVerifiedEmail === false) {
         // Redirect to verify email page if email is not verified
         navigate("/verify-email", { state: { email: data.email } });
-        toast.error(responseData.message || "Please verify your email");
+        toast.error(responseData.message || "Please verify your email", {
+          style: {
+            marginTop: "50px",
+          },
+        });
       } else {
-        toast.error(response.data.message || "Login failed");
+        toast.error(response.data.message || "Login failed", {
+          style: {
+            marginTop: "50px",
+          },
+        });
         dispatch(signInFailure("Login failed"));
       }
     } catch (error) {
       const errorMessage = error.response ? error.response.data.message : error.message;
       if (errorMessage=="Please verify your email") {
-        toast.error(errorMessage);
+        toast.error(errorMessage, {
+          style: {
+            marginTop: "50px",
+          },
+        });
         navigate("/verify-email", { state: { email: data.email } });
       } else if (errorMessage=="Please pay the registration fee") {
-        toast.error(errorMessage);
+        toast.error(errorMessage, {
+          style: {
+            marginTop: "50px",
+          },
+        });
         navigate("/outside-registration/payFee", { state: { email: data.email } });
       }else {
-        toast.error(errorMessage);
+        toast.error(errorMessage, {
+          style: {
+            marginTop: "50px",
+          },
+        });
         dispatch(signInFailure(errorMessage));
       }
       console.error("Error during login:", errorMessage);
@@ -146,7 +174,8 @@ function Login() {
           )}
         </form>
       </div>
-      <Toaster />
+      <Toaster
+       />
     </div>
   );
 }

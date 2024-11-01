@@ -3,6 +3,7 @@ import Input from '@/ShadCnComponents/ui/Input';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 // Base URL for all requests (updated for better fallback)
 const apiClient = axios.create({
@@ -10,7 +11,7 @@ const apiClient = axios.create({
 });
 
 function ForgetPasswordTokenVerification() {
-    const location = useLocation();
+  const location = useLocation();
   const email = location.state?.email;
   const { register, handleSubmit, formState: { errors } } = useForm(); // Added formState for error handling
   const navigate = useNavigate();
@@ -20,20 +21,31 @@ function ForgetPasswordTokenVerification() {
     try {
       console.log(data.otp);
       // Sending POST request to the API with OTP (token)
-      const response = await apiClient.post(`/api/auth/v1/forgotPasswordVerification`, { token: data.otp}); // Added email in the request
+      const response = await apiClient.post(`/api/auth/v1/forgotPasswordVerification`, { token: data.otp }); // Added email in the request
       // Check if verification was successful
       if (response.status === 200) {
+        toast.success('Password sent. Check Email !', {
+          style: {
+            marginTop: "50px",
+          },
+        });
         navigate('/login'); // Navigate to login on success
       } else {
+        toast.error('Verification failed. Please try again.', {
+          style: {
+            marginTop: "50px",
+          },
+        });
         console.log('Verification failed:', response.data); // Log failed verification
       }
     } catch (error) {
       // Improved error logging
-      if (error.response) {
-        console.log('Error during password token verification:', error.response.data.message);
-      } else {
-        console.log('Error during password token verification:', error.message);
-      }
+      toast.error(error.response?.data?.message || 'Please try again.', {
+        style: {
+          marginTop: "50px",
+        },
+      });
+      console.log('Error during password token verification:', error.response?.data?.message || error.message);
     }
   };
 
@@ -44,16 +56,16 @@ function ForgetPasswordTokenVerification() {
           Password Token<br/>Verification
         </h1>
         <p className="text-center font-sftext m-2 p-1 text-[#FFFAF0]">
-          We have sent your password to your email :<br />  
+          We have sent a verification code to :<br />  
           {email}
         </p>
         <form onSubmit={handleSubmit(check)} className="space-y-5 font-sftext w-full">
           {/* Input for OTP */}
-                  <Input
-                    type="text"
-                    placeholder="Enter the code"
-                    {...register('otp', {
-                    required: 'OTP is required', // Custom error message for required field
+          <Input
+            type="text"
+            placeholder="Enter the code"
+            {...register('otp', {
+              required: 'OTP is required', // Custom error message for required field
             })}
           />
           {errors.otp && <p className="text-red-500">{errors.otp.message}</p>} {/* Display error */}
@@ -64,6 +76,7 @@ function ForgetPasswordTokenVerification() {
           </Button>
         </form>
       </div>
+      <Toaster />
     </div>
   );
 }

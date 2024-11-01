@@ -38,14 +38,22 @@ console.log("hi", email);
 
     if (!data.image) {
       console.log("No image");
-      toast.error("No image uploaded. Please upload an image.");
+      toast.error("No image uploaded. Please upload an image.", {
+        style: {
+          marginTop: "50px",
+        },
+      });
       setSubmitting(false);
       return;
     }
 
     if (data.image[0].size > 524288) {
       setIsBigSize(true);
-      toast.error("File size must be less than 512 KB.");
+      toast.error("File size must be less than 512 KB.", {
+        style: {
+          marginTop: "50px",
+        },
+      });
       setSubmitting(false);
       return;
     }
@@ -57,7 +65,11 @@ console.log("hi", email);
       const uploadedUrl = await uploadToCloudinary(paymentScreenshot);
       if (!uploadedUrl) {
         console.log("Image not able to upload");
-        toast.error("Image upload failed. Please try again.");
+        toast.error("Image upload failed. Please try again.", {
+          style: {
+            marginTop: "50px",
+          },
+        });
         setSubmitting(false);
         return;
       }
@@ -70,13 +82,21 @@ console.log("hi", email);
       });
 
       if (res.status === 200) {
-        toast.success("Verification Request Submitted !", { duration: 1000 });
+        toast.success("Verification Request Submitted !", { duration: 1000 }, {
+          style: {
+            marginTop: "50px",
+          },
+        });
         setSubmitting(false);
         navigate("/login");
       }
     } catch (error) {
       setCurrentError(error);
-      toast.error("Error occurred while updating user details.");
+      toast.error("Error occurred while updating user details.", {
+        style: {
+          marginTop: "50px",
+        },
+      });
       console.error("Error occurred while updating user details: ", error);
     }
 
@@ -87,7 +107,11 @@ console.log("hi", email);
   const uploadToCloudinary = async (paymentScreenshot) => {
     if (!paymentScreenshot) {
       console.log("Please upload a screenshot first.");
-      toast.error("Please upload a screenshot first.");
+      toast.error("Please upload a screenshot first.", {
+        style: {
+          marginTop: "50px",
+        },
+      });
       return null;
     }
 
@@ -110,7 +134,11 @@ console.log("hi", email);
       return response.data.secure_url;
     } catch (error) {
       setCurrentError(error);
-      toast.error("Cloudinary upload failed. Please try again.");
+      toast.error("Cloudinary upload failed. Please try again.", {
+        style: {
+          marginTop: "50px",
+        },
+      });
       console.error("Cloudinary upload failed:", error.response?.data || error.message);
       console.log("Failed to upload screenshot. Please try again.");
       return null;

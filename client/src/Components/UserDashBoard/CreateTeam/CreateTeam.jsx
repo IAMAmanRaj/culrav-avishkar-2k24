@@ -34,13 +34,25 @@ const CreateTeam = () => {
      const res =  await createTeam({leader : user._id, teamName , teamSize : teamSize, token})
      if(res?.success){
       console.log("team created!")
-      toast.success(`team ${teamName} created successfully!`)
+      toast.success(`team ${teamName} created successfully!`, {
+        style: {
+          marginTop: "50px",
+        },
+      })
      }else{
-      toast.error(res?.message)
+      toast.error(res?.message, {
+        style: {
+          marginTop: "50px",
+        },
+      })
      }
     }catch(err){
       console.log(err)
-      toast.error("internal Server Error")
+      toast.error("internal Server Error", {
+        style: {
+          marginTop: "50px",
+        },
+      })
     }
   }
 

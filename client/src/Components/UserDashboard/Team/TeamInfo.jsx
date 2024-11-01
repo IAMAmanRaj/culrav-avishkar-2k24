@@ -21,10 +21,18 @@ function TeamInfo({ team, handleShowAllTeams }) {
         try{
             const res = await kickMember({leaderId : user._id, userTobeKickedId : removeMemberInfo._id, teamId : team._id, token})
             if(res?.success){
-                toast.success(res?.message)
+                toast.success(res?.message, {
+                    style: {
+                      marginTop: "50px",
+                    },
+                  })
                 setOpenRemoveMemberModal(false)
             }else{
-                toast.error(res?.message)
+                toast.error(res?.message, {
+                    style: {
+                      marginTop: "50px",
+                    },
+                  })
             }
         }catch(err){
             console.log(err)
@@ -54,9 +62,17 @@ function TeamInfo({ team, handleShowAllTeams }) {
         try{
             const res = await sendInvitation({leaderId : user._id, sendToEmail : email, teamName: team.teamName, token})
             if(res?.success){
-                toast.success(res?.message)
+                toast.success(res?.message, {
+                    style: {
+                      marginTop: "50px",
+                    },
+                  })
             }else{
-                toast.error(res?.message)
+                toast.error(res?.message, {
+                    style: {
+                      marginTop: "50px",
+                    },
+                  })
             }
         }catch(err){
             console.log(err)

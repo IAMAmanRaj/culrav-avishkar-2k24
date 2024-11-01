@@ -13,8 +13,12 @@ function InvitationCard({ invite, setAllTeamInvites, allInviteData }) {
         try{
             const res = await acceptInvite({userId : user._id, teamId: invite._id, token})
             if(res?.success){
-                console.log("Invite Accpeted")
-                toast.success(`Congratulations! Now you are part of team ${invite.teamName}`)
+                console.log("Invite Accepted")
+                toast.success(`Congratulations! Now you are part of team ${invite.teamName}`, {
+                    style: {
+                      marginTop: "50px",
+                    },
+                  })
 
                 const remainingInvites = allInviteData.filter((team) => team._id != invite._id)
                 setAllTeamInvites(remainingInvites)
@@ -31,7 +35,11 @@ function InvitationCard({ invite, setAllTeamInvites, allInviteData }) {
             const res = await rejectInvite({userId : user._id, teamId: invite._id, token})
             if(res?.success){
                 console.log("Invite Rejected")
-                toast.success("Invite rejected!")
+                toast.success("Invite rejected!", {
+                    style: {
+                      marginTop: "50px",
+                    },
+                  })
                 const remainingInvites = allInviteData.filter((team) => team._id != invite._id)
                 setAllTeamInvites(remainingInvites)
             }else{

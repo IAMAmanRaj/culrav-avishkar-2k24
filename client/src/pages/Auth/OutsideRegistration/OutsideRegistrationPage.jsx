@@ -51,13 +51,21 @@ function OutsideRegistration() {
       // Check for a successful response (status code 201)
       if (response.status === 201) {
         setSubmitting(false);
-        toast.success(response.data.message);
+        toast.success(response.data.message, {
+          style: {
+            marginTop: "50px",
+          },
+        });
         navigate("/verify-email", { state: { email: data.email } });
         console.log("User now went to verify user");
       }
     } catch (error) {
       setSubmitting(false);
-      toast.error(error.response?.data?.message || "Registration failed. Please try again.");
+      toast.error(error.response?.data?.message || "Registration failed. Please try again.", {
+        style: {
+          marginTop: "50px",
+        },
+      });
       // Safely handle different types of errors
       if (error.response) {
         // Server responded with a status outside the 2xx range (e.g., 400, 500)
@@ -144,7 +152,7 @@ function OutsideRegistration() {
           )}
 
           <Input
-            placeholder="College ID card (image url)"
+            placeholder="College ID Card [ Drive Link ]"
             type="url"
             {...register("collegeID", {
               required: "College ID is required",
