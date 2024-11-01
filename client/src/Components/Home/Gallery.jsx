@@ -132,7 +132,7 @@ const Gallery = () => {
         </Carousel>
       </div>
     </div>
-      <div className="hidden md:block pt-[10vw] w-[100vw] md:h-[560vh] custom1300:h-[590vh] custom1980:h-[510vh]  relative bottom-16 bg-floralWhite overflow-hidden">
+      <div className="hidden md:block py-[10vw] w-[100vw] md:h-[520vw] custom1000:h-[420vw] custom1300:h-[340vw] custom1560:h-[310vw] custom1840:h-[300vw] custom1980:h-[260vw]  relative bottom-16 bg-floralWhite overflow-hidden">
         <div className="w-full md:h-[40vw]  relative top-16 flex items-center" ref={reelRef1}>
           <div className="w-full relative md:h-[51vw] ">
             <img className="w-full md:h-[51vw] custom1300:h-[29vw] " src={tiltedRoll} alt="Reel Image 1" />
