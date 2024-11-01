@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200..800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -9,50 +9,50 @@ html {
   scroll-behavior: smooth;
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   .md:h-calc {
     height: calc(100vh - 92px);
   }
 }
 
 @font-face {
-  font-family: 'Bionix';
-  src: url('./assets/fonts/Bionix.otf') format('truetype'); /* Adjust the path accordingly */
+  font-family: "Bionix";
+  src: url("./assets/fonts/Bionix.otf") format("truetype"); /* Adjust the path accordingly */
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'MOONGETTI';
-  src: url('./assets/fonts/MOON.otf') format('opentype');
-  font-weight: bold; 
+  font-family: "MOONGETTI";
+  src: url("./assets/fonts/MOON.otf") format("opentype");
+  font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Bebas Neue';
-  src: url('./assets/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-family: "Bebas Neue";
+  src: url("./assets/fonts/BebasNeue-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('./assets/fonts/Bionix.otf') format('opentype');
-  font-weight: normal; 
+  font-family: "Manrope";
+  src: url("./assets/fonts/Bionix.otf") format("opentype");
+  font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Sfpro';
-  src: url('./assets/fonts/Sfpro.otf') format('opentype');
-  font-weight: bold; 
+  font-family: "Sfpro";
+  src: url("./assets/fonts/Sfpro.otf") format("opentype");
+  font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'sftext';
-  src: url("./assets/fonts/sfText_regular.OTF") format('opentype');
+  font-family: "sftext";
+  src: url("./assets/fonts/sfText_regular.OTF") format("opentype");
 }
 
 @layer base {
@@ -120,51 +120,69 @@ html {
   }
 }
 
-
-
 .custom-scrollbar::-webkit-scrollbar {
   border: 2px solid #616161; /* Add your desired border style here */
   border-radius: 10px;
-
 }
 /* Adding scroll-bar hidden in userDashboard Number of team member select-options */
 .scrollbar-hidden {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 .culrav-background {
-    background-image: url('./images/gridfull.png'),url('./images//noiseEffect.png'), url('./images/culrav-bg.png');
-    background-repeat: repeat, repeat, no-repeat;
-    background-position: center, center, center 20vh;
-    background-size: contain, contain, cover;
+  background-image: url("./images/gridfull.png"),
+    url("./images//noiseEffect.png"), url("./images/culrav-bg.png");
+  background-repeat: repeat, repeat, no-repeat;
+  background-position: center, center, center 20vh;
+  background-size: contain, contain, cover;
 }
 
 @media (max-width: 640px) {
-    .culrav-background {
-        background-image: url('./images/gridfull.png'), url('./images//noiseEffect.png'), url('./images/culrav-bgmobile.png');
-        background-repeat: repeat, repeat, repeat;
-        background-position: center, center, center 50px ;
-        background-size: contain, contain, contain;
-    }
+  .culrav-background {
+    background-image: url("./images/gridfull.png"),
+      url("./images//noiseEffect.png"), url("./images/culrav-bgmobile.png");
+    background-repeat: repeat, repeat, repeat;
+    background-position: center, center, center 50px;
+    background-size: contain, contain, contain;
+  }
 }
 .culrav-Landing-background {
-    background-image: url('./images/gridfull.png'),url('./images/noiseEffect.png'), url('./images/culrav-bg.png');
-    background-repeat: repeat, repeat, no-repeat;
-    background-position: center, center, center 50vh;
-    background-size: contain, contain, cover;
+  background-image: url("./images/gridfull.png"),
+    url("./images/noiseEffect.png"), url("./images/culrav-bg.png");
+  background-repeat: repeat, repeat, no-repeat;
+  background-position: center, center, center 50vh;
+  background-size: contain, contain, cover;
 }
 
 @media (max-width: 640px) {
-    .culrav-Landing-background {
-        background-image: url('./images/gridfull.png'), url('./images/noiseEffect.png'), url('./images/culrav-bgmobile.png');
-        background-repeat: repeat, repeat, repeat;
-        background-position: center, center, center 100vh ;
-        background-size: contain, contain, contain;
-    }
+  .culrav-Landing-background {
+    background-image: url("./images/gridfull.png"),
+      url("./images/noiseEffect.png"), url("./images/culrav-bgmobile.png");
+    background-repeat: repeat, repeat, repeat;
+    background-position: center, center, center 100vh;
+    background-size: contain, contain, contain;
+  }
 }
 
+.custom-scrollbar-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar-modal::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.custom-scrollbar-modal::-webkit-scrollbar-thumb {
+  background-color: #f97316;
+  border-radius: 4px;
+  border: 2px solid #f0f0f0;
+}
+
+.checkbox-orange:checked {
+  accent-color: #934004;
+}
