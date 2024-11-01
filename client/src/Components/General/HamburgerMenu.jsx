@@ -41,7 +41,7 @@ const HamburgerMenu = () => {
           <div>
             <img
               src={logo}
-              className="logo absolute -top-[7.5vh] left-4 logo hover:cursor-pointer w-auto h-28 "
+              className="logo absolute -top-[9vh] left-4 logo hover:cursor-pointer w-auto h-28 "
             ></img>
           </div>
           <ul className="flex flex-col items-center justify-center gap-1">
