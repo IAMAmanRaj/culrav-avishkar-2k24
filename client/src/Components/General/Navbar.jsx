@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import HamburgerMenu from "./HamburgerMenu";
 import useAuth from "@/lib/useAuth";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
+import logo from "../../assets/general/logo.webp";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -15,23 +16,27 @@ function Navbar() {
     <>
       {/* Render for larger screens */}
       <div className="w-[100vw] custom1980:h-[92px] md:h-[60px] px-8 py-2 fixed bg-scheduleLargeText flex items-center justify-between z-50 md:flex hidden">
-        
-        <div
-          className="logo hover:cursor-pointer custom1980:w-[9vw] h-[90%] md:w-[12vw] bg-transparent md:bg-zinc-600"
+        <img
+          src={logo}
+          className="logo hover:cursor-pointer w-auto h-28 object-contain bg-transparent"
           onClick={handleLogoClick}
-        ></div>
+        />
 
         <div className="navlinks w-[67%] flex text-navlink h-full items-center justify-between font-bebas md:text-[1.6vw]">
-          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
-          onClick={() => {
-            navigate("/culrav-landing");
-          }}>
+          <h1
+            className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
+            onClick={() => {
+              navigate("/culrav-landing");
+            }}
+          >
             CULRAV
           </h1>
-          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
-           onClick={() => {
-            navigate("/avishkar-landing");
-          }}>
+          <h1
+            className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
+            onClick={() => {
+              navigate("/avishkar-landing");
+            }}
+          >
             AVISHKAR
           </h1>
           <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300">
@@ -45,16 +50,20 @@ function Navbar() {
           >
             TEAM
           </h1>
-          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300" 
-          onClick={() => {
+          <h1
+            className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
+            onClick={() => {
               navigate("/sponsors");
-            }}>
+            }}
+          >
             SPONSORS
           </h1>
-          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300" 
-          onClick={() => {
+          <h1
+            className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
+            onClick={() => {
               navigate("/schedule");
-            }}>
+            }}
+          >
             SCHEDULE
           </h1>
         </div>
@@ -79,7 +88,7 @@ function Navbar() {
       </div>
 
       {/* Render for mobile screens */}
-      <div className=" w-[100vw] px-8 fixed bg-scheduleLargeText flex items-center justify-between z-50 md:hidden">
+      <div className=" w-[100vw] px-8 absolute bg-scheduleLargeText flex items-center justify-end z-50 md:hidden">
         <div>
           <HamburgerMenu />
         </div>

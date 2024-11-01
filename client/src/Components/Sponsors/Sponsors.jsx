@@ -1,11 +1,11 @@
-import React from 'react';
-import noise from '../../assets/Sc-assets/noise.png';
-import grid from '../../assets/Sc-assets/Grid.png';
-import triangle from '../../assets/Sc-assets/triangle.png';
+import React from "react";
+import noise from "../../assets/Sc-assets/noise.png";
+import grid from "../../assets/Sc-assets/Grid.png";
+import triangle from "../../assets/Sc-assets/triangle.png";
 
 const Sponsors = () => {
   return (
-    <div className="relative w-full min-h-screen md:h-[1634px] bg-[#202020] flex flex-col items-center justify-center px-4 sm:px-8">
+    <div className="relative w-full min-h-screen md:h-[1634px] bg-[#202020] flex flex-col items-center justify-begin px-4 sm:px-8">
       <img
         src={noise}
         alt="Noise Background"
@@ -22,7 +22,7 @@ const Sponsors = () => {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="relative z-10 flex flex-col items-center ">
+      <div className="relative z-10 flex flex-col items-begin py-20 lg: py-4">
         <h1 className="text-white font-[Bionix] text-[48px] sm:text-[64px] font-extrabold text-center mb-8">
           SPONSORS
         </h1>
