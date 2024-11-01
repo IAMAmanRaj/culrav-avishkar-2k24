@@ -30,15 +30,15 @@ const Profile = () => {
 
   return (
     <div
-      className="md:w-[74vw] custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[92px] flex justify-center items-center h-full md:h-auto"
+      className="md:w-[74vw] custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute  flex justify-center items-center h-full md:h-auto"
       style={{
-        height: 'calc(100vh - 92px)',
+        height: '100%',
         backgroundImage: `url(${ContentBox})`,
         backgroundSize: 'cover', 
         backgroundRepeat: 'no-repeat', 
       }}
     >
-      <div className="px-9 rounded-md py-7 bg-scheduleLargeText w-[90%] max-w-[640px]">
+      <div className="px-9 text-sm md:text-lg rounded-md py-7 bg-scheduleLargeText w-[90%] max-w-[640px]">
         <div className="w-full h-[40px] flex mb-4">
           <div className="w-[20%] h-full flex">
             <h1 className="text-white flex items-center justify-center">Name</h1>
