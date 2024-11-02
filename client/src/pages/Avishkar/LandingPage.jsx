@@ -73,12 +73,12 @@ function AvishkarLanding() {
                     EVENTS
                 </h1>
 
-                <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4k:grid-cols-5 gap-6 space md:gap-10 lg:gap-20 justify-items-center items-center w-full h-full p-[2%] pb-[10%]">
+                <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4k:grid-cols-5 gap-6 space md:gap-10 lg:gap-20 justify-items-center items-center w-full h-full p-[2%] pb-[7%]">
                 {events.map((event, index) => (
-                    <div key={index} className="relative group flex flex-col items-center w-full h-[290px] sm:h-[300px] md:h-[340px] lg:h-[28vw]  p-[5%]  overflow-hidden">
+                    <div key={index} className="relative group flex flex-col items-center w-[90%] h-[300px] sm:h-[300px] md:h-[300px] lg:h-[350px] lg:w-[320px] p-[5%]  overflow-hidden">
                         {/* Card Container */}
                         <EventCard  event={event} />
-                        
+                    
                     </div>
                 ))}
                 </div>
