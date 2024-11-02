@@ -146,12 +146,12 @@ const registerForEvent = async (req, res, next) => {
     const email = user.email;
     const answer = checkEmail(email)
 
-    if(!answer){
-      return res.status(400).json({
-        success:false,
-        message:"You do not have permission to register."
-      })
-    }
+    // if(!answer){
+    //   return res.status(400).json({
+    //     success:false,
+    //     message:"You do not have permission to register."
+    //   })
+    // }
 
 
     // get all the members[pending  + accepted] of current Team,
