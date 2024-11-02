@@ -257,12 +257,40 @@ const sendTeamInvite = async (req, res, next) => {
     }
 
     const targetUser = await User.findOne({ email: sendToEmail });
+    const ld = await User.findById({_id : leaderId})
+    if(!ld){
+      return res.status(400).json({
+        success:false,
+        message:"leaderId is invalid"
+      })
+    }
 
     if (!targetUser) {
       return res.status(404).json({
         success: false,
         message: "targetUser is not registered.",
       });
+    }
+
+    //first check the interCollege participation in not allowed.
+    if(sendToEmail.includes("mnnit.ac.in")){
+      const leaderEmail = ld.email
+      if(!leaderEmail.includes("mnnit.ac.in")){
+        return res.status(400).json({
+          success:false,
+          message:"Inter College participation is not allowed."
+        })
+      }
+    }
+
+    if(!sendToEmail.includes("mnnit.ac.in")){
+      const leaderEmail = ld.email
+      if(leaderEmail.includes("mnnit.ac.in")){
+        return res.status(400).json({
+          success:false,
+          message:"Inter College participation is not allowed."
+        })
+      }
     }
     // leader can not sent the invite to himself
 
@@ -884,16 +912,15 @@ const getParticipatingTeamsOfAUser = async (req, res, next) => {
     const user = await User.findById({ _id: userId }).populate([{
       path: "participatingTeam",
       model: Team,
-      populate: [
-        {
+      populate:[
+      {
          path: "acceptedMembers",
          model: User,
-        },
-        {
+      },
+      {
           path:"registeredEvents",
           model: Event
-        }
-      ],
+      }],
     }]);
 
     if (!user) {
