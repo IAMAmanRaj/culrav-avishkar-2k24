@@ -24,6 +24,8 @@ export default {
         custom1980: "1980px",
         custom1400: "1400px", 
         custom1300: "1300px",
+        custom2300: "2300px",
+        
       },
       borderRadius: {
         lg: "var(--radius)",
