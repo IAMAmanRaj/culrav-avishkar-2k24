@@ -204,14 +204,16 @@ const registerForEvent = async (req, res, next) => {
     for (let i = 0; i < allTeams.length; i++) {
       var currTeam = allTeams[i];
       var currTeamMembers = currTeam.acceptedMembers;
-      allMembers = [...allMembers, currTeamMembers];
+      for(let j = 0; j < currTeamMembers.length; j++){
+        allMembers = [...allMembers, JSON.stringify(currTeamMembers[j])]
+      }
     }
 
     var currTeamMembers = tm.acceptedMembers;
 
 
     for (let i = 0; i < currTeamMembers.length; i++) {
-      if (allMembers.includes(currTeamMembers[i]._id)) {
+      if (allMembers.includes(JSON.stringify(currTeamMembers[i]._id))) {
         return res.status(400).json({
           success: false,
           message: `some members of this team have already registered with other team in this event`,

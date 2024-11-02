@@ -29,7 +29,7 @@ const TeamRegisterModal = ({ teams, onClose, themeColor, eventData }) => {
       if(res?.success){
         toast.success(res?.message)
       }else{
-        toast.error("Error while registering! Try again.")
+        toast.error(`Error! ${res?.message}`)
       }
     }catch(err){
       console.log(err)
