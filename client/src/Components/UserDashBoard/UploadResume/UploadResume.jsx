@@ -49,14 +49,15 @@ const UploadResume = () => {
   };
 
   return (
-    <div className="md:w-[74vw] custom1000:w-[80vw] custom1840:w-[83vw] bg-[url('/ContentBox.png')] w-full absolute top-[92px] flex justify-center items-center h-full md:h-auto"
+    <div 
+    className="md:w-[74vw] custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute  flex justify-center items-center h-full md:h-auto"
     style={{
-      height: 'calc(100vh - 92px)',
+      height: '100%',
       backgroundImage: `url(${ContentBox})`,
       backgroundSize: 'cover', 
       backgroundRepeat: 'no-repeat', 
     }}>
-      <div className="rounded-md px-9 py-7 bg-scheduleLargeText w-[90%] max-w-[640px]">
+      <div className="text-xs xs:text-sm md:text-lg rounded-md px-9 py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
         <div className="w-full h-[90px] md:h-[120px] flex justify-center">
           <h1 className="font-bionix text-[30px] md:text-5xl text-white">Upload Resume</h1>
         </div>
