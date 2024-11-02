@@ -1,11 +1,11 @@
 
 function EventCard({ roller, event }) {
   return (
-   <div className="relative w-full h-full  flex flex-col justify-between overflow-hidden transition-transform duration-500 ease-out ">
+   <div className="relative w-full h-full  flex flex-col justify-between overflow-hidden transition-transform duration-500 ease-out  ">
         {/* Roller Image (transition effect) */}
-        <div className="absolute top-[30%] left-0 w-full h-full">
+        <div className="absolute left-0 w-full h-full">
             <div
-                className="absolute inset-0 bg-no-repeat bg-center transition-transform duration-500 ease-out transform translate-y-0 group-hover:-translate-y-[30%] z-0"
+                className="absolute inset-0 bg-no-repeat bg-center transition-transform duration-500 ease-out transform translate-y-[30%] group-hover:-translate-y-0 z-0"
                 style={{
                     backgroundImage: `url(${roller})`,
                     backgroundSize: 'contain',
@@ -15,7 +15,7 @@ function EventCard({ roller, event }) {
         </div>
 
         {/* Event Image */}
-        <div className="absolute z-10 bottom-0 w-full h-[70%] overflow-hidden">
+        <div className="absolute z-10 bottom-0 w-full h-[77%] overflow-hidden">
             <img
                 src={event.image}
                 alt="Event"

@@ -34,7 +34,7 @@ function CulravLanding() {
                 ></div>
 
                 {/* Content: Rectangle and Paragraph */}
-                <div className="absolute w-[80%]  top-[20%] sm:top-[22%] md:top-[5%] xl:top-[12%] z-10 flex flex-col sm:flex-row items-center justify-center">
+                <div className="absolute w-[80%]  top-[18%] sm:top-[15%] md:top-[5%] lg:top-[0%] xl:top-[9%] z-10 flex flex-col sm:flex-row items-center justify-center">
                     {/* Rectangle Image */}
                     <img
                         src={rectangle}
@@ -52,7 +52,7 @@ function CulravLanding() {
             {/* Events Section */}
             <div className="w-full h-auto  items-center justify-center flex flex-col mt-[10%] sm:-mt-[20vh]">
                 <h1
-                    className="bg-[#F54E25] font-bionix text-[#FFFAF0] font-bold text-center  mb-8"
+                    className="bg-[#F54E25] font-bionix text-[#FFFAF0] font-bold text-center  "
                     style={{
                         fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
                         width: 'clamp(150px, 30%, 300px)',
@@ -61,9 +61,9 @@ function CulravLanding() {
                     EVENTS
                 </h1>
 
-                <div className="grid grid-cols-1 w-[90%] xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4k:grid-cols-5 gap-6 md:gap-10 lg:gap-20 justify-items-center items-center  h-full pb-20 p-[5%]">
+                <div className="grid grid-cols-1 w-[90%] xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4k:grid-cols-5 gap-x-6 md:gap-x-10 lg:gap-x-20 justify-items-center items-center  h-full pb-[5%] p-[5%] -mt-[5vh]">
                     {events.map((event, index) => (
-                        <div key={index} className="relative group flex flex-col items-center w-full h-[400px] sm:h-[450px] md:h-[480px] lg:h-[400px] xl:h-[550px] overflow-hidden">
+                        <div key={index} className="relative m-2 group flex flex-col items-center w-full h-[400px] sm:h-[450px] md:h-[420px] lg:h-[400px] xl:h-[450px] overflow-hidden">
                             {/* Card Container */}
                             <EventCard roller={roller} event={event} />
                         </div>
