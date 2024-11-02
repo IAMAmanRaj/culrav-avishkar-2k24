@@ -1,13 +1,13 @@
-import Popup from "../../Components/UserDashboard/shared/Popup"
-import VerticalSideBar from "../../Components/UserDashboard/shared/VerticalSideBar"
+import Popup from "../../Components/UserDashBoard/shared/Popup";
+import VerticalSideBar from "../../Components/UserDashBoard/shared/VerticalSideBar";
 
 const UserProfilePage = () => {
   return (
     <div className="overflow-hidden">
-        <Popup/>
-        <VerticalSideBar/>      
+      <Popup />
+      <VerticalSideBar />
     </div>
-  )
-}
+  );
+};
 
-export default UserProfilePage
+export default UserProfilePage;
