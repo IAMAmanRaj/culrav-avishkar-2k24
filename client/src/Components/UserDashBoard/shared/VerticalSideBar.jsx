@@ -13,6 +13,7 @@ import { signoutSuccess } from "@/redux/auth/authSlice";
 import Frame from "../../../assets/userDashBoard/VerticalNavIcons/Frame.png";
 import History from "../../../assets/userDashBoard/VerticalNavIcons/History.png";
 import logout from "../../../assets/userDashBoard/VerticalNavIcons/logout.png";
+import toast , { Toaster } from "react-hot-toast";
 
 const VerticalSideBar = () => {
   const [activeItem, setActiveItem] = useState("Profile");
@@ -21,6 +22,11 @@ const VerticalSideBar = () => {
 
   const handleLogout = () => {
     dispatch(signoutSuccess());
+    toast.success("Logout Successfully!", {
+      style: {
+        marginTop: "50px",
+      },
+    });
     navigate("/login");
   };
 
@@ -125,6 +131,7 @@ const VerticalSideBar = () => {
       <div className="flex-grow">
         {renderPageContent()}
       </div>
+      <Toaster/>
     </div>
   );
 };

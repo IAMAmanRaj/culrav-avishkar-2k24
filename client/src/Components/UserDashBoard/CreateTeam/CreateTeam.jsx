@@ -34,26 +34,39 @@ const CreateTeam = () => {
      const res =  await createTeam({leader : user._id, teamName , teamSize : teamSize, token})
      if(res?.success){
       console.log("team created!")
-      toast.success(`team ${teamName} created successfully!`)
+      toast.success(`team ${teamName} created successfully!`, {
+        style: {
+          marginTop: "50px",
+        },
+      })
      }else{
-      toast.error(res?.message)
+      toast.error(res?.message, {
+        style: {
+          marginTop: "50px",
+        },
+      })
      }
     }catch(err){
       console.log(err)
-      toast.error("internal Server Error")
+      toast.error("internal Server Error", {
+        style: {
+          marginTop: "50px",
+        },
+      })
     }
   }
 
   return (
-    <div className="md:w-[74vw] custom1000:w-[80vw] custom1840:w-[83vw] bg-[url('/ContentBox.png')] w-full absolute top-[92px] flex justify-center items-center h-full md:h-auto"
+    <div 
+    className="md:w-[74vw] custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute  flex justify-center items-center h-full md:h-auto"
     style={{
-      height: 'calc(100vh - 92px)',
+      height: '100%',
       backgroundImage: `url(${ContentBox})`,
       backgroundSize: 'cover', 
       backgroundRepeat: 'no-repeat', 
     }} 
     >
-      <div className="rounded-md px-9 py-7 bg-scheduleLargeText w-[90%] max-w-[640px]">
+      <div className="text-xs xs:text-sm md:text-lg rounded-md px-9 py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
         <div className="w-full h-[90px] md:h-[120px] flex justify-center">
           <h1 className="font-bionix text-[30px] md:text-5xl text-white">Create Team</h1>
         </div>

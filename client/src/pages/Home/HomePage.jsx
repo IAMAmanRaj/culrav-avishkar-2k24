@@ -12,7 +12,7 @@ function Home() {
     console.log(state); // just to check if the state is updated
   }
   return (
-    <div>
+    <div className="bg-floralWhite">
       <HeroSection />
       <Schedule />
       <Gallery />

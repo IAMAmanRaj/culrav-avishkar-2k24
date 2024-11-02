@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
-
+import toast, { Toaster } from "react-hot-toast";
 const useAuth = () => {
   const token = useSelector((state) => state.user.token);
 
@@ -15,6 +15,12 @@ const useAuth = () => {
     if (decoded.exp > currentTime) {
       return true;
     } else {
+      toast.error("Session expired. Please log in again.", {
+        style: {
+          marginTop: "50px",
+        },
+      });
+      navigate("/login");
       return false;
     }
   } catch (err) {

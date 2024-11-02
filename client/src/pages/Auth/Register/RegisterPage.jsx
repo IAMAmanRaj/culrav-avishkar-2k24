@@ -49,12 +49,20 @@ function Register() {
       // Check for a successful response (status code 201)
       if (response.status === 201) {
         setSubmitting(false);
-        toast.success(response.data.message );
+        toast.success(response.data.message, {
+          style: {
+            marginTop: "50px",
+          },
+        } );
         navigate("/verify-email", { state: { email: data.email } });
       }
     } catch (err) {
       setSubmitting(false);
-      toast.error(err.response?.data?.message || "Registration failed. Please try again.")
+      toast.error(err.response?.data?.message || "Registration failed. Please try again.", {
+        style: {
+          marginTop: "50px",
+        },
+      })
       // Safely handle different types of errors
       if (err.response) {
         // Server responded with a status outside the 2xx range (e.g., 400, 500)

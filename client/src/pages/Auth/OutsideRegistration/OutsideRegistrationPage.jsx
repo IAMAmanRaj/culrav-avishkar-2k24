@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../lib/useAuth";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 const apiClient = axios.create({
   baseURL: "http://localhost:3000", // Base URL for all requests
@@ -51,13 +51,25 @@ function OutsideRegistration() {
       // Check for a successful response (status code 201)
       if (response.status === 201) {
         setSubmitting(false);
-        toast.success(response.data.message);
+        toast.success(response.data.message, {
+          style: {
+            marginTop: "50px",
+          },
+        });
         navigate("/verify-email", { state: { email: data.email } });
         console.log("User now went to verify user");
       }
     } catch (error) {
       setSubmitting(false);
-      toast.error(error.response?.data?.message || "Registration failed. Please try again.");
+      toast.error(
+        error.response?.data?.message ||
+          "Registration failed. Please try again.",
+        {
+          style: {
+            marginTop: "50px",
+          },
+        }
+      );
       // Safely handle different types of errors
       if (error.response) {
         // Server responded with a status outside the 2xx range (e.g., 400, 500)
@@ -78,7 +90,7 @@ function OutsideRegistration() {
 
   return (
     <div className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full">
-      <div className="flex flex-col items-center justify-center w-full max-w-md p-6 bg-[#2D2D2D] mx-4 sm:mx-0">
+      <div className="flex flex-col items-center justify-center w-full max-w-[40rem] mt-[4rem] p-6 bg-[#2D2D2D] mx-4 sm:mx-0">
         <h1 className="text-center text-2xl sm:text-3xl text-[#FFFAF0] font-bold font-bionix leading-tight">
           Outside Participation for <br /> CULRAV-AVISHKAR
         </h1>
@@ -144,7 +156,7 @@ function OutsideRegistration() {
           )}
 
           <Input
-            placeholder="College ID card (image url)"
+            placeholder="College ID Card [ Drive Link ]"
             type="url"
             {...register("collegeID", {
               required: "College ID is required",

@@ -51,7 +51,11 @@ function VerifyEmail() {
 
       // Check if verification was successful
       if (response.status === 200) {
-        toast.success("Email verification successful!");
+        toast.success("Email verification successful!", {
+          style: {
+            marginTop: "50px",
+          },
+        });
         // Check if the email is inside or outside college
         if (checkEmail(email)) {
           navigate("/login"); // Navigate to login for inside college
@@ -59,20 +63,18 @@ function VerifyEmail() {
           navigate("/outside-registration/payFee", { state: { email: email } }); // Navigate to pay fee for outside college
         }
       } else {
-        toast.error("Verification failed. Please try again.");
+        toast.error("Verification failed. Please try again.", {
+          style: {
+            marginTop: "50px",
+          },
+        });
         console.log("Verification failed:", response.data); // Log failed verification
       }
     } catch (error) {
       // Improved error logging
       toast.error("Error during verification. Please try again.", {
-        position: 'bottom-right',
         style: {
-          background: "#2D2D2D",
-          color: "#FFFAF0",
-        },
-        iconTheme: {
-          primary: "#F54E25",
-          secondary: "#FFFAF0",
+          marginTop: "50px",
         },
       });
       if (error.response) {

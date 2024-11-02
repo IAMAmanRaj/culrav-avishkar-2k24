@@ -33,10 +33,18 @@ function Team() {
                     const {matchingLeaderTeams, nonMatchingLeaderTeams} = splitTeamsByLeader({totalTeams, givenLeaderId})
                     setMyTeams(matchingLeaderTeams)
                     setJoinedTeams(nonMatchingLeaderTeams)
-                    toast.success("teams fetches successfully!")
+                    toast.success("teams fetches successfully!", {
+                        style: {
+                          marginTop: "50px",
+                        },
+                      })
                 }else{
                     console.log(res?.message)
-                    toast.error(res?.message)
+                    toast.error(res?.message, {
+                        style: {
+                          marginTop: "50px",
+                        },
+                      })
                 }
             }catch(err){
                 console.log(err)
@@ -89,7 +97,7 @@ function Team() {
                     <div className="md:px-9 md:h-screen-minus-92 h-auto md:py-7 p-4 justify-center  bg-dark_secondary grid  border-[#202020]/100 border-2 w-full ">
 
                         <div className=' h-[90%] w-full'>
-                            <UserTeams showTeamInfo={showTeamInfo} teamData={AllData} />
+                            <UserTeams showTeamInfo={showTeamInfo} teamData={AllData} setMyTeams = {setMyTeams} />
                         </div>
                     </div>
                 </div > :

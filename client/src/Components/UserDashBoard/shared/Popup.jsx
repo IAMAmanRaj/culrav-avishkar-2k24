@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { signoutSuccess } from "@/redux/auth/authSlice";
 import Team from "../Team/index"
 import Invitations from "../Invitation";
+import toast from 'react-hot-toast';
 
 const Popup = () => {
     const [isOpen, setIsOpen] = useState(false); 
@@ -26,6 +27,11 @@ const Popup = () => {
 
     const handleLogout = () => {
         dispatch(signoutSuccess());
+        toast.success("Logout Successfully!", {
+            style: {
+              marginTop: "50px",
+            },
+          });
         navigate("/login");
     };
 
@@ -68,7 +74,7 @@ const Popup = () => {
         <div className="relative md:hidden ">
             <div ref={popupRef} className="relative ">
                 <div
-                    className={`md:hidden w-[100vw] fixed transition-all flex flex-col gap-8 justify-center items-center font-Sfpro text-[18px] duration-1000 h-[460px] bg-scheduleLargeText border-0 top-[0] z-[20] rounded-b-[46px] ${isOpen ? "transform translate-y-[90px]" : "transform translate-y-[-330px]"}`}
+                    className={`md:hidden w-[100vw] fixed transition-all flex flex-col gap-8 justify-center items-center font-Sfpro text-[18px] duration-1000 h-[500px] bg-scheduleLargeText border-0 top-[0] z-[20] rounded-b-[46px] ${isOpen ? "transform translate-y-[0px]" : "transform translate-y-[-399px]"}`}
                 >
                     <ul className="flex flex-col gap-5 justify-center items-center text-mineShaft">
                         <li className={`hover:text-customOrange cursor-pointer ${activeItem === "Profile" ? "text-customOrange" : ""}`} onClick={() => handleNavigation("Profile")}>Profile</li>

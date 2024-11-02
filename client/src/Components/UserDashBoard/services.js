@@ -108,6 +108,31 @@ const sendInvitation = async({teamName, leaderId, sendToEmail, token}) => {
     }
 }
 
+const deleteTeam = async ({teamId, userId, token}) => {
+    try{
+        const response = await Axios.delete(`/team/v1/delete/${teamId}/${userId}`,
+            {headers:{Authorization: `Bearer ${token}`}}
+        )
+        return response?.data
+    }catch(err){
+        console.log(err)
+        return err?.response?.data
+    }
+}
+
+const kickMember = async({userTobeKickedId, teamId, leaderId, token}) => {
+    try{
+        const response = await Axios.post(`/team/v1/kickAMember`,
+            {userTobeKickedId, teamId, leaderId},
+            {headers:{Authorization: `Bearer ${token}`}}
+        )
+        return response?.data
+    }catch(err){
+        console.log(err)
+        return err?.response?.data
+    }
+}
+
 
 export {createTeam, 
     getInvitations, 
@@ -116,6 +141,8 @@ export {createTeam,
     updateResume, 
     acceptInvite,
     rejectInvite,
-    sendInvitation
+    sendInvitation,
+    deleteTeam,
+    kickMember
 }
 

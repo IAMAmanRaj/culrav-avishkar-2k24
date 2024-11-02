@@ -7,11 +7,8 @@ import errorHandler from "./ErrorHandlers/error_handler.js";
 import adminRouter from "./Routes/admin.routes.js";
 import authRoutes from "./Routes/auth.routes.js";
 import teamRoutes from "./Routes/team.routes.js";
-
 import cors from "cors";
-
 import eventRoutes from "./Routes/event.routes.js";
-
 import swaggerUI from "swagger-ui-express";
 import swaggerSpec from "./swaggerDocs/swaggerOptions.js";
 dotenv.config();
@@ -31,8 +28,8 @@ app.get("/", (req, res) => {
 // Auth rate limiter
 const authLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 100, // Limit to 10 requests per 10 minutes
-  message: "Too many attempts, please try again later.",
+  max: 3, // Limit to 3 requests per 10 minutes
+  message: { message: "Too many attempts, please try again after 10 mins." },
 });
 
 // All routes

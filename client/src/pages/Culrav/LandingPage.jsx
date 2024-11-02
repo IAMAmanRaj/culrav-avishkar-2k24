@@ -1,38 +1,36 @@
 import EventCard from "@/Components/Culrav/EventCard";
 import MainEvent from "@/Components/Culrav/MainEventCard";
-import roller from '@/images/disc.png'; // Assuming roller image is imported
-import cardBg from '@/images/image.png';
-import rectangle from '@/images/Rectangle.png';
+import roller from "@/images/disc.png"; // Assuming roller image is imported
+import cardBg from "@/images/image.png";
+import rectangle from "@/images/Rectangle.png";
 function CulravLanding() {
-    const mainevent = MainEvent;
-    const events = Array(9).fill({
-        image: cardBg,
-        title: "", // Add actual event titles as needed
-    });
-    return (
+  const mainevent = MainEvent;
+  const events = Array(9).fill({
+    image: cardBg,
+    title: "", // Add actual event titles as needed
+  });
+  return (
+    <div className=" culrav-Landing-background flex flex-col items-center justify-center bg-floralWhite ">
+      {/* Base2 Image Section */}
+      <div className="relative flex flex-col justify-center items-center w-full min-h-screen md:h-[80vh]">
+        {/* Red Background for Mobile View */}
+        <div className="bg-scheduleOrange w-screen h-full absolute top-0  sm:hidden "></div>
+
+        {/* Original Background for Desktop */}
         <div
-            className=" culrav-Landing-background flex flex-col items-center justify-center bg-floralWhite "
-            
-        >
-            {/* Base2 Image Section */}
-            <div className="relative flex flex-col justify-center items-center w-full min-h-screen md:h-[80vh]">
-                {/* Red Background for Mobile View */}
-                <div className="bg-scheduleOrange w-screen h-full absolute top-0  sm:hidden "></div>
-
-                {/* Original Background for Desktop */}
-                <div 
-                    className="w-full h-[80vh] bg-floralWhite absolute top-3 left-0 hidden sm:block"
-                    style={{
-                    clipPath: 'polygon(0 0, 100% 0, 100% 69%, 71% 83%, 25% 88%, 0% 72%)',
-                }}
-                ></div>
-                <div 
-                    className="w-full h-[80vh] bg-scheduleOrange absolute top-0 left-0 hidden sm:block"
-                    style={{
-                    clipPath: 'polygon(0 0, 100% 0, 100% 69%, 71% 83%, 25% 88%, 0% 72%)',
-                }}
-                ></div>
-
+          className="w-full h-[80vh] bg-floralWhite absolute top-3 left-0 hidden sm:block"
+          style={{
+            clipPath:
+              "polygon(0 0, 100% 0, 100% 69%, 71% 83%, 25% 88%, 0% 72%)",
+          }}
+        ></div>
+        <div
+          className="w-full h-[80vh] bg-scheduleOrange absolute top-0 left-0 hidden sm:block"
+          style={{
+            clipPath:
+              "polygon(0 0, 100% 0, 100% 69%, 71% 83%, 25% 88%, 0% 72%)",
+          }}
+        ></div>
                 {/* Content: Rectangle and Paragraph */}
                 <div className="absolute w-[80%]  top-[18%] sm:top-[15%] md:top-[5%] lg:top-[0%] xl:top-[9%] z-10 flex flex-col sm:flex-row items-center justify-center">
                     {/* Rectangle Image */}
@@ -63,14 +61,14 @@ function CulravLanding() {
 
                 <div className="grid grid-cols-1 w-[90%] xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4k:grid-cols-5 gap-x-6 md:gap-x-10 lg:gap-x-20 justify-items-center items-center  h-full pb-[5%] p-[5%] -mt-[5vh]">
                     {events.map((event, index) => (
-                        <div key={index} className="relative m-2 group flex flex-col items-center w-full h-[400px] sm:h-[450px] md:h-[420px] lg:h-[400px] xl:h-[450px] overflow-hidden">
+                        <div key={index} className="m-1 relative group flex flex-col items-center w-full h-[400px] sm:h-[450px] md:h-[450px] lg:h-[400px] xl:h-[400px] xl:w-[300px] overflow-hidden ">
                             {/* Card Container */}
                             <EventCard roller={roller} event={event} />
                         </div>
                     ))}
                 </div>
             </div>
-        </div>
-    );
+    </div>
+  );
 }
 export default CulravLanding;
