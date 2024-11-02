@@ -1,6 +1,14 @@
 import User from "../Models/user.model.js";
 import Team from "../Models/team.model.js";
 import Event from "../Models/event.model.js";
+const checkEmail = (email) => {
+  const [localPart, domain] = email.split('@');
+  if (domain === "mnnit.ac.in") {
+    return !localPart.includes("2021");
+  }
+  
+  return true;
+}
 
 const getAllTeamsOfAnEvent = async (req, res, next) => {
   const { eventId } = req.params;
@@ -43,7 +51,7 @@ const getAllTeamsOfAnEvent = async (req, res, next) => {
 };
 
 const registerForEvent = async (req, res, next) => {
-  const { eventId, teamId, userId } = req.body;
+  const { eventId, teamId, userId, eventName, department, maxTeamSize, minTeamSize  } = req.body;
 
   if (!eventId) {
     return res.status(400).json({
@@ -66,18 +74,36 @@ const registerForEvent = async (req, res, next) => {
     });
   }
 
+  if(!eventName){
+    return res.status(400).json({
+      success:false,
+      message : "eventName missing"
+    })
+  }
+
+  if(!department){
+    return res.status(400).json({
+      success:false,
+      message:"department name is missing"
+    })
+  }
+
   try {
-    // check if eventId is valid
-    const event = await Event.findOne({ eventId }).populate({
+    // check if this event is in the db or not.
+    var event = await Event.findOne({ eventId }).populate({
       path: "participatingTeams",
       model: Team,
     });
 
+
     if (!event) {
-      return res.status(400).json({
-        success: false,
-        message: "invalid eventId",
-      });
+      //firts create the event. then register the team in the event.
+      event = await Event.create({eventId,
+        eventName,
+        department,
+        maxTeamSize,
+        minTeamSize,
+      })
     }
     //check is teamId is valid
 
@@ -117,6 +143,17 @@ const registerForEvent = async (req, res, next) => {
       });
     }
 
+    const email = user.email;
+    const answer = checkEmail(email)
+
+    // if(!answer){
+    //   return res.status(400).json({
+    //     success:false,
+    //     message:"You do not have permission to register."
+    //   })
+    // }
+
+
     // get all the members[pending  + accepted] of current Team,
     //check if there are any pending members of the currentTeam, is so then this team can not register.
 
@@ -146,7 +183,13 @@ const registerForEvent = async (req, res, next) => {
     }
 
     //check if this team is already registered.
-    if (event.participatingTeams.includes(teamId)) {
+    var participatingTeamIds = []
+    for(let i = 0; i < event.participatingTeams.length; i++){
+      const currId = JSON.stringify(event.participatingTeams[i]._id);
+      participatingTeamIds = [...participatingTeamIds, currId]
+      
+    }
+    if (participatingTeamIds.includes(JSON.stringify(teamId))) {
       return res.status(400).json({
         success: false,
         message: "Already registered",
@@ -166,8 +209,9 @@ const registerForEvent = async (req, res, next) => {
 
     var currTeamMembers = tm.acceptedMembers;
 
+
     for (let i = 0; i < currTeamMembers.length; i++) {
-      if (allMembers.includes(currTeamMembers[i])) {
+      if (allMembers.includes(currTeamMembers[i]._id)) {
         return res.status(400).json({
           success: false,
           message: `some members of this team have already registered with other team in this event`,
@@ -203,7 +247,7 @@ const registerForEvent = async (req, res, next) => {
 
     // add this event to the team.
 
-    tm.registeredEvents = [...tm.registeredEvents, eventId];
+    tm.registeredEvents = [...tm.registeredEvents, event._id];
 
     await event.save();
     await tm.save();
