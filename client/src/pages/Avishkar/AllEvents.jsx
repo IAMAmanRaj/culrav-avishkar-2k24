@@ -68,7 +68,7 @@ function AvishkarEvents() {
                 EVENTS
             </h1>
 
-            <div className="grid grid-cols-1 w-full xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4k:grid-cols-5 gap-x-4 md:gap-x-6 lg:gap-x-10 justify-items-center h-full p-[5%] pb-[10%]">
+            <div className="grid grid-cols-1 w-full xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4k:grid-cols-5 gap-x-4 md:gap-x-6 lg:gap-x-10 justify-items-center h-full p-[5%] pb-[8%]">
                 {events.map((event, index) => (
                     <div
                         key={index}
