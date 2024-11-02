@@ -44,7 +44,7 @@ const TitleUpdater = () => {
       case "/registration":
         title += " Registration";
         break;
-        case "/verify-email":
+      case "/verify-email":
         title += " Verify Email";
         break;
       case "/outside-registration":
@@ -77,7 +77,7 @@ const TitleUpdater = () => {
       case "/dashboard":
         title += " Dashboard";
         break;
-        case "/sponsors":
+      case "/sponsors":
         title += " Sponsors";
         break;
       default:
@@ -99,8 +99,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registration" element={<Register />} />
-        <Route path='/forget-password' element={<ForgetPassword />} />
-        <Route path="/forget-password-token-verification" element={<ForgetPasswordTokenVerification />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route
+          path="/forget-password-token-verification"
+          element={<ForgetPasswordTokenVerification />}
+        />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/outside-registration" element={<OutsideRegistration />} />
         <Route path="/outside-registration/payFee" element={<PayFeesPage />} />
@@ -117,7 +120,7 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/sponsors" element={<Sponsors />} />
       </Routes>
-       <Footer />
+      <Footer />
     </Router>
   );
 }

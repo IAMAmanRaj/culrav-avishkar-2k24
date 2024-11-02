@@ -13,7 +13,7 @@ async function SendEmail(to, subject, text) {
     from: process.env.EMAIL,
     to: to,
     subject: subject,
-    text: text,
+    html: text,
   };
 
   try {
