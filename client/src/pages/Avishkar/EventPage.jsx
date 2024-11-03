@@ -65,6 +65,7 @@ function AvishkarEvent() {
             setIsModalOpen(false);
           }}
           themeColor="white"
+          isOpen={isModalOpen}
         />
       )}
       <div
@@ -76,7 +77,6 @@ function AvishkarEvent() {
           backgroundSize: "cover, 250px auto",
         }}
       >
-        {/* Paint Background Section */}
         <div
           className="flex items-center  justify-center text-center  text-white"
           style={{

@@ -5,7 +5,7 @@ import triangle from "../../assets/Sc-assets/triangle.png";
 
 const Sponsors = () => {
   return (
-    <div className="relative w-full min-h-screen md:h-[1634px] bg-[#202020] flex flex-col items-center justify-begin px-4 sm:px-8">
+    <div className="relative w-full min-h-screen md:h-[1634px] bg-[#202020] flex flex-col items-center justify-begin px-4 sm:px-8 pt-20">
       <img
         src={noise}
         alt="Noise Background"
@@ -31,9 +31,9 @@ const Sponsors = () => {
           {[1, 2, 3].map((section) => (
             <div key={section} className="flex flex-col items-center">
               <h2 className="text-[#F54E25] font-[Bionix] text-[32px] sm:text-[48px] font-extrabold mb-5 text-center">
-                Associate Sponsors
+                ASSOCIATE SPONSOR
               </h2>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-80">
                 <div className="w-[300px] h-[120px] sm:w-[386px] sm:h-[144px] bg-[#F54E25] flex items-center justify-center mx-auto mb-4 md:mb-0 md:mx-0 rounded-lg hover:scale-105 hover:shadow-lg transition-transform duration-200 ease-in-out">
                   <p className="text-white font-[Bebas Neue] text-[32px] sm:text-[48px] font-normal">
                     SPONSOR
