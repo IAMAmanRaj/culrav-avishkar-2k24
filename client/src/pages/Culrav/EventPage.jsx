@@ -26,6 +26,7 @@ function CulravEvent() {
             setIsModalOpen(false);
           }}
           themeColor="black"
+          isOpen={isModalOpen}
         />
       )}
       <div
