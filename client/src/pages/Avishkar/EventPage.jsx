@@ -2,26 +2,65 @@ import layer2 from "@/images/avishlayer2.png";
 import bullet from "@/images/bullet1.png";
 import avishkareventbg from "@/images/Overlay.png";
 import paint from "@/images/paint.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TeamRegisterModal from "../modal/TeamRegisterModal";
+import { getAllTeams, splitTeamsByLeader } from "../../Components/UserDashBoard/services.js";
+import useAuth from "../../lib/useAuth.js";
+import getUser from "../../Components/UserDashBoard/userService.js";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
-const teams = [
-  "Team 1",
-  "Team 2",
-  "Team 3",
-  "Team 4",
-  "Team 5",
-  "Team 6",
-  "Team 7",
-];
 
 function AvishkarEvent() {
+  const eventData = {
+    eventId : "12345556",
+    eventName : "KREEDOMANIA",
+    department : "XYZ",
+    minTeamSize : 1,
+    maxTeamSize : 5,
+    eventCoordinators : ["Avinash", "Aman", "Shivansh", "Hariom"],
+    description : "no description",
+    rules : ["rule1", "rule2"]
+  }
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [teams, setTeams] = useState([])
+
+  const isAuthenticated = useAuth()
+  const navigate = useNavigate()
+
+  const {token, user} = getUser()
+
+  useEffect(() => {
+    if(!isAuthenticated){
+      navigate("/")
+    }
+  })
+
+  const handleModelOpen = async () => {
+    setIsModalOpen(true)
+
+    try{
+      const res = await getAllTeams({userId : user._id, token})
+      if(res?.success){
+          const givenLeaderId = user._id
+          const totalTeams = res?.totalTeams
+          const {matchingLeaderTeams, nonMatchingLeaderTeams} = splitTeamsByLeader({totalTeams, givenLeaderId})
+          setTeams(matchingLeaderTeams)
+      }else{
+          console.log(res?.message)
+          toast.error("error while getting the teams")
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return (
     <>
       {isModalOpen && (
         <TeamRegisterModal
           teams={teams}
+          eventData = {eventData}
           onClose={() => {
             setIsModalOpen(false);
           }}
@@ -50,7 +89,7 @@ function AvishkarEvent() {
             margin: "0 auto",
           }}
         >
-          <span className="font-bionix text-[3vw] pl-[6%]">KREEDOMANIA</span>
+          <span className="font-bionix text-[3vw] pl-[6%]">{eventData.eventName}</span>
         </div>
 
         {/* Content Wrapper */}
@@ -64,10 +103,7 @@ function AvishkarEvent() {
               className="w-full text-[2.5vw] font-bebas pl-[10%] pr-[10%]"
               style={{ wordSpacing: "0.2em" }}
             >
-              We invite you all to take part in the most popular form of
-              theatre, stage play. Rangmanch brings you Natymanach, stage play.
-              So get up and get ready to mesmerize the world with your
-              theatrics.
+              {eventData.description}
             </p>
           </section>
 
@@ -77,14 +113,7 @@ function AvishkarEvent() {
               Rules
             </h2>
             <ul className="w-full mx-[5%] font-bebas space-y-4 items-start justify-center flex flex-col">
-              {[
-                "The team shall consist of a minimum of 8 and a maximum of 35 people ",
-                "The team shall consist of a minimum of 8 and a maximum of 35 people (including people at lights, music and handling props).",
-                "The time limit for each performance is 20 minutes.",
-                "Use of harmful props or materials is prohibited.",
-                "Any kind of offensive content will lead to disqualification.",
-                "Teams must respect other participants and maintain decorum.",
-              ].map((rule, index) => (
+              {eventData.rules.map((rule, index) => (
                 <li
                   key={index}
                   className="flex items-start text-[2.5vw] mr-[10%]"
@@ -107,9 +136,7 @@ function AvishkarEvent() {
           {/* Register Button */}
           <div className="flex justify-center py-6 pl-[5vw]">
             <button
-              onClick={() => {
-                setIsModalOpen(true);
-              }}
+              onClick={handleModelOpen}
               className="bg-[#F54E25] text-[2.5vw] font-bionix hover:bg-orange-600 text-[#FFFAF0] font-bold py-2 px-6"
             >
               Register
@@ -147,10 +174,11 @@ function AvishkarEvent() {
               Coordinators
             </h2>
             <div className="flex justify-around font-bionix text-[2.5vw]">
-              <div>Person Name</div>
-              <div>Person Name</div>
-              <div>Person Name</div>
-              <div>Person Name</div>
+              {
+                eventData.eventCoordinators.map((coo, idx) => (
+                    <div>{coo}</div>
+                ))
+              }
             </div>
           </div>
         </div>

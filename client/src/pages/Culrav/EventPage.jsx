@@ -2,26 +2,65 @@ import bullet from "@/images/bullet1.png";
 import layer1 from "@/images/Layer1.png";
 import paint from "@/images/paint.png";
 import wall from "@/images/walls1.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TeamRegisterModal from "../modal/TeamRegisterModal";
+import { getAllTeams, splitTeamsByLeader } from "../../Components/UserDashBoard/services.js";
+import useAuth from "../../lib/useAuth.js";
+import getUser from "../../Components/UserDashBoard/userService.js";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
-const teams = [
-  "Team 1",
-  "Team 2",
-  "Team 3",
-  "Team 4",
-  "Team 5",
-  "Team 6",
-  "Team 7",
-];
 
 function CulravEvent() {
+  const eventData = {
+    eventId : "12345557",
+    eventName : "RANGSAAZI",
+    department : "XYZ",
+    minTeamSize : 1,
+    maxTeamSize : 5,
+    eventCoordinators : ["Avinash", "Aman", "Shivansh", "Hariom"],
+    description : "no description",
+    rules : ["rule1", "rule2"]
+  }
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [teams, setTeams] = useState([])
+
+  const isAuthenticated = useAuth()
+  const navigate = useNavigate()
+
+  const {token, user} = getUser()
+
+  useEffect(() => {
+    if(!isAuthenticated){
+      navigate("/")
+    }
+  })
+
+  const handleModelOpen = async () => {
+    setIsModalOpen(true)
+
+    try{
+      const res = await getAllTeams({userId : user._id, token})
+      if(res?.success){
+          const givenLeaderId = user._id
+          const totalTeams = res?.totalTeams
+          const {matchingLeaderTeams, nonMatchingLeaderTeams} = splitTeamsByLeader({totalTeams, givenLeaderId})
+          setTeams(matchingLeaderTeams)
+      }else{
+          console.log(res?.message)
+          toast.error("error while getting the teams")
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return (
     <>
       {isModalOpen && (
         <TeamRegisterModal
           teams={teams}
+          eventData={eventData}
           onClose={() => {
             setIsModalOpen(false);
           }}
@@ -63,7 +102,7 @@ function CulravEvent() {
             }}
           >
             <span className="font-bionix text-[3.5vw] sm:text-[3vw] pl-[6%]">
-              RANGSAAZI
+              {eventData.eventName}
             </span>
           </div>
 
@@ -76,10 +115,7 @@ function CulravEvent() {
               className="text-[2.5vw] sm:text-[2vw] p-[0.8vw] text-[#181818] font-bebas"
               style={{ wordSpacing: "0.2em" }}
             >
-              We invite you all to take part in the most popular form of
-              theatre, stage play. Rangmanch brings you Natymanach, stage play.
-              So get up and get ready to mesmerize the world with your
-              theatrics.
+              {eventData.description}
             </p>
           </section>
         </div>
@@ -90,14 +126,7 @@ function CulravEvent() {
             Rules
           </h2>
           <ul className="w-full mx-[5%] text-[#181818] font-bebas space-y-4 pr-[10%] items-start justify-center flex flex-col">
-            {[
-              "The team shall consist of a minimum of 8 and a maximum of 35 people (including people at lights, music and handling props).",
-              "The team shall consist of a minimum of 8 and a maximum of 35 people (including people at lights, music and handling props).",
-              "The team shall consist of a minimum of 8 and a maximum of 35 people (including people at lights, music and handling props).",
-              "The team shall consist of a minimum of 8 and a maximum of 35 people (including people at lights, music and handling props).",
-              "The team shall consist of a minimum of 8 and a maximum of 35 people (including people at lights, music and handling props).",
-              "The team shall consist of a minimum of 8 and a maximum of 35 people (including people at lights, music and handling props).",
-            ].map((rule, index) => (
+            {eventData.rules.map((rule, index) => (
               <li
                 key={index}
                 className="flex items-start w-[85%] text-[2.5vw] sm:text-[2vw]  mt-[1.5%]"
@@ -120,9 +149,7 @@ function CulravEvent() {
         {/* Register Button */}
         <div className="flex justify-center py-6 pl-[5vw]">
           <button
-            onClick={() => {
-              setIsModalOpen(true);
-            }}
+            onClick={handleModelOpen}
             className="bg-[#F54E25] text-[2.5vw] font-bionix hover:bg-orange-600 text-[#FFFAF0] font-bold py-2 px-6"
           >
             Register
@@ -157,10 +184,11 @@ function CulravEvent() {
               Coordinators
             </h2>
             <div className="flex justify-around font-bold text-[#FFFAF0] text-[2.5vw] pb-4">
-              <div>Person Name</div>
-              <div>Person Name</div>
-              <div>Person Name</div>
-              <div>Person Name</div>
+              {
+                eventData.eventCoordinators.map((coo, idx) => (
+                  <div>{coo}</div>
+                ))
+              }
             </div>
           </div>
         </div>

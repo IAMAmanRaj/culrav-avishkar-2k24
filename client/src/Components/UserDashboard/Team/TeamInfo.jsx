@@ -123,7 +123,7 @@ function TeamInfo({ team, handleShowAllTeams }) {
                         {team?.registeredEvents?.map((event) => {
                             return (
                                 <div className="mb-3 h-auto w-full p-2 md:px-5 md:py-4 bg-Mine_Shaft_900 rounded justify-between items-center inline-flex">
-                                    <div className="text-Mine_Shaft_300 text-md md:text-lg font-normal font-sfText leading-tight">{event?.name}</div>
+                                    <div className="text-Mine_Shaft_300 text-md md:text-lg font-normal font-sfText leading-tight">{event?.eventName}</div>
                                 </div>
                             )
                         })}

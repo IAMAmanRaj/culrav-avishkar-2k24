@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { XMarkIcon } from "@heroicons/react/20/solid";
+import useAuth from "@/lib/useAuth.js";
+import getUser from "@/Components/UserDashBoard/userService.js";
+import { registerForEvent } from "../Avishkar/service";
+import toast from "react-hot-toast";
 
 const TeamRegisterModal = ({ teams, onClose, themeColor, isOpen }) => {
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -10,9 +14,33 @@ const TeamRegisterModal = ({ teams, onClose, themeColor, isOpen }) => {
   const textColor = isWhiteTheme ? "text-black" : "text-white";
   const borderColor = isWhiteTheme ? "border-gray-300" : "border-gray-700";
   const selectedBgColor = isWhiteTheme ? "bg-orange-500" : "bg-orange-500";
+  const { token, user } = getUser();
 
   const handleSelect = (team) => {
     setSelectedTeam(team);
+  };
+
+  const handleRegister = async () => {
+    try {
+      const res = await registerForEvent({
+        eventName: eventData.eventName,
+        teamId: selectedTeam._id,
+        userId: user._id,
+        eventId: eventData.eventId,
+        department: eventData.department,
+        minTeamSize: eventData.minTeamSize,
+        maxTeamSize: eventData.maxTeamSize,
+        token,
+      });
+
+      if (res?.success) {
+        toast.success(res?.message);
+      } else {
+        toast.error(`Error! ${res?.message}`);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
