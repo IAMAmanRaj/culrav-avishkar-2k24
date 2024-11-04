@@ -31,8 +31,13 @@ const Login = async (req, res) => {
         return res.status(400).json({ message: "Invalid email" });
       }
     }
-    if (!checkPassword(password)) {
-      return res.status(400).json({ message: "Invalid password" });
+    // password check logic response what is going wrong with password
+    const passwordCheck = checkPassword(password);
+    if (passwordCheck.state !== "valid") {
+      return res.status(400).json({
+        success: false,
+        message: passwordCheck,
+      });
     }
     // .............. checks end ...............
 
