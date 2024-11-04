@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../lib/useAuth";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 const apiClient = axios.create({
   baseURL: "http://localhost:3000", // Base URL for all requests
@@ -53,16 +53,19 @@ function Register() {
           style: {
             marginTop: "50px",
           },
-        } );
+        });
         navigate("/verify-email", { state: { email: data.email } });
       }
     } catch (err) {
       setSubmitting(false);
-      toast.error(err.response?.data?.message || "Registration failed. Please try again.", {
-        style: {
-          marginTop: "50px",
-        },
-      })
+      toast.error(
+        err.response?.data?.message || "Registration failed. Please try again.",
+        {
+          style: {
+            marginTop: "50px",
+          },
+        }
+      );
       // Safely handle different types of errors
       if (err.response) {
         // Server responded with a status outside the 2xx range (e.g., 400, 500)
@@ -112,12 +115,7 @@ function Register() {
             placeholder="GSuit Id"
             type="email"
             {...register("email", {
-              required: "Email is required",
-              validate: {
-                matchPattern: (value) =>
-                  /^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@mnnit\.ac\.in$/.test(value) ||
-                  "Email must be a valid MNNIT email address",
-              },
+              required: true,
             })}
           />
           {errors.email && (
@@ -144,12 +142,7 @@ function Register() {
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
               {...register("password", {
-                required: "Password is required",
-                validate: {
-                  matchPattern: (value) =>
-                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/.test(value) ||
-                    "Password is not valid",
-                },
+                required: true,
               })}
             />
             <button
@@ -194,7 +187,11 @@ function Register() {
           )}
 
           {submitting ? (
-            <><div className="flex w-full items-center justify-center"><Loader2 className="mx-auto" /></div></>
+            <>
+              <div className="flex w-full items-center justify-center">
+                <Loader2 className="mx-auto" />
+              </div>
+            </>
           ) : (
             <Button
               type="submit"

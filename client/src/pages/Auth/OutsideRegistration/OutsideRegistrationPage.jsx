@@ -119,12 +119,7 @@ function OutsideRegistration() {
             placeholder="Email Id"
             type="email"
             {...register("email", {
-              required: "Email is required",
-              validate: {
-                matchPattern: (value) =>
-                  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ||
-                  "Email is not valid",
-              },
+              required: true,
             })}
           />
           {errors.email && (
@@ -171,12 +166,7 @@ function OutsideRegistration() {
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
               {...register("password", {
-                required: "Password is required",
-                validate: {
-                  matchPattern: (value) =>
-                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/.test(value) ||
-                    "Password is not valid",
-                },
+                required: true,
               })}
             />
             <button
