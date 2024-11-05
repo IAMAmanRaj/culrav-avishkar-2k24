@@ -50,20 +50,13 @@ const Register = AsyncErrorHandler(async (req, res, next) => {
       }
     }
 
-    if (!checkName(name)) {
+    if (!checkPassword(password) || !checkName(name)) {
       return res.status(400).json({
         success: false,
-        message: "Invalid Username",
+        message: "Invalid Username or Password",
       });
     }
-    // password check logic response what is going wrong with password
-    const passwordCheck = checkPassword(password);
-    if (passwordCheck.state !== "valid") {
-      return res.status(400).json({
-        success: false,
-        message: passwordCheck,
-      });
-    }
+
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
 
@@ -82,10 +75,14 @@ const Register = AsyncErrorHandler(async (req, res, next) => {
       });
     }
 
-    if (existingPhoneUser) {
+    if (existingPhoneUser && !existingPhoneUser.isVerifiedUser) {
+      // Delete the unverified user by phone number
+      await User.deleteOne({ phone: `+91${phone}` });
+      await VerificationToken.deleteOne({ email: existingPhoneUser.email });
+    } else if (existingPhoneUser && existingPhoneUser.isVerifiedUser) {
       return res.status(400).json({
         success: false,
-        message: "This Phone Number is already registered",
+        message: "Phone Number already registered",
       });
     }
 
