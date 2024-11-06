@@ -22,23 +22,34 @@ const Schedule = () => {
               CULRAV-AVISHKAR 2024, Techno-Cultural Fest at MNNIT Allahabad, Prayagraj, is an electrifying extravaganza that seamlessly merges technology with cultural diversity. Featuring dynamic competitions, captivating performances, and insightful workshops, it serves as a melting pot of innovation and expression.
             </p>
           </div>
-  <div className="flex flex-wrap items-center justify-center gap-[7vw] p-6">
-   <div className="md:w-96 md:h-72 h-60 w-60 flex items-center justify-center">
-    <img 
-      src={culrav} 
-      alt="Logo 1" 
-      className="object-contain w-full h-full scale-[230%] md:scale-[230%] lg:scale-[230%]"
-    />
-   </div>
+          <div className="flex flex-wrap  items-center justify-center gap-[7vw] p-6">
+            <div className="md:w-96  md:h-72 h-60 w-60 items-center justify-center animate-float"
+              style={{
+                animation: 'float 3s ease-in-out infinite',
+                backgroundRepeat: 'no-repeat',
+              }}>
+              <img
+                src={culrav}
+                alt="Logo 1"
+                className="object-contain  w-full h-full scale-[230%] md:scale-[230%] lg:scale-[230%] hover:cursor-pointer"
+                style={{ filter: 'drop-shadow(0 0 0.75rem rgb(255, 255, 255))' }}
 
-   <div className="md:w-96 md:h-72 h-60 w-60 flex items-center justify-center">
-    <img 
-      src={avishkar} 
-      alt="Logo 2" 
-      className="object-contain w-full h-full scale-[250%] md:scale-[230%] lg:scale-[230%]"
-    />
-   </div>
-  </div>
+              />
+            </div>
+
+            <div className="md:w-96 md:h-72 h-60 w-60 flex items-center justify-center animate-float"
+              style={{
+                animation: 'float 3s ease-in-out infinite',
+                backgroundRepeat: 'no-repeat',
+              }}>
+              <img
+                src={avishkar}
+                alt="Logo 2"
+                className="object-contain w-full h-full scale-[230%] lg:w-full  hover:cursor-pointer"
+                style={{ filter: 'drop-shadow(0 0 0.75rem rgb(255, 217, 0))' }}
+              />
+            </div>
+          </div>
 
 
         </div>

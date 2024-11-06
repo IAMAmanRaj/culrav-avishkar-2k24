@@ -64,7 +64,7 @@ function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
           {createdTeams.map((team) => {
             return (
               <div
-                className="cursor-pointer mb-3 h-auto w-full px-5 py-4 bg-Mine_Shaft_900 rounded  md:justify-between items-center md:flex-row flex-col 
+                className="cursor-pointer mb-3 h-auto w-full px-5 py-4 bg-Mine_Shaft_900 rounded  md:justify-between flex items-center md:flex-row flex-col 
                  "
               >
                 <div className="text-Mine_Shaft_300 md:mb-0 mb-2 text-lg font-normal font-sfText leading-tight">
