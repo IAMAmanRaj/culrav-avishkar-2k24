@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../lib/useAuth";
 import toast, { Toaster } from "react-hot-toast";
+import overlay1 from "../../../assets/Overlay1.png";
 
 const apiClient = axios.create({
   baseURL: "http://localhost:3000", // Base URL for all requests
@@ -70,7 +71,17 @@ function Register() {
     value === watch("password") || "Passwords do not match";
 
   return (
-    <div className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full">
+    <div
+      className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full"
+      style={{
+        backgroundImage: `url(${overlay1})`,
+        backgroundSize: "cover", // Ensure image covers the entire div
+        backgroundPosition: "center", // Center the image
+        backgroundRepeat: "no-repeat", // Prevent image repetition
+        width: "100%", // Set the width to 100% of the parent
+        height: "100%", // Set the height of the div
+      }}
+    >
       <div className="flex flex-col items-center justify-center w-full max-w-md p-6 bg-[#2D2D2D] mx-4 sm:mx-0">
         <h1 className="text-center text-2xl sm:text-3xl text-[#FFFAF0] font-bold font-bionix leading-tight">
           Register for <br /> CULRAV-AVISHKAR

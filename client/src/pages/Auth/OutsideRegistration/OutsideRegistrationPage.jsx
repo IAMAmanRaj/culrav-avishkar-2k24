@@ -1,13 +1,14 @@
 import { Button } from "@/ShadCnComponents/ui/button.jsx";
 import Input from "@/ShadCnComponents/ui/Input";
 import axios from "axios";
-import { Eye, EyeOff} from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../lib/useAuth";
 import toast, { Toaster } from "react-hot-toast";
+import overlay1 from "../../../assets/Overlay1.png";
 
 const apiClient = axios.create({
   baseURL: "http://localhost:3000", // Base URL for all requests
@@ -44,7 +45,7 @@ function OutsideRegistration() {
         email: data.email,
         password: data.password,
         isOtherCollege: true,
-        phone: `${data.phone}`, 
+        phone: `${data.phone}`,
         college: data.college,
         collegeID: data.collegeID,
       });
@@ -52,14 +53,20 @@ function OutsideRegistration() {
       // Check for a successful response (status code 201)
       if (response.status === 201) {
         setSubmitting(false);
-        toast.success(response.data.message, { duration: 2000, className: "toast-success" });
+        toast.success(response.data.message, {
+          duration: 2000,
+          className: "toast-success",
+        });
         navigate("/verify-email", { state: { email: data.email } });
         console.log("User now went to verify user");
       }
     } catch (error) {
       setSubmitting(false);
-      toast.error(error.response?.data?.message ||
-        "Registration failed. Please try again.", { className: "toast-error" });
+      toast.error(
+        error.response?.data?.message ||
+          "Registration failed. Please try again.",
+        { className: "toast-error" }
+      );
     }
   };
 
@@ -68,7 +75,17 @@ function OutsideRegistration() {
     value === watch("password") || "Passwords do not match";
 
   return (
-    <div className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full">
+    <div
+      className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full"
+      style={{
+        backgroundImage: `url(${overlay1})`,
+        backgroundSize: "cover", // Ensure image covers the entire div
+        backgroundPosition: "center", // Center the image
+        backgroundRepeat: "no-repeat", // Prevent image repetition
+        width: "100%", // Set the width to 100% of the parent
+        height: "100%", // Set the height of the div
+      }}
+    >
       <div className="flex flex-col items-center justify-center w-full max-w-[40rem] mt-[4rem] p-6 bg-[#2D2D2D] mx-4 sm:mx-0">
         <h1 className="text-center text-2xl sm:text-3xl text-[#FFFAF0] font-bold font-bionix leading-tight">
           Outside Participation for <br /> CULRAV-AVISHKAR
@@ -189,7 +206,7 @@ function OutsideRegistration() {
             <p className="text-[#F54E25]">{errors.confirmPassword.message}</p>
           )}
 
-          {submitting ?(
+          {submitting ? (
             <>
               <div className="flex w-full items-center justify-center">
                 <ClipLoader color="#F54E25" size={35} className="mx-auto" />

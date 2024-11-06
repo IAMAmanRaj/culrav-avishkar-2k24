@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { LoaderCircle } from "lucide-react";
+import overlay1 from "../../../assets/Overlay1.png";
 
 const QR = () => {
   const [paymentScreenshot, setPaymentScreenshot] = useState(null);
@@ -67,9 +68,9 @@ const QR = () => {
     setUploading(true);
     if (!paymentScreenshot) {
       toast.error("Please upload an image", {
-        icon: '🚫',
+        icon: "🚫",
         duration: 2000,
-        className: "toast-error"
+        className: "toast-error",
       });
       setUploading(false);
       return;
@@ -116,7 +117,17 @@ const QR = () => {
   return (
     <>
       {uploading && <LoaderCircle />}
-      <div className="min-h-screen flex justify-center items-center bg-gray-900 p-4">
+      <div
+        className="min-h-screen flex justify-center items-center bg-gray-900 p-4"
+        style={{
+          backgroundImage: `url(${overlay1})`,
+          backgroundSize: "cover", // Ensure image covers the entire div
+          backgroundPosition: "center", // Center the image
+          backgroundRepeat: "no-repeat", // Prevent image repetition
+          width: "100%", // Set the width to 100% of the parent
+          height: "100%", // Set the height of the div
+        }}
+      >
         <div
           className="p-8 rounded-lg shadow-xl w-full max-w-xs sm:max-w-sm lg:max-w-lg xl:max-w-xl space-y-6"
           style={{ backgroundColor: "var(--Jet, #2D2D2D)" }}
