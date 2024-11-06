@@ -92,3 +92,4 @@ const UploadResume = () => {
 };
 
 export default UploadResume;
+

@@ -29,22 +29,14 @@ function ForgetPasswordTokenVerification() {
             marginTop: "50px",
           },
         });
+        toast.success("Login Successful!", { duration: 2000, className: "toast-success" });
         navigate('/login'); // Navigate to login on success
       } else {
-        toast.error('Verification failed. Please try again.', {
-          style: {
-            marginTop: "50px",
-          },
-        });
+        toast.error('Verification failed. Please try again.', { className: "toast-error" });
         console.log('Verification failed:', response.data); // Log failed verification
       }
     } catch (error) {
-      // Improved error logging
-      toast.error(error.response?.data?.message || 'Please try again.', {
-        style: {
-          marginTop: "50px",
-        },
-      });
+      toast.error(error.response?.data?.message || 'Please try again.', { className: "toast-error" });
       console.log('Error during password token verification:', error.response?.data?.message || error.message);
     }
   };

@@ -4,63 +4,66 @@ import avishkareventbg from "@/images/Overlay.png";
 import paint from "@/images/paint.png";
 import { useEffect, useState } from "react";
 import TeamRegisterModal from "../modal/TeamRegisterModal";
-import { getAllTeams, splitTeamsByLeader } from "../../Components/UserDashBoard/services.js";
+import {
+  getAllTeams,
+  splitTeamsByLeader,
+} from "../../Components/profile_DashBoard/services.js";
 import useAuth from "../../lib/useAuth.js";
-import getUser from "../../Components/UserDashBoard/userService.js";
+import getUser from "../../Components/profile_DashBoard/userService.js";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-
 function AvishkarEvent() {
   const eventData = {
-    eventId : "12345556",
-    eventName : "KREEDOMANIA",
-    department : "XYZ",
-    minTeamSize : 1,
-    maxTeamSize : 5,
-    eventCoordinators : ["Avinash", "Aman", "Shivansh", "Hariom"],
-    description : "no description",
-    rules : ["rule1", "rule2"]
-  }
+    eventId: "12345556",
+    eventName: "KREEDOMANIA",
+    department: "XYZ",
+    minTeamSize: 1,
+    maxTeamSize: 5,
+    eventCoordinators: ["Avinash", "Aman", "Shivansh", "Hariom"],
+    description: "no description",
+    rules: ["rule1", "rule2"],
+  };
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [teams, setTeams] = useState([])
+  const [teams, setTeams] = useState([]);
 
-  const isAuthenticated = useAuth()
-  const navigate = useNavigate()
+  const isAuthenticated = useAuth();
+  const navigate = useNavigate();
 
-  const {token, user} = getUser()
+  const { token, user } = getUser();
 
   useEffect(() => {
-    if(!isAuthenticated){
-      navigate("/")
+    if (!isAuthenticated) {
+      navigate("/");
     }
-  })
+  });
 
   const handleModelOpen = async () => {
-    setIsModalOpen(true)
+    setIsModalOpen(true);
 
-    try{
-      const res = await getAllTeams({userId : user._id, token})
-      if(res?.success){
-          const givenLeaderId = user._id
-          const totalTeams = res?.totalTeams
-          const {matchingLeaderTeams, nonMatchingLeaderTeams} = splitTeamsByLeader({totalTeams, givenLeaderId})
-          setTeams(matchingLeaderTeams)
-      }else{
-          console.log(res?.message)
-          toast.error("error while getting the teams")
+    try {
+      const res = await getAllTeams({ userId: user._id, token });
+      if (res?.success) {
+        const givenLeaderId = user._id;
+        const totalTeams = res?.totalTeams;
+        const { matchingLeaderTeams, nonMatchingLeaderTeams } =
+          splitTeamsByLeader({ totalTeams, givenLeaderId });
+        setTeams(matchingLeaderTeams);
+      } else {
+        console.log(res?.message);
+        toast.error("error while getting the teams");
       }
-    }catch(err){
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   return (
     <>
       {isModalOpen && (
         <TeamRegisterModal
           teams={teams}
-          eventData = {eventData}
+          eventData={eventData}
           onClose={() => {
             setIsModalOpen(false);
           }}
@@ -89,7 +92,9 @@ function AvishkarEvent() {
             margin: "0 auto",
           }}
         >
-          <span className="font-bionix text-[3vw] pl-[6%]">{eventData.eventName}</span>
+          <span className="font-bionix text-[3vw] pl-[6%]">
+            {eventData.eventName}
+          </span>
         </div>
 
         {/* Content Wrapper */}
@@ -174,11 +179,9 @@ function AvishkarEvent() {
               Coordinators
             </h2>
             <div className="flex justify-around font-bionix text-[2.5vw]">
-              {
-                eventData.eventCoordinators.map((coo, idx) => (
-                    <div>{coo}</div>
-                ))
-              }
+              {eventData.eventCoordinators.map((coo, idx) => (
+                <div>{coo}</div>
+              ))}
             </div>
           </div>
         </div>

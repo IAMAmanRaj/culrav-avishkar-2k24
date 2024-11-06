@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Popup from "../../Components/UserDashBoard/shared/Popup";
-import VerticalSideBar from "../../Components/UserDashBoard/shared/VerticalSideBar";
+import Popup from "@/Components/profile_DashBoard/shared/Popup";
+import VerticalSideBar from "@/Components/profile_DashBoard/shared/VerticalSideBar";
 
 const UserProfilePage = () => {
   const [activeItem, setActiveItem] = useState("Upload Resume");

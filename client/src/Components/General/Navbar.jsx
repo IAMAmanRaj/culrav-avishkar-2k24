@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <>
       {/* Render for larger screens */}
-      <div className="w-[100vw] custom1980:h-[92px] md:h-[60px] px-8 py-2 fixed bg-scheduleLargeText flex items-center justify-between z-50 md:flex hidden">
+      <div className="w-[100vw] custom1980:h-[92px] md:h-[60px] px-8 py-2 fixed bg-scheduleLargeText items-center justify-between z-50 md:flex hidden">
         <img
           src={logo}
           className="logo hover:cursor-pointer w-auto h-28 object-contain bg-transparent"
@@ -93,7 +93,7 @@ function Navbar() {
           <HamburgerMenu />
         </div>
       </div>
-      <Toaster />
+      <Toaster  />
     </>
   );
 }

@@ -15,6 +15,7 @@ import {
 import { ClipLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";
 
+
 const apiClient = axios.create({
   baseURL: "http://localhost:3000",
 });
@@ -38,15 +39,6 @@ function Login() {
   }, [dispatch]);
 
   const userlogin = async (data) => {
-    if (!data.email || !data.password) {
-      toast.error("Please fill all the fields", {
-        style: {
-          marginTop: "50px",
-        },
-      });
-      return dispatch(signInFailure("Please fill all the fields"));
-    }
-
     try {
       dispatch(signInStart());
       const response = await apiClient.post(`/api/auth/v1/login`, data);
@@ -56,57 +48,38 @@ function Login() {
         dispatch(
           signInSuccess({ user: responseData.user, token: responseData.token })
         );
-        toast.success("Login successful!", {
-          style: {
-            marginTop: "50px",
-          },
-        });
+        toast.success("Login Successful!", { duration: 2000, className: "toast-success" });
         navigate("/");
-      } else if (
-        response.status === 401 &&
-        responseData.isVerifiedEmail === false
-      ) {
-        // Redirect to verify email page if email is not verified
-        navigate("/verify-email", { state: { email: data.email } });
-        toast.error(responseData.message || "Please verify your email", {
-          style: {
-            marginTop: "50px",
-          },
-        });
-      } else {
-        toast.error(response.data.message || "Login failed", {
-          style: {
-            marginTop: "50px",
-          },
-        });
-        dispatch(signInFailure("Login failed"));
-      }
+      } 
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.message
         : error.message;
-      if (errorMessage == "Please verify your email") {
-        toast.error(errorMessage, {
-          style: {
-            marginTop: "50px",
-          },
-        });
-        navigate("/verify-email", { state: { email: data.email } });
-      } else if (errorMessage == "Please pay the registration fee") {
-        toast.error(errorMessage, {
-          style: {
-            marginTop: "50px",
-          },
-        });
+        if (errorMessage == "Please verify your email") {
+          toast("Please verify your email !", {
+            icon: '❗️',
+            duration: 2000,
+            className: "toast-yellow"
+          });
+          navigate("/verify-email", { state: { email: data.email } });
+        } else if (errorMessage == "Please pay the registration fee") {
+          toast(errorMessage, {
+            icon: '⌛️',
+            duration: 2000,
+            className: "toast-yellow"
+          });
         navigate("/outside-registration/payFee", {
           state: { email: data.email },
         });
-      } else {
-        toast.error(errorMessage, {
-          style: {
-            marginTop: "50px",
-          },
+      }else if(errorMessage == "Payment verification under process") {
+        toast(errorMessage, {
+          icon: '⌛️',
+          duration: 2000,
+          className: "toast-yellow"
         });
+        dispatch(signInFailure(errorMessage));
+      } else {
+        toast.error(errorMessage, { className: "toast-error" });
         dispatch(signInFailure(errorMessage));
       }
       console.error("Error during login:", errorMessage);

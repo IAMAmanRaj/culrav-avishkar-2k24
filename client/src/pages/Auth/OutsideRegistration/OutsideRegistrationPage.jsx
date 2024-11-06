@@ -1,7 +1,8 @@
 import { Button } from "@/ShadCnComponents/ui/button.jsx";
 import Input from "@/ShadCnComponents/ui/Input";
 import axios from "axios";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff} from "lucide-react";
+import { ClipLoader } from "react-spinners";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -43,7 +44,7 @@ function OutsideRegistration() {
         email: data.email,
         password: data.password,
         isOtherCollege: true,
-        phone: `${data.phone}`, // Append +91 to the phone number
+        phone: `${data.phone}`, 
         college: data.college,
         collegeID: data.collegeID,
       });
@@ -51,36 +52,14 @@ function OutsideRegistration() {
       // Check for a successful response (status code 201)
       if (response.status === 201) {
         setSubmitting(false);
-        toast.success(response.data.message, {
-          style: {
-            marginTop: "50px",
-          },
-        });
+        toast.success(response.data.message, { duration: 2000, className: "toast-success" });
         navigate("/verify-email", { state: { email: data.email } });
         console.log("User now went to verify user");
       }
     } catch (error) {
       setSubmitting(false);
-      toast.error(
-        error.response?.data?.message ||
-          "Registration failed. Please try again.",
-        {
-          style: {
-            marginTop: "50px",
-          },
-        }
-      );
-      // Safely handle different types of errors
-      if (error.response) {
-        // Server responded with a status outside the 2xx range (e.g., 400, 500)
-        console.log("Server Error:", error.response.data);
-      } else if (error.request) {
-        // Request was made but no response was received (e.g., network error)
-        console.log("No Response Received:", error.request);
-      } else {
-        // Some other error occurred (e.g., request setup issue)
-        console.log("Error:", error.message || "Unknown error occurred");
-      }
+      toast.error(error.response?.data?.message ||
+        "Registration failed. Please try again.", { className: "toast-error" });
     }
   };
 
@@ -119,12 +98,7 @@ function OutsideRegistration() {
             placeholder="Email Id"
             type="email"
             {...register("email", {
-              required: "Email is required",
-              validate: {
-                matchPattern: (value) =>
-                  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ||
-                  "Email is not valid",
-              },
+              required: true,
             })}
           />
           {errors.email && (
@@ -171,12 +145,7 @@ function OutsideRegistration() {
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
               {...register("password", {
-                required: "Password is required",
-                validate: {
-                  matchPattern: (value) =>
-                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/.test(value) ||
-                    "Password is not valid",
-                },
+                required: true,
               })}
             />
             <button
@@ -220,8 +189,12 @@ function OutsideRegistration() {
             <p className="text-[#F54E25]">{errors.confirmPassword.message}</p>
           )}
 
-          {submitting ? (
-            <Loader2 className="animate-spin justify-center items-center" />
+          {submitting ?(
+            <>
+              <div className="flex w-full items-center justify-center">
+                <ClipLoader color="#F54E25" size={35} className="mx-auto" />
+              </div>
+            </>
           ) : (
             <Button
               type="submit"

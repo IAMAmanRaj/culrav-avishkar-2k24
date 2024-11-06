@@ -21,6 +21,8 @@ const Login = async (req, res) => {
   }
 
   try {
+    console.log("Starting login process for email:", email);
+
     // .............. checks start ...............
     if (email.includes("@mnnit.ac.in")) {
       if (!checkEmail(email)) {
@@ -31,8 +33,14 @@ const Login = async (req, res) => {
         return res.status(400).json({ message: "Invalid email" });
       }
     }
-    if (!checkPassword(password)) {
-      return res.status(400).json({ message: "Invalid password" });
+
+    // password check logic response what is going wrong with password
+    const passwordCheck = checkPassword(password);
+    if (passwordCheck.state !== "valid") {
+      return res.status(400).json({
+        success: false,
+        message: passwordCheck,
+      });
     }
     // .............. checks end ...............
 
@@ -41,6 +49,7 @@ const Login = async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
+
     // Compare the password
     const match = await isMatch(
       password,
@@ -48,21 +57,26 @@ const Login = async (req, res) => {
       user.password.iv
     );
     if (!match) {
-      return res.status(401).json({ message: "Incorrect email or password" });
+      return res.status(401).json({ message: "Incorrect Email or Password" });
     }
+
     // Check if the user is verified
     if (!user.isVerifiedUser) {
-      // Generate a new verification token
-      const verificationToken = generateVerificationToken();
-      const token = new VerificationToken({
-        email: email,
-        token: verificationToken,
-      });
-      await token.save();
+      // Check if a verification token already exists
+      let token = await VerificationToken.findOne({ email });
+      if (!token) {
+        // Generate a new verification token
+        const verificationToken = generateVerificationToken();
+        token = new VerificationToken({
+          email: email,
+          token: verificationToken,
+        });
+        await token.save();
+      }
 
       // Send verification email
       const subject = "Email verification";
-      const text = generateVerificationEmail(verificationToken, subject);
+      const text = generateVerificationEmail(token.token, subject);
       SendEmail(email, subject, text);
 
       return res.status(401).json({
@@ -70,6 +84,7 @@ const Login = async (req, res) => {
         isVerifiedEmail: user.isVerifiedUser,
       });
     }
+
     // Check if the user has paid the registration fee
     if (!email.includes("@mnnit.ac.in") && !user.isFeePaid) {
       if (user.paymentLink === null) {
@@ -82,6 +97,7 @@ const Login = async (req, res) => {
           .json({ message: "Payment verification under process" });
       }
     }
+
     // Create a token
     const token = jwt.sign(
       {
@@ -99,8 +115,32 @@ const Login = async (req, res) => {
         expiresIn: "7d",
       }
     );
-    res.status(200).json({ message: "Login successful", token, user });
+
+    // Sanitize user object
+    const sanitizedUser = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      userName: user.userName,
+      phone: user.phone,
+      college: user.college,
+      role: user.role,
+      isFeePaid: user.isFeePaid,
+      isVerifiedUser: user.isVerifiedUser,
+      participatingTeam: user.participatingTeam,
+      pendingTeam: user.pendingTeam,
+      participatingEvents: user.participatingEvents,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    };
+
+    console.log("Login successful for email:", email);
+
+    res
+      .status(200)
+      .json({ message: "Login successful", token, user: sanitizedUser });
   } catch (error) {
+    console.error("Error during login process:", error);
     res.status(500).json({ message: "Internal Server error" });
   }
 };

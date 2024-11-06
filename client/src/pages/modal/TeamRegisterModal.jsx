@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import useAuth from "@/lib/useAuth.js";
-import getUser from "@/Components/UserDashBoard/userService.js";
+import getUser from "@/Components/profile_DashBoard/userService.js";
 import { registerForEvent } from "../Avishkar/service";
 import toast from "react-hot-toast";
 

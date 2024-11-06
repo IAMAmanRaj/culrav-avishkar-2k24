@@ -66,7 +66,11 @@ const QR = () => {
   const uploadToCloudinary = async (e) => {
     setUploading(true);
     if (!paymentScreenshot) {
-      alert("Please upload a screenshot first.");
+      toast.error("Please upload an image", {
+        icon: '🚫',
+        duration: 2000,
+        className: "toast-error"
+      });
       setUploading(false);
       return;
     }
