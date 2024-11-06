@@ -91,8 +91,10 @@ function Team() {
   return (
     <>
       {showAllTeams ? (
-        <div className=" md:p-0 pt-20 pb-10 h-auto px-3 md:w-[74vw] bg-[#202020]/100  custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[92px] flex justify-center items-center md:h-auto">
-          <div className="md:px-9 md:h-screen-minus-92 h-auto md:py-7 p-4 justify-center  bg-dark_secondary grid  border-[#202020]/100 border-2 w-full ">
+        <div className=" md:p-0 pt-20  pb-10 h-screen md:h-auto px-3 md:w-[74vw] 
+       bg-[#202020]/100  custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[60px] flex 
+       justify-center items-center ">
+          <div className="md:px-9 md:h-screen-minus-92 h-auto md:py-7 p-4   bg-dark_secondary grid  border-[#202020]/100 border-2 w-full ">
             <div className=" h-[90%] w-full">
               <UserTeams
                 showTeamInfo={showTeamInfo}
@@ -103,15 +105,14 @@ function Team() {
           </div>
         </div>
       ) : (
-        <div
-          className="overflow-y-scroll overflow-x-hidden md:p-0 pt-20 pb-10 h-auto px-3 md:w-[74vw] bg-[#202020]/100  custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[92px] flex justify-center items-center md:h-auto
-                [&::-webkit-scrollbar]:w-1
-                
-                [&::-webkit-scrollbar-thumb]:rounded-full 
-                [&::-webkit-scrollbar-thumb]:bg-Mine_Shaft_100
-                custom-scrollbar"
-        >
-          <div className="md:h-screen-minus-92 h-auto justify-center  bg-dark_secondary grid  border-[#202020]/100 border-2 w-full ">
+        <div className="h-auto overflow-x-hidden md:p-0 pt-20 pb-10  px-3 md:w-[74vw] bg-[#202020]/100  custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[60px] 
+flex justify-center items-center
+ ">
+          <div className="overflow-y-scroll md:h-screen-minus-92 h-auto bg-dark_secondary grid  border-[#202020]/100 border-2 w-full
+                       [&::-webkit-scrollbar]:w-1
+                 [&::-webkit-scrollbar-thumb]:rounded-full
+                 [&::-webkit-scrollbar-thumb]:bg-Mine_Shaft_100
+                 custom-scrollbar">
             <TeamInfo team={teamData} handleShowAllTeams={handleShowAllTeams} />
           </div>
         </div>

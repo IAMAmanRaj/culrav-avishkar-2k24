@@ -16,8 +16,7 @@ import logout from "../../../assets/userDashBoard/VerticalNavIcons/logout.png";
 import toast, { Toaster } from "react-hot-toast";
 import LogoutConfirmModal from "@/pages/modal/LogoutConfirmModal";
 
-const VerticalSideBar = () => {
-  const [activeItem, setActiveItem] = useState("Profile");
+const VerticalSideBar = ({activeItem,setActiveItem}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
@@ -53,10 +52,10 @@ const VerticalSideBar = () => {
           }}
           onConfirm={() => {
             dispatch(signoutSuccess());
-            toast("Logout Successful!", {
-              icon: '🚀',
-              duration: 2000,
-              className: "toast-blue"
+            toast.success("Logout Successfully!", {
+              style: {
+                marginTop: "50px",
+              },
             });
             navigate("/login");
           }}

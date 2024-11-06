@@ -17,7 +17,8 @@ html {
 
 @font-face {
   font-family: "Bionix";
-  src: url("./assets/fonts/Bionix.otf") format("truetype"); /* Adjust the path accordingly */
+  src: url("./assets/fonts/Bionix.otf") format("truetype");
+  /* Adjust the path accordingly */
   font-weight: normal;
   font-style: normal;
 }
@@ -83,6 +84,7 @@ html {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -115,15 +117,18 @@ html {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  border: 2px solid #616161; /* Add your desired border style here */
+  border: 2px solid #616161;
+  /* Add your desired border style here */
   border-radius: 10px;
 }
+
 /* Adding scroll-bar hidden in userDashboard Number of team member select-options */
 .scrollbar-hidden {
   -ms-overflow-style: none;
@@ -151,6 +156,7 @@ html {
     background-size: contain, contain, contain;
   }
 }
+
 .culrav-Landing-background {
   background-image: url("./images/gridfull.png"),
     url("./images/noiseEffect.png"), url("./images/culrav-bg.png");
@@ -187,6 +193,19 @@ html {
   accent-color: #934004;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease-in-out forwards;
+}
 /* index.css */
 .toast-success {
   border: 1px solid #108126;

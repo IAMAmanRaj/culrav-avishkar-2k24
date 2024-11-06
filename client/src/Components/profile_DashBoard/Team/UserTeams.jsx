@@ -58,26 +58,33 @@ function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
   const joinedTeams = teamData.joinedTeams;
 
   return (
-    <div className="md:w-[50vw]  lg:w-full  h-full flex flex-col lg:flex-row gap-10 lg:gap-5 ">
+    <div className={`md:w-[50vw]  ${createdTeams.length === 0 || joinedTeams.length == 0 ? "lg:w-1/2" : "lg:w-full"}   h-full flex flex-col lg:flex-row gap-10 lg:gap-5 `}>
       {createdTeams.length > 0 && (
         <ScrollableDiv title="My teams">
           {createdTeams.map((team) => {
             return (
               <div
-                onClick={() => handleSelectTeam(team)}
-                className="cursor-pointer mb-3 h-auto w-full px-5 py-4 bg-Mine_Shaft_900 rounded justify-between items-center inline-flex
-            transition-all duration-300 ease-in-out transform hover:scale-95 hover:shadow-xl
-                            "
+                className="cursor-pointer mb-3 h-auto w-full px-5 py-4 bg-Mine_Shaft_900 rounded  md:justify-between items-center md:flex-row flex-col 
+                 "
               >
-                <div className="text-Mine_Shaft_300 text-lg font-normal font-sfText leading-tight">
+                <div className="text-Mine_Shaft_300 md:mb-0 mb-2 text-lg font-normal font-sfText leading-tight">
                   {team.teamName}
                 </div>
-                <Button
-                  className="z-5 text-Mine_Shaft_100 text-lg bg-customRed hover:bg-red-500 px-5"
-                  onClick={(e) => openDeleteModal({ e, team })}
-                >
-                  Delete
-                </Button>
+                <div className="flex flex-row justify-between gap-5">
+                  <Button
+                    className="z-5 text-Mine_Shaft_100 text-lg bg-customRed hover:bg-red-500 px-5"
+                    onClick={(e) => openDeleteModal({ e, team })}
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                    className="z-5 text-black text-lg bg-custom_gray_100 hover:bg-gray-200 px-5"
+                    onClick={() => handleSelectTeam(team)}
+
+                  >
+                    View
+                  </Button>
+                </div>
               </div>
             );
           })}

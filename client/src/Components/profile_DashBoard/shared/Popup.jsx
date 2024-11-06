@@ -11,9 +11,8 @@ import Invitations from "../Invitation";
 import toast from "react-hot-toast";
 import LogoutConfirmModal from "@/pages/modal/LogoutConfirmModal";
 
-const Popup = () => {
+const Popup = ({activeItem,setActiveItem}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Profile");
   const popupRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,6 +24,7 @@ const Popup = () => {
 
   const handleNavigation = (item) => {
     setActiveItem(item);
+    toggle();
   };
 
   const handleLogout = () => {
@@ -57,6 +57,8 @@ const Popup = () => {
   }, [isOpen]);
 
   const renderPageContent = () => {
+    console.log("Rendering");
+    console.log(activeItem);
     switch (activeItem) {
       case "Profile":
         return <Profile />;
@@ -83,62 +85,56 @@ const Popup = () => {
           }}
           onConfirm={() => {
             dispatch(signoutSuccess());
-            toast("Logout Successful!", {
-              icon: '🚀',
-              duration: 2000,
-              className: "toast-blue"
+            toast.success("Logout Successfully!", {
+              style: {
+                marginTop: "50px",
+              },
             });
             navigate("/login");
           }}
           themeColor="white"
         />
       )}
-      <div className="relative md:hidden ">
+      <div className=" md:hidden">
         <div ref={popupRef} className="relative ">
           <div
-            className={`md:hidden w-[100vw] fixed transition-all flex flex-col gap-8 justify-center items-center font-Sfpro text-[18px] duration-1000 h-[500px] bg-scheduleLargeText border-0 top-[0] z-[20] rounded-b-[46px] ${
-              isOpen
+            className={`md:hidden w-[100vw] fixed transition-all flex flex-col gap-8 justify-center items-center font-Sfpro text-[18px] duration-1000 h-[500px] bg-scheduleLargeText border-0 top-[0] z-[20] rounded-b-[46px] ${isOpen
                 ? "transform translate-y-[0px]"
                 : "transform translate-y-[-399px]"
-            }`}
+              }`}
           >
             <ul className="flex flex-col gap-5 justify-center items-center text-mineShaft">
               <li
-                className={`hover:text-customOrange cursor-pointer ${
-                  activeItem === "Profile" ? "text-customOrange" : ""
-                }`}
+                className={`hover:text-customOrange cursor-pointer ${activeItem === "Profile" ? "text-customOrange" : ""
+                  }`}
                 onClick={() => handleNavigation("Profile")}
               >
                 Profile
               </li>
               <li
-                className={`hover:text-customOrange cursor-pointer ${
-                  activeItem === "Upload Resume" ? "text-customOrange" : ""
-                }`}
+                className={`hover:text-customOrange cursor-pointer ${activeItem === "Upload Resume" ? "text-customOrange" : ""
+                  }`}
                 onClick={() => handleNavigation("Upload Resume")}
               >
                 Upload Resume
               </li>
               <li
-                className={`hover:text-customOrange cursor-pointer ${
-                  activeItem === "My Teams" ? "text-customOrange" : ""
-                }`}
+                className={`hover:text-customOrange cursor-pointer ${activeItem === "My Teams" ? "text-customOrange" : ""
+                  }`}
                 onClick={() => handleNavigation("My Teams")}
               >
                 My Teams
               </li>
               <li
-                className={`hover:text-customOrange cursor-pointer ${
-                  activeItem === "Create Team" ? "text-customOrange" : ""
-                }`}
+                className={`hover:text-customOrange cursor-pointer ${activeItem === "Create Team" ? "text-customOrange" : ""
+                  }`}
                 onClick={() => handleNavigation("Create Team")}
               >
                 Create Team
               </li>
               <li
-                className={`hover:text-customOrange cursor-pointer ${
-                  activeItem === "View Invitation" ? "text-customOrange" : ""
-                }`}
+                className={`hover:text-customOrange cursor-pointer ${activeItem === "View Invitation" ? "text-customOrange" : ""
+                  }`}
                 onClick={() => handleNavigation("View Invitation")}
               >
                 View Invitation
@@ -164,11 +160,7 @@ const Popup = () => {
           </div>
         </div>
 
-        {activeItem && (
-          <div className="absolute w-full bg-white flex justify-center items-center z-[10]">
-            {renderPageContent()}
-          </div>
-        )}
+
       </div>
     </>
   );
