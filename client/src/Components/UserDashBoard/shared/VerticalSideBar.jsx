@@ -53,10 +53,10 @@ const VerticalSideBar = () => {
           }}
           onConfirm={() => {
             dispatch(signoutSuccess());
-            toast.success("Logout Successfully!", {
-              style: {
-                marginTop: "50px",
-              },
+            toast("Logout Successful!", {
+              icon: '🚀',
+              duration: 2000,
+              className: "toast-blue"
             });
             navigate("/login");
           }}

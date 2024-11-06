@@ -18,19 +18,11 @@ const ForgetPassword = () => {
     setisSending(true);
     try {
       const result = await apiClient.post(`/api/auth/v1/sendForgotPasswordToken`, { email });
-      toast.success(result.data.message, {
-        style: {
-          marginTop: "50px",
-        },
-      });
+      toast.success(result.data.message, { duration: 2000, className: "toast-success" });
       navigate("/forget-password-token-verification", { state: { email: email } });
     } catch (err) {
       console.log("error message", err);
-      toast.error(err.response?.data?.message || "An error occurred. Please try again.", {
-        style: {
-          marginTop: "50px",
-        },
-      });
+      toast.error(err.response?.data?.message || "An error occurred. Please try again.", { className: "toast-error" });
     } finally {
       setisSending(false);
     }

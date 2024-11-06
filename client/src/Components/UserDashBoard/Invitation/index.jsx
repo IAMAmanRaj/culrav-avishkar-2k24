@@ -32,11 +32,12 @@ function Invitations() {
                 if(res?.success){
                     setAllTeamInvites(res?.teams)
                     setLoading(false)
-                    toast.success("invitation fetched successfully!", {
-                        style: {
-                          marginTop: "50px",
-                        },
-                      })
+                      toast("Invitations Fetched successfully!", {
+                        icon: '🚀',
+                        duration: 2000,
+                        className: "toast-blue"
+                      });
+
                 }else{
                     toast.error(res?.message, {
                         style: {
@@ -46,6 +47,7 @@ function Invitations() {
                 }
             }catch(err){
                 setLoading(true)
+                toast.error("Something went wrong. Please try again.", { className: "toast-error" });
                 console.log(err)
             }
         }

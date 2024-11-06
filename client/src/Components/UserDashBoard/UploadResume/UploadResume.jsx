@@ -26,20 +26,15 @@ const UploadResume = () => {
     try{
       const res = await updateResume({email:user.email, resumeLink:link, token})
       if(res?.success){
-        toast.success("Resume Updated!", {
-          style: {
-            marginTop: "50px",
-          },
-        })
+        toast("Resume Updated!", {
+          icon: '🚀',
+          duration: 2000,
+          className: "toast-blue"
+        });
         console.log(res?.message)
-      }else{
-        toast.error(res?.message, {
-          style: {
-            marginTop: "50px",
-          },
-        })
       }
     }catch(err){
+      toast.error(res?.message, { className: "toast-error" });
       console.log(err)
     }
   }
