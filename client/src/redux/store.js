@@ -1,9 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from "./auth/authSlice";
+import teamReducer from "./team/teamSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { combineReducers } from "@reduxjs/toolkit";
-const rootReducer = combineReducers({ user: userReducer });
+
+const rootReducer = combineReducers({
+  user: userReducer,
+  team: teamReducer,
+});
 
 const persistConfig = {
   key: "root",
