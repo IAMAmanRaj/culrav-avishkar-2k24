@@ -50,12 +50,18 @@ function Register() {
       // Check for a successful response (status code 201)
       if (response.status === 201) {
         setSubmitting(false);
-        toast.success(response.data.message, { duration: 2000, className: "toast-success" });
+        toast.success(response.data.message, {
+          duration: 2000,
+          className: "toast-success",
+        });
         navigate("/verify-email", { state: { email: data.email } });
       }
     } catch (err) {
       setSubmitting(false);
-      toast.error(err.response?.data?.message || "Registration failed. Please try again.", { className: "toast-error" });
+      toast.error(
+        err.response?.data?.message || "Registration failed. Please try again.",
+        { className: "toast-error" }
+      );
     }
   };
 
@@ -91,7 +97,7 @@ function Register() {
           )}
 
           <Input
-            placeholder="GSuit Id"
+            placeholder="GSuite Id"
             type="email"
             {...register("email", {
               required: true,
@@ -171,7 +177,7 @@ function Register() {
                 <ClipLoader color="#F54E25" size={35} className="mx-auto" />
               </div>
             </>
-          ): (
+          ) : (
             <Button
               type="submit"
               className="w-full font-sftext bg-orange-600 hover:bg-orange-500 text-[#FFFAF0] py-3 font-semibold"
