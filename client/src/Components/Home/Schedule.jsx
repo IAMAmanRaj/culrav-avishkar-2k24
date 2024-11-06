@@ -6,6 +6,8 @@ import girlRight from "../../assets/Home/girlRight.png"
 import Radio from "../../assets/Home/radio.png"
 import Scrubble1 from "../../assets/Home/scrubble1.png"
 import Scrubble2 from "../../assets/Home/scrubble2.png"
+import culrav from "../../assets/Home/culrav.webp"
+import avishkar from "../../assets/Home/avishkar.webp"
 
 const Schedule = () => {
   return (
@@ -20,10 +22,25 @@ const Schedule = () => {
               CULRAV-AVISHKAR 2024, Techno-Cultural Fest at MNNIT Allahabad, Prayagraj, is an electrifying extravaganza that seamlessly merges technology with cultural diversity. Featuring dynamic competitions, captivating performances, and insightful workshops, it serves as a melting pot of innovation and expression.
             </p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-5">
-            <div className="md:w-96 md:h-72 h-60 w-60  bg-white"></div>
-            <div className="md:w-96 md:h-72 h-60 w-60 bg-white"></div>
-          </div>
+  <div className="flex flex-wrap items-center justify-center gap-[7vw] p-6">
+   <div className="md:w-96 md:h-72 h-60 w-60 flex items-center justify-center">
+    <img 
+      src={culrav} 
+      alt="Logo 1" 
+      className="object-contain w-full h-full scale-[230%] md:scale-[230%] lg:scale-[230%]"
+    />
+   </div>
+
+   <div className="md:w-96 md:h-72 h-60 w-60 flex items-center justify-center">
+    <img 
+      src={avishkar} 
+      alt="Logo 2" 
+      className="object-contain w-full h-full scale-[250%] md:scale-[230%] lg:scale-[230%]"
+    />
+   </div>
+  </div>
+
+
         </div>
       </div>
       <div className="hidden  md:block md:h-[50vh] lg:h-[60vh] relative w-full">
