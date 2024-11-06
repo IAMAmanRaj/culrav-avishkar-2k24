@@ -85,7 +85,7 @@ function TeamInfo({ team, handleShowAllTeams }) {
         isLeader = true
     }
     return (
-        <div className="w-full h-full  bg-dark_secondary p-3 md:p-5 flex flex-col">
+        <div className="w-full h-full p-3 md:p-5 flex flex-col">
             <div onClick={handleBack} className="flex flex-row items-center gap-2 mb-10 w-auto
             hover:cursor-pointer  ">
                 <div>

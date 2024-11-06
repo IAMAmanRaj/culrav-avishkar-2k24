@@ -16,8 +16,7 @@ import logout from "../../../assets/userDashBoard/VerticalNavIcons/logout.png";
 import toast, { Toaster } from "react-hot-toast";
 import LogoutConfirmModal from "@/pages/modal/LogoutConfirmModal";
 
-const VerticalSideBar = () => {
-  const [activeItem, setActiveItem] = useState("Profile");
+const VerticalSideBar = ({activeItem,setActiveItem}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);

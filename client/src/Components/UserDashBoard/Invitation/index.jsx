@@ -60,11 +60,11 @@ function Invitations() {
 
 
     return (
-        <div className="overflow-y-scroll md:w-[74vw] bg-white custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[92px] flex pt-20 p-5 md:p-10  h-full md:h-auto
+        <div className="overflow-y-scroll md:w-[74vw] bg-white custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[60px] flex pt-20 p-5 md:p-10 md:h-auto
             
                 "
             style={{
-                height: 'calc(100vh - 92px)',
+                height: 'calc(105vh - 98px)',
                 backgroundImage: `url(${ContentBox})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
