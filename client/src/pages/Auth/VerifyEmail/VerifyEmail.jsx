@@ -4,25 +4,24 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import useAuth from "../../../lib/useAuth";
+import overlay1 from "../../../assets/Overlay1.png";
 
 // Base URL for all requests (updated for better fallback)
 const apiClient = axios.create({
   baseURL: "http://localhost:3000", // Use proper env variable for the base URL
 });
 
-
-
 function VerifyEmail() {
   const location = useLocation();
   const email = location.state?.email; // Get email from location state
 
-  const checkEmail=(email)=> {
+  const checkEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@mnnit\.ac\.in$/;
     return emailRegex.test(email);
   };
-  
+
   const {
     register,
     handleSubmit,
@@ -51,7 +50,10 @@ function VerifyEmail() {
 
       // Check if verification was successful
       if (response.status === 200) {
-        toast.success("Email verification successful!", { duration: 2000, className: "toast-success" });
+        toast.success("Email verification successful!", {
+          duration: 2000,
+          className: "toast-success",
+        });
         // Check if the email is inside or outside college
         if (checkEmail(email)) {
           navigate("/login"); // Navigate to login for inside college
@@ -59,7 +61,10 @@ function VerifyEmail() {
           navigate("/outside-registration/payFee", { state: { email: email } }); // Navigate to pay fee for outside college
         }
       } else {
-        toast.error("Email verification successful!", { duration: 2000, className: "toast-error" });
+        toast.error("Email verification successful!", {
+          duration: 2000,
+          className: "toast-error",
+        });
         console.log("Verification failed:", response.data); // Log failed verification
       }
     } catch (error) {
@@ -78,7 +83,17 @@ function VerifyEmail() {
   };
 
   return (
-    <div className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full">
+    <div
+      className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full"
+      style={{
+        backgroundImage: `url(${overlay1})`,
+        backgroundSize: "cover", // Ensure image covers the entire div
+        backgroundPosition: "center", // Center the image
+        backgroundRepeat: "no-repeat", // Prevent image repetition
+        width: "100%", // Set the width to 100% of the parent
+        height: "100%", // Set the height of the div
+      }}
+    >
       <div className="flex flex-col items-center justify-center w-full max-w-md p-6 bg-[#2D2D2D] mx-4 sm:mx-0">
         <h1 className="text-center text-2xl sm:text-3xl text-[#FFFAF0] font-bold font-bionix leading-tight">
           Email Verification
@@ -111,7 +126,7 @@ function VerifyEmail() {
           </Button>
         </form>
       </div>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-
+import overlay1 from "../../../assets/Overlay1.png";
 const apiClient = axios.create({
   baseURL: "http://localhost:3000", // Base URL for all requests
 });
@@ -17,19 +17,40 @@ const ForgetPassword = () => {
     e.preventDefault();
     setisSending(true);
     try {
-      const result = await apiClient.post(`/api/auth/v1/sendForgotPasswordToken`, { email });
-      toast.success(result.data.message, { duration: 2000, className: "toast-success" });
-      navigate("/forget-password-token-verification", { state: { email: email } });
+      const result = await apiClient.post(
+        `/api/auth/v1/sendForgotPasswordToken`,
+        { email }
+      );
+      toast.success(result.data.message, {
+        duration: 2000,
+        className: "toast-success",
+      });
+      navigate("/forget-password-token-verification", {
+        state: { email: email },
+      });
     } catch (err) {
       console.log("error message", err);
-      toast.error(err.response?.data?.message || "An error occurred. Please try again.", { className: "toast-error" });
+      toast.error(
+        err.response?.data?.message || "An error occurred. Please try again.",
+        { className: "toast-error" }
+      );
     } finally {
       setisSending(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full">
+    <div
+      className="flex items-center justify-center bg-[#FFF2D5] min-h-screen w-full"
+      style={{
+        backgroundImage: `url(${overlay1})`,
+        backgroundSize: "cover", // Ensure image covers the entire div
+        backgroundPosition: "center", // Center the image
+        backgroundRepeat: "no-repeat", // Prevent image repetition
+        width: "100%", // Set the width to 100% of the parent
+        height: "100%", // Set the height of the div
+      }}
+    >
       <div className="flex flex-col items-center justify-center w-full max-w-md p-6 bg-[#2D2D2D] mx-4 sm:mx-0">
         <h1 className="text-2xl text-[#FFFAF0] font-bold font-bionix mb-6 text-center">
           Forget Password
