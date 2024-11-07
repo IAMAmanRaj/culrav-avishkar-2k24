@@ -56,56 +56,58 @@ const Gallery = () => {
   
   return (
     <>
-    <div className="md:hidden py-8 relative -top-8 bg-floralWhite h-auto flex flex-col gap-12">
-      <div className="w-full flex justify-center">
-          <h1 className="font-bionix text-scheduleOrange text-[6vh]">GALLERY</h1>
+<div className="md:hidden py-8 relative -top-8 bg-floralWhite h-screen flex flex-col gap-12 overflow-y-auto">
+  <div className="w-full flex justify-center">
+    <h1 className="font-bionix text-scheduleOrange text-[6vh]">GALLERY</h1>
+  </div>
+
+  <div className="w-[100vw] h-[60vh] relative">
+    <Carousel
+      className="slider"
+      autoPlay
+      infiniteLoop
+      showThumbs={false}        
+      showStatus={false}        
+      showArrows={true}         
+      stopOnHover={false}
+      interval={4000}
+      transitionTime={800}
+      swipeable={false}         
+    >
+      <div className="w-[100vw] h-[60vh] flex items-center justify-center bg-gray-900">
+        <img
+          src={test}
+          alt="Image 1"
+          className="object-cover w-full h-full"
+        />
+        <div className="absolute bottom-8 text-white text-xl bg-black bg-opacity-50 px-4 py-2 rounded-md">
+          Beautiful Scene 1
+        </div>
       </div>
-      <div className="w-[100vw] h-[60vh] relative">
-        <Carousel 
-          className="slider" 
-          autoPlay 
-          infiniteLoop 
-          showThumbs={false} 
-          showStatus={false} 
-          showArrows={false}
-          stopOnHover={false} 
-          interval={4000} 
-          transitionTime={800}
-        >
- 
-          <div className="w-[100vw] h-[60vh] flex items-center justify-center bg-gray-900">
-            <img
-              src={test}
-              alt="Image 1"
-              className="object-cover w-full h-full"
-            />
-            <div className="absolute bottom-8 text-white text-xl bg-black bg-opacity-50 px-4 py-2 rounded-md">
-              Beautiful Scene 1
-            </div>
-          </div>
-          <div className="w-[100vw] h-[60vh] flex items-center justify-center bg-gray-900">
-            <img
-              src={test}
-              alt="Image 2"
-              className="object-cover w-full h-full"
-            />
-            <div className="absolute bottom-8 text-white text-xl bg-black bg-opacity-50 px-4 py-2 rounded-md">
-              Beautiful Scene 2
-            </div>
-          </div>
-          <div className="w-[100vw] h-[60vh] flex items-center justify-center bg-gray-900">
-            <img
-              src={test}
-              alt="Image 3"
-              className="object-cover w-full h-full"
-            />
-            <div className="absolute bottom-8 text-white text-xl bg-black bg-opacity-50 px-4 py-2 rounded-md">
-              Beautiful Scene 3
-            </div>
-          </div>
-        </Carousel>
+      <div className="w-[100vw] h-[60vh] flex items-center justify-center bg-gray-900">
+        <img
+          src={test}
+          alt="Image 2"
+          className="object-cover w-full h-full"
+        />
+        <div className="absolute bottom-8 text-white text-xl bg-black bg-opacity-50 px-4 py-2 rounded-md">
+          Beautiful Scene 2
+        </div>
       </div>
-    </div>
+      <div className="w-[100vw] h-[60vh] flex items-center justify-center bg-gray-900">
+        <img
+          src={test}
+          alt="Image 3"
+          className="object-cover w-full h-full"
+        />
+        <div className="absolute bottom-8 text-white text-xl bg-black bg-opacity-50 px-4 py-2 rounded-md">
+          Beautiful Scene 3
+        </div>
+      </div>
+    </Carousel>
+  </div>
+</div>
+
       <div className="hidden md:block py-[10vw] w-full md:h-[530vw] custom800:h-[510vw] custom880:h-[478vw] custom930:h-[460vw] custom1000:h-[410vw] custom1050:h-[397vw] custom1110:h-[380vw] custom1150:h-[370vw] custom1200:h-[355vw] custom1240:h-[345vw] custom1300:h-[330vw] custom1350:h-[318vw] custom1400:h-[300vw] custom1450:h-[290vw] custom1500:h-[260vw] custom1560:h-[240vw]  relative bottom-16 bg-floralWhite overflow-hidden"
       style={{ backgroundImage: `url(${backg})` }}>
         <div className="w-full relative top-16 flex items-center" ref={reelRef1}>
@@ -117,7 +119,7 @@ const Gallery = () => {
               <img className="h-[90%]  border-0 md:rounded-[16px]" src={test} alt="Gallery Image 3" />
             </div>
           </div>
-          <img className="w-full md:h-[40vw] custom1000:top-[3.426vw] custom1000:h-[28vw] custom1300:h-[22vw] custom1300:top-[2.7vw]  relative md:top-[4.86vw] " src={tiltedRoll} alt="Reel Image 2" />
+          <img className="w-full md:h-[40vw] custom1000:top-[3.426vw] custom1000:h-[28vw] custom1300:h-[22vw] custom1300:top-[2.42vw]  relative md:top-[4.86vw] " src={tiltedRoll} alt="Reel Image 2" />
           <img className="w-full md:h-[40vw] custom1000:top-[6.86vw] custom1000:h-[28vw] custom1300:h-[22vw] custom1300:top-[5.36vw]  relative md:top-[9.7vw]" src={tiltedRoll} alt="Reel Image 3" />
           <img className="w-full md:h-[40vw] custom1000:top-[10.2vw] custom1000:h-[28vw] custom1300:h-[22vw] custom1300:top-[8vw]  relative md:top-[9.5rem]" src={tiltedRoll} alt="Reel Image 4" />
         </div>
