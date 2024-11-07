@@ -1,4 +1,6 @@
+// FILE: Team.jsx
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import UserTeams from "./UserTeams";
 import TeamInfo from "./TeamInfo";
 import getUser from "../userService.js";
@@ -6,14 +8,13 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../lib/useAuth.js";
 import { getAllTeams, splitTeamsByLeader } from "../services.js";
 import toast from "react-hot-toast";
+import { fetchTeamsSuccess, fetchTeamsFailure } from "../../../redux/team/teamSlice";
 
 function Team() {
   const { user, token } = getUser();
   const navigate = useNavigate();
   const isAuthenticated = useAuth();
-
-  const [myTeams, setMyTeams] = useState([]);
-  const [joinedTeams, setJoinedTeams] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -30,8 +31,7 @@ function Team() {
           const totalTeams = res?.totalTeams;
           const { matchingLeaderTeams, nonMatchingLeaderTeams } =
             splitTeamsByLeader({ totalTeams, givenLeaderId });
-          setMyTeams(matchingLeaderTeams);
-          setJoinedTeams(nonMatchingLeaderTeams);
+          dispatch(fetchTeamsSuccess({ myTeams: matchingLeaderTeams, joinedTeams: nonMatchingLeaderTeams }));
           toast("Teams Fetched successfully!", {
             icon: "🚀",
             duration: 2000,
@@ -44,9 +44,11 @@ function Team() {
               marginTop: "50px",
             },
           });
+          dispatch(fetchTeamsFailure(res?.message));
         }
       } catch (err) {
         console.log(err);
+        dispatch(fetchTeamsFailure(err.message));
       }
     };
     fetchData();
@@ -54,29 +56,6 @@ function Team() {
 
   const [showAllTeams, setShowAllTeams] = useState(true);
   const [teamData, setTeamData] = useState({});
-
-  const AllData = { myTeams, joinedTeams };
-
-  const team_Data = {
-    name: "TryCatch",
-    size: 5,
-    members: [
-      { email: "member1@gmail.com", name: "member1" },
-      { email: "member2@gmail.com", name: "member2" },
-      { email: "member3@gmail.com", name: "member3" },
-    ],
-    leader: { email: "leader@gmail.com", name: "leader" },
-    acceptedMembers: 2,
-    pendingInvites: 1,
-    participatedEvents: [
-      { eventName: "Event1" },
-      { eventName: "Event2" },
-      { eventName: "Event3" },
-      { eventName: "Event4" },
-      { eventName: "Event5" },
-      { eventName: "Event6" },
-    ],
-  };
 
   function showTeamInfo(team) {
     setShowAllTeams(false);
@@ -96,11 +75,7 @@ function Team() {
        justify-center items-center ">
           <div className="md:px-9 md:h-screen-minus-92 h-auto md:py-7 p-4   bg-dark_secondary grid  border-[#202020]/100 border-2 w-full ">
             <div className=" h-[90%] w-full">
-              <UserTeams
-                showTeamInfo={showTeamInfo}
-                teamData={AllData}
-                setMyTeams={setMyTeams}
-              />
+              <UserTeams showTeamInfo={showTeamInfo} />
             </div>
           </div>
         </div>

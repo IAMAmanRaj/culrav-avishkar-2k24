@@ -1,3 +1,4 @@
+// FILE: UserTeams.jsx
 import React, { useState } from "react";
 import { Button } from "@/ShadCnComponents/ui/button";
 import ScrollableDiv from "@/Components/profile_DashBoard/shared/ScrollableDiv";
@@ -6,11 +7,15 @@ import Alert from "../shared/Alert";
 import getUser from "../userService";
 import { deleteTeam } from "../services";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTeamSuccess } from "../../../redux/team/teamSlice";
 
-function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
+function UserTeams({ showTeamInfo }) {
   const [openDeleteTeamModal, setOpenDeleteTeamModal] = useState(false);
   const [teamToBeDeleted, setTeamToBeDeleted] = useState({});
   const { user, token } = getUser();
+  const dispatch = useDispatch();
+  const { myTeams = [], joinedTeams = [] } = useSelector((state) => state.team);
 
   const navigate = useNavigate();
 
@@ -22,11 +27,7 @@ function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
         token,
       });
       if (res?.success) {
-        const myTeams = teamData.myTeams;
-        const newRemainingMyTeams = myTeams.filter(
-          (tm) => JSON.stringify(tm._id) != JSON.stringify(teamToBeDeleted._id)
-        );
-        setMyTeams(newRemainingMyTeams);
+        dispatch(deleteTeamSuccess(teamToBeDeleted.teamName));
         setOpenDeleteTeamModal(false);
         toast("Team Deleted !", {
           icon: "🚀",
@@ -39,6 +40,7 @@ function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
       console.log(err);
     }
   };
+
   function handleSelectTeam(team) {
     console.log(team);
     showTeamInfo(team);
@@ -52,18 +54,15 @@ function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
   }
 
   const userEmail = user.email;
-  // const createdTeams = teamData.filter(team => team.leader.email === userEmail)
-  // const joinedTeams = teamData.filter(team => !team.leader.email !== userEmail)
-  const createdTeams = teamData.myTeams;
-  const joinedTeams = teamData.joinedTeams;
 
   return (
-    <div className={`md:w-[50vw]  ${createdTeams.length === 0 || joinedTeams.length == 0 ? "lg:w-1/2" : "lg:w-full"}   h-full flex flex-col lg:flex-row gap-10 lg:gap-5 `}>
-      {createdTeams.length > 0 && (
+    <div className={`md:w-[50vw]  ${myTeams.length === 0 || joinedTeams.length === 0 ? "lg:w-1/2" : "lg:w-full"}   h-full flex flex-col lg:flex-row gap-10 lg:gap-5 `}>
+      {myTeams.length > 0 && (
         <ScrollableDiv title="My teams">
-          {createdTeams.map((team) => {
+          {myTeams.map((team) => {
             return (
               <div
+                key={team.teamName}
                 className="cursor-pointer mb-3 h-auto w-full px-5 py-4 bg-Mine_Shaft_900 rounded  md:justify-between flex items-center md:flex-row flex-col 
                  "
               >
@@ -80,7 +79,6 @@ function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
                   <Button
                     className="z-5 text-black text-lg bg-custom_gray_100 hover:bg-gray-200 px-5"
                     onClick={() => handleSelectTeam(team)}
-
                   >
                     View
                   </Button>
@@ -95,6 +93,7 @@ function UserTeams({ teamData, showTeamInfo, setMyTeams }) {
           {joinedTeams.map((team) => {
             return (
               <div
+                key={team.teamName}
                 onClick={() => {
                   handleSelectTeam(team);
                 }}

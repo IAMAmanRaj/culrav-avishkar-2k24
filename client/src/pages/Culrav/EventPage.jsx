@@ -4,10 +4,9 @@ import paint from "@/images/paint.png";
 import wall from "@/images/walls1.png";
 import { useEffect, useState } from "react";
 import TeamRegisterModal from "../modal/TeamRegisterModal";
-import {
-  getAllTeams,
-  splitTeamsByLeader,
-} from "../../Components/profile_DashBoard/services.js";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTeamsSuccess, fetchTeamsFailure } from "../../redux/team/teamSlice";
+import { getAllTeams, splitTeamsByLeader } from "../../Components/profile_DashBoard/services.js";
 import useAuth from "../../lib/useAuth.js";
 import getUser from "../../Components/profile_DashBoard/userService.js";
 import { useNavigate } from "react-router-dom";
@@ -25,18 +24,18 @@ function CulravEvent() {
     rules: ["rule1", "rule2"],
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [teams, setTeams] = useState([]);
 
   const isAuthenticated = useAuth();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const { token, user } = getUser();
+  const { myTeams } = useSelector((state) => state.team);
 
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
     }
-  });
+  }, [isAuthenticated]);
 
   const handleModelOpen = async () => {
     setIsModalOpen(true);
@@ -48,13 +47,15 @@ function CulravEvent() {
         const totalTeams = res?.totalTeams;
         const { matchingLeaderTeams, nonMatchingLeaderTeams } =
           splitTeamsByLeader({ totalTeams, givenLeaderId });
-        setTeams(matchingLeaderTeams);
+        dispatch(fetchTeamsSuccess({ myTeams: matchingLeaderTeams, joinedTeams: nonMatchingLeaderTeams }));
       } else {
         console.log(res?.message);
         toast.error("error while getting the teams");
+        dispatch(fetchTeamsFailure(res?.message));
       }
     } catch (err) {
       console.log(err);
+      dispatch(fetchTeamsFailure(err.message));
     }
   };
 
@@ -62,7 +63,7 @@ function CulravEvent() {
     <>
       {isModalOpen && (
         <TeamRegisterModal
-          teams={teams}
+          teams={myTeams}
           eventData={eventData}
           onClose={() => {
             setIsModalOpen(false);
@@ -188,7 +189,7 @@ function CulravEvent() {
             </h2>
             <div className="flex justify-around font-bold text-[#FFFAF0] text-[2.5vw] pb-4">
               {eventData.eventCoordinators.map((coo, idx) => (
-                <div>{coo}</div>
+                <div key={idx}>{coo}</div>
               ))}
             </div>
           </div>

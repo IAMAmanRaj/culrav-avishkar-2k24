@@ -51,7 +51,16 @@ const createTeam = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       message: "Team Created!",
-      team: newTeam,
+      team: {
+        _id: newTeam._id,
+        teamName: newTeam.teamName,
+        leader: newTeam.leader,
+        size: newTeam.size,
+        acceptedMembers: newTeam.acceptedMembers,
+        pendingMembers: newTeam.pendingMembers,
+        registeredEvents: newTeam.registeredEvents,
+        __v: newTeam.__v,
+      },
     });
   } catch (error) {
     next(error);
@@ -921,6 +930,7 @@ const getParticipatingTeamsOfAUser = async (req, res, next) => {
           {
             path: "acceptedMembers",
             model: User,
+            select: "-password", // Exclude the password field
           },
           {
             path: "registeredEvents",

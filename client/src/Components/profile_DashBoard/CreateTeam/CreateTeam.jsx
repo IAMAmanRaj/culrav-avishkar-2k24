@@ -1,4 +1,3 @@
-// FILE: CreateTeam.jsx
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import TeamOptions from "../shared/TeamOptions";
@@ -38,15 +37,17 @@ const CreateTeam = () => {
   const handleSubmit = async () => {
     try {
       const res = await createTeam({ leader: user._id, teamName, teamSize, token });
-      console.log("response",res);
       if (res?.success) {
         toast(`Team Created Successfully!`, {
           icon: '🛹',
           duration: 2000,
           className: "toast-blue",
         });
-        console.log("teamsss",res.team.teamName);
-        dispatch(createTeamSuccess(res.team.teamName)); 
+        console.log("Dispatching createTeamSuccess with payload:", res.team);
+        dispatch(createTeamSuccess(res.team));
+        // Clear the form
+        setTeamName("");
+        setTeamSize(1);
       } else {
         dispatch(createTeamFailure(res?.message));
         toast.error(res?.message, { className: "toast-error" });
