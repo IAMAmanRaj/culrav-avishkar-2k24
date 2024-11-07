@@ -2,7 +2,7 @@
 
 import Team from "../Models/team.model.js";
 import User from "../Models/user.model.js";
-import Event from "../Models/event.model.js"
+import Event from "../Models/event.model.js";
 
 //wherever [teamId and userId means objectId(_id) of the document created by mongoDB]
 const createTeam = async (req, res, next) => {
@@ -27,7 +27,8 @@ const createTeam = async (req, res, next) => {
     if (!ld) {
       return res.status(422).json({
         success: false,
-        message: "can't create team as leaderId is not valid or leader is not registered",
+        message:
+          "can't create team as leaderId is not valid or leader is not registered",
       });
     }
 
@@ -50,7 +51,16 @@ const createTeam = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       message: "Team Created!",
-      team: newTeam,
+      team: {
+        _id: newTeam._id,
+        teamName: newTeam.teamName,
+        leader: newTeam.leader,
+        size: newTeam.size,
+        acceptedMembers: newTeam.acceptedMembers,
+        pendingMembers: newTeam.pendingMembers,
+        registeredEvents: newTeam.registeredEvents,
+        __v: newTeam.__v,
+      },
     });
   } catch (error) {
     next(error);
@@ -248,23 +258,32 @@ const sendTeamInvite = async (req, res, next) => {
     }
 
     //check if this team is participating in any event, if so you can't add members.
-    
-    if(tm.registeredEvents.length > 0){
+
+    if (tm.registeredEvents.length > 0) {
       return res.status(400).json({
-        success:false,
-        message:"Team is already participating in any event, can't send the invite"
-      })
+        success: false,
+        message:
+          "Team is already participating in any event, can't send the invite",
+      });
     }
 
+    const ld = await User.findById({ _id: leaderId });
+    if (!ld) {
+      return res.status(400).json({
+        success: false,
+        message: "leaderId is invalid",
+      });
+    }
+    var maxTeamSize = tm.size;
+    var currentTeamSize = tm.acceptedMembers.length + tm.pendingMembers.length;
+
+    if (currentTeamSize >= maxTeamSize) {
+      return res.status(409).json({
+        success: false,
+        message: "Team size is currently full",
+      });
+    }
     const targetUser = await User.findOne({ email: sendToEmail });
-    const ld = await User.findById({_id : leaderId})
-    if(!ld){
-      return res.status(400).json({
-        success:false,
-        message:"leaderId is invalid"
-      })
-    }
-
     if (!targetUser) {
       return res.status(404).json({
         success: false,
@@ -273,23 +292,23 @@ const sendTeamInvite = async (req, res, next) => {
     }
 
     //first check the interCollege participation in not allowed.
-    if(sendToEmail.includes("mnnit.ac.in")){
-      const leaderEmail = ld.email
-      if(!leaderEmail.includes("mnnit.ac.in")){
+    if (sendToEmail.includes("mnnit.ac.in")) {
+      const leaderEmail = ld.email;
+      if (!leaderEmail.includes("mnnit.ac.in")) {
         return res.status(400).json({
-          success:false,
-          message:"Inter College participation is not allowed."
-        })
+          success: false,
+          message: "Inter College participation is not allowed.",
+        });
       }
     }
 
-    if(!sendToEmail.includes("mnnit.ac.in")){
-      const leaderEmail = ld.email
-      if(leaderEmail.includes("mnnit.ac.in")){
+    if (!sendToEmail.includes("mnnit.ac.in")) {
+      const leaderEmail = ld.email;
+      if (leaderEmail.includes("mnnit.ac.in")) {
         return res.status(400).json({
-          success:false,
-          message:"Inter College participation is not allowed."
-        })
+          success: false,
+          message: "Inter College participation is not allowed.",
+        });
       }
     }
     // leader can not sent the invite to himself
@@ -325,16 +344,6 @@ const sendTeamInvite = async (req, res, next) => {
           message: "Team Invitation Already sent.",
         });
       }
-    }
-
-    var maxTeamSize = tm.size;
-    var currentTeamSize = tm.acceptedMembers.length + tm.pendingMembers.length;
-
-    if (currentTeamSize >= maxTeamSize) {
-      return res.status(409).json({
-        success: false,
-        message: "Team size is currently full",
-      });
     }
 
     targetUser.pendingTeam = [...targetUser.pendingTeam, tm._id];
@@ -462,12 +471,12 @@ const acceptInvite = async (req, res, next) => {
       });
     }
 
-    if (!user.isFeePaid) {
-      return res.status(403).json({
-        success: false,
-        message: "First Pay the fee to accept invite",
-      });
-    }
+    // if (!user.isFeePaid) {
+    //   return res.status(403).json({
+    //     success: false,
+    //     message: "First Pay the fee to accept invite",
+    //   });
+    // }
 
     const tm = await Team.findById({ _id: teamId });
 
@@ -480,11 +489,11 @@ const acceptInvite = async (req, res, next) => {
 
     //check if team is participating in any event. [even though team can't participate in any event if it has any pending memeber].
 
-    if(tm.registeredEvents.length > 0){
+    if (tm.registeredEvents.length > 0) {
       return res.status(400).json({
-        success:false,
-        message:"Team is already in any event."
-      })
+        success: false,
+        message: "Team is already in any event.",
+      });
     }
 
     //first check if user have this invite or not
@@ -725,7 +734,8 @@ const leaveTeam = async (req, res, next) => {
     if (registeredEventsByThisTeam.length > 0) {
       return res.status(400).json({
         success: false,
-        message: "this team is already participating in some event/events, so can's leave team right now",
+        message:
+          "this team is already participating in some event/events, so can's leave team right now",
       });
     }
 
@@ -734,7 +744,8 @@ const leaveTeam = async (req, res, next) => {
     if (JSON.stringify(tm.leader) === JSON.stringify(userId)) {
       return res.status(400).json({
         success: false,
-        message: "leader can't leave the team, however you can delete the team.",
+        message:
+          "leader can't leave the team, however you can delete the team.",
       });
     }
 
@@ -834,7 +845,8 @@ const kickMember = async (req, res, next) => {
     if (registeredEventsByThisTeam > 0) {
       return res.status(400).json({
         success: false,
-        message: "can't kick this user beacuse this team is registered for some event/events",
+        message:
+          "can't kick this user beacuse this team is registered for some event/events",
       });
     }
 
@@ -855,7 +867,8 @@ const kickMember = async (req, res, next) => {
     if (JSON.stringify(userToBeKicked) === JSON.stringify(tm.leader)) {
       return res.status(400).json({
         success: false,
-        message: "leader can't kick himself, however leader can delete the team",
+        message:
+          "leader can't kick himself, however leader can delete the team",
       });
     }
 
@@ -909,19 +922,23 @@ const getParticipatingTeamsOfAUser = async (req, res, next) => {
   }
 
   try {
-    const user = await User.findById({ _id: userId }).populate([{
-      path: "participatingTeam",
-      model: Team,
-      populate:[
+    const user = await User.findById({ _id: userId }).populate([
       {
-         path: "acceptedMembers",
-         model: User,
+        path: "participatingTeam",
+        model: Team,
+        populate: [
+          {
+            path: "acceptedMembers",
+            model: User,
+            select: "-password", // Exclude the password field
+          },
+          {
+            path: "registeredEvents",
+            model: Event,
+          },
+        ],
       },
-      {
-          path:"registeredEvents",
-          model: Event
-      }],
-    }]);
+    ]);
 
     if (!user) {
       return res.status(404).json({

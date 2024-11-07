@@ -26,15 +26,20 @@ const UploadResume = () => {
     try{
       const res = await updateResume({email:user.email, resumeLink:link, token})
       if(res?.success){
-        toast("Resume Updated!", {
-          icon: '🚀',
-          duration: 2000,
-          className: "toast-blue"
-        });
+        toast.success("Resume Updated!", {
+          style: {
+            marginTop: "50px",
+          },
+        })
         console.log(res?.message)
+      }else{
+        toast.error(res?.message, {
+          style: {
+            marginTop: "50px",
+          },
+        })
       }
     }catch(err){
-      toast.error(res?.message, { className: "toast-error" });
       console.log(err)
     }
   }
@@ -54,7 +59,7 @@ const UploadResume = () => {
     }}>
       <div className="text-xs xs:text-sm md:text-lg rounded-md px-9 py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
         <div className="w-full h-[90px] md:h-[120px] flex justify-center">
-          <h1 className="font-bionix text-[30px] md:text-5xl text-white">Upload Resume</h1>
+          <h1 className="font-bionix text-[30px] text-center md:text-5xl text-white" style={{lineHeight:"1"}}>Upload Resume</h1>
         </div>
         <div className="flex flex-col gap-7">
           <div className="flex flex-col gap-2">
@@ -87,3 +92,4 @@ const UploadResume = () => {
 };
 
 export default UploadResume;
+

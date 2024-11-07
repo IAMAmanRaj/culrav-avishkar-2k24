@@ -15,9 +15,9 @@ import History from "../../../assets/userDashBoard/VerticalNavIcons/History.png"
 import logout from "../../../assets/userDashBoard/VerticalNavIcons/logout.png";
 import toast, { Toaster } from "react-hot-toast";
 import LogoutConfirmModal from "@/pages/modal/LogoutConfirmModal";
+import { resetTeamState } from "@/redux/team/teamSlice";
 
-const VerticalSideBar = () => {
-  const [activeItem, setActiveItem] = useState("Profile");
+const VerticalSideBar = ({activeItem,setActiveItem}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
@@ -53,10 +53,11 @@ const VerticalSideBar = () => {
           }}
           onConfirm={() => {
             dispatch(signoutSuccess());
-            toast("Logout Successful!", {
-              icon: '🚀',
+            dispatch(resetTeamState());
+            toast("Logout Successfully !", {
+              icon: "🚀",
               duration: 2000,
-              className: "toast-blue"
+              className: "toast-blue",
             });
             navigate("/login");
           }}

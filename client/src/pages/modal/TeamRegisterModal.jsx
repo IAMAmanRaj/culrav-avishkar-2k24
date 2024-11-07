@@ -1,20 +1,22 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { XMarkIcon } from "@heroicons/react/20/solid";
-import useAuth from "@/lib/useAuth.js";
-import getUser from "@/Components/UserDashBoard/userService.js";
+import { useDispatch, useSelector } from "react-redux";
 import { registerForEvent } from "../Avishkar/service";
 import toast from "react-hot-toast";
+import { registerEventSuccess } from "../../redux/team/teamSlice";
+import getUser from "@/Components/profile_DashBoard/userService.js";
 
-const TeamRegisterModal = ({ teams, onClose, themeColor, isOpen }) => {
+const TeamRegisterModal = ({ teams, eventData, onClose, themeColor, isOpen }) => {
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const dispatch = useDispatch();
+  const { token, user } = getUser();
 
   const isWhiteTheme = themeColor === "white";
   const modalBg = isWhiteTheme ? "bg-white" : "bg-gray-900";
   const textColor = isWhiteTheme ? "text-black" : "text-white";
   const borderColor = isWhiteTheme ? "border-gray-300" : "border-gray-700";
   const selectedBgColor = isWhiteTheme ? "bg-orange-500" : "bg-orange-500";
-  const { token, user } = getUser();
 
   const handleSelect = (team) => {
     setSelectedTeam(team);
@@ -35,6 +37,7 @@ const TeamRegisterModal = ({ teams, onClose, themeColor, isOpen }) => {
 
       if (res?.success) {
         toast.success(res?.message);
+        dispatch(registerEventSuccess({ teamId: selectedTeam._id, eventId: eventData.eventId }));
       } else {
         toast.error(`Error! ${res?.message}`);
       }
@@ -75,7 +78,7 @@ const TeamRegisterModal = ({ teams, onClose, themeColor, isOpen }) => {
             }`}
             onClick={() => handleSelect(team)}
           >
-            <span>{team}</span>
+            <span>{team.teamName}</span>
             <input
               type="checkbox"
               checked={selectedTeam === team}
@@ -87,10 +90,11 @@ const TeamRegisterModal = ({ teams, onClose, themeColor, isOpen }) => {
       </div>
 
       <button
-        onClick={() => alert(`Registered with team: ${selectedTeam}`)}
+        onClick={handleRegister}
         className={`font-bionix mt-4 w-full ${selectedBgColor} ${
           textColor === "text-black" ? "text-white" : "text-white"
         } font-semibold py-2 rounded hover:bg-orange-600 transition`}
+        disabled={!selectedTeam || selectedTeam.leaderId !== user._id}
       >
         REGISTER
       </button>

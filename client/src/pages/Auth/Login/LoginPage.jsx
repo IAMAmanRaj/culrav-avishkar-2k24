@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../lib/useAuth";
+import overlay1 from "../../../assets/Overlay1.png";
 import {
   signInStart,
   signInSuccess,
@@ -14,7 +15,6 @@ import {
 } from "@/redux/auth/authSlice";
 import { ClipLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";
-
 
 const apiClient = axios.create({
   baseURL: "http://localhost:3000",
@@ -48,34 +48,37 @@ function Login() {
         dispatch(
           signInSuccess({ user: responseData.user, token: responseData.token })
         );
-        toast.success("Login Successful!", { duration: 2000, className: "toast-success" });
+        toast.success("Login Successful!", {
+          duration: 2000,
+          className: "toast-success",
+        });
         navigate("/");
-      } 
+      }
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.message
         : error.message;
-        if (errorMessage == "Please verify your email") {
-          toast("Please verify your email !", {
-            icon: '❗️',
-            duration: 2000,
-            className: "toast-yellow"
-          });
-          navigate("/verify-email", { state: { email: data.email } });
-        } else if (errorMessage == "Please pay the registration fee") {
-          toast(errorMessage, {
-            icon: '⌛️',
-            duration: 2000,
-            className: "toast-yellow"
-          });
+      if (errorMessage == "Please verify your email") {
+        toast("Please verify your email !", {
+          icon: "❗️",
+          duration: 2000,
+          className: "toast-yellow",
+        });
+        navigate("/verify-email", { state: { email: data.email } });
+      } else if (errorMessage == "Please pay the registration fee") {
+        toast(errorMessage, {
+          icon: "⌛️",
+          duration: 2000,
+          className: "toast-yellow",
+        });
         navigate("/outside-registration/payFee", {
           state: { email: data.email },
         });
-      }else if(errorMessage == "Payment verification under process") {
+      } else if (errorMessage == "Payment verification under process") {
         toast(errorMessage, {
-          icon: '⌛️',
+          icon: "⌛️",
           duration: 2000,
-          className: "toast-yellow"
+          className: "toast-yellow",
         });
         dispatch(signInFailure(errorMessage));
       } else {
@@ -87,7 +90,17 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full bg-[#FFF2D5] px-4 sm:px-6 lg:px-8">
+    <div
+      className="flex items-center justify-center min-h-screen w-full bg-[#FFF2D5] px-4 sm:px-6 lg:px-8"
+      style={{
+        backgroundImage: `url(${overlay1})`,
+        backgroundSize: "cover", // Ensure image covers the entire div
+        backgroundPosition: "center", // Center the image
+        backgroundRepeat: "no-repeat", // Prevent image repetition
+        width: "100%", // Set the width to 100% of the parent
+        height: "100%", // Set the height of the div
+      }}
+    >
       <div className="flex flex-col items-center justify-center w-full max-w-lg sm:max-w-md md:max-w-lg lg:max-w-xl p-6 sm:p-8 bg-[#2D2D2D] shadow-lg">
         {/* Page Title */}
         <h1 className="text-center font-bold font-bionix text-2xl sm:text-3xl lg:text-4xl text-[#FFFAF0] leading-tight mb-4">

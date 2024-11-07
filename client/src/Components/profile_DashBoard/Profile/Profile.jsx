@@ -17,11 +17,11 @@ const Profile = () => {
     if (!isAuthenticated) {
       navigate("/");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated])
 
   const getUserData = () => {
     setToken(jwttoken)
-    setUser(userDetails)
+    setUser(userDetails);
   }
 
   useEffect(() => {

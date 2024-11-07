@@ -8,14 +8,14 @@ export default {
     fontFamily: {
       bebas: ["Bebas Neue", "sans-serif"],
       bionix: ["Bionix", "sans-serif"],
-      moon: ['"MOONGETTI"'], 
+      moon: ['"MOONGETTI"'],
       sfText: ['"SF Pro Text"', "Arial", "sans-serif"],
-      Sfpro: ['"Sfpro"'], 
-      Manrope: ['"Manrope"'], 
+      Sfpro: ['"Sfpro"'],
+      Manrope: ['"Manrope"'],
     },
     extend: {
       height: {
-        "screen-minus-92": "calc(100vh - 92px)", // Custom height utility
+        "screen-minus-92": "calc(105vh - 98px)", // Custom height utility
       },
       screens: {
         xs: "450px",
@@ -39,7 +39,7 @@ export default {
         custom1500:"1500px",
         custom1550:"1550px",
         custom2300: "2300px",
-        
+
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -106,11 +106,11 @@ export default {
         scheduleOrange: "#F54E25",
         scheduleLargeText: "#2D2D2D",
         floralWhite: "#FFFAF0",
-        lightMineshaft: "#3D3D3D", 
-        veryLightMineShaft: "#B0B0B0", 
-        medMineShaft: "#6D6D6D", 
-        mineShaft: "#B0B0B0", 
-        reelColor : "#181818"
+        lightMineshaft: "#3D3D3D",
+        veryLightMineShaft: "#B0B0B0",
+        medMineShaft: "#6D6D6D",
+        mineShaft: "#B0B0B0",
+        reelColor: "#181818"
       },
     },
   },

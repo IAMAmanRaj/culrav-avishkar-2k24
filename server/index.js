@@ -11,6 +11,8 @@ import cors from "cors";
 import eventRoutes from "./Routes/event.routes.js";
 import swaggerUI from "swagger-ui-express";
 import swaggerSpec from "./swaggerDocs/swaggerOptions.js";
+import { AuthenticateToken } from "./Middlewares/auth.middleware.js";
+
 dotenv.config();
 
 const app = express();
@@ -32,14 +34,15 @@ const authLimiter = rateLimit({
   message: { message: "Too many attempts, please try again after 10 mins." },
 });
 
+// Swagger
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+
 // All routes
 app.use("/api/auth/v1", authRoutes);
+app.use(AuthenticateToken);
 app.use("/api/admin/v1", adminRouter);
 app.use("/api/team/v1", teamRoutes);
 app.use("/api/event/v1", eventRoutes);
-
-// Swagger
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // Handle every exception and error before starting the server
 // Don't change the position of this errorHandler, because this should be the last middleware to catch all the errors.
