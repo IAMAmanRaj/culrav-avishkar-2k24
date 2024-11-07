@@ -17,8 +17,10 @@ import { ClipLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
+
+
 
 function Login() {
   const { register, handleSubmit } = useForm();
@@ -30,6 +32,7 @@ function Login() {
 
   useEffect(() => {
     if (isAuthenticated) {
+
       navigate("/");
     }
   }, [isAuthenticated, navigate]);

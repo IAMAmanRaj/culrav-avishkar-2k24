@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import overlay1 from "../../../assets/Overlay1.png";
 const apiClient = axios.create({
-  baseURL: import.meta.env.BASE_URL, // Base URL for all requests
+  baseURL: import.meta.env.VITE_BASE_URL, // Base URL for all requests
 });
 
 const ForgetPassword = () => {

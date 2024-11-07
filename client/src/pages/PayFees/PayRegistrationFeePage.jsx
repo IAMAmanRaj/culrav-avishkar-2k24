@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 
 const apiClient = axios.create({
-  baseURL: import.meta.env.BASE_URL, // Base URL for all requests
+  baseURL: import.meta.env.VITE_BASE_URL, // Base URL for all requests
 });
 
 function PayRegistrationFeePage() {

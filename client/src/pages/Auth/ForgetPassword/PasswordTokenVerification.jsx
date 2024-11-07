@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 // Base URL for all requests (updated for better fallback)
 const apiClient = axios.create({
-  baseURL: import.meta.env.BASE_URL, // Use proper env variable for the base URL
+  baseURL: import.meta.env.VITE_BASE_URL, // Use proper env variable for the base URL
 });
 
 function ForgetPasswordTokenVerification() {
