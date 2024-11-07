@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 // Base URL for all requests (updated for better fallback)
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000", // Use proper env variable for the base URL
+  baseURL: import.meta.env.BASE_URL, // Use proper env variable for the base URL
 });
 
 function ForgetPasswordTokenVerification() {
@@ -27,7 +27,7 @@ function ForgetPasswordTokenVerification() {
       console.log(data.otp);
       // Sending POST request to the API with OTP (token)
       const response = await apiClient.post(
-        `/api/auth/v1/forgotPasswordVerification`,
+        `/auth/v1/forgotPasswordVerification`,
         { token: data.otp }
       ); // Added email in the request
       // Check if verification was successful

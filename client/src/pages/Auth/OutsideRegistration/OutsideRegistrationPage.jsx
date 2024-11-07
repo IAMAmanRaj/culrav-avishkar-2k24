@@ -11,7 +11,7 @@ import toast, { Toaster } from "react-hot-toast";
 import overlay1 from "../../../assets/Overlay1.png";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000", // Base URL for all requests
+  baseURL: import.meta.env.BASE_URL, // Base URL for all requests
 });
 
 function OutsideRegistration() {
@@ -40,7 +40,7 @@ function OutsideRegistration() {
     try {
       console.log(data);
       setSubmitting(true);
-      const response = await apiClient.post(`/api/auth/v1/register`, {
+      const response = await apiClient.post(`/auth/v1/register`, {
         name: data.name,
         email: data.email,
         password: data.password,

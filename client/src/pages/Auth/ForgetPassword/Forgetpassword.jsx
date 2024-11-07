@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import overlay1 from "../../../assets/Overlay1.png";
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000", // Base URL for all requests
+  baseURL: import.meta.env.BASE_URL, // Base URL for all requests
 });
 
 const ForgetPassword = () => {
@@ -18,7 +18,7 @@ const ForgetPassword = () => {
     setisSending(true);
     try {
       const result = await apiClient.post(
-        `/api/auth/v1/sendForgotPasswordToken`,
+        `/auth/v1/sendForgotPasswordToken`,
         { email }
       );
       toast.success(result.data.message, {

@@ -10,7 +10,7 @@ import overlay1 from "../../../assets/Overlay1.png";
 
 // Base URL for all requests (updated for better fallback)
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000", // Use proper env variable for the base URL
+  baseURL: import.meta.env.BASE_URL, // Use proper env variable for the base URL
 });
 
 function VerifyEmail() {
@@ -43,7 +43,7 @@ function VerifyEmail() {
       console.log(data.otp);
 
       // Sending POST request to the API with OTP (token)
-      const response = await apiClient.post(`/api/auth/v1/verify`, {
+      const response = await apiClient.post(`/auth/v1/verify`, {
         token: data.otp,
         email,
       }); // Added email in the request

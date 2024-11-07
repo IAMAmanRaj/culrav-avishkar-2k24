@@ -17,7 +17,7 @@ import { ClipLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: import.meta.env.BASE_URL,
 });
 
 function Login() {
@@ -41,7 +41,7 @@ function Login() {
   const userlogin = async (data) => {
     try {
       dispatch(signInStart());
-      const response = await apiClient.post(`/api/auth/v1/login`, data);
+      const response = await apiClient.post(`/auth/v1/login`, data);
       const responseData = response.data;
 
       if (response.status === 200) {

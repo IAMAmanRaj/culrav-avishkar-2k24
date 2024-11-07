@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000", // Base URL for all requests
+  baseURL: import.meta.env.BASE_URL, // Base URL for all requests
 });
 
 function PayRegistrationFeePage() {
@@ -74,7 +74,7 @@ console.log("hi", email);
         return;
       }
 
-      const res = await apiClient.post("/api/auth/v1/registerOutside", {
+      const res = await apiClient.post("/auth/v1/registerOutside", {
         email,
         paymentLink: uploadedUrl,
         isOtherCollege: true,
