@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import HamburgerMenu from "./HamburgerMenu";
 import useAuth from "@/lib/useAuth";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import logo from "../../assets/general/logo.webp";
 
 
