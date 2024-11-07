@@ -8,12 +8,13 @@ import Scrubble1 from "../../assets/Home/scrubble1.png"
 import Scrubble2 from "../../assets/Home/scrubble2.png"
 import culrav from "../../assets/Home/culrav.webp"
 import avishkar from "../../assets/Home/avishkar.webp"
+import grid from "../../assets/Home/grid.webp";
 
 const Schedule = () => {
   return (
     <div
       className="h-auto overflow-hidden flex flex-col bg-[#202020]/100"
-      style={{ backgroundImage: "url('/grid.png')" }}
+      style={{ backgroundImage: `url(${grid})` }}
     >
       <div className="h-auto md:h-auto pb-5 relative">
         <div className="md:pt-36 pt-14 md:px-12 flex md:h-auto h-full flex-col gap-16 items-center">

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Hamburger from "hamburger-react";
 import useAuth from "../../lib/useAuth";
-import logo from "../../assets/general/logo.webp";
 
 import hamburgerBg from "../../assets/Home/HamburgerBg.jpg";
 import { useNavigate } from "react-router-dom";
@@ -10,15 +9,22 @@ const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const auth = useAuth();
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   const handleLogoClick = () => {
     navigate("/");
   };
+
   return (
     <div className="relative">
-      <div className="z-[90] absolute top-8 right-4">
+      <div
+        className={`${
+          isOpen ? "fixed" : "absolute"
+        } z-[90] top-8 right-4`}
+      >
         <Hamburger
           toggled={isOpen}
           toggle={toggleMenu}
@@ -38,12 +44,6 @@ const HamburgerMenu = () => {
         }}
       >
         <nav className="flex flex-col justify-center gap-12 items-center h-full relative text-4xl font-bebas text-navlink">
-          <div>
-            <img
-              src={logo}
-              className="logo absolute top-[-8.5vh] xs:top-[-9.3vh]  left-4 logo hover:cursor-pointer w-auto h-28 "
-            ></img>
-          </div>
           <ul className="flex flex-col items-center justify-center gap-1">
             <li className="py-2 px-4 hover:text-register transition-all duration-300 ease-in-out">
               <a href="/culrav-landing">CULRAV</a>
@@ -65,17 +65,15 @@ const HamburgerMenu = () => {
             </li>
           </ul>
           {auth ? (
-            <>
-              <a href="/dashboard">
-                <button
-                  className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${
-                    isOpen ? "block" : "hidden"
-                  }`}
-                >
-                  <h1 className="text-[2.2rem]">PROFILE</h1>
-                </button>
-              </a>
-            </>
+            <a href="/dashboard">
+              <button
+                className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${
+                  isOpen ? "block" : "hidden"
+                }`}
+              >
+                <h1 className="text-[2.2rem]">PROFILE</h1>
+              </button>
+            </a>
           ) : (
             <a href="/registration">
               <button
