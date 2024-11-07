@@ -8,10 +8,12 @@ import getUser from "../userService.js";
 import { createTeam } from "../services.js";
 import toast from "react-hot-toast";
 import { createTeamSuccess, createTeamFailure, setLeaderId } from "../../../redux/team/teamSlice";
+import { ClipLoader } from "react-spinners";
 
 const CreateTeam = () => {
   const [teamName, setTeamName] = useState("");
   const [teamSize, setTeamSize] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const { user, token } = getUser();
   const isAuthenticated = useAuth();
@@ -35,6 +37,7 @@ const CreateTeam = () => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
     try {
       const res = await createTeam({ leader: user._id, teamName, teamSize, token });
       if (res?.success) {
@@ -56,6 +59,8 @@ const CreateTeam = () => {
       dispatch(createTeamFailure('Internal Server Error'));
       console.log(err);
       toast.error('Internal Server Error', { className: "toast-error" });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -81,8 +86,16 @@ const CreateTeam = () => {
         />
         
         <div className="mt-8 flex items-center justify-center w-full">
-          <button className="text-[30px] font-bebas flex items-center justify-center text-white bg-scheduleOrange h-[50px] w-[215px] py-[8px] px-[29px]" onClick={handleSubmit}>
-            CREATE
+          <button 
+            className="text-[30px] font-bebas flex items-center justify-center text-white bg-scheduleOrange h-[50px] w-[215px] py-[8px] px-[29px]" 
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {loading ? (
+              <ClipLoader color="#FFFAF0" size={25} />
+            ) : (
+              "CREATE"
+            )}
           </button>
         </div>
       </div>

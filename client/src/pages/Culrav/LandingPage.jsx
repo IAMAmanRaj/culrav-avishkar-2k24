@@ -10,7 +10,7 @@ function CulravLanding() {
     title: "", // Add actual event titles as needed
   });
   return (
-    <div className=" culrav-Landing-background flex flex-col items-center justify-center bg-floralWhite ">
+    <div className=" culrav-Landing-background relative z-20 flex flex-col items-center justify-center bg-floralWhite ">
       {/* Base2 Image Section */}
       <div className="relative flex flex-col justify-center items-center w-full min-h-screen md:h-[80vh]">
         {/* Red Background for Mobile View */}

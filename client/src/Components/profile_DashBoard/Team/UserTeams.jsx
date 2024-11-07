@@ -17,8 +17,6 @@ function UserTeams({ showTeamInfo }) {
   const dispatch = useDispatch();
   const { myTeams = [], joinedTeams = [] } = useSelector((state) => state.team);
 
-  const navigate = useNavigate();
-
   const handleDeleteTeam = async () => {
     try {
       const res = await deleteTeam({
@@ -56,7 +54,7 @@ function UserTeams({ showTeamInfo }) {
   const userEmail = user.email;
 
   return (
-    <div className={`md:w-[50vw]  ${myTeams.length === 0 || joinedTeams.length === 0 ? "lg:w-1/2" : "lg:w-full"}   h-full flex flex-col lg:flex-row gap-10 lg:gap-5 `}>
+    <div className={`md:w-[50vw]  ${myTeams.length === 0 || joinedTeams.length === 0 ? "lg:w-1/2" : "lg:w-full"} h-full flex flex-col lg:flex-row gap-10 lg:gap-5`}>
       {myTeams.length > 0 && (
         <ScrollableDiv title="My teams">
           {myTeams.map((team) => {
@@ -94,15 +92,18 @@ function UserTeams({ showTeamInfo }) {
             return (
               <div
                 key={team.teamName}
-                onClick={() => {
-                  handleSelectTeam(team);
-                }}
                 className="cursor-pointer mb-3 h-auto w-full px-5 py-6 bg-Mine_Shaft_900 rounded justify-between items-center inline-flex 
             transition-all duration-300 ease-in-out transform hover:scale-95 hover:shadow-xl"
               >
                 <div className="text-Mine_Shaft_300 text-lg font-normal font-sfText leading-tight">
                   {team.teamName}
                 </div>
+                <Button
+                    className="z-5 text-black text-lg bg-custom_gray_100 hover:bg-gray-200 px-5"
+                    onClick={() => handleSelectTeam(team)}
+                  >
+                    View
+                  </Button>
               </div>
             );
           })}

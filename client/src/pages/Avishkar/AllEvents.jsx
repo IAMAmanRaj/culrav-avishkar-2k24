@@ -55,7 +55,7 @@ function AvishkarEvents() {
 
     return (
         <div
-            className="flex flex-col items-center justify-center min-h-screen w-full bg-[#181818] px-4 sm:px-6 lg:px-8 pt-[30%] sm:pt-[20%] md:pt-[15%] lg:pt-[10%]"
+            className="flex flex-col relative z-20 items-center justify-center min-h-screen w-full bg-[#181818] px-4 sm:px-6 lg:px-8 pt-[30%] sm:pt-[20%] md:pt-[15%] lg:pt-[10%]"
             style={{ backgroundImage: `url(${aviskharbg})` }}
         >
             <h1

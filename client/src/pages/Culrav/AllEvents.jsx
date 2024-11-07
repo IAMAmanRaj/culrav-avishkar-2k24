@@ -9,7 +9,7 @@ function CulravEvents() {
 
     return (
         <div
-            className="culrav-background flex flex-col justify-center items-center pt-[20%] sm:pt-[10%] md:pt-[10%] lg:pt-[8%] p-[8%]  bg-center bg-cover"
+            className="culrav-background relative z-20 flex flex-col justify-center items-center pt-[20%] sm:pt-[10%] md:pt-[10%] lg:pt-[8%] p-[8%]  bg-center bg-cover"
             >
            <h1 
                 className="bg-[#F54E25] font-bionix text-[#FFFAF0] font-bold text-center  "

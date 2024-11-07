@@ -28,7 +28,7 @@ function Team() {
 
     return (
         <div
-            className="w-full h-full flex flex-row bg-[#111111] overflow-hidden"
+            className="w-full h-full relative z-20 flex flex-row bg-[#111111] overflow-hidden"
             style={{
                 backgroundImage: `url(${overlay1})`,
                 backgroundSize: 'cover', // Ensure image covers the entire div

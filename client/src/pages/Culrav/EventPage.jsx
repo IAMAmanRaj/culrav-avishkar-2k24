@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import TeamRegisterModal from "../modal/TeamRegisterModal";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTeamsSuccess, fetchTeamsFailure } from "../../redux/team/teamSlice";
-import { getAllTeams, splitTeamsByLeader } from "../../Components/profile_DashBoard/services.js";
+import { getAllTeams, splitTeamsByLeader,excludeAlreadyRegisteredTeams } from "../../Components/profile_DashBoard/services.js";
 import useAuth from "../../lib/useAuth.js";
 import getUser from "../../Components/profile_DashBoard/userService.js";
 import { useNavigate } from "react-router-dom";
@@ -29,8 +29,7 @@ function CulravEvent() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token, user } = getUser();
-  const { myTeams } = useSelector((state) => state.team);
-
+  const [remainingTeams,setRemainingTeams] = useState([]);
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
@@ -47,6 +46,11 @@ function CulravEvent() {
         const totalTeams = res?.totalTeams;
         const { matchingLeaderTeams, nonMatchingLeaderTeams } =
           splitTeamsByLeader({ totalTeams, givenLeaderId });
+
+          console.log("matchingLeaderTeams",matchingLeaderTeams);
+          setRemainingTeams(excludeAlreadyRegisteredTeams({matchingLeaderTeams,eventID:eventData.eventId}));
+
+          console.log("these are remaining teams",remainingTeams);
         dispatch(fetchTeamsSuccess({ myTeams: matchingLeaderTeams, joinedTeams: nonMatchingLeaderTeams }));
       } else {
         console.log(res?.message);
@@ -63,7 +67,7 @@ function CulravEvent() {
     <>
       {isModalOpen && (
         <TeamRegisterModal
-          teams={myTeams}
+          teams={remainingTeams}
           eventData={eventData}
           onClose={() => {
             setIsModalOpen(false);

@@ -4,6 +4,8 @@ const initialState = {
   leaderId: null,
   myTeams: [],
   joinedTeams: [],
+  invitations: [],
+  registeredEvents:[],
   status: "idle",
   error: null,
 };
@@ -39,19 +41,42 @@ const teamSlice = createSlice({
       state.status = "failed";
     },
     registerEventSuccess(state, action) {
+      console.log("payload is ", action.payload);
+
       const { teamId, eventId } = action.payload;
+      console.log("this is the registered team's id", teamId);
+      console.log("this is the registered event's id", eventId);
       const team = state.myTeams.find((team) => team._id === teamId);
       if (team) {
-        team.participatingEvents.push(eventId);
+        team.registeredEvents.push(eventId);
       }
     },
     resetTeamState(state) {
-        state.leaderId = null;
-        state.myTeams = [];
-        state.joinedTeams = [];
-        state.status = "idle";
-        state.error = null;
-      },
+      state.leaderId = null;
+      state.myTeams = [];
+      state.joinedTeams = [];
+      state.status = "idle";
+      state.error = null;
+    },
+    fetchInvitationsSuccess(state, action) {
+      state.invitations = action.payload;
+      state.status = "succeeded";
+    },
+    fetchInvitationsFailure(state, action) {
+      state.error = action.payload;
+      state.status = "failed";
+    },
+    acceptInvitationSuccess(state, action) {
+      state.invitations = state.invitations.filter(
+        (invite) => invite._id !== action.payload._id
+      );
+      state.joinedTeams.push(action.payload._id);
+    },
+    rejectInvitation(state, action) {
+      state.invitations = state.invitations.filter(
+        (invite) => invite._id !== action.payload
+      );
+    },
   },
 });
 
@@ -64,6 +89,10 @@ export const {
   fetchTeamsFailure,
   registerEventSuccess,
   resetTeamState,
+  fetchInvitationsSuccess,
+  fetchInvitationsFailure,
+  acceptInvitationSuccess,
+  rejectInvitation,
 } = teamSlice.actions;
 
 export default teamSlice.reducer;

@@ -1,6 +1,10 @@
 import reel_tape from "../../assets/Home/reel_tape.png"
+import { useLocation } from "react-router-dom";
 
-function ProfileTape() {
+export function ProfileTape() {
+    const location = useLocation();
+    if(location.pathname!=="/") return null;
+    
     return (
         <div className="bg-customOrange flex relative overflow-hidden xs:h-[29vw] xs:py-0 py-8">
             <div className="justify-center w-full xs:mb-0 mb-[2.5rem]  xs:w-[50%] flex-col py-[5%] px-[4%] xs:justify-start items-start gap-[10vw] xs:gap-[2vw] inline-flex">

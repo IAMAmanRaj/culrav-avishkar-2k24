@@ -37,7 +37,7 @@ const TeamRegisterModal = ({ teams, eventData, onClose, themeColor, isOpen }) =>
 
       if (res?.success) {
         toast.success(res?.message);
-        dispatch(registerEventSuccess({ teamId: selectedTeam._id, eventId: eventData.eventId }));
+        dispatch(registerEventSuccess({ teamId: selectedTeam._id, eventId: res?.eventId }));
       } else {
         toast.error(`Error! ${res?.message}`);
       }
@@ -61,7 +61,7 @@ const TeamRegisterModal = ({ teams, eventData, onClose, themeColor, isOpen }) =>
         <XMarkIcon className="h-6 w-6" />
       </button>
       <h2
-        className={`font-bionix text-2xl font-bold mb-4 font-bebas ${textColor}`}
+        className={`font-bionix text-2xl font-bold mb-4  ${textColor}`}
       >
         Choose a team to register with
       </h2>
@@ -71,14 +71,14 @@ const TeamRegisterModal = ({ teams, eventData, onClose, themeColor, isOpen }) =>
         {teams.map((team, index) => (
           <label
             key={index}
-            className={`flex items-center rounded-sm justify-between px-4 py-2 cursor-pointer border-b font-bebas ${
+            className={`flex items-center rounded-sm justify-between px-4 py-2 cursor-pointer border-b ${
               selectedTeam === team
                 ? `text-white ${selectedBgColor}`
                 : "border-transparent"
             }`}
             onClick={() => handleSelect(team)}
           >
-            <span>{team.teamName}</span>
+            <span className="tracking-widest">{team.teamName}</span>
             <input
               type="checkbox"
               checked={selectedTeam === team}
@@ -94,7 +94,6 @@ const TeamRegisterModal = ({ teams, eventData, onClose, themeColor, isOpen }) =>
         className={`font-bionix mt-4 w-full ${selectedBgColor} ${
           textColor === "text-black" ? "text-white" : "text-white"
         } font-semibold py-2 rounded hover:bg-orange-600 transition`}
-        disabled={!selectedTeam || selectedTeam.leaderId !== user._id}
       >
         REGISTER
       </button>

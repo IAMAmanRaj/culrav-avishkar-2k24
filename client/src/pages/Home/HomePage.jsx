@@ -35,11 +35,10 @@ function Home() {
   }
 
   return (
-    <div className="bg-floralWhite transition-opacity duration-700 opacity-0 animate-fade-in">
+    <div className="bg-floralWhite relative z-20 transition-opacity duration-700 opacity-0 animate-fade-in">
       <HeroSection />
       <Schedule />
       <Gallery />
-      <ProfileTape />
     </div>
   );
 }

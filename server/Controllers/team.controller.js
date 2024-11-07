@@ -287,7 +287,7 @@ const sendTeamInvite = async (req, res, next) => {
     if (!targetUser) {
       return res.status(404).json({
         success: false,
-        message: "targetUser is not registered.",
+        message: "User is not registered.",
       });
     }
 
@@ -935,6 +935,7 @@ const getParticipatingTeamsOfAUser = async (req, res, next) => {
           {
             path: "registeredEvents",
             model: Event,
+            select: "-participatingTeams", // Exclude the participatingTeams field
           },
         ],
       },

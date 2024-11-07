@@ -1,20 +1,22 @@
 import InvitationCard from "@/Components/profile_DashBoard/Invitation/InviteCard";
 import ScrollableDiv from "@/Components/profile_DashBoard/shared/ScrollableDiv";
 import ContentBox from "@/assets/userDashBoard/ContentBox.png";
-import { isValidElement, useEffect, useState } from "react";
+import { useEffect } from "react";
 import useAuth from "../../../lib/useAuth.js";
 import { useNavigate } from "react-router-dom";
 import { getInvitations } from "../services.js";
 import getUser from "../userService.js";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchInvitationsSuccess, fetchInvitationsFailure } from "../../../redux/team/teamSlice";
 
 function Invitations() {
-  const [allTeamInvites, setAllTeamInvites] = useState([]);
+  const dispatch = useDispatch();
   const isAuthenticated = useAuth();
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
   const { user, token } = getUser();
+  const invitations = useSelector((state) => state.team.invitations);
+  const status = useSelector((state) => state.team.status);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -25,25 +27,24 @@ function Invitations() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
         const res = await getInvitations({ userId: user._id, token });
         if (res?.success) {
-          setAllTeamInvites(res?.teams);
-          setLoading(false);
+          dispatch(fetchInvitationsSuccess(res.teams));
           toast("Invitations Fetched successfully!", {
             icon: "🚀",
             duration: 2000,
             className: "toast-blue",
           });
         } else {
-          toast.error(res?.message, {
+          dispatch(fetchInvitationsFailure(res.message));
+          toast.error(res.message, {
             style: {
               marginTop: "50px",
             },
           });
         }
       } catch (err) {
-        setLoading(true);
+        dispatch(fetchInvitationsFailure("Something went wrong. Please try again."));
         toast.error("Something went wrong. Please try again.", {
           className: "toast-error",
         });
@@ -51,11 +52,7 @@ function Invitations() {
       }
     };
     fetchData();
-  }, [token]);
-
-  if (!loading) {
-    console.log(`all teams : ${allTeamInvites}`);
-  }
+  }, [dispatch, token, user._id]);
 
   return (
     <div
@@ -67,13 +64,10 @@ function Invitations() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {allTeamInvites.length > 0 ? (
-        <div
-          className=" w-full flex gap-4  text-xl flex-col 
-            "
-        >
+      {status === "succeeded" && invitations.length > 0 ? (
+        <div className="w-full flex gap-4 text-xl flex-col">
           <div className="font-sfText leading-tight text-2xl mb-5 font-bold">
-            Recieved Invitations
+            Received Invitations
           </div>
           <div
             className="overflow-y-scroll flex flex-col gap-5 
@@ -82,19 +76,13 @@ function Invitations() {
                 [&::-webkit-scrollbar-thumb]:bg-dark_secondary
                 max-h-[600px] md:max-h-[450px]"
           >
-            {allTeamInvites.map((invite) => {
-              return (
-                <InvitationCard
-                  invite={invite}
-                  setAllTeamInvites={setAllTeamInvites}
-                  allInviteData={allTeamInvites}
-                />
-              );
-            })}
+            {invitations.map((invite) => (
+              <InvitationCard key={invite._id} invite={invite} />
+            ))}
           </div>
         </div>
       ) : (
-        <div className="w-full h-full text-center font-normal font-sfText leading-tight text-lg">
+        <div className="w-full h-full flex items-center justify-center text-center tracking-widest text-4xl font-bebas">
           No Invitation
         </div>
       )}

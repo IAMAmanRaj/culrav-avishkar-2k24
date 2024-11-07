@@ -14,7 +14,7 @@ function AvishkarLanding() {
     });
 
     return (
-         <div className="flex flex-col items-center justify-center min-h-screen w-full bg-[#181818] "
+         <div className="flex flex-col relative z-20 items-center justify-center min-h-screen w-full bg-[#181818] "
             style={{
                 backgroundImage: `url(${aviskarbg})`,
                 

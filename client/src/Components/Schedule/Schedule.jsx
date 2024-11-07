@@ -5,7 +5,7 @@ import elements from '../../assets/Sc-assets/element.png';
 
 const Schedule = () => {
   return (
-    <div className="relative w-full h-screen md:h-[1634px] bg-[#202020]">
+    <div className="relative w-full relative z-20 h-screen md:h-[1634px] bg-[#202020]">
       <img
         src={noise}
         alt="Noise Background"

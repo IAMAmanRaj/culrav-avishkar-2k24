@@ -2,13 +2,13 @@ import User from "../Models/user.model.js";
 import Team from "../Models/team.model.js";
 import Event from "../Models/event.model.js";
 const checkEmail = (email) => {
-  const [localPart, domain] = email.split('@');
+  const [localPart, domain] = email.split("@");
   if (domain === "mnnit.ac.in") {
     return !localPart.includes("2021");
   }
-  
+
   return true;
-}
+};
 
 const getAllTeamsOfAnEvent = async (req, res, next) => {
   const { eventId } = req.params;
@@ -51,7 +51,15 @@ const getAllTeamsOfAnEvent = async (req, res, next) => {
 };
 
 const registerForEvent = async (req, res, next) => {
-  const { eventId, teamId, userId, eventName, department, maxTeamSize, minTeamSize  } = req.body;
+  const {
+    eventId,
+    teamId,
+    userId,
+    eventName,
+    department,
+    maxTeamSize,
+    minTeamSize,
+  } = req.body;
 
   if (!eventId) {
     return res.status(400).json({
@@ -74,18 +82,18 @@ const registerForEvent = async (req, res, next) => {
     });
   }
 
-  if(!eventName){
+  if (!eventName) {
     return res.status(400).json({
-      success:false,
-      message : "eventName missing"
-    })
+      success: false,
+      message: "eventName missing",
+    });
   }
 
-  if(!department){
+  if (!department) {
     return res.status(400).json({
-      success:false,
-      message:"department name is missing"
-    })
+      success: false,
+      message: "department name is missing",
+    });
   }
 
   try {
@@ -95,15 +103,15 @@ const registerForEvent = async (req, res, next) => {
       model: Team,
     });
 
-
     if (!event) {
       //firts create the event. then register the team in the event.
-      event = await Event.create({eventId,
+      event = await Event.create({
+        eventId,
         eventName,
         department,
         maxTeamSize,
         minTeamSize,
-      })
+      });
     }
     //check is teamId is valid
 
@@ -144,7 +152,7 @@ const registerForEvent = async (req, res, next) => {
     }
 
     const email = user.email;
-    const answer = checkEmail(email)
+    const answer = checkEmail(email);
 
     // if(!answer){
     //   return res.status(400).json({
@@ -152,7 +160,6 @@ const registerForEvent = async (req, res, next) => {
     //     message:"You do not have permission to register."
     //   })
     // }
-
 
     // get all the members[pending  + accepted] of current Team,
     //check if there are any pending members of the currentTeam, is so then this team can not register.
@@ -183,11 +190,10 @@ const registerForEvent = async (req, res, next) => {
     }
 
     //check if this team is already registered.
-    var participatingTeamIds = []
-    for(let i = 0; i < event.participatingTeams.length; i++){
+    var participatingTeamIds = [];
+    for (let i = 0; i < event.participatingTeams.length; i++) {
       const currId = JSON.stringify(event.participatingTeams[i]._id);
-      participatingTeamIds = [...participatingTeamIds, currId]
-      
+      participatingTeamIds = [...participatingTeamIds, currId];
     }
     if (participatingTeamIds.includes(JSON.stringify(teamId))) {
       return res.status(400).json({
@@ -204,19 +210,18 @@ const registerForEvent = async (req, res, next) => {
     for (let i = 0; i < allTeams.length; i++) {
       var currTeam = allTeams[i];
       var currTeamMembers = currTeam.acceptedMembers;
-      for(let j = 0; j < currTeamMembers.length; j++){
-        allMembers = [...allMembers, JSON.stringify(currTeamMembers[j])]
+      for (let j = 0; j < currTeamMembers.length; j++) {
+        allMembers = [...allMembers, JSON.stringify(currTeamMembers[j])];
       }
     }
 
     var currTeamMembers = tm.acceptedMembers;
 
-
     for (let i = 0; i < currTeamMembers.length; i++) {
       if (allMembers.includes(JSON.stringify(currTeamMembers[i]._id))) {
         return res.status(400).json({
           success: false,
-          message: `some members of this team have already registered with other team in this event`,
+          message: `You have already been registered for this event with some other team`,
         });
       }
     }
@@ -257,6 +262,7 @@ const registerForEvent = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "Registered successfully!",
+      eventId: event._id,
     });
   } catch (err) {
     next(err);

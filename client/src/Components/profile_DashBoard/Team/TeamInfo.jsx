@@ -10,7 +10,6 @@ import { kickMember, sendInvitation } from "../services.js";
 import toast from "react-hot-toast";
 
 function TeamInfo({ team, handleShowAllTeams }) {
-  const navigate = useNavigate();
   const { user, token } = getUser();
   const [openRemoveMemberModal, setOpenRemoveMemberModal] = useState(false);
   const [removeMemberInfo, setRemoveMemebrInfo] = useState(null);
@@ -33,14 +32,17 @@ function TeamInfo({ team, handleShowAllTeams }) {
         });
         setOpenRemoveMemberModal(false);
       } else {
-        toast.error(res?.message, {
-          style: {
-            marginTop: "50px",
-          },
-        });
+        toast.error(
+          res?.message,
+          { className: "toast-error" }
+        );
+
       }
     } catch (err) {
-      console.log(err);
+      toast.error(
+        err?.message,
+        { className: "toast-error" }
+      );
     }
   };
 
@@ -61,7 +63,6 @@ function TeamInfo({ team, handleShowAllTeams }) {
   };
 
   const handleInvite = async () => {
-    // console.log(email)
     try {
       const res = await sendInvitation({
         leaderId: user._id,
@@ -70,17 +71,19 @@ function TeamInfo({ team, handleShowAllTeams }) {
         token,
       });
       if (res?.success) {
-        toast.success(res?.message, {
-          style: {
-            marginTop: "50px",
-          },
+        toast(res?.message, {
+          icon: '📬',
+          duration: 2000,
+          className: "toast-blue",
         });
+        setEmail("");
       } else {
-        toast.error(res?.message, {
-          style: {
-            marginTop: "50px",
-          },
+        toast(res?.message, {
+          icon: "🚨",
+          duration: 2000,
+          className: "toast-yellow",
         });
+        setEmail("");
       }
     } catch (err) {
       console.log(err);
