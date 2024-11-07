@@ -1,3 +1,5 @@
+import { custom } from '@cloudinary/url-gen/qualifiers/region';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -17,13 +19,25 @@ export default {
       },
       screens: {
         xs: "450px",
+        custom800:"800px",
+        custom880:"880px",
+        custom930:"930px",
+        custom1050:"1050px",
+        custom1800:"1800px",
+        custom1150:"1150px",
         custom1110: "1110px",
+        custom1200: "1200px",
+        custom1240: "1240px",
         custom1000: "1000px",
         custom1560: "1560px",
         custom1840: "1840px",
         custom1980: "1980px",
-        custom1400: "1400px",
         custom1300: "1300px",
+        custom1350: "1350px",
+        custom1400: "1400px",
+        custom1450: "1450px",
+        custom1500:"1500px",
+        custom1550:"1550px",
         custom2300: "2300px",
 
       },

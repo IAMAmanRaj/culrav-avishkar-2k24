@@ -8,6 +8,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Roll from "../../assets/Home/Gallery/Roll.png"
 import test from "../../assets/Home/Gallery/test.jpg"
 import tiltedRoll from "../../assets/Home/Gallery/tiltedRoll.png"
+import backg from "../../assets/Home/Gallery/gallerybg.webp"
 gsap.registerPlugin(ScrollTrigger);
 const Gallery = () => {
   const reelRef1 = useRef(null);
@@ -18,13 +19,13 @@ const Gallery = () => {
   
     ScrollTrigger.matchMedia({
       
-      "(max-width: 1024px)": function() {
+      "(max-width: 3000px)": function() {
         gsap.to(reel1, {
           x: "-200%",
           ease: "power1.inOut",
           scrollTrigger: {
             trigger: reel1,
-            start: "bottom bottom-=300",
+            start: "top top+=80",
             end: "+=2000",
             scrub: true,
             pin: true,
@@ -45,34 +46,7 @@ const Gallery = () => {
           },
         });
       },
-      // Larger screens
-      "(min-width: 1024px)": function() {
-        gsap.to(reel1, {
-          x: "-100%",
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: reel1,
-            start: "top top+=200", 
-            end: "+=2000",
-            scrub: true,
-            pin: true,
-            anticipatePin: 1,
-          },
-        });
-  
-        gsap.from(reel2, {
-          x: "-200%", 
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: reel2,
-            start: "bottom bottom-=200",
-            end: "+=1100",
-            scrub: true,
-            pin: true,
-            anticipatePin: 1,
-          },
-        });
-      }
+
     });
   
     return () => {
@@ -132,34 +106,36 @@ const Gallery = () => {
         </Carousel>
       </div>
     </div>
-      <div className="hidden md:block py-[10vw] w-full md:h-[520vw] custom1000:h-[420vw] custom1300:h-[340vw] custom1560:h-[310vw] custom1840:h-[300vw] custom1980:h-[260vw] custom2300:h-[240vw]  relative bottom-16 bg-floralWhite overflow-hidden">
+      <div className="hidden md:block py-[10vw] w-full md:h-[530vw] custom800:h-[510vw] custom880:h-[478vw] custom930:h-[460vw] custom1000:h-[410vw] custom1050:h-[397vw] custom1110:h-[380vw] custom1150:h-[370vw] custom1200:h-[355vw] custom1240:h-[345vw] custom1300:h-[330vw] custom1350:h-[318vw] custom1400:h-[300vw] custom1450:h-[290vw] custom1500:h-[260vw] custom1560:h-[240vw]  relative bottom-16 bg-floralWhite overflow-hidden"
+      style={{ backgroundImage: `url(${backg})` }}>
         <div className="w-full relative top-16 flex items-center" ref={reelRef1}>
-          <div className="w-full relative md:h-[51vw] ">
-            <img className="w-full md:h-[51vw] custom1300:h-[29vw] " src={tiltedRoll} alt="Reel Image 1" />
-            <div className="relative flex md:gap-3 items-center bottom-[32vw] px-4 transform custom1300:h-[17vw] custom1300:bottom-[17.86vw] custom1300:rotate-[2deg] left-[-7px]  md:rotate-[3.6deg] z-20 w-[400vw] h-[31vw] bg-reelColor">
+          <div className="w-full relative md:h-[40vw] custom1000:h-[28vw] custom1300:h-[22.5vw] ">
+            <img className="w-full md:h-[40vw] custom1000:h-[28vw] custom1300:h-[22vw]  " src={tiltedRoll} alt="Reel Image 1" />
+            <div className="relative flex md:gap-3 items-center bottom-[25.4vw] px-4 transform custom1000:h-[16.8vw] custom1000:rotate-[2.2deg] custom1000:bottom-[16.9vw] custom1300:h-[13.6vw] custom1300:rotate-[2.06deg] custom1300:bottom-[12.46vw]  left-[-7px]  md:rotate-[2.84deg]  z-20 w-[400vw] h-[24.2vw] bg-reelColor">
               <img className="h-[90%]  border-0 md:rounded-[16px]" src={test} alt="Gallery Image 1" />
               <img className="h-[90%]  border-0 md:rounded-[16px]" src={test} alt="Gallery Image 2" />
               <img className="h-[90%]  border-0 md:rounded-[16px]" src={test} alt="Gallery Image 3" />
             </div>
           </div>
-          <img className="w-full md:h-[51vw] custom1300:h-[29vw] relative md:top-[6.153vw] custom1300:top-[-7.46vw]" src={tiltedRoll} alt="Reel Image 2" />
-          <img className="w-full md:h-[51vw] custom1300:h-[29vw] relative md:top-[12.4vw] custom1300:top-[-4vw]" src={tiltedRoll} alt="Reel Image 3" />
-          <img className="w-full md:h-[51vw] custom1300:h-[29vw] relative md:top-[9.5rem]" src={tiltedRoll} alt="Reel Image 4" />
+          <img className="w-full md:h-[40vw] custom1000:top-[3.426vw] custom1000:h-[28vw] custom1300:h-[22vw] custom1300:top-[2.7vw]  relative md:top-[4.86vw] " src={tiltedRoll} alt="Reel Image 2" />
+          <img className="w-full md:h-[40vw] custom1000:top-[6.86vw] custom1000:h-[28vw] custom1300:h-[22vw] custom1300:top-[5.36vw]  relative md:top-[9.7vw]" src={tiltedRoll} alt="Reel Image 3" />
+          <img className="w-full md:h-[40vw] custom1000:top-[10.2vw] custom1000:h-[28vw] custom1300:h-[22vw] custom1300:top-[8vw]  relative md:top-[9.5rem]" src={tiltedRoll} alt="Reel Image 4" />
         </div>
         <div className="w-full h-16 flex justify-center relative top-[23vh]">
           <h1 className="font-bionix text-scheduleOrange text-[6vh]">GALLERY</h1>
         </div>
-        <div className="w-full md:h-[41vw] custom1300:h-[27vw] relative top-[27vh] flex items-center" ref={reelRef2}>
-          <div className="w-full relative md:h-[41vw]"> 
-            <img className="w-full md:h-[41vw] custom1300:h-[27vw] custom1300:top-[7vw] relative top-[0vw] " src={Roll} alt="Reel Image 5" />
-            <div className="relative bottom-[35vw] custom1300:bottom-[16vw] flex items-center  md:gap-3 px-4 transform w-[370vw] h-[29.7vw] custom1300:h-[19.4vw] bg-reelColor">
+        <div className="w-full md:h-[28vw]  custom1000:h-[23vw] custom1300:top-[32vh] custom1300:h-[15vw] relative top-[27vh] flex items-center" ref={reelRef2}>
+          <div className="w-full relative md:h-[28vw] custom1300:h-[15vw]"> 
+            <img className="w-full md:h-[28vw]  custom1000:h-[23vw]  custom1300:h-[15vw] relative top-[0vw] " src={Roll} alt="Reel Image 5" />
+            <div className="relative bottom-[23.7vw] custom1000:h-[16vw] custom1000:bottom-[19.5vw] flex items-center  md:gap-3 px-4 transform w-[370vw] h-[19.7vw] custom1300:h-[10.4vw] custom1300:bottom-[12.7vw]   bg-reelColor">
                 <img className="h-[90%] border-0 md:rounded-[16px]" src={test} alt="Gallery Image 4" />
                 <img className="h-[90%] border-0 md:rounded-[16px]" src={test} alt="Gallery Image 5" />
             </div>
           </div>
-          <img className="w-full md:h-[41vw] custom1300:h-[27vw] relative" src={Roll} alt="Reel Image 6" />
-          <img className="w-full md:h-[41vw] custom1300:h-[27vw] relative" src={Roll} alt="Reel Image 7" />
-          <img className="w-full md:h-[41vw] custom1300:h-[27vw] relative" src={Roll} alt="Reel Image 8" />
+          <img className="w-full md:h-[28vw]  custom1000:top-[-2.58vw] custom1000:h-[23vw] custom1300:h-[15vw] custom1300:top-[0vw] relative" src={Roll} alt="Reel Image 6" />
+          <img className="w-full md:h-[28vw]  custom1000:top-[-2.58vw] custom1000:h-[23vw] custom1300:h-[15vw] custom1300:top-[0vw] relative" src={Roll} alt="Reel Image 7" />
+          <img className="w-full md:h-[28vw]  custom1000:top-[-2.58vw] custom1000:h-[23vw] custom1300:h-[15vw] custom1300:top-[0vw] relative" src={Roll} alt="Reel Image 8" />
+          <img className="w-full md:h-[28vw]  custom1000:top-[-2.58vw] custom1000:h-[23vw] custom1300:h-[15vw] custom1300:top-[0vw]  relative" src={Roll} alt="Reel Image 8" />
         </div>
       </div>
     </>
