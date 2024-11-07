@@ -39,10 +39,9 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // All routes
 app.use("/api/auth/v1", authRoutes);
-app.use(AuthenticateToken);
-app.use("/api/admin/v1", adminRouter);
-app.use("/api/team/v1", teamRoutes);
-app.use("/api/event/v1", eventRoutes);
+app.use("/api/admin/v1", AuthenticateToken, adminRouter);
+app.use("/api/team/v1", AuthenticateToken, teamRoutes);
+app.use("/api/event/v1", AuthenticateToken, eventRoutes);
 
 // Handle every exception and error before starting the server
 // Don't change the position of this errorHandler, because this should be the last middleware to catch all the errors.
