@@ -392,7 +392,7 @@ export const data = [
         linkedin: "https://linkedin.com/in/artslead2",
       },
       {
-        name: "Satvik Jana",
+        name: "Sattwik Jana",
         email: "artslead3@example.com",
         img: SatvikJana,
         linkedin: "https://linkedin.com/in/artslead3",
@@ -409,7 +409,7 @@ export const data = [
     teamName: "GNOSIOMANIA LEADS",
     members: [
       {
-        name: "Anaanya Jain",
+        name: "Ananya Jain",
         email: "gnosiolead1@example.com",
         img: AnanyaJain,
         linkedin: "https://linkedin.com/in/gnosiolead1",
