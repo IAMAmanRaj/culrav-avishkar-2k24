@@ -40,11 +40,6 @@ function Navbar() {
           >
             AVISHKAR
           </h1>
-          <a href="/#gallery-section">
-            <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300">
-              GALLERY
-            </h1>
-          </a>
           <h1
             className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
             onClick={() => {
