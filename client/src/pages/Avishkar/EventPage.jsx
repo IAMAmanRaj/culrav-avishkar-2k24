@@ -10,20 +10,23 @@ import {
 } from "../../Components/profile_DashBoard/services.js";
 import useAuth from "../../lib/useAuth.js";
 import getUser from "../../Components/profile_DashBoard/userService.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function AvishkarEvent() {
+  const { data } = useParams();
+  const decodedData = JSON.parse(decodeURIComponent(data));
   const eventData = {
-    eventId: "12345556",
-    eventName: "KREEDOMANIA",
-    department: "XYZ",
-    minTeamSize: 1,
-    maxTeamSize: 5,
-    eventCoordinators: ["Avinash", "Aman", "Shivansh", "Hariom"],
-    description: "no description",
-    rules: ["rule1", "rule2"],
+    eventId: decodedData.eventId,
+    eventName: decodedData.eventName,
+    department: "NA",
+    minTeamSize: decodedData.minTeamSize,
+    maxTeamSize: decodedData.maxTeamSize,
+    eventCoordinators: decodedData.coordinators,
+    description: decodedData.description,
+    rules: decodedData.rules,
   };
+  console.log(decodedData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [teams, setTeams] = useState([]);
 
@@ -180,7 +183,7 @@ function AvishkarEvent() {
             </h2>
             <div className="flex justify-around font-bionix text-[2.5vw]">
               {eventData.eventCoordinators.map((coo, idx) => (
-                <div>{coo}</div>
+                <div>{coo.name}</div>
               ))}
             </div>
           </div>
