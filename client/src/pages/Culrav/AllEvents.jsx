@@ -5,18 +5,20 @@ import EventCard2 from "@/Components/Culrav/EventCard2";
 import { useParams } from "react-router-dom";
 import events from "@/data/Event/culrav/events/culravData";
 import { useEffect } from "react";
+import Footer from "@/Components/General/Footer";
+
 function CulravEvents() {
   // const data= useParams();
   // console.log(data)
   const { EventId } = useParams();
   console.log(EventId)
   const event = events.find(event => event.id === parseInt(EventId))
-
+  
 
   return (
     <div className=" culrav-background relative z-20 flex flex-col items-center justify-center bg-floralWhite pt-[20%] sm:pt-[10%] md:pt-[10%] lg:pt-[8%] p-[8%]  bg-center bg-cover">
       <h1
-        className="bg-[#F54E25] font-bionix text-[#FFFAF0] font-bold text-center  "
+        className="bg-[#F54E25] md:mb-0 mb-10 font-bionix text-[#FFFAF0] font-bold text-center  "
         style={{
           fontSize: "clamp(1.2rem, 3.5vw, 2.5rem)", // Responsive font size
           width: "clamp(150px, 30%, 300px)", // Responsive width

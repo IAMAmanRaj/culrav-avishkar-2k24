@@ -31,6 +31,7 @@ import ScrollToTop from "./Components/General/ScrollToTop"
 
 const TitleUpdater = () => {
   const location = useLocation();
+  const pathname = location.pathname;
 
   useEffect(() => {
     // Set scroll restoration to manual
@@ -45,7 +46,7 @@ const TitleUpdater = () => {
       // Reset scrollRestoration to auto on component unmount (optional)
       window.history.scrollRestoration = "auto";
     };
-  }, []);
+  }, [pathname]);
 
 
 

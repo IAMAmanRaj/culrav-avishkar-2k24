@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function EventCard2({ roller, event,mainevent }) {
+function EventCard2({ roller, event, mainevent }) {
+
+  const [isSelected, setIsSelected] = useState(false);
+
   const navigate = useNavigate();
   console.log(event)
   const handleClick = () => {
     navigate(`/CulravEventPage/${mainevent.id}/${event.eventId}`);
   };
   return (
-    <div className="relative w-full h-full  flex flex-col justify-between overflow-hidden transition-transform duration-500 ease-out  ">
+    <div className="relative w-[80%] sm:w-full h-full  flex flex-col justify-between overflow-hidden transition-transform duration-500 ease-out  ">
       {/* Roller Image (transition effect) */}
       <div className="absolute left-0 w-full h-full">
         <div
@@ -43,7 +47,7 @@ function EventCard2({ roller, event,mainevent }) {
             }}
           >
             <span
-              className="hover:cursor-pointer hover:text-[#F54E25] group-hover:text-[2rem] transition-all duration-300"
+              className=" hover:lg:cursor-pointer  hover:text-[#F54E25] group-hover:text-[2rem] transition-all duration-300"
               onClick={handleClick}
             >
               {" "}
@@ -54,20 +58,8 @@ function EventCard2({ roller, event,mainevent }) {
         </div>
       </div>
 
-      {/* Add custom CSS for responsive behavior */}
-      <style jsx>{`
-        @media (min-width: 400px) and (max-width: 570px) {
-          .relative {
-            max-width: 90%; /* Ensure width is consistent between 400px and 640px */
-          }
-        }
-        @media (min-width: 570px) and (max-width: 640px) {
-          .relative {
-            max-width: 70%; /* Ensure width is consistent between 400px and 640px */
-          }
-        }
-      `}</style>
-    </div>
+
+    </div >
   );
 }
 
