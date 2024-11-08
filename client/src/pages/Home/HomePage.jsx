@@ -27,15 +27,12 @@ function Home() {
       setLoading(false);
     }
 
-
-
   }, []);
 
   useLayoutEffect(() => {
     const hash = window.location.hash;
-    console.log(hash);
 
-    if (hash) {
+    if (hash!=="" && hash !== "#") {
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
@@ -44,7 +41,7 @@ function Home() {
           element.scrollIntoView({ behavior: "smooth" });
         }
       }, 0);
-    } // The delay ensures that all elements are rendered before scrolling
+    }
   }, []);
 
   const state = useSelector((state) => {

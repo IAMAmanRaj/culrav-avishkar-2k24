@@ -1,9 +1,14 @@
-import React from "react";
+import React,{useEffect} from "react";
 import noise from "../../assets/Sc-assets/noise.png";
 import grid from "../../assets/Sc-assets/Grid.png";
 import triangle from "../../assets/Sc-assets/triangle.png";
 
 const Sponsors = () => {
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
+
   return (
     <div className="w-full relative z-20 min-h-screen md:h-full bg-[#202020] flex flex-col items-center justify-begin px-4 sm:px-8 pt-24 md:pb-24">
       <img

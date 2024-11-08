@@ -43,7 +43,7 @@ function EventCard2({ roller, event,mainevent }) {
             }}
           >
             <span
-              className="hover:text-[#F54E25] group-hover:text-[2.5rem] transition-all duration-300"
+              className="hover:cursor-pointer hover:text-[#F54E25] group-hover:text-[2rem] transition-all duration-300"
               onClick={handleClick}
             >
               {" "}

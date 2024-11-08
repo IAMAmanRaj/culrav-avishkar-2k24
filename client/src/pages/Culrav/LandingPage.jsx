@@ -1,10 +1,13 @@
+import {useEffect} from "react";
 import EventCard from "@/Components/Culrav/EventCard";
 import MainEvent from "@/Components/Culrav/MainEventCard";
 import roller from "@/images/disc.png"; // Assuming roller image is imported
 import cardBg from "@/images/image.png";
 import rectangle from "@/images/Rectangle.png";
 import culravData from "@/data/Event/culrav/events/culravData.js";
+
 function CulravLanding() {
+
   const events = culravData;
   return (
     <div className=" culrav-Landing-background relative z-20 flex flex-col items-center justify-center bg-floralWhite ">

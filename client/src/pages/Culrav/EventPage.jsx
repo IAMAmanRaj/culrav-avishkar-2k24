@@ -42,17 +42,19 @@ function CulravEvent() {
     func();
   }, []);
 
+
+
   const eventData = decodedData
     ? {
-        eventId: decodedData.eventId,
-        eventName: decodedData.eventName,
-        department: "NA",
-        minTeamSize: decodedData.minTeamSize,
-        maxTeamSize: decodedData.maxTeamSize,
-        eventCoordinators: decodedData.coordinators,
-        description: decodedData.description,
-        rules: decodedData.rules,
-      }
+      eventId: decodedData.eventId,
+      eventName: decodedData.eventName,
+      department: "NA",
+      minTeamSize: decodedData.minTeamSize,
+      maxTeamSize: decodedData.maxTeamSize,
+      eventCoordinators: decodedData.coordinators,
+      description: decodedData.description,
+      rules: decodedData.rules,
+    }
     : null;
 
   const [isModalOpen, setIsModalOpen] = useState(false);

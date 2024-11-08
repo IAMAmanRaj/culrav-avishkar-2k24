@@ -27,9 +27,27 @@ import UserProfilePage from "./pages/UserDashboard/UserDashboardPage";
 import Schedule from "./Components/Schedule/Schedule";
 import Sponsors from "./Components/Sponsors/Sponsors";
 import VerticalSideBarAdmin from "./Components/AdminPanel/VerticalSideBarAdmin";
+import ScrollToTop from "./Components/General/ScrollToTop"
 
 const TitleUpdater = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    // Set scroll restoration to manual
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    // Scroll to the top on initial page load
+    window.scrollTo(0, 0);
+
+    return () => {
+      // Reset scrollRestoration to auto on component unmount (optional)
+      window.history.scrollRestoration = "auto";
+    };
+  }, []);
+
+
 
   useEffect(() => {
     const { pathname } = location;
@@ -97,6 +115,7 @@ const TitleUpdater = () => {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <TitleUpdater />
       <Routes>

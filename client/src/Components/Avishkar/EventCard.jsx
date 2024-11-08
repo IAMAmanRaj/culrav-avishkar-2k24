@@ -1,7 +1,7 @@
 
 function EventCard({ event }) {
   return (
-    <div className="relative w-full h-full flex flex-col justify-between overflow-hidden transition-transform duration-500 ease-out group">
+    <div className="hover:cursor-pointer relative w-full h-full flex flex-col justify-between overflow-hidden transition-transform duration-500 ease-out group">
         
         {/* Event Image */}
         <div className="absolute z-10 bottom-0 w-full h-full overflow-hidden">
