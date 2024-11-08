@@ -99,7 +99,7 @@ const updateTeam = async (req, res, next) => {
     if (registeredEventsByThisTeam.length > 0) {
       return res.status(409).json({
         success: false,
-        message: "This team is already registered for some event/events",
+        message: "Team already registered for some event/events",
       });
     }
 
@@ -842,11 +842,11 @@ const kickMember = async (req, res, next) => {
 
     //check if the team is not participating in any event
     const registeredEventsByThisTeam = tm.registeredEvents;
-    if (registeredEventsByThisTeam > 0) {
+    if (registeredEventsByThisTeam.length > 0) {
       return res.status(400).json({
         success: false,
         message:
-          "can't kick this user beacuse this team is registered for some event/events",
+          "Can't kick this user because this team is registered for some event/events",
       });
     }
 
