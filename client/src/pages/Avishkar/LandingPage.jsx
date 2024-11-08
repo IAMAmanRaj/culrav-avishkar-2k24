@@ -2,18 +2,16 @@ import { useEffect } from "react";
 import EventCard from "@/Components/Avishkar/EventCard";
 import MainEvent from "@/Components/Avishkar/MainEventCard";
 import aviskarbg from '@/images/aviskar-bg.png';
-import hoverimage from '@/images/hoveraviskhar.png';
 import cardBg from '@/images/imageavishkar.png';
 import avishkarImage from "@/assets/Home/avishkar.webp";
+import AvishkarAllEvents from "@/data/Event/avishkar/events/AvishkarAllEvents";
 
 function AvishkarLanding() {
 
     const mainevent = MainEvent;
-    const events = Array(9).fill({
-        image: cardBg,
-        hoverImage: hoverimage,
-        title: "", // Add actual event titles as needed
-    });
+    const events = AvishkarAllEvents;
+    console.log(events);
+
 
     return (
         <div className=" culrav-Landing-background w-auto h-auto relative z-20 flex flex-col items-center justify-center bg-floralWhite bg-center bg-cover">
@@ -86,21 +84,11 @@ function AvishkarLanding() {
                 </div>
             </div>
         </div>
+
     );
 }
 
 export default AvishkarLanding;
 
-{/* <div
-                    className="w-full h-full bg-floralWhite absolute top-3 left-0 hidden sm:block "
-                    style={{
-                        clipPath: 'polygon(100% 0, 100% 61%, 80% 72%, 40% 65%, 20% 72%, 0 62%, 0 0)',
-                    }}
-                ></div>
-                <div
-                    className="w-full h-full bg-scheduleOrange absolute top-0 left-0 hidden sm:block "
-                    style={{
-                        clipPath: 'polygon(100% 0, 100% 61%, 80% 72%, 40% 65%, 20% 72%, 0 62%, 0 0)',
-                    }}
-                ></div> */}
+
 

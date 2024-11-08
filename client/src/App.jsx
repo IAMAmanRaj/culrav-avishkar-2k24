@@ -136,7 +136,9 @@ function App() {
         <Route path="/CulravEventPage/:EventId/:Id" element={<CulravEvent />} />
         <Route path="/Avishkar-Landing" element={<AvishkarLanding />} />
         <Route path="/AvishkarEvents" element={<AvishkarEvents />} />
+        <Route path="/AvishkarEvents/:data" element={<AvishkarEvents />} />
         <Route path="/AvishkarEventPage" element={<AvishkarEvent />} />
+        <Route path="/AvishkarEventPage/:data" element={<AvishkarEvent />} />
         <Route path="/team" element={<Team />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<UserProfilePage />} />

@@ -1,4 +1,5 @@
-import BgImg from "../images/darkroom.webp";
+import BgImg from "../images/Darkroom.webp";
+
 import BgImg2 from "../images/Darkroom.jpg";
 
 const Darkroom = {

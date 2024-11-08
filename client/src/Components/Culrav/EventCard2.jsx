@@ -32,12 +32,12 @@ function EventCard2({ roller, event, mainevent }) {
           className="w-full h-full object-fill"
         />
       </div>
-      <div className="absolute z-20 bottom-0 w-full px-2 flex justify-center items-center h-[30%]">
-        <div className="absolute bottom-0 left-0 w-full px-2 z-20 flex justify-center">
-          {" "}
+      <div className="hover:cursor-pointer absolute z-30 bottom-0 w-full px-2 flex justify-center items-center h-[30%]">
+        <div className="absolute hover:z-30 bottom-0 left-0 w-full px-2 z-20 flex justify-center">
           {/* Added flex justify-center */}
           {/* Sliding White Background */}
           <div className="absolute inset-0 bg-[#181818] transform translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"></div>
+
           {/* Sliding Explore Text */}
           <span
             className="relative font-bionix text-[#FFFAF0] text-center transform translate-x-[100%] group-hover:translate-x-0 transition-transform duration-500 opacity-0 group-hover:opacity-100 flex justify-center items-center h-full"
@@ -47,15 +47,27 @@ function EventCard2({ roller, event, mainevent }) {
             }}
           >
             <span
-              className=" hover:lg:cursor-pointer  hover:text-[#F54E25] group-hover:text-[2rem] transition-all duration-300"
+              className="  hover:text-[#F54E25] group-hover:text-[2rem] transition-all duration-300"
               onClick={handleClick}
             >
               {" "}
-              {/* Inner span for hover effects */}
+
               Explore
             </span>
+
           </span>
         </div>
+        <div className="absolute group-hover:hidden bottom-0 left-0 w-full px-2 z-20 hover:z-0 flex justify-center">
+          <span
+            className=" bottom-0 text-black font-bionix hover:z-0 "
+            style={{
+              fontSize: "clamp(1rem, 5vw, 1.8rem)"
+            }}
+          >
+            {event.eventName}
+          </span>
+        </div>
+
       </div>
 
 
