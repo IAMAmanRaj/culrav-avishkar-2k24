@@ -92,20 +92,23 @@ const Gallery = () => {
         </div>
       </div>
 
-      <div className="hidden md:block w-full md:h-[2500px] xl:h-[2600px] relative bottom-16 bg-floralWhite overflow-hidden"
+      <div className="hidden md:block w-full md:h-[2620px] xl:h-[2700px] pt-40 relative bottom-16 bg-floralWhite overflow-hidden"
   style={{ backgroundImage: `url(${backg})` }}>
+        <div className="w-full flex justify-center">
+          <h1 className="font-bionix text-scheduleOrange text-[6vh]">GALLERY</h1>
+        </div>
   <div className="w-full relative top-[100px] flex items-center custom" ref={reelRef2}>
-    <div className="w-full relative md:h-[300px] xl:h-[400px]">
-      <img className="w-full md:h-[300px] xl:h-[400px] relative top-[0px]" src={Roll} alt="Reel Image 5" />
-      <div className="relative bottom-[255px] xl:bottom-[335px] flex items-center gap-3 px-4 transform w-[9000px] h-[216px] xl:h-[276px] bg-reelColor">
+    <div className="w-full relative md:h-[300px] xl:h-[350]">
+      <img className="w-full md:h-[300px] xl:h-[350] relative top-[0px]" src={Roll} alt="Reel Image 5" />
+      <div className="relative bottom-[255px] xl:bottom-[255px] flex items-center gap-3 px-4 transform w-[9000px] h-[216px] xl:h-[216px] bg-reelColor">
         <img className="h-[90%] border-0 md:rounded-[16px]" src={test} alt="Gallery Image 4" />
         <img className="h-[90%] border-0 md:rounded-[16px]" src={test} alt="Gallery Image 5" />
       </div>
     </div>
-    <img className="w-full md:h-[300px] xl:h-[400px] relative" src={Roll} alt="Reel Image 6" />
-    <img className="w-full md:h-[300px] xl:h-[400px] relative" src={Roll} alt="Reel Image 7" />
-    <img className="w-full md:h-[300px] xl:h-[400px] relative" src={Roll} alt="Reel Image 8" />
-    <img className="w-full md:h-[300px] xl:h-[400px] relative" src={Roll} alt="Reel Image 9" />
+    <img className="w-full md:h-[300px] xl:h-[350] relative" src={Roll} alt="Reel Image 6" />
+    <img className="w-full md:h-[300px] xl:h-[350] relative" src={Roll} alt="Reel Image 7" />
+    <img className="w-full md:h-[300px] xl:h-[350] relative" src={Roll} alt="Reel Image 8" />
+    <img className="w-full md:h-[300px] xl:h-[350] relative" src={Roll} alt="Reel Image 9" />
   </div>
 </div>
 
