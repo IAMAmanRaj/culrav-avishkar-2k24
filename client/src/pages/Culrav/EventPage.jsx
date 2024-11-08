@@ -119,7 +119,13 @@ function CulravEvent() {
           isOpen={isModalOpen}
         />
       )}
-      <div className="flex flex-col min-h-screen bg-[#FFFAF0] text-[#181818] w-full bg-fixed overflow-x-hidden pt-[8%] sm:pt-[3%] md:pt-[4%] lg:pt-[3%] ">
+      <div className="flex flex-col min-h-screen bg-[#FFFAF0] text-[#181818] w-full bg-fixed overflow-x-hidden pt-[8%] sm:pt-[3%] md:pt-[4%] lg:pt-[3%] "
+      style={{
+        backgroundImage: `url(${wall})`,
+        backgroundRepeat: "repeat",
+        backgroundPosition: "top-left",
+        backgroundSize: "100vw",
+      }}>
         {/* Layer Background Wrapper for RANGSAAZI and Description */}
         <div
           className="relative flex flex-col items-center justify-center text-center w-[80vw] m-auto "

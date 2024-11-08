@@ -3,11 +3,10 @@ import { useLocation } from "react-router-dom";
 import Gallery from "@/Components/Home/Gallery";
 import HeroSection from "@/Components/Home/HeroSection";
 import Schedule from "@/Components/Home/Schedule";
-import ProfileTape from "@/Components/Home/ProfileTape";
 import { useSelector } from "react-redux";
 import VideoLoader from "@/Components/Loaders/Videoloader";
 import webSiteLoaderVideo from "@/assets/Website_Loader.webm";
-import Navbar from "@/Components/General/Navbar";
+
 
 function Home() {
 
@@ -60,6 +59,7 @@ function Home() {
       <HeroSection />
       <Schedule />
       <Gallery />
+      <ImageSection/>
     </div>
   );
 }
