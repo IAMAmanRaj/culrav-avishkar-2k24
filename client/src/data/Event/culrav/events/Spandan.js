@@ -1,5 +1,5 @@
 
-import BgImg from "../images/Spandan.webp";
+import BgImg from "../images/spandan.webp";
 import BgImg2 from "../images/Spandan.jpg"
 
 const Spandan = {

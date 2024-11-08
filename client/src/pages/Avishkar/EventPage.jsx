@@ -10,20 +10,23 @@ import {
 } from "../../Components/profile_DashBoard/services.js";
 import useAuth from "../../lib/useAuth.js";
 import getUser from "../../Components/profile_DashBoard/userService.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function AvishkarEvent() {
+  const { data } = useParams();
+  const decodedData = JSON.parse(decodeURIComponent(data));
   const eventData = {
-    eventId: "12345556",
-    eventName: "KREEDOMANIA",
-    department: "XYZ",
-    minTeamSize: 1,
-    maxTeamSize: 5,
-    eventCoordinators: ["Avinash", "Aman", "Shivansh", "Hariom"],
-    description: "no description",
-    rules: ["rule1", "rule2"],
+    eventId: decodedData.eventId,
+    eventName: decodedData.eventName,
+    department: "NA",
+    minTeamSize: decodedData.minTeamSize,
+    maxTeamSize: decodedData.maxTeamSize,
+    eventCoordinators: decodedData.coordinators,
+    description: decodedData.description,
+    rules: decodedData.rules,
   };
+  console.log(decodedData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [teams, setTeams] = useState([]);
 
@@ -71,8 +74,16 @@ function AvishkarEvent() {
           isOpen={isModalOpen}
         />
       )}
-      <div
+      {/* <div
         className="flex flex-col items-center pt-[10vh] justify-center min-h-screen w-full bg-[#181818]   text-white bg-fixed overflow-x-hidden"
+        style={{
+          backgroundImage: `url(${avishkareventbg}), url(${layer2})`,
+          backgroundRepeat: "no-repeat, repeat",
+          backgroundPosition: "center, top-left",
+          backgroundSize: "cover, 250px auto",
+        }}
+      > */}
+      <div className=" pt-20 relative z-20 flex overflow-x-hidden flex-col items-center justify-center bg-[#181818] text-white bg-fixed "
         style={{
           backgroundImage: `url(${avishkareventbg}), url(${layer2})`,
           backgroundRepeat: "no-repeat, repeat",
@@ -81,7 +92,7 @@ function AvishkarEvent() {
         }}
       >
         <div
-          className="flex items-center  justify-center text-center  text-white"
+          className=" flex items-center  justify-center text-center  text-white"
           style={{
             backgroundImage: `url(${paint})`,
             backgroundSize: "cover",
@@ -180,7 +191,7 @@ function AvishkarEvent() {
             </h2>
             <div className="flex justify-around font-bionix text-[2.5vw]">
               {eventData.eventCoordinators.map((coo, idx) => (
-                <div>{coo}</div>
+                <div>{coo.name}</div>
               ))}
             </div>
           </div>

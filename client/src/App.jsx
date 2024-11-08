@@ -26,9 +26,29 @@ import PrivateRoute from "./Components/General/PrivateRoute";
 import UserProfilePage from "./pages/UserDashboard/UserDashboardPage";
 import Schedule from "./Components/Schedule/Schedule";
 import Sponsors from "./Components/Sponsors/Sponsors";
+import VerticalSideBarAdmin from "./Components/AdminPanel/VerticalSideBarAdmin";
+import ScrollToTop from "./Components/General/ScrollToTop"
 
 const TitleUpdater = () => {
   const location = useLocation();
+  const pathname = location.pathname;
+
+  useEffect(() => {
+    // Set scroll restoration to manual
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    // Scroll to the top on initial page load
+    window.scrollTo(0, 0);
+
+    return () => {
+      // Reset scrollRestoration to auto on component unmount (optional)
+      window.history.scrollRestoration = "auto";
+    };
+  }, [pathname]);
+
+
 
   useEffect(() => {
     const { pathname } = location;
@@ -80,6 +100,9 @@ const TitleUpdater = () => {
       case "/sponsors":
         title += " Sponsors";
         break;
+      case "/admin-panel":
+        title += " Admin Panel";
+        break;
       default:
         title += "";
     }
@@ -93,6 +116,7 @@ const TitleUpdater = () => {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <TitleUpdater />
       <Routes>
@@ -108,10 +132,12 @@ function App() {
         <Route path="/outside-registration" element={<OutsideRegistration />} />
         <Route path="/outside-registration/payFee" element={<PayFeesPage />} />
         <Route path="/Culrav-Landing" element={<CulravLanding />} />
-        <Route path="/CulravEvents/:data" element={<CulravEvents />} />
-        <Route path="/CulravEventPage/:data" element={<CulravEvent />} />
+        <Route path="/CulravEvents/:EventId" element={<CulravEvents />} />
+        <Route path="/CulravEventPage/:EventId/:Id" element={<CulravEvent />} />
         <Route path="/Avishkar-Landing" element={<AvishkarLanding />} />
+        <Route path="/AvishkarEvents" element={<AvishkarEvents />} />
         <Route path="/AvishkarEvents/:data" element={<AvishkarEvents />} />
+        <Route path="/AvishkarEventPage" element={<AvishkarEvent />} />
         <Route path="/AvishkarEventPage/:data" element={<AvishkarEvent />} />
         <Route path="/team" element={<Team />} />
         <Route element={<PrivateRoute />}>
@@ -119,6 +145,8 @@ function App() {
         </Route>
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/sponsors" element={<Sponsors />} />
+        {/* TODO: later make this a private route (checking if user is admin or not) */}
+        <Route path="/admin-panel" element={<VerticalSideBarAdmin />} />
       </Routes>
       <Footer />
     </Router>

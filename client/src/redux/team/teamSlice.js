@@ -5,7 +5,8 @@ const initialState = {
   myTeams: [],
   joinedTeams: [],
   invitations: [],
-  registeredEvents:[],
+  registeredEvents: [],
+  activeMembers: [], // Add this field for active members
   status: "idle",
   error: null,
 };
@@ -41,11 +42,7 @@ const teamSlice = createSlice({
       state.status = "failed";
     },
     registerEventSuccess(state, action) {
-      console.log("payload is ", action.payload);
-
       const { teamId, eventId } = action.payload;
-      console.log("this is the registered team's id", teamId);
-      console.log("this is the registered event's id", eventId);
       const team = state.myTeams.find((team) => team._id === teamId);
       if (team) {
         team.registeredEvents.push(eventId);
@@ -55,6 +52,7 @@ const teamSlice = createSlice({
       state.leaderId = null;
       state.myTeams = [];
       state.joinedTeams = [];
+      state.activeMembers = []; // Reset active members
       state.status = "idle";
       state.error = null;
     },
@@ -77,6 +75,22 @@ const teamSlice = createSlice({
         (invite) => invite._id !== action.payload
       );
     },
+    kickMemberSuccess(state, action) {
+      const { teamId, memberId } = action.payload;
+      const team = state.myTeams.find((team) => team._id === teamId);
+      if (team) {
+        team.acceptedMembers = team.acceptedMembers.filter(
+          (member) => member._id !== memberId
+        );
+      }
+      state.activeMembers = state.activeMembers.filter(
+        (member) => member._id !== memberId
+      );
+    },
+    setActiveMembers(state, action) {
+      const { acceptedMembers} = action.payload;
+      state.activeMembers = acceptedMembers;
+    },
   },
 });
 
@@ -93,6 +107,8 @@ export const {
   fetchInvitationsFailure,
   acceptInvitationSuccess,
   rejectInvitation,
+  kickMemberSuccess,
+  setActiveMembers,
 } = teamSlice.actions;
 
 export default teamSlice.reducer;

@@ -23,11 +23,14 @@ function Footer() {
     return null; // Hide the footer
   }
 
+  const isHome = location.pathname === "/";
+
   return (
     <>
-      <div className="flex flex-col w-full sticky z-10  bottom-0 ">
+      <div className="flex flex-col w-full sticky z-10  bottom-0">
         <ProfileTape />
-        <div className="flex bg-floral_white text-dark_secondary flex-col pt-[5%] pb-[5%] md:pb-[2%] justify-center items-center">
+
+        <div className={`flex bg-floral_white text-dark_secondary flex-col ${isHome ? "custom1200:p-0" : ""} pt-[5%] pb-[5%] md:pb-[2%] justify-center items-center`}>
           <div className="text-center text-[6vw] md:text-[4.5vw] lg:text-[3.3vw] font-bionix tracking-wide">
             CULRAV-AVISHKAR
           </div>

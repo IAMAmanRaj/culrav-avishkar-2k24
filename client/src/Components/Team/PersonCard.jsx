@@ -1,16 +1,8 @@
 function PersonCard({ profile }) {
   return (
-    <div className="w-full border-gray-200 border-2 h-full flex flex-col">
-      <div className="flex w-full h-[90%] justify-center">
-        {/* <img
-          src={profile?.img}
-          style={{
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-          }}
-          className="object-fit"
-        /> */}
+    <div className="w-full border-gray-200  border-2 h-full flex flex-col">
+      <div className="w-full h-[90%] justify-center items-center flex">
+        <img src={profile.img} className="w-auto h-full object-fit" />
       </div>
       <div
         className="h-[10%] text-center 

@@ -21,9 +21,8 @@ const HamburgerMenu = () => {
   return (
     <div className="relative">
       <div
-        className={`${
-          isOpen ? "fixed" : "absolute"
-        } z-[90] top-8 right-4`}
+        className={`bg-black bg-opacity-[70%] rounded-xl ${isOpen ? "fixed top-4 " : "absolute top-8 right-4"
+          } z-[90] right-4`}
       >
         <Hamburger
           toggled={isOpen}
@@ -34,9 +33,8 @@ const HamburgerMenu = () => {
       </div>
 
       <div
-        className={`fixed inset-0 py-16 w-full h-full text-white transition-all duration-700 ease-in-out transform ${
-          isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-        } z-40`}
+        className={`fixed inset-0 py-16 w-full h-full text-white transition-all duration-700 ease-in-out transform ${isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+          } z-40`}
         style={{
           backgroundImage: `url(${hamburgerBg})`,
           backgroundSize: "cover",
@@ -51,9 +49,7 @@ const HamburgerMenu = () => {
             <li className="py-2 px-4 hover:text-register transition-all duration-300 ease-in-out">
               <a href="/avishkar-landing">AVISHKAR</a>
             </li>
-            <li className="py-2 px-4 hover:text-register transition-all duration-300 ease-in-out">
-              <a href="#">GALLERY</a>
-            </li>
+
             <li className="py-2 px-4 hover:text-register transition-all duration-300 ease-in-out">
               <a href="/team">TEAM</a>
             </li>
@@ -67,9 +63,8 @@ const HamburgerMenu = () => {
           {auth ? (
             <a href="/dashboard">
               <button
-                className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${
-                  isOpen ? "block" : "hidden"
-                }`}
+                className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${isOpen ? "block" : "hidden"
+                  }`}
               >
                 <h1 className="text-[2.2rem]">PROFILE</h1>
               </button>
@@ -77,9 +72,8 @@ const HamburgerMenu = () => {
           ) : (
             <a href="/registration">
               <button
-                className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${
-                  isOpen ? "block" : "hidden"
-                }`}
+                className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${isOpen ? "block" : "hidden"
+                  }`}
               >
                 <h1 className="text-[2.2rem]">REGISTER</h1>
               </button>
