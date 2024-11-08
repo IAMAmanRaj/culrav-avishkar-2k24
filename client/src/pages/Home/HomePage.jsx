@@ -59,7 +59,7 @@ function Home() {
       <HeroSection />
       <Schedule />
       <Gallery />
-      <ImageSection/>
+      {/* <ImageSection/> */}
     </div>
   );
 }
