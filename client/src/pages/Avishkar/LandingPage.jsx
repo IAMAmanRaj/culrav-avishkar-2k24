@@ -78,7 +78,6 @@ function AvishkarLanding() {
                     <div key={index} className="relative group flex flex-col items-center w-[90%] h-[300px] sm:h-[300px] md:h-[300px] lg:h-[350px] lg:w-[320px] p-[5%]  overflow-hidden">
                         {/* Card Container */}
                         <EventCard  event={event} />
-                    
                     </div>
                 ))}
                 </div>
