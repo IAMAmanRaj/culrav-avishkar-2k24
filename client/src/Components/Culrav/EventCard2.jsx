@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-function EventCard2({ roller, event }) {
+function EventCard2({ roller, event,mainevent }) {
   const navigate = useNavigate();
-
+  console.log(event)
   const handleClick = () => {
-    navigate(`/CulravEventPage/${encodeURIComponent(JSON.stringify(event))}`);
+    navigate(`/CulravEventPage/${mainevent.id}/${event.eventId}`);
   };
   return (
     <div className="relative w-full h-full  flex flex-col justify-between overflow-hidden transition-transform duration-500 ease-out  ">

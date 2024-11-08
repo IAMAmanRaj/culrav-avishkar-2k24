@@ -18,27 +18,50 @@ import useAuth from "../../lib/useAuth.js";
 import getUser from "../../Components/profile_DashBoard/userService.js";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import events from "@/data/Event/culrav/events/culravData";
 
 function CulravEvent() {
-  const { data } = useParams();
-  const decodedData = JSON.parse(decodeURIComponent(data));
-  const eventData = {
-    eventId: decodedData.eventId,
-    eventName: decodedData.eventName,
-    department: "NA",
-    minTeamSize: decodedData.minTeamSize,
-    maxTeamSize: decodedData.maxTeamSize,
-    eventCoordinators: decodedData.coordinators,
-    description: decodedData.description,
-    rules: decodedData.rules,
-  };
+  const { EventId, Id } = useParams();
+  const [decodedData, setdecodedData] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const func = () => {
+      const mainEvent = events.find(event => event.id === parseInt(EventId));
+      if (mainEvent) {
+        const subEvent = mainEvent.events.find(subEvent => subEvent.eventId.toString() === Id);
+        if (subEvent) {
+          setdecodedData(subEvent);
+        } else {
+          navigate("/404");
+        }
+      } else {
+        navigate("/404");
+      }
+    };
+    func();
+  }, []);
+
+  const eventData = decodedData
+    ? {
+        eventId: decodedData.eventId,
+        eventName: decodedData.eventName,
+        department: "NA",
+        minTeamSize: decodedData.minTeamSize,
+        maxTeamSize: decodedData.maxTeamSize,
+        eventCoordinators: decodedData.coordinators,
+        description: decodedData.description,
+        rules: decodedData.rules,
+      }
+    : null;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const isAuthenticated = useAuth();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token, user } = getUser();
   const [remainingTeams, setRemainingTeams] = useState([]);
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
@@ -53,8 +76,7 @@ function CulravEvent() {
       if (res?.success) {
         const givenLeaderId = user._id;
         const totalTeams = res?.totalTeams;
-        const { matchingLeaderTeams, nonMatchingLeaderTeams } =
-          splitTeamsByLeader({ totalTeams, givenLeaderId });
+        const { matchingLeaderTeams, nonMatchingLeaderTeams } = splitTeamsByLeader({ totalTeams, givenLeaderId });
 
         console.log("matchingLeaderTeams", matchingLeaderTeams);
         setRemainingTeams(
@@ -82,37 +104,31 @@ function CulravEvent() {
     }
   };
 
+  if (!decodedData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       {isModalOpen && (
         <TeamRegisterModal
           teams={remainingTeams}
           eventData={eventData}
-          onClose={() => {
-            setIsModalOpen(false);
-          }}
+          onClose={() => setIsModalOpen(false)}
           themeColor="black"
           isOpen={isModalOpen}
         />
       )}
-      <div
-        className="flex flex-col min-h-screen bg-[#FFFAF0] text-[#181818] w-full bg-fixed overflow-x-hidden pt-[8%] sm:pt-[3%] md:pt-[4%] lg:pt-[3%] "
-        style={{
-          backgroundImage: `url(${wall})`,
-          backgroundRepeat: "repeat",
-          backgroundPosition: "top-left",
-          backgroundSize: "100vw",
-        }}
-      >
+      <div className="flex flex-col min-h-screen bg-[#FFFAF0] text-[#181818] w-full bg-fixed overflow-x-hidden pt-[8%] sm:pt-[3%] md:pt-[4%] lg:pt-[3%] ">
         {/* Layer Background Wrapper for RANGSAAZI and Description */}
         <div
           className="relative flex flex-col items-center justify-center text-center w-[80vw] m-auto "
           style={{
             backgroundImage: `url(${layer1})`,
-            backgroundSize: "contain", // Changed to cover
+            backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center 20vh",
-            padding: "4rem", // Optional padding for spacing
+            padding: "4rem",
           }}
         >
           {/* RANGSAAZI Section */}
@@ -156,7 +172,7 @@ function CulravEvent() {
             {eventData.rules.map((rule, index) => (
               <li
                 key={index}
-                className="flex items-start w-[85%] text-[2.5vw] sm:text-[2vw]  mt-[1.5%]"
+                className="flex items-start w-[85%] text-[2.5vw] sm:text-[2vw] mt-[1.5%]"
                 style={{ wordSpacing: "0.15em" }}
               >
                 <div
@@ -190,17 +206,13 @@ function CulravEvent() {
             style={{
               clipPath:
                 "polygon(27% 4%, 75% 0%, 100% 15%, 100% 100%, 0 100%, 0 24%)",
-
-              /* Other styles */
             }}
           ></div>
           <div
-            className="absolute inset-0 w-full bg-[#181818] hidden sm:block  "
+            className="absolute inset-0 w-full bg-[#181818] hidden sm:block"
             style={{
               clipPath:
                 "polygon(27% 4%, 75% 0%, 100% 15%, 100% 100%, 0 100%, 0 24%)",
-
-              /* Other styles */
             }}
           ></div>
           <div className="absolute inset-0 w-full h-[20vw] sm:hidden bg-[#181818] bg-cover bg-no-repeat"></div>
@@ -223,3 +235,4 @@ function CulravEvent() {
 }
 
 export default CulravEvent;
+
