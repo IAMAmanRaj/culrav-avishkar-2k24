@@ -16,7 +16,7 @@ function TeamProfile() {
               {team.members.map((profile) => {
                 return (
                   <div className="w-[250px] h-[250px] flex justify-center items-center">
-                    <PersonCard profile={profile} />
+                    <PersonCa rd profile={profile} />
                   </div>
                 );
               })}
