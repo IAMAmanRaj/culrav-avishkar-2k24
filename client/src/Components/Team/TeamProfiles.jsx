@@ -5,7 +5,7 @@ function TeamProfile() {
     return (
         <div className="w-full h-full pt-[8%] p-[5%] flex flex-col gap-3"
         >
-            {teamData.map((team,index) => {
+            {teamData.map((team, index) => {
                 return (
                     <div id={`${team.teamName}`} className="w-full h-full flex flex-col ">
                         <div className="w-full mt-20 mb-5 lg:mt-10 lg:mb-[3%]">
@@ -14,7 +14,7 @@ function TeamProfile() {
                         <div className="w-full h-full flex flex-col items-center md:flex-row md:flex-wrap md:justify-between gap-[2%]  lg:gap-[7%] mb-[20%] sm:mb-[10%]">
                             {team.members.map((profile) => {
                                 return (
-                                    <div className="md:w-[20vw] md:h-[20vw] mb-[10%] sm:m-0 w-[70vw] h-[70vw] lg:w-[20vw] lg:h-[21vw] flex justify-center items-center">
+                                    <div className="w-[250px] h-[250px] flex justify-center items-center">
                                         <PersonCard profile={profile} />
                                     </div>
                                 );
