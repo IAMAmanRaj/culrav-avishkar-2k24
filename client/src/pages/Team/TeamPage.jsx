@@ -1,5 +1,4 @@
 import React,{useEffect, useState} from "react";
-import PersonCard from "../../Components/Team/PersonCard";
 import overlay1 from "../../assets/Overlay1.png";
 import TeamProfile from "@/Components/Team/TeamProfiles";
 import SideBar from "@/Components/Team/SideBar";
