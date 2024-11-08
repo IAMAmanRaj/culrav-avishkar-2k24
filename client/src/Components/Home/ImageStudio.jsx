@@ -53,37 +53,37 @@ import {
   ];
   
   const carouselImages = [
-    "/src/Components/Home/ImageSection/img1.webp",
-    "/src/Components/Home/ImageSection/img3.webp",
-    "/src/Components/Home/ImageSection/img13.webp",
-    "/src/Components/Home/ImageSection/img17.webp",
-    "/src/Components/Home/ImageSection/img16.webp",
-    "/src/Components/Home/ImageSection/img14.webp",
-    "/src/Components/Home/ImageSection/img19.webp",
-    "/src/Components/Home/ImageSection/img20.webp",
-    "/src/Components/Home/ImageSection/img21.webp",
-    "/src/Components/Home/ImageSection/img22.webp",
-    "/src/Components/Home/ImageSection/img23.webp",
-    "/src/Components/Home/ImageSection/img24.webp",
-    "/src/Components/Home/ImageSection/img28.webp",
-    "/src/Components/Home/ImageSection/img29.webp",
-    "/src/Components/Home/ImageSection/img30.webp",
-    "/src/Components/Home/ImageSection/img31.webp",
-    "/src/Components/Home/ImageSection/img32.webp",
-    "/src/Components/Home/ImageSection/img33.webp",
-    "/src/Components/Home/ImageSection/img34.webp",
-    "/src/Components/Home/ImageSection/img36.webp",
-    "/src/Components/Home/ImageSection/img39.webp",
-    "/src/Components/Home/ImageSection/img43.webp",
-    "/src/Components/Home/ImageSection/img48.webp",
-    "/src/Components/Home/ImageSection/img49.webp",
-    "/src/Components/Home/ImageSection/img.webp",
-    "/src/Components/Home/ImageSection/img6.webp",
+    "/ImageSection/img1.webp",
+    "/ImageSection/img3.webp",
+    "/ImageSection/img13.webp",
+    "/ImageSection/img17.webp",
+    "/ImageSection/img16.webp",
+    "/ImageSection/img14.webp",
+    "/ImageSection/img19.webp",
+    "/ImageSection/img20.webp",
+    "/ImageSection/img21.webp",
+    "/ImageSection/img22.webp",
+    "/ImageSection/img23.webp",
+    "/ImageSection/img24.webp",
+    "/ImageSection/img28.webp",
+    "/ImageSection/img29.webp",
+    "/ImageSection/img30.webp",
+    "/ImageSection/img31.webp",
+    "/ImageSection/img32.webp",
+    "/ImageSection/img33.webp",
+    "/ImageSection/img34.webp",
+    "/ImageSection/img36.webp",
+    "/ImageSection/img39.webp",
+    "/ImageSection/img43.webp",
+    "/ImageSection/img48.webp",
+    "/ImageSection/img49.webp",
+    "/ImageSection/img.webp",
+    "/ImageSection/img6.webp",
   ];
   
   const ImageStudio = () => {
     return (
-      <div className="-mt-20">
+      <div className="-mt-12">
         <Carousel className={carouselStyles.carousel}>
           <CarouselContent>
               {carouselItems.map((item, index) =>

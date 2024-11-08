@@ -9,29 +9,27 @@ import webSiteLoaderVideo from "@/assets/Website_Loader.webm";
 import ImageStudio from "@/Components/Home/ImageStudio";
 
 function Home() {
-
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
-
+    // Check if the page was reloaded or if it's an internal navigation
     const isPageReload = window.performance.navigation.type === 1;
-    const isInternalNavigation = sessionStorage.getItem('isInternalNevigation') == 'true';
+    const isInternalNavigation = sessionStorage.getItem("isInternalNavigation") === "true";
 
+    // Set loading only for external navigations and first page load
     if (!isPageReload && !isInternalNavigation) {
       const timer = setTimeout(() => setLoading(false), 9800); // Adjust timing as needed
+      sessionStorage.setItem("isInternalNavigation", "true"); // Set for future navigations
       return () => clearTimeout(timer);
-    }
-    else {
+    } else {
       setLoading(false);
     }
-
   }, []);
 
   useLayoutEffect(() => {
     const hash = window.location.hash;
-
-    if (hash!=="" && hash !== "#") {
+    if (hash && hash !== "#") {
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
@@ -39,23 +37,22 @@ function Home() {
         }
       }, 0);
     }
-  }, []);
+  }, [location]);
 
-  const state = useSelector((state) => {
-    state.user.user;
-  });
+  const state = useSelector((state) => state.user.user); // Corrected selector return
 
   if (loading) {
     return <VideoLoader loading={loading} video={webSiteLoaderVideo} />;
   }
 
   return (
-    <div className="bg-floralWhite relative z-20 overflow-x-hidden ">
+    <div className="bg-floralWhite relative z-20 overflow-x-hidden">
       <HeroSection />
       <Schedule />
       {/* <Gallery /> */}
-      <ImageStudio/>
+      <ImageStudio />
     </div>
   );
 }
+
 export default Home;
