@@ -27,9 +27,28 @@ import UserProfilePage from "./pages/UserDashboard/UserDashboardPage";
 import Schedule from "./Components/Schedule/Schedule";
 import Sponsors from "./Components/Sponsors/Sponsors";
 import VerticalSideBarAdmin from "./Components/AdminPanel/VerticalSideBarAdmin";
+import ScrollToTop from "./Components/General/ScrollToTop"
 
 const TitleUpdater = () => {
   const location = useLocation();
+  const pathname = location.pathname;
+
+  useEffect(() => {
+    // Set scroll restoration to manual
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    // Scroll to the top on initial page load
+    window.scrollTo(0, 0);
+
+    return () => {
+      // Reset scrollRestoration to auto on component unmount (optional)
+      window.history.scrollRestoration = "auto";
+    };
+  }, [pathname]);
+
+
 
   useEffect(() => {
     const { pathname } = location;
@@ -57,8 +76,20 @@ const TitleUpdater = () => {
       case "/culrav-landing":
         title += " Culrav";
         break;
+      case "/culravevents":
+        title += " Culrav Events";
+        break;
+      case "/culraveventpage":
+        title += " Culrav Event Page";
+        break;
       case "/avishkar-landing":
         title += " Avishkar";
+        break;
+      case "/avishkarevents":
+        title += " Avishkar Events";
+        break;
+      case "/avishkareventpage":
+        title += " Avishkar Event Page";
         break;
       case "/team":
         title += " Team";
@@ -72,18 +103,8 @@ const TitleUpdater = () => {
       case "/admin-panel":
         title += " Admin Panel";
         break;
-        default:
-          if (pathname.includes("/CulravEventPage")) {
-            title += " Event Page";
-          } else if (pathname.includes("/avishkareventpage")) {
-            title += " Avishkar Event Page";
-          }else if (pathname.includes("/CulravEvents")) {
-            title += " Culrav Events";
-          }else if (pathname.includes("/AvishkarEvents")) {
-            title += " Avishkar Events";
-          } else {
-            title += "";
-          }
+      default:
+        title += "";
     }
 
     document.title = title;
@@ -95,6 +116,7 @@ const TitleUpdater = () => {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <TitleUpdater />
       <Routes>
@@ -114,7 +136,9 @@ function App() {
         <Route path="/CulravEventPage/:EventId/:Id" element={<CulravEvent />} />
         <Route path="/Avishkar-Landing" element={<AvishkarLanding />} />
         <Route path="/AvishkarEvents" element={<AvishkarEvents />} />
+        <Route path="/AvishkarEvents/:data" element={<AvishkarEvents />} />
         <Route path="/AvishkarEventPage" element={<AvishkarEvent />} />
+        <Route path="/AvishkarEventPage/:data" element={<AvishkarEvent />} />
         <Route path="/team" element={<Team />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<UserProfilePage />} />

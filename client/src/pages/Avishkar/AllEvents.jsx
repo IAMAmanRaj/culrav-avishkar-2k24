@@ -54,11 +54,11 @@ function AvishkarEvents() {
 
   return (
     <div
-      className="flex flex-col relative z-20 items-center justify-center min-h-screen w-full bg-[#181818] px-4 sm:px-6 lg:px-8 pt-[30%] sm:pt-[20%] md:pt-[15%] lg:pt-[10%]"
+      className="hover:cursor-pointer flex flex-col relative z-20 items-center justify-center min-h-screen w-full bg-[#181818] px-4 sm:px-6 lg:px-8 pt-[30%] sm:pt-[20%] md:pt-[15%] lg:pt-[10%]"
       style={{ backgroundImage: `url(${aviskharbg})` }}
     >
       <h1
-        className="bg-[#F54E25] font-bionix text-[#FFFAF0] font-bold text-center mb-8"
+        className="bg-[#F54E25] font-bionix text-[#FFFAF0] font-bold text-center "
         style={{
           fontSize: "clamp(1.2rem, 3.5vw, 2.5rem)", // Responsive font size
           width: "clamp(140px, 30%, 300px)", // Responsive width
@@ -71,7 +71,7 @@ function AvishkarEvents() {
         {events.map((event, index) => (
           <div
             key={index}
-            className="relative group flex flex-col items-center w-[90%] h-[280px] sm:h-[300px] md:h-[350px] lg:h-[350px] lg:w-[320px]  p-[5%] md:m-[8%] overflow-hidden mb-[10%]"
+            className="relative group flex flex-col items-center w-[90%] h-[280px] sm:h-[300px] md:h-[350px] lg:h-[380px] lg:w-[380px]  p-[5%]  overflow-hidden "
           >
             <MainEventCard event={event} />
           </div>

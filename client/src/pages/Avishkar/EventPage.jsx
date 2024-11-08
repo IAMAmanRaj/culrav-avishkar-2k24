@@ -74,8 +74,16 @@ function AvishkarEvent() {
           isOpen={isModalOpen}
         />
       )}
-      <div
+      {/* <div
         className="flex flex-col items-center pt-[10vh] justify-center min-h-screen w-full bg-[#181818]   text-white bg-fixed overflow-x-hidden"
+        style={{
+          backgroundImage: `url(${avishkareventbg}), url(${layer2})`,
+          backgroundRepeat: "no-repeat, repeat",
+          backgroundPosition: "center, top-left",
+          backgroundSize: "cover, 250px auto",
+        }}
+      > */}
+      <div className=" pt-20 relative z-20 flex overflow-x-hidden flex-col items-center justify-center bg-[#181818] text-white bg-fixed "
         style={{
           backgroundImage: `url(${avishkareventbg}), url(${layer2})`,
           backgroundRepeat: "no-repeat, repeat",
@@ -84,7 +92,7 @@ function AvishkarEvent() {
         }}
       >
         <div
-          className="flex items-center  justify-center text-center  text-white"
+          className=" flex items-center  justify-center text-center  text-white"
           style={{
             backgroundImage: `url(${paint})`,
             backgroundSize: "cover",

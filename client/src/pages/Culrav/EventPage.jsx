@@ -42,17 +42,19 @@ function CulravEvent() {
     func();
   }, []);
 
+
+
   const eventData = decodedData
     ? {
-        eventId: decodedData.eventId,
-        eventName: decodedData.eventName,
-        department: "NA",
-        minTeamSize: decodedData.minTeamSize,
-        maxTeamSize: decodedData.maxTeamSize,
-        eventCoordinators: decodedData.coordinators,
-        description: decodedData.description,
-        rules: decodedData.rules,
-      }
+      eventId: decodedData.eventId,
+      eventName: decodedData.eventName,
+      department: "NA",
+      minTeamSize: decodedData.minTeamSize,
+      maxTeamSize: decodedData.maxTeamSize,
+      eventCoordinators: decodedData.coordinators,
+      description: decodedData.description,
+      rules: decodedData.rules,
+    }
     : null;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -119,21 +121,22 @@ function CulravEvent() {
           isOpen={isModalOpen}
         />
       )}
-      <div className="flex flex-col min-h-screen bg-[#FFFAF0] text-[#181818] w-full bg-fixed overflow-x-hidden pt-[8%] sm:pt-[3%] md:pt-[4%] lg:pt-[3%] "
-      style={{
-        backgroundImage: `url(${wall})`,
-        backgroundRepeat: "repeat",
-        backgroundPosition: "top-left",
-        backgroundSize: "100vw",
-      }}>
+      <div className=" relative z-20 flex overflow-x-hidden flex-col items-center justify-center bg-floralWhite "
+        style={{
+          backgroundImage: `url(${wall})`,
+          backgroundRepeat: "repeat",
+          backgroundPosition: "top-left",
+          backgroundSize: "contain",
+        }}>
+
         {/* Layer Background Wrapper for RANGSAAZI and Description */}
         <div
-          className="relative flex flex-col items-center justify-center text-center w-[80vw] m-auto "
+          className="relative w-full mt-10 flex flex-col items-center justify-center text-center m-auto "
           style={{
             backgroundImage: `url(${layer1})`,
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "center 20vh",
+            backgroundPosition: "center ",
             padding: "4rem",
           }}
         >
@@ -142,11 +145,10 @@ function CulravEvent() {
             className="flex items-center justify-center w-full text-[#FFFAF0] "
             style={{
               backgroundImage: `url(${paint})`,
-              backgroundSize: "contain",
+              backgroundSize: "100%",
               backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              width: "40vw",
-              height: "23vw",
+              backgroundPosition: "center ",
+              
               margin: "0 auto",
             }}
           >
