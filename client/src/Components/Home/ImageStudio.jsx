@@ -53,37 +53,37 @@ import {
   ];
   
   const carouselImages = [
-    "/images/img1.webp",
-    "/images/img3.webp",
-    "/images/img13.webp",
-    "/images/img17.webp",
-    "/images/img16.webp",
-    "/images/img14.webp",
-    "/images/img19.webp",
-    "/images/img20.webp",
-    "/images/img21.webp",
-    "/images/img22.webp",
-    "/images/img23.webp",
-    "/images/img24.webp",
-    "/images/img28.webp",
-    "/images/img29.webp",
-    "/images/img30.webp",
-    "/images/img31.webp",
-    "/images/img32.webp",
-    "/images/img33.webp",
-    "/images/img34.webp",
-    "/images/img36.webp",
-    "/images/img39.webp",
-    "/images/img43.webp",
-    "/images/img48.webp",
-    "/images/img49.webp",
-    "/images/img.webp",
-    "/images/img6.webp",
+    "/ImageSection/img1.webp",
+    "/ImageSection/img3.webp",
+    "/ImageSection/img13.webp",
+    "/ImageSection/img17.webp",
+    "/ImageSection/img16.webp",
+    "/ImageSection/img14.webp",
+    "/ImageSection/img19.webp",
+    "/ImageSection/img20.webp",
+    "/ImageSection/img21.webp",
+    "/ImageSection/img22.webp",
+    "/ImageSection/img23.webp",
+    "/ImageSection/img24.webp",
+    "/ImageSection/img28.webp",
+    "/ImageSection/img29.webp",
+    "/ImageSection/img30.webp",
+    "/ImageSection/img31.webp",
+    "/ImageSection/img32.webp",
+    "/ImageSection/img33.webp",
+    "/ImageSection/img34.webp",
+    "/ImageSection/img36.webp",
+    "/ImageSection/img39.webp",
+    "/ImageSection/img43.webp",
+    "/ImageSection/img48.webp",
+    "/ImageSection/img49.webp",
+    "/ImageSection/img.webp",
+    "/ImageSection/img6.webp",
   ];
   
   const ImageStudio = () => {
     return (
-      <div className="-mt-20">
+      <div className="-mt-12">
         <Carousel className={carouselStyles.carousel}>
           <CarouselContent>
               {carouselItems.map((item, index) =>

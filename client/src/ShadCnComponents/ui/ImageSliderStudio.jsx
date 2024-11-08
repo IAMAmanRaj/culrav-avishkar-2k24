@@ -126,8 +126,11 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className=""
+    <>
+    <h1 className="text-4xl md:text-6xl text-white font-bebas hover:cursor-pointer hover:text-[#F54E25] transition-all duration-300">Gallery</h1>
+    <div ref={carouselRef} className="py-12 md:py-24"
     style={{ backgroundImage: `url(${grid})` }}>
+      
       <div
         ref={ref}
         className={cn(
@@ -137,8 +140,9 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
         )}
         {...props}
       />
-      <h1 className="text-4xl text-white font-bebas hover:cursor-pointer hover:text-[#F54E25] transition-all duration-300">Culrav - Avishkar 2k24 Old Diaries...</h1>
+      <h1 className="text-2xl md:text-4xl text-white font-bebas hover:cursor-pointer hover:text-[#F54E25] transition-all duration-300">Culrav - Avishkar 2k24 Old Diaries...</h1>
     </div>
+    </>
   );
 });
 CarouselContent.displayName = "CarouselContent";
