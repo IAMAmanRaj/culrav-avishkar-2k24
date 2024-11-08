@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 function EventCard({ roller, event }) {
   const navigate = useNavigate();
-  console.log(event.events);
+  console.log(event);
 
   const handleClick = () => {
     navigate(
-      `/culravEvents/${encodeURIComponent(JSON.stringify(event.events))}`
+      `/CulravEvents/${event.id}`
     );
   };
   return (
@@ -46,7 +46,7 @@ function EventCard({ roller, event }) {
             }}
           >
             <span
-              className="hover:text-[#F54E25] group-hover:text-[2.5rem] transition-all duration-300"
+              className="hover:text-[#F54E25] hover group-hover:text-[2.5rem] transition-all duration-300"
               onClick={handleClick}
             >
               {" "}

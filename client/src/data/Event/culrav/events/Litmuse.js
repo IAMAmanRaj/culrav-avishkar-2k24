@@ -1,5 +1,5 @@
-import BgImg from "../images/Litmus.webp";
-import BgImg2 from "../images/Litmus.jpg"
+import BgImg from "../images/Litmuse.webp";
+import BgImg2 from "../images/Litmuse.jpg"
 
 const Litmuse = {
   eventName: "Litmuse",

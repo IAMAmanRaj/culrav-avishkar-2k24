@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import leftArrow from "../../../assets/leftArrow.svg";
 import ScrollableDiv from "@/Components/profile_DashBoard/shared/ScrollableDiv";
 import { Button } from "@/ShadCnComponents/ui/button";
-import { useNavigate } from "react-router-dom";
 import Alert from "@/Components/profile_DashBoard/shared/Alert";
 import deletUserImg from "../../../assets/userDashBoard/deleteUser.svg";
 import getUser from "../userService";
 import { kickMember, sendInvitation } from "../services.js";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { kickMemberSuccess, setActiveMembers } from "../../../redux/team/teamSlice";
 
 function TeamInfo({ team, handleShowAllTeams }) {
   const { user, token } = getUser();
   const [openRemoveMemberModal, setOpenRemoveMemberModal] = useState(false);
   const [removeMemberInfo, setRemoveMemebrInfo] = useState(null);
-
   const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
+  const activeMembers = useSelector((state) => state.team.activeMembers || []);
+  console.log("active members",activeMembers);
+  
+  useEffect(() => {
+    if (team?.acceptedMembers) {
+      dispatch(setActiveMembers({ acceptedMembers: team?.acceptedMembers}));
+    }
+  }, [team, user._id, dispatch]);
 
   const handleRemoveMember = async () => {
     try {
@@ -30,19 +39,13 @@ function TeamInfo({ team, handleShowAllTeams }) {
             marginTop: "50px",
           },
         });
+        dispatch(kickMemberSuccess({ teamId: team._id, memberId: removeMemberInfo._id }));
         setOpenRemoveMemberModal(false);
       } else {
-        toast.error(
-          res?.message,
-          { className: "toast-error" }
-        );
-
+        toast.error(res?.message, { className: "toast-error" });
       }
     } catch (err) {
-      toast.error(
-        err?.message,
-        { className: "toast-error" }
-      );
+      toast.error(err?.message, { className: "toast-error" });
     }
   };
 
@@ -53,7 +56,6 @@ function TeamInfo({ team, handleShowAllTeams }) {
   function openRemoveModal({ e, member }) {
     e.stopPropagation();
     e.preventDefault();
-    console.log(member);
     setOpenRemoveMemberModal(true);
     setRemoveMemebrInfo(member);
   }
@@ -89,18 +91,18 @@ function TeamInfo({ team, handleShowAllTeams }) {
       console.log(err);
     }
   };
-  // console.log("Avinash")
+
   var isLeader = false;
 
   if (team?.leader === user._id) {
     isLeader = true;
   }
+
   return (
-    <div className="w-full h-full  bg-dark_secondary p-3 md:p-5 flex flex-col">
+    <div className="w-full h-full bg-dark_secondary p-3 md:p-5 flex flex-col">
       <div
         onClick={handleBack}
-        className="flex flex-row items-center gap-2 mb-10 w-auto
-            hover:cursor-pointer  "
+        className="flex flex-row items-center gap-2 mb-10 w-auto hover:cursor-pointer"
       >
         <div>
           <img src={leftArrow} />
@@ -131,15 +133,9 @@ function TeamInfo({ team, handleShowAllTeams }) {
               </div>
             </div>
           )}
-          {/* {!isLeader && <div className="w-full h-auto flex flex-col gap-5">
-                        <div>
-                            <div className="bg-customOrange hover:cursor-pointer text-white font-normal font-sfText rounded-md hover:bg-customRed text-lg md:text-md text-center p-3">
-                                Leave Team </div>
-                        </div>
-                    </div>} */}
           <div className="w-full h-auto flex flex-col gap-4 mt-2 text-lg text-white">
             <div>Team size: {team?.size}</div>
-            <div>Accepted Members: {team?.acceptedMembers.length}</div>
+            <div>Accepted Members: {activeMembers.length}</div>
             <div>Pending Invites: {team?.pendingMembers.length}</div>
           </div>
         </div>
@@ -162,18 +158,18 @@ function TeamInfo({ team, handleShowAllTeams }) {
             title="Team members"
             titleStyle="ml-3 md:ml-5 text-xl mb-7 text-white"
           >
-            {team?.acceptedMembers?.map((member) => {
+            {activeMembers.map((member) => {
               return (
                 <div className="mb-3 h-auto w-full px-2 py-2 md:px-5 md:py-4 bg-Mine_Shaft_900 rounded justify-between items-center inline-flex">
                   <div className="flex flex-col gap-1">
-                    <div class="text-Mine_Shaft_100 text-md md:text-lg font-normal font-sfText leading-tight">
+                    <div className="text-Mine_Shaft_100 text-md md:text-lg font-normal font-sfText leading-tight">
                       {member?.name}
                     </div>
-                    <div class="text-Mine_Shaft_300 text-lg font-normal font-sfText leading-tight">
+                    <div className="text-Mine_Shaft_300 text-lg font-normal font-sfText leading-tight">
                       {member?.userName}
                     </div>
                   </div>
-                  {isLeader && member._id != user._id && (
+                  {isLeader && member._id !== user._id && (
                     <Button
                       className="text-Mine_Shaft_100 text-md md:text-lg bg-customRed hover:bg-red-500 px-5"
                       onClick={(e) => {
@@ -200,7 +196,7 @@ function TeamInfo({ team, handleShowAllTeams }) {
           handleProceed={handleRemoveMember}
         >
           <div className="self-stretch text-center font-sfText font-normal">
-            <div className="w-full ">
+            <div className="w-full">
               Are you sure you want to remove {removeMemberInfo.name}?
             </div>
             <div>This action cannot be undone</div>

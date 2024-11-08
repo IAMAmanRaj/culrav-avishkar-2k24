@@ -32,13 +32,26 @@ function UserTeams({ showTeamInfo }) {
           duration: 2000,
           className: "toast-blue",
         });
+      } else {
+        // Handle the case where the response is not successful
+        const errorMessage = res.message || "An error occurred. Please try again.";
+        toast.error(errorMessage, {
+          icon: "❗️",
+          duration: 2000,
+          className: "toast-yellow",
+        });
       }
     } catch (err) {
-      toast.error(res?.message, { className: "toast-error" });
+      console.log("error", err);
+      const errorMessage = err.response?.data?.message || "An error occurred. Please try again.";
+      toast.error(errorMessage, {
+        icon: "❗️",
+        duration: 2000,
+        className: "toast-error",
+      });
       console.log(err);
     }
   };
-
   function handleSelectTeam(team) {
     console.log(team);
     showTeamInfo(team);
@@ -50,8 +63,6 @@ function UserTeams({ showTeamInfo }) {
     setOpenDeleteTeamModal(true);
     setTeamToBeDeleted(team);
   }
-
-  const userEmail = user.email;
 
   return (
     <div className={`md:w-[50vw]  ${myTeams.length === 0 || joinedTeams.length === 0 ? "lg:w-1/2" : "lg:w-full"} h-full flex flex-col lg:flex-row gap-10 lg:gap-5`}>

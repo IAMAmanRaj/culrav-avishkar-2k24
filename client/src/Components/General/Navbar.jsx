@@ -4,7 +4,6 @@ import useAuth from "@/lib/useAuth";
 import { Toaster } from "react-hot-toast";
 import logo from "../../assets/general/logo.webp";
 
-
 function Navbar() {
   const navigate = useNavigate();
   const isAuthenticated = useAuth();
@@ -40,9 +39,11 @@ function Navbar() {
           >
             AVISHKAR
           </h1>
-          <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300">
-            GALLERY
-          </h1>
+          <a href="/#gallery-section">
+            <h1 className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300">
+              GALLERY
+            </h1>
+          </a>
           <h1
             className="hover:text-register tracking-widest transition-colors cursor-pointer duration-300"
             onClick={() => {
@@ -90,17 +91,17 @@ function Navbar() {
 
       {/* Render for mobile screens */}
       <div className=" w-[100vw] -top-[15px] absolute bg-scheduleLargeText flex items-center justify-end z-50 md:hidden">
-      <div className="z-30">
-            <img
-              src={logo}
-              className="logo absolute left-4 logo hover:cursor-pointer w-auto h-28 "
-            ></img>
-          </div>
+        <div className="z-30">
+          <img
+            src={logo}
+            className="logo absolute left-4 logo hover:cursor-pointer w-auto h-28 "
+          ></img>
+        </div>
         <div>
           <HamburgerMenu />
         </div>
       </div>
-      <Toaster  />
+      <Toaster />
     </>
   );
 }
