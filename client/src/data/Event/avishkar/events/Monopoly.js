@@ -1,5 +1,5 @@
 import MonopolyPic from "../images/Main/MONOPOLY.webp";
-import MonopolySubPic from "../images/Main/Monopoly.webp";
+import MonopolySubPic from "../images/Sub/Monopoly.webp";
 
 const Monopoly = {
   eventName: "Monopoly",

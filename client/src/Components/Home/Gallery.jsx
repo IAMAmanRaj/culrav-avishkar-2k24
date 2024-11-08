@@ -104,7 +104,8 @@ const Gallery = () => {
 
   return (
     <div id="gallery-section">
-<div className="md:hidden py-8 relative -top-8 bg-floralWhite h-screen flex flex-col gap-12 overflow-y-auto">
+<div className="md:hidden py-8 relative -top-8 bg-floralWhite h-screen flex flex-col gap-12 overflow-y-auto"
+style={{ backgroundImage: `url(${backg})` }}>
   <div className="w-full flex justify-center">
     <h1 className="font-bionix text-scheduleOrange text-[6vh]">GALLERY</h1>
   </div>
