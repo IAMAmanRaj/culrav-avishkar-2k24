@@ -5,23 +5,32 @@ import wall from "@/images/walls1.png";
 import { useEffect, useState } from "react";
 import TeamRegisterModal from "../modal/TeamRegisterModal";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTeamsSuccess, fetchTeamsFailure } from "../../redux/team/teamSlice";
-import { getAllTeams, splitTeamsByLeader,excludeAlreadyRegisteredTeams } from "../../Components/profile_DashBoard/services.js";
+import {
+  fetchTeamsSuccess,
+  fetchTeamsFailure,
+} from "../../redux/team/teamSlice";
+import {
+  getAllTeams,
+  splitTeamsByLeader,
+  excludeAlreadyRegisteredTeams,
+} from "../../Components/profile_DashBoard/services.js";
 import useAuth from "../../lib/useAuth.js";
 import getUser from "../../Components/profile_DashBoard/userService.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function CulravEvent() {
+  const { data } = useParams();
+  const decodedData = JSON.parse(decodeURIComponent(data));
   const eventData = {
-    eventId: "12345557",
-    eventName: "RANGSAAZI",
-    department: "XYZ",
-    minTeamSize: 1,
-    maxTeamSize: 5,
-    eventCoordinators: ["Avinash", "Aman", "Shivansh", "Hariom"],
-    description: "no description",
-    rules: ["rule1", "rule2"],
+    eventId: decodedData.eventId,
+    eventName: decodedData.eventName,
+    department: "NA",
+    minTeamSize: decodedData.minTeamSize,
+    maxTeamSize: decodedData.maxTeamSize,
+    eventCoordinators: decodedData.coordinators,
+    description: decodedData.description,
+    rules: decodedData.rules,
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -29,7 +38,7 @@ function CulravEvent() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token, user } = getUser();
-  const [remainingTeams,setRemainingTeams] = useState([]);
+  const [remainingTeams, setRemainingTeams] = useState([]);
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/");
@@ -47,11 +56,21 @@ function CulravEvent() {
         const { matchingLeaderTeams, nonMatchingLeaderTeams } =
           splitTeamsByLeader({ totalTeams, givenLeaderId });
 
-          console.log("matchingLeaderTeams",matchingLeaderTeams);
-          setRemainingTeams(excludeAlreadyRegisteredTeams({matchingLeaderTeams,eventID:eventData.eventId}));
+        console.log("matchingLeaderTeams", matchingLeaderTeams);
+        setRemainingTeams(
+          excludeAlreadyRegisteredTeams({
+            matchingLeaderTeams,
+            eventID: eventData.eventId,
+          })
+        );
 
-          console.log("these are remaining teams",remainingTeams);
-        dispatch(fetchTeamsSuccess({ myTeams: matchingLeaderTeams, joinedTeams: nonMatchingLeaderTeams }));
+        console.log("these are remaining teams", remainingTeams);
+        dispatch(
+          fetchTeamsSuccess({
+            myTeams: matchingLeaderTeams,
+            joinedTeams: nonMatchingLeaderTeams,
+          })
+        );
       } else {
         console.log(res?.message);
         toast.error("error while getting the teams");
@@ -148,7 +167,7 @@ function CulravEvent() {
                     height: "0.5em",
                   }}
                 ></div>
-                {rule}
+                {rule.r}
               </li>
             ))}
           </ul>
@@ -193,7 +212,7 @@ function CulravEvent() {
             </h2>
             <div className="flex justify-around font-bold text-[#FFFAF0] text-[2.5vw] pb-4">
               {eventData.eventCoordinators.map((coo, idx) => (
-                <div key={idx}>{coo}</div>
+                <div key={idx}>{coo.name}</div>
               ))}
             </div>
           </div>

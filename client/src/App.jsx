@@ -108,14 +108,14 @@ function App() {
         <Route path="/outside-registration" element={<OutsideRegistration />} />
         <Route path="/outside-registration/payFee" element={<PayFeesPage />} />
         <Route path="/Culrav-Landing" element={<CulravLanding />} />
-        <Route path="/CulravEvents" element={<CulravEvents />} />
-        <Route path="/CulravEventPage" element={<CulravEvent />} />
+        <Route path="/CulravEvents/:data" element={<CulravEvents />} />
+        <Route path="/CulravEventPage/:data" element={<CulravEvent />} />
         <Route path="/Avishkar-Landing" element={<AvishkarLanding />} />
-        <Route path="/AvishkarEvents" element={<AvishkarEvents />} />
-        <Route path="/AvishkarEventPage" element={<AvishkarEvent />} />
+        <Route path="/AvishkarEvents/:data" element={<AvishkarEvents />} />
+        <Route path="/AvishkarEventPage/:data" element={<AvishkarEvent />} />
         <Route path="/team" element={<Team />} />
         <Route element={<PrivateRoute />}>
-        <Route path="/dashboard" element={<UserProfilePage />} />
+          <Route path="/dashboard" element={<UserProfilePage />} />
         </Route>
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/sponsors" element={<Sponsors />} />
