@@ -5,7 +5,7 @@ import triangle from "../../assets/Sc-assets/triangle.png";
 
 const Sponsors = () => {
   return (
-    <div className="w-full relative z-20 min-h-screen md:h-[1634px] bg-[#202020] flex flex-col items-center justify-begin px-4 sm:px-8 pt-20">
+    <div className="w-full relative z-20 min-h-screen md:h-full bg-[#202020] flex flex-col items-center justify-begin px-4 sm:px-8 pt-24 md:pb-24">
       <img
         src={noise}
         alt="Noise Background"
