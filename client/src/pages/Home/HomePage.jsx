@@ -53,7 +53,7 @@ function Home() {
     <div className="bg-floralWhite relative z-20 overflow-x-hidden ">
       <HeroSection />
       <Schedule />
-      <Gallery />
+      {/* <Gallery /> */}
       <ImageStudio/>
     </div>
   );
