@@ -6,6 +6,7 @@ import Schedule from "@/Components/Home/Schedule";
 import { useSelector } from "react-redux";
 import VideoLoader from "@/Components/Loaders/Videoloader";
 import webSiteLoaderVideo from "@/assets/Website_Loader.webm";
+import ImageStudio from "@/Components/Home/ImageStudio";
 
 function Home() {
 
@@ -49,11 +50,11 @@ function Home() {
   }
 
   return (
-    <div className="bg-floralWhite relative z-20 ">
+    <div className="bg-floralWhite relative z-20 overflow-x-hidden ">
       <HeroSection />
       <Schedule />
-      <Gallery />
-      {/* <ImageSection/> */}
+      {/* <Gallery /> */}
+      <ImageStudio/>
     </div>
   );
 }
