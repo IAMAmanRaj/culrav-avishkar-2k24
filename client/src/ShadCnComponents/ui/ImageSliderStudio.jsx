@@ -2,6 +2,7 @@ import * as React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/ShadCnComponents/ui/button";
+import grid from "../../assets/Home/grid.webp";
 
 const CarouselContext = React.createContext(null);
 
@@ -125,7 +126,8 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="">
+    <div ref={carouselRef} className=""
+    style={{ backgroundImage: `url(${grid})` }}>
       <div
         ref={ref}
         className={cn(
@@ -135,6 +137,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
         )}
         {...props}
       />
+      <h1 className="text-4xl text-white font-bebas hover:cursor-pointer hover:text-[#F54E25] transition-all duration-300">Culrav - Avishkar 2k24 Old Diaries...</h1>
     </div>
   );
 });

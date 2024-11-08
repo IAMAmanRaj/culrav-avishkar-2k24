@@ -99,6 +99,30 @@ export const data = [
                 "email": "prteam3@example.com",
                 "img": "path/to/image3.jpg",
                 "linkedin": "https://linkedin.com/in/prteam3"
+            },
+            {
+                "name": "PR Team 1",
+                "email": "prteam1@example.com",
+                "img": "path/to/image1.jpg",
+                "linkedin": "https://linkedin.com/in/prteam1"
+            },
+            {
+                "name": "PR Team 2",
+                "email": "prteam2@example.com",
+                "img": "path/to/image2.jpg",
+                "linkedin": "https://linkedin.com/in/prteam2"
+            },
+            {
+                "name": "PR Team 3",
+                "email": "prteam3@example.com",
+                "img": "path/to/image3.jpg",
+                "linkedin": "https://linkedin.com/in/prteam3"
+            },
+            {
+                "name": "PR Team 3",
+                "email": "prteam3@example.com",
+                "img": "path/to/image3.jpg",
+                "linkedin": "https://linkedin.com/in/prteam3"
             }
         ]
     },

@@ -9,6 +9,7 @@ function Navbar() {
   const isAuthenticated = useAuth();
 
   const handleLogoClick = () => {
+    console.log("clicked")
     navigate("/");
   };
 
@@ -95,6 +96,7 @@ function Navbar() {
           <img
             src={logo}
             className="logo absolute left-4 logo hover:cursor-pointer w-auto h-28 "
+            onClick={handleLogoClick}
           ></img>
         </div>
         <div>

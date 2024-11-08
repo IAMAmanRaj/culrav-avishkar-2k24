@@ -8,7 +8,6 @@ import VideoLoader from "@/Components/Loaders/Videoloader";
 import webSiteLoaderVideo from "@/assets/Website_Loader.webm";
 import ImageStudio from "@/Components/Home/ImageStudio";
 
-
 function Home() {
 
   const [loading, setLoading] = useState(false);
@@ -27,24 +26,19 @@ function Home() {
       setLoading(false);
     }
 
-
-
   }, []);
 
   useLayoutEffect(() => {
     const hash = window.location.hash;
-    console.log(hash);
 
-    if (hash) {
+    if (hash!=="" && hash !== "#") {
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
-          console.log("scrolling");
-          console.log(element);
           element.scrollIntoView({ behavior: "smooth" });
         }
       }, 0);
-    } // The delay ensures that all elements are rendered before scrolling
+    }
   }, []);
 
   const state = useSelector((state) => {
@@ -56,7 +50,7 @@ function Home() {
   }
 
   return (
-    <div className="bg-floralWhite relative z-20  overflow-x-hidden ">
+    <div className="bg-floralWhite relative z-20 overflow-x-hidden ">
       <HeroSection />
       <Schedule />
       <Gallery />

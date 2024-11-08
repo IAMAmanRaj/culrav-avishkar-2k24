@@ -29,21 +29,61 @@ import {
     "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
     "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
     "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[400px] sm:w-[300px] sm:h-[500px] xl:h-[700px] xl:w-[400px] pl-[3px]",
+    "object-cover  w-[200px] h-[220px] sm:w-[300px] sm:h-[320px] xl:h-[340px] xl:w-[400px] pl-[3px]",
+
+
   ];
   
   const carouselImages = [
     "/src/Components/Home/ImageSection/img1.webp",
-    "/src/Components/Home/ImageSection/img8.webp",
     "/src/Components/Home/ImageSection/img3.webp",
-    "/src/Components/Home/ImageSection/img4.webp",
-    "/src/Components/Home/ImageSection/img5.webp",
+    "/src/Components/Home/ImageSection/img13.webp",
+    "/src/Components/Home/ImageSection/img17.webp",
+    "/src/Components/Home/ImageSection/img16.webp",
+    "/src/Components/Home/ImageSection/img14.webp",
+    "/src/Components/Home/ImageSection/img19.webp",
+    "/src/Components/Home/ImageSection/img20.webp",
+    "/src/Components/Home/ImageSection/img21.webp",
+    "/src/Components/Home/ImageSection/img22.webp",
+    "/src/Components/Home/ImageSection/img23.webp",
+    "/src/Components/Home/ImageSection/img24.webp",
+    "/src/Components/Home/ImageSection/img28.webp",
+    "/src/Components/Home/ImageSection/img29.webp",
+    "/src/Components/Home/ImageSection/img30.webp",
+    "/src/Components/Home/ImageSection/img31.webp",
+    "/src/Components/Home/ImageSection/img32.webp",
+    "/src/Components/Home/ImageSection/img33.webp",
+    "/src/Components/Home/ImageSection/img34.webp",
+    "/src/Components/Home/ImageSection/img36.webp",
+    "/src/Components/Home/ImageSection/img39.webp",
+    "/src/Components/Home/ImageSection/img43.webp",
+    "/src/Components/Home/ImageSection/img48.webp",
+    "/src/Components/Home/ImageSection/img49.webp",
+    "/src/Components/Home/ImageSection/img.webp",
     "/src/Components/Home/ImageSection/img6.webp",
-    "/src/Components/Home/ImageSection/img7.webp",
   ];
   
   const ImageStudio = () => {
     return (
-      <div>
+      <div className="-mt-20">
         <Carousel className={carouselStyles.carousel}>
           <CarouselContent>
               {carouselItems.map((item, index) =>
