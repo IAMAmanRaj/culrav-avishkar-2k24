@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {useLocation} from "react-router-dom";
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Gallery from "@/Components/Home/Gallery";
 import HeroSection from "@/Components/Home/HeroSection";
 import Schedule from "@/Components/Home/Schedule";
@@ -7,13 +7,15 @@ import ProfileTape from "@/Components/Home/ProfileTape";
 import { useSelector } from "react-redux";
 import VideoLoader from "@/Components/Loaders/Videoloader";
 import webSiteLoaderVideo from "@/assets/Website_Loader.webm";
+import Navbar from "@/Components/General/Navbar";
 
 function Home() {
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
+
     const isPageReload = window.performance.navigation.type === 1;
     const isInternalNavigation = sessionStorage.getItem('isInternalNevigation') == 'true';
 
@@ -24,6 +26,25 @@ function Home() {
     else {
       setLoading(false);
     }
+
+
+
+  }, []);
+
+  useLayoutEffect(() => {
+    const hash = window.location.hash;
+    console.log(hash);
+
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          console.log("scrolling");
+          console.log(element);
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 0);
+    } // The delay ensures that all elements are rendered before scrolling
   }, []);
 
   const state = useSelector((state) => {
@@ -35,7 +56,7 @@ function Home() {
   }
 
   return (
-    <div className="bg-floralWhite relative z-20 transition-opacity duration-700 opacity-0 animate-fade-in">
+    <div className="bg-floralWhite relative z-20 ">
       <HeroSection />
       <Schedule />
       <Gallery />
