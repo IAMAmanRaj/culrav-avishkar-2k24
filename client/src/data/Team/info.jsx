@@ -323,78 +323,6 @@ export const data = [
     ],
   },
   {
-    teamName: "PR TEAM",
-    members: [
-      {
-        name: "Harsh K Tiwary",
-        email: "prteam3@example.com",
-        img: HarshKumarTiwary,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-      {
-        name: "Snehal Tripathi",
-        email: "prteam3@example.com",
-        img: SnehalTripathi,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-      {
-        name: "Aniket Mohanti",
-        email: "prteam1@example.com",
-        img: AniketMohanti,
-        linkedin: "https://linkedin.com/in/prteam1",
-      },
-      {
-        name: "Aridaman Singh",
-        email: "prteam2@example.com",
-        img: AridamanSingh,
-        linkedin: "https://linkedin.com/in/prteam2",
-      },
-      {
-        name: "Deeksha Singh",
-        email: "prteam3@example.com",
-        img: DeekshaSingh,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-      {
-        name: "Muskaan Mehrotra",
-        email: "prteam3@example.com",
-        img: MuskaanMehrotra,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-      {
-        name: "Prakhyat Verma",
-        email: "prteam3@example.com",
-        img: PrakhyatVerma,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-      {
-        name: "Sana Porekar",
-        email: "prteam3@example.com",
-        img: SanaPorekar,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-      {
-        name: "Sarthak Dwivedi",
-        email: "prteam3@example.com",
-        img: SarthakDwivedi,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-      {
-        name: "Shreyansh Singh",
-        email: "prteam3@example.com",
-        img: ShreyanshSingh,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-
-      {
-        name: "Snehashish Dutta",
-        email: "prteam3@example.com",
-        img: SnehashishDutta,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-    ],
-  },
-  {
     teamName: "WEB TEAM",
     members: [
       {
@@ -468,6 +396,78 @@ export const data = [
         email: "webteam3@example.com",
         img: PiyushSinghChundawat,
         linkedin: "https://linkedin.com/in/webteam3",
+      },
+    ],
+  },
+  {
+    teamName: "PR TEAM",
+    members: [
+      {
+        name: "Harsh K Tiwary",
+        email: "prteam3@example.com",
+        img: HarshKumarTiwary,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Snehal Tripathi",
+        email: "prteam3@example.com",
+        img: SnehalTripathi,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Aniket Mohanti",
+        email: "prteam1@example.com",
+        img: AniketMohanti,
+        linkedin: "https://linkedin.com/in/prteam1",
+      },
+      {
+        name: "Aridaman Singh",
+        email: "prteam2@example.com",
+        img: AridamanSingh,
+        linkedin: "https://linkedin.com/in/prteam2",
+      },
+      {
+        name: "Deeksha Singh",
+        email: "prteam3@example.com",
+        img: DeekshaSingh,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Muskaan Mehrotra",
+        email: "prteam3@example.com",
+        img: MuskaanMehrotra,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Prakhyat Verma",
+        email: "prteam3@example.com",
+        img: PrakhyatVerma,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Sana Porekar",
+        email: "prteam3@example.com",
+        img: SanaPorekar,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Sarthak Dwivedi",
+        email: "prteam3@example.com",
+        img: SarthakDwivedi,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Shreyansh Singh",
+        email: "prteam3@example.com",
+        img: ShreyanshSingh,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+
+      {
+        name: "Snehashish Dutta",
+        email: "prteam3@example.com",
+        img: SnehashishDutta,
+        linkedin: "https://linkedin.com/in/prteam3",
       },
     ],
   },

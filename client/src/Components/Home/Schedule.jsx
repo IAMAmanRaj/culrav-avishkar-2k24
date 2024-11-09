@@ -1,16 +1,18 @@
 import BlackRoller from "./BlackRoller";
 import ScheduleCard from "./ScheduleCard";
 // assets Import 
-import girlLeft from "../../assets/Home/girlLeft.png"
-import girlRight from "../../assets/Home/girlRight.png"
-import Radio from "../../assets/Home/radio.png"
-import Scrubble1 from "../../assets/Home/scrubble1.png"
-import Scrubble2 from "../../assets/Home/scrubble2.png"
-import culrav from "../../assets/Home/culrav.webp"
-import avishkar from "../../assets/Home/avishkar.webp"
+import girlLeft from "../../assets/Home/girlLeft.png";
+import girlRight from "../../assets/Home/girlRight.png";
+import Radio from "../../assets/Home/radio.png";
+import Scrubble1 from "../../assets/Home/scrubble1.png";
+import Scrubble2 from "../../assets/Home/scrubble2.png";
+import culrav from "../../assets/Home/culrav.webp";
+import avishkar from "../../assets/Home/avishkar.webp";
 import grid from "../../assets/Home/grid.webp";
-
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Schedule = () => {
+  const navigate=useNavigate();
   return (
     <div
       className="h-auto overflow-hidden flex flex-col bg-[#202020]/100"
@@ -32,9 +34,9 @@ const Schedule = () => {
               <img
                 src={culrav}
                 alt="Logo 1"
-                className="object-contain  w-full h-full scale-[230%] md:scale-[230%] lg:scale-[230%] hover:cursor-pointer"
+                onClick={()=>navigate("/culrav-landing")}
+                className="object-cover  w-full h-full scale-[150%] md:scale-[100%] lg:scale-[120%] hover:cursor-pointer"
                 style={{ filter: 'drop-shadow(0 0 0.75rem rgb(255, 255, 255))' }}
-
               />
             </div>
 
@@ -45,14 +47,13 @@ const Schedule = () => {
               }}>
               <img
                 src={avishkar}
+                onClick={()=>navigate("/avishkar-landing")}
                 alt="Logo 2"
-                className="object-contain w-full h-full scale-[230%] lg:w-full  hover:cursor-pointer"
+                className="object-cover   w-full h-full scale-[190%] md:scale-[130%] lg:scale-[150%] lg:w-full  hover:cursor-pointer"
                 style={{ filter: 'drop-shadow(0 0 0.75rem rgb(255, 217, 0))' }}
               />
             </div>
           </div>
-
-
         </div>
       </div>
       <div className="hidden  md:block md:h-[50vh] lg:h-[60vh] relative w-full">
@@ -74,7 +75,6 @@ const Schedule = () => {
             clipPath: "polygon(18% 63%, 70% 63%, 100% 100%, 0% 100%)",
           }}
         >
-
         </div>
         <div
           className="hidden md:block  h-[65vh] w-[109vw]  bg-white z-10 absolute bottom-[8px]"
@@ -97,33 +97,35 @@ const Schedule = () => {
           </div>
 
           <div className="py-10 px-4 mt-10 md:h-auto w-full md:w-[78%] mb-[10%] lg:min-h-[50vh] custom1110:min-h-[30vh] flex flex-col items-center">
-            <div className="hidden md:flex md:flex-wrap gap-4 md:justify-center">
-              <div className="flex flex-wrap gap-5 justify-center w-full">
-                <ScheduleCard day={1} date={11} />
-                <ScheduleCard day={2} date={12} />
-                <ScheduleCard day={3} date={13} />
+            <Link to="/schedule" className="w-full">
+              <div className="hidden md:flex md:flex-wrap gap-4 md:justify-center">
+                <div className="flex flex-wrap gap-5 justify-center w-full">
+                  <ScheduleCard day={1} date={11} />
+                  <ScheduleCard day={2} date={12} />
+                  <ScheduleCard day={3} date={13} />
+                </div>
+                <div className="flex flex-wrap gap-5 justify-center w-full">
+                  <ScheduleCard day={4} date={14} />
+                  <ScheduleCard day={5} date={15} />
+                  <ScheduleCard day={6} date={16} />
+                </div>
               </div>
-              <div className="flex flex-wrap gap-5 justify-center w-full">
-                <ScheduleCard day={4} date={14} />
-                <ScheduleCard day={5} date={15} />
-                <ScheduleCard day={6} date={16} />
-              </div>
-            </div>
 
-            <div className="relative -top-8 flex flex-wrap gap-3 justify-center md:hidden">
-              <div className="flex flex-wrap justify-center gap-4 w-full">
-                <ScheduleCard day={1} date={11} />
-                <ScheduleCard day={2} date={12} />
+              <div className="relative -top-8 flex flex-wrap gap-3 justify-center md:hidden">
+                <div className="flex flex-wrap justify-center gap-4 w-full">
+                  <ScheduleCard day={1} date={11} />
+                  <ScheduleCard day={2} date={12} />
+                </div>
+                <div className="flex flex-wrap justify-center gap-4 w-full">
+                  <ScheduleCard day={3} date={13} />
+                  <ScheduleCard day={4} date={14} />
+                </div>
+                <div className="flex flex-wrap justify-center gap-4 w-full">
+                  <ScheduleCard day={5} date={15} />
+                  <ScheduleCard day={6} date={16} />
+                </div>
               </div>
-              <div className="flex flex-wrap justify-center gap-4 w-full">
-                <ScheduleCard day={3} date={13} />
-                <ScheduleCard day={4} date={14} />
-              </div>
-              <div className="flex flex-wrap justify-center gap-4 w-full">
-                <ScheduleCard day={5} date={15} />
-                <ScheduleCard day={6} date={16} />
-              </div>
-            </div>
+            </Link>
           </div>
           <div className="h-[40vh] relative md:hidden w-full">
             <div className=" z-10 absolute -bottom-[9rem] -left-[4.4rem] md:left-[-2.7rem] md:bottom-[-5.5rem] scale-[0.6] md:scale-75 custom1560:left-[0rem] custom1560:scale-100 custom1980:scale-[1.2] custom1980:left-[-4px]">
@@ -132,7 +134,6 @@ const Schedule = () => {
             <div className="absolute z-10 -right-[4.2rem] -bottom-[9rem] md:right-[-2.7rem] md:bottom-[-5.5rem] scale-[0.6] custom1560:scale-100 custom1560:right-[0rem] md:scale-75 custom1980:scale-[1.2] custom1980:right-[-4px]">
               <img className="relative custom1980:bottom-28 custom1980:right-8" src={girlRight} alt="Girl Right" />
             </div>
-
           </div>
         </div>
       </div>
@@ -140,5 +141,5 @@ const Schedule = () => {
     </div>
   );
 };
-export default Schedule;
 
+export default Schedule;

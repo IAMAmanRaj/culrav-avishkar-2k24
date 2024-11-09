@@ -21,18 +21,16 @@ function AvishkarEvent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [teams, setTeams] = useState([]);
 
-  const isAuthenticated = useAuth();
   const navigate = useNavigate();
 
   const { token, user } = getUser();
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  });
-
   const handleModelOpen = async () => {
+    if (!token) {
+      toast.error("Please Login first !");
+      return;
+    }
+
     setIsModalOpen(true);
 
     try {

@@ -43,6 +43,9 @@ const TeamRegisterModal = ({ teams, eventData, onClose, themeColor, isOpen }) =>
       }
     } catch (err) {
       console.log(err);
+      toast.error("An error occurred while registering for the event.");
+    } finally {
+      onClose();
     }
   };
 

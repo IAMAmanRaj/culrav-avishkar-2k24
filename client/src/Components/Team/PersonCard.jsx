@@ -5,6 +5,7 @@ function PersonCard({ profile }) {
                 <img
                     src={profile.img}
                     alt="Profile"
+                    loading="lazy"
                     style={{
                         width: '100%',
                         height: '100%',

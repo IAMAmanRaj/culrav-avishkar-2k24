@@ -96,6 +96,7 @@ import {
                   <div className={carouselStyles.imageParent}>
                     <img
                       src={carouselImages[index]}
+                      loading="lazy"
                       className={item}
                       alt={`Image ${index + 1}`}
                     />
