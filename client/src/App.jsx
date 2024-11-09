@@ -86,24 +86,24 @@ const TitleUpdater = () => {
       case "/sponsors":
         title += " Sponsors";
         break;
-        case "/schedule":
-          title += " Schedule";
-          break;
+      case "/schedule":
+        title += " Schedule";
+        break;
       case "/admin-panel":
         title += " Admin Panel";
         break;
-        default:
-          if (pathname.includes("/CulravEventPage")) {
-            title += " Event Page";
-          } else if (pathname.includes("/AvishkarEventPage")) {
-            title += " Event Page";
-          }else if (pathname.includes("/CulravEvents")) {
-            title += " Culrav Events";
-          }else if (pathname.includes("/AvishkarEvents")) {
-            title += " Avishkar Events";
-          } else {
-            title += "";
-          }
+      default:
+        if (pathname.includes("/CulravEventPage")) {
+          title += " Event Page";
+        } else if (pathname.includes("/AvishkarEventPage")) {
+          title += " Event Page";
+        } else if (pathname.includes("/CulravEvents")) {
+          title += " Culrav Events";
+        } else if (pathname.includes("/AvishkarEvents")) {
+          title += " Avishkar Events";
+        } else {
+          title += "";
+        }
     }
 
     document.title = title;
@@ -136,7 +136,10 @@ function App() {
         <Route path="/Avishkar-Landing" element={<AvishkarLanding />} />
         <Route path="/AvishkarEvents" element={<AvishkarEvents />} />
         <Route path="/AvishkarEvents/:data" element={<AvishkarEvents />} />
-        <Route path="/AvishkarEventPage/:EventId/:Id" element={<AvishkarEvent />} />
+        <Route
+          path="/AvishkarEventPage/:EventId/:Id"
+          element={<AvishkarEvent />}
+        />
         <Route path="/team" element={<Team />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<UserProfilePage />} />
@@ -144,7 +147,10 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/sponsors" element={<Sponsors />} />
         {/* TODO: later make this a private route (checking if user is admin or not) */}
-        <Route path="/admin-panel" element={<VerticalSideBarAdmin />} />
+        <Route
+          path="/admin-panelhrgergerhruertuyerwiyoteityo8ewr"
+          element={<VerticalSideBarAdmin />}
+        />
       </Routes>
       <Footer />
     </Router>
