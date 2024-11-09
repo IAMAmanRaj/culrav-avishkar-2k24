@@ -26,6 +26,10 @@ const Rasayans = {
       coordinators: [
         { name: "Neelansh Agrawal", contact: "8057339335" },
         { name: "Sheetal", contact: "8239391313" },
+        { name: "Aaditya", contact: "9027090899" },
+        { name: "Aniket Mohanty", contact: "6203830907" },
+        { name: "Utkarsh Jaiswal", contact: "7905757865" },
+        { name: "Abhinav Tiwari", contact: "7054425113" },
       ],
     },
     {
@@ -93,6 +97,7 @@ const Rasayans = {
         { name: "Amit Kumar", contact: "9631142204" },
         { name: "Prince Pal", contact: "7084349373" },
         { name: "Dharmesh Baghel", contact: "9285423732" },
+        { name: "Arpit Mittal", contact: "6378137978" }
       ],
     },
     {
@@ -162,6 +167,7 @@ const Rasayans = {
         { name: "Sheetal", contact: "8239391313" },
         { name: "Shashwat Kapoor", contact: "9696065829" },
         { name: "Dharmesh Baghel", contact: "9285423732" },
+        { name: "Manoj Kumar", contact: "7563843645" }
       ],
     },
   ],

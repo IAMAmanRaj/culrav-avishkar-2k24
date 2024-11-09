@@ -27,6 +27,8 @@ const Genesis = {
         { name: "Dipesh Ladha", contact: "8560822989" },
         { name: "Ritesh Kumar Maurya", contact: "7897461387" },
         { name: "Harshita Agrawal", contact: "8303575832" },
+        { name: "Siddhant Jain", contact: "9265720118" },
+        { name: "Aniket", contact: "7070843109" }
       ],
     },
     {

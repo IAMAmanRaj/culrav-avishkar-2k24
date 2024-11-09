@@ -11,7 +11,7 @@ const Mechrocosm = {
       eventName: "Triathlon",
       eventId: "62",
       description:
-        "An opportunity to demonstrate your leadership and business acumen. Join the auction, leverage expertise, and secure capital to build your dream enterprise.",
+        "This event focuses on providing real-time experience of the campus recruitment process, preparing you to stand out and succeed in the competitive job market.",
       rules: [
         "Branches allowed: Mech, PIE, ECM, MTE.",
         "Individual participation.",
@@ -32,7 +32,7 @@ const Mechrocosm = {
       eventName: "Industrial Monopoly",
       eventId: "63",
       description:
-        "Engage in a multi-round event packed with case studies and analytical challenges designed to sharpen your business skills.",
+        "Now’s your opportunity to demonstrate your leadership and business acumen. Join the auction, leverage your expertise and bidding powers to secure the capital needed to build your dream enterprise.",
       rules: [
         "Open to all years and courses (except B.Tech final year).",
         "Team size: 3-4.",
@@ -53,7 +53,7 @@ const Mechrocosm = {
       eventName: "Crack the Case",
       eventId: "64",
       description:
-        "Dive into innovative challenges with machine learning, web development, and more. Create, compete, and shine in this skill-boosting event.",
+        "Dive into innovative challenges with machine learning, web development, and more. Create, compete, and shine in this skill-boosting event. Are you ready to tackle case studies and guesstimates? Join us for an event packed with multiple rounds designed to challenge your analytical thinking, decision-making, and creativity!",
       rules: [
         "B.Tech all branches (1st, 2nd, and 3rd years), MBA (1st year).",
         "Inter-year teams not allowed.",
@@ -74,7 +74,7 @@ const Mechrocosm = {
       eventName: "Mechathon",
       eventId: "65",
       description:
-        "Collaborate to solve real-world engineering challenges in this hands-on event. Compete through multiple stages and present your solutions.",
+        "Collaborate to solve real-world engineering challenges in this hands-on event. Compete through multiple stages and present your solutions. Get ready to dive into a world of innovation, where we explore everythingfrom cutting-edge machine learning to the latest in web development. This event has everything you need to create, compete, and shine—perfect for leveling up your skills and adding that extra edge to your resume.",
       rules: [
         "Branches allowed: ME, PIE, ECM, Material Engg.",
         "Team Size: 3.",
@@ -96,7 +96,7 @@ const Mechrocosm = {
       eventName: "Automax",
       eventId: "66",
       description:
-        "Dive into real-world engineering challenges in this automotive design and fabrication event.",
+        "Attention, auto engineering enthusiasts! Here’s your chance to dive into real-world challenges, pushing your design skills to new limits. Get hands-on and show what you’re truly made of !",
       rules: [
         "Branches allowed: ME, PIE, ECM, Material Engg.",
         "Team Size: 4.",
@@ -116,7 +116,7 @@ const Mechrocosm = {
       eventName: "Blueprint",
       eventId: "67",
       description:
-        "Engage in 3D modeling and design, where creativity meets geometry in immersive virtual environments.",
+        "Step into the world of 3D modeling- where creativity meets geometry, bringing ideas to life in immersive virtual reality. Enhance your skills, explore real-world design, and watch concepts take shape in stunning detail.",
       rules: [
         "Branches allowed: ME, PIE, ECM, Material Engg.",
         "Team Size: 3 (1st and 2nd years), 2 (3rd year).",
@@ -137,7 +137,7 @@ const Mechrocosm = {
       eventName: "Survivor Series",
       eventId: "68",
       description:
-        "Test your skills and resilience in this challenge-packed event designed to push you to the limits.",
+        "Hola survivors! Since you've incredibly survived your JEE or college journey so far, we now summon you to face a new set of thrilling challenges! Brace yourselves to tackle mind-bending questions and overcome obstacles as you quest forward— remember only the sharpest will survive!",
       rules: [
         "Eligibility: Open to all (except B.Tech final years).",
         "Team Size: 2-3.",
@@ -159,7 +159,7 @@ const Mechrocosm = {
       eventName: "Turbo Speed Showdown",
       eventId: "69",
       description:
-        "An adrenaline-packed event for those with a need for speed and a drive for innovation. Compete in the ultimate test of engineering prowess.",
+        "Welcome to the world of turbo speed showdown... Do you have that adrenaline rush to go beyond the boundaries and venture off to turbulent domains? If so we urge you to come up, unleash your creativity and compete for the crown.",
       rules: [
         "Eligibility: B.Tech 1st, 2nd, and 3rd years.",
         "All branches allowed.",
