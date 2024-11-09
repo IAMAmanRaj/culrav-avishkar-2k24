@@ -59,6 +59,38 @@ import SameerSir from "./images/FacultyIncharge/SameerSir.jpeg";
 //SAC President
 import PitamSir from "./images/SACPresident/PitamSir.jpg";
 
+//Web Team
+import AmanRaj from "./images/TeamLeads/Web/Aman.webp";
+import Avinash from "./images/TeamLeads/Web/Avinash.webp";
+import VinayakThakur from "./images/TeamLeads/Web/Vinayak.webp";
+import Mrinal from "./images/TeamLeads/Web/Mrinal.webp";
+import Shivansh from "./images/TeamLeads/Web/Shivansh.webp";
+import Hariom from "./images/TeamLeads/Web/Hariom_Joshi.webp";
+import Sahil from "./images/TeamLeads/Web/sahil_gupta.webp";
+import AyushTiwari from "./images/TeamLeads/Web/AyushTiwari.webp";
+import ShambhaviKejriwal from "./images/TeamLeads/Web/Shambhavi_Kejriwal.webp";
+import ShreyanshGangwar from "./images/TeamLeads/Web/Shreyansh_Gangwar.webp";
+import SankalpBansal from "./images/TeamLeads/Web/Sankalp_Bansal.jpeg";
+import PiyushSinghChundawat from "./images/TeamLeads/Web/Piyush_Singh_Chundawat.webp";
+
+//Faculty Coordinator
+import AmitSir from "./images/FacultyCoordinators/Amit_M.webp";
+import AnandSharmaSir from "./images/FacultyCoordinators/AnandSharma.webp";
+import AnkurSir from "./images/FacultyCoordinators/ankur_passport.webp";
+import DipayanGuhaSir from "./images/FacultyCoordinators/DipayanGuha_photo.webp";
+import InduMam from "./images/FacultyCoordinators/Indu-photo.webp";
+import JoyBrataSir from "./images/FacultyCoordinators/Joybrata.webp";
+import Mitu from "./images/FacultyCoordinators/Mitu_pic.webp";
+import RanvijaySir from "./images/FacultyCoordinators/Ranvijay.webp";
+import ShashankSir from "./images/FacultyCoordinators/ShashankSir.webp";
+import SmritiMam from "./images/FacultyCoordinators/smriti_pic_imrac.webp";
+import SnehalK from "./images/FacultyCoordinators/SnehalK.webp";
+import Suantak from "./images/FacultyCoordinators/Suantak.webp";
+import SunilKGupta from "./images/FacultyCoordinators/sunil_k_gupta_photo.webp";
+import SupriyaMam from "./images/FacultyCoordinators/supriyaY.webp";
+import Suresh from "./images/FacultyCoordinators/Suresh.webp";
+import Satish from "./images/FacultyCoordinators/Satish.webp";
+
 export const data = [
   {
     teamName: "SAC PRESIDENT",
@@ -92,21 +124,99 @@ export const data = [
     teamName: "FACULTY COORDINATOR",
     members: [
       {
-        name: "Coordinator 1",
+        name: "Dr.Smriti Agarwal",
         email: "coordinator1@example.com",
-        img: "path/to/image1.jpg",
+        img: SmritiMam,
         linkedin: "https://linkedin.com/in/coordinator1",
       },
       {
-        name: "Coordinator 2",
+        name: "Dr. Suresh Bandi",
         email: "coordinator2@example.com",
-        img: "path/to/image2.jpg",
+        img: Suresh,
         linkedin: "https://linkedin.com/in/coordinator2",
       },
       {
-        name: "Coordinator 3",
+        name: "Dr. Amit Biswas",
         email: "coordinator3@example.com",
-        img: "path/to/image3.jpg",
+        img: AmitSir,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Mitu Mandal",
+        email: "coordinator3@example.com",
+        img: Mitu,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Supriya Yadav",
+        email: "coordinator3@example.com",
+        img: SupriyaMam,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Ankur Gaur",
+        email: "coordinator3@example.com",
+        img: AnkurSir,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Ranvijay",
+        email: "coordinator3@example.com",
+        img: RanvijaySir,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Shashank Srivastava",
+        email: "coordinator3@example.com",
+        img: ShashankSir,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Anand Sharma",
+        email: "coordinator3@example.com",
+        img: AnandSharmaSir,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Sunil Kumar Gupta",
+        email: "coordinator3@example.com",
+        img: SunilKGupta,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Dipayan Guha",
+        email: "coordinator3@example.com",
+        img: DipayanGuhaSir,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Suantak Kamsonlian",
+        email: "coordinator3@example.com",
+        img: Suantak,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Satish Chandra",
+        email: "coordinator3@example.com",
+        img: Satish,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Snehal K",
+        email: "coordinator3@example.com",
+        img: SnehalK,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Joyabrata Mal",
+        email: "coordinator3@example.com",
+        img: JoyBrataSir,
+        linkedin: "https://linkedin.com/in/coordinator3",
+      },
+      {
+        name: "Dr. Indu Dohore",
+        email: "coordinator3@example.com",
+        img: InduMam,
         linkedin: "https://linkedin.com/in/coordinator3",
       },
     ],
@@ -114,6 +224,12 @@ export const data = [
   {
     teamName: "FESTIVAL SECRETARY",
     members: [
+      {
+        name: "Sambhav Jain",
+        email: "secretary3@example.com",
+        img: SambhavJain,
+        linkedin: "https://linkedin.com/in/secretary3",
+      },
       {
         name: "Abhishek Pandey",
         email: "secretary1@example.com",
@@ -127,15 +243,33 @@ export const data = [
         linkedin: "https://linkedin.com/in/secretary2",
       },
       {
-        name: "Kesar Tripathi",
+        name: "Shubhrata",
         email: "secretary3@example.com",
-        img: KesarTripathi,
+        img: Shubhrata,
+        linkedin: "https://linkedin.com/in/secretary3",
+      },
+      {
+        name: "Priyanka Shekhar",
+        email: "secretary3@example.com",
+        img: PriyankaShekhar,
         linkedin: "https://linkedin.com/in/secretary3",
       },
       {
         name: "Manasvi Pathak",
         email: "secretary3@example.com",
         img: ManasviPathak,
+        linkedin: "https://linkedin.com/in/secretary3",
+      },
+      {
+        name: "Kesar Tripathi",
+        email: "secretary3@example.com",
+        img: KesarTripathi,
+        linkedin: "https://linkedin.com/in/secretary3",
+      },
+      {
+        name: "Yash Sahu",
+        email: "secretary3@example.com",
+        img: YashSahu,
         linkedin: "https://linkedin.com/in/secretary3",
       },
       {
@@ -151,27 +285,9 @@ export const data = [
         linkedin: "https://linkedin.com/in/secretary3",
       },
       {
-        name: "Priyanka Shekhar",
-        email: "secretary3@example.com",
-        img: PriyankaShekhar,
-        linkedin: "https://linkedin.com/in/secretary3",
-      },
-      {
         name: "Sakshi Dubey",
         email: "secretary3@example.com",
         img: SakshiDubey,
-        linkedin: "https://linkedin.com/in/secretary3",
-      },
-      {
-        name: "Sambhav Jain",
-        email: "secretary3@example.com",
-        img: SambhavJain,
-        linkedin: "https://linkedin.com/in/secretary3",
-      },
-      {
-        name: "Shubhrata",
-        email: "secretary3@example.com",
-        img: Shubhrata,
         linkedin: "https://linkedin.com/in/secretary3",
       },
       {
@@ -193,12 +309,6 @@ export const data = [
         linkedin: "https://linkedin.com/in/secretary3",
       },
       {
-        name: "Yash Sahu",
-        email: "secretary3@example.com",
-        img: YashSahu,
-        linkedin: "https://linkedin.com/in/secretary3",
-      },
-      {
         name: "Yashav Bharti",
         email: "secretary3@example.com",
         img: YashavBharti,
@@ -216,6 +326,18 @@ export const data = [
     teamName: "PR TEAM",
     members: [
       {
+        name: "Harsh K Tiwary",
+        email: "prteam3@example.com",
+        img: HarshKumarTiwary,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Snehal Tripathi",
+        email: "prteam3@example.com",
+        img: SnehalTripathi,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
         name: "Aniket Mohanti",
         email: "prteam1@example.com",
         img: AniketMohanti,
@@ -231,12 +353,6 @@ export const data = [
         name: "Deeksha Singh",
         email: "prteam3@example.com",
         img: DeekshaSingh,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
-      {
-        name: "Harsh K Tiwary",
-        email: "prteam3@example.com",
-        img: HarshKumarTiwary,
         linkedin: "https://linkedin.com/in/prteam3",
       },
       {
@@ -269,12 +385,7 @@ export const data = [
         img: ShreyanshSingh,
         linkedin: "https://linkedin.com/in/prteam3",
       },
-      {
-        name: "Snehal Tripathi",
-        email: "prteam3@example.com",
-        img: SnehalTripathi,
-        linkedin: "https://linkedin.com/in/prteam3",
-      },
+
       {
         name: "Snehashish Dutta",
         email: "prteam3@example.com",
@@ -287,27 +398,81 @@ export const data = [
     teamName: "WEB TEAM",
     members: [
       {
-        name: "Web Team 1",
+        name: "Aman Raj",
         email: "webteam1@example.com",
-        img: "path/to/image1.jpg",
+        img: AmanRaj,
         linkedin: "https://linkedin.com/in/webteam1",
       },
       {
-        name: "Web Team 2",
+        name: "Avinash",
         email: "webteam2@example.com",
-        img: "path/to/image2.jpg",
+        img: Avinash,
         linkedin: "https://linkedin.com/in/webteam2",
       },
       {
-        name: "Web Team 3",
+        name: "Vinayak Singh",
         email: "webteam3@example.com",
-        img: "path/to/image3.jpg",
+        img: VinayakThakur,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Mrinal Varshney",
+        email: "webteam3@example.com",
+        img: Mrinal,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Shivansh Mishra",
+        email: "webteam3@example.com",
+        img: Shivansh,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Hariom Joshi",
+        email: "webteam3@example.com",
+        img: Hariom,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Sahil Gupta",
+        email: "webteam3@example.com",
+        img: Sahil,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Ayush Tiwari",
+        email: "webteam3@example.com",
+        img: AyushTiwari,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Shambhavi Kejriwal",
+        email: "webteam3@example.com",
+        img: ShambhaviKejriwal,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Shreyansh Gangwar",
+        email: "webteam3@example.com",
+        img: ShreyanshGangwar,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Sankalp Bansal",
+        email: "webteam3@example.com",
+        img: SankalpBansal,
+        linkedin: "https://linkedin.com/in/webteam3",
+      },
+      {
+        name: "Piyush Singh Chundawat",
+        email: "webteam3@example.com",
+        img: PiyushSinghChundawat,
         linkedin: "https://linkedin.com/in/webteam3",
       },
     ],
   },
   {
-    teamName: "DESIGN LEAD & MEDIA LEADS",
+    teamName: "DESIGN & MEDIA LEADS",
     members: [
       {
         name: "Aditya Maurya",
@@ -328,6 +493,12 @@ export const data = [
         linkedin: "https://linkedin.com/in/designlead3",
       },
       {
+        name: "Utkarsh Ojha",
+        email: "designlead3@example.com",
+        img: UtkarshOjha,
+        linkedin: "https://linkedin.com/in/designlead3",
+      },
+      {
         name: "Divyanshu",
         email: "designlead3@example.com",
         img: Divyanshu,
@@ -344,35 +515,6 @@ export const data = [
         email: "designlead3@example.com",
         img: PratikshaSingh,
         linkedin: "https://linkedin.com/in/designlead3",
-      },
-      {
-        name: "Utkarsh Ojha",
-        email: "designlead3@example.com",
-        img: UtkarshOjha,
-        linkedin: "https://linkedin.com/in/designlead3",
-      },
-    ],
-  },
-  {
-    teamName: "MEDIA LEADS",
-    members: [
-      {
-        name: "Media Lead 1",
-        email: "medialead1@example.com",
-        img: "path/to/image1.jpg",
-        linkedin: "https://linkedin.com/in/medialead1",
-      },
-      {
-        name: "Media Lead 2",
-        email: "medialead2@example.com",
-        img: "path/to/image2.jpg",
-        linkedin: "https://linkedin.com/in/medialead2",
-      },
-      {
-        name: "Media Lead 3",
-        email: "medialead3@example.com",
-        img: "path/to/image3.jpg",
-        linkedin: "https://linkedin.com/in/medialead3",
       },
     ],
   },
@@ -409,10 +551,10 @@ export const data = [
     teamName: "GNOSIOMANIA LEADS",
     members: [
       {
-        name: "Ananya Jain",
-        email: "gnosiolead1@example.com",
-        img: AnanyaJain,
-        linkedin: "https://linkedin.com/in/gnosiolead1",
+        name: "Naman Verma",
+        email: "gnosiolead3@example.com",
+        img: NamanVerma,
+        linkedin: "https://linkedin.com/in/gnosiolead3",
       },
       {
         name: "Arihant Singh",
@@ -421,15 +563,15 @@ export const data = [
         linkedin: "https://linkedin.com/in/gnosiolead2",
       },
       {
+        name: "Ananya Jain",
+        email: "gnosiolead1@example.com",
+        img: AnanyaJain,
+        linkedin: "https://linkedin.com/in/gnosiolead1",
+      },
+      {
         name: "Manika Awasthi",
         email: "gnosiolead3@example.com",
         img: ManikaAwasthi,
-        linkedin: "https://linkedin.com/in/gnosiolead3",
-      },
-      {
-        name: "Naman Verma",
-        email: "gnosiolead3@example.com",
-        img: NamanVerma,
         linkedin: "https://linkedin.com/in/gnosiolead3",
       },
     ],
