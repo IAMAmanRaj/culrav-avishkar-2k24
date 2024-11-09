@@ -576,27 +576,4 @@ export const data = [
       },
     ],
   },
-  {
-    teamName: "DEPARTMENTAL COORDINATOR",
-    members: [
-      {
-        name: "Coordinator 1",
-        email: "coordinator1@example.com",
-        img: "path/to/image1.jpg",
-        linkedin: "https://linkedin.com/in/coordinator1",
-      },
-      {
-        name: "Coordinator 2",
-        email: "coordinator2@example.com",
-        img: "path/to/image2.jpg",
-        linkedin: "https://linkedin.com/in/coordinator2",
-      },
-      {
-        name: "Coordinator 3",
-        email: "coordinator3@example.com",
-        img: "path/to/image3.jpg",
-        linkedin: "https://linkedin.com/in/coordinator3",
-      },
-    ],
-  },
 ];
