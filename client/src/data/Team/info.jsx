@@ -326,19 +326,19 @@ export const data = [
     teamName: "WEB TEAM",
     members: [
       {
-        name: "Aman Raj",
+        name: "Aman Raj [ Lead ]",
         email: "webteam1@example.com",
         img: AmanRaj,
         linkedin: "https://linkedin.com/in/webteam1",
       },
       {
-        name: "Avinash",
+        name: "Avinash [ Lead ]",
         email: "webteam2@example.com",
         img: Avinash,
         linkedin: "https://linkedin.com/in/webteam2",
       },
       {
-        name: "Vinayak Singh",
+        name: "Vinayak Singh [ Lead ]",
         email: "webteam3@example.com",
         img: VinayakThakur,
         linkedin: "https://linkedin.com/in/webteam3",
