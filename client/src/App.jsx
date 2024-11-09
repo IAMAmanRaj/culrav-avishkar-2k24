@@ -27,7 +27,7 @@ import UserProfilePage from "./pages/UserDashboard/UserDashboardPage";
 import Schedule from "./Components/Schedule/Schedule";
 import Sponsors from "./Components/Sponsors/Sponsors";
 import VerticalSideBarAdmin from "./Components/AdminPanel/VerticalSideBarAdmin";
-import ScrollToTop from "./Components/General/ScrollToTop"
+import ScrollToTop from "./Components/General/ScrollToTop";
 
 const TitleUpdater = () => {
   const location = useLocation();
@@ -47,8 +47,6 @@ const TitleUpdater = () => {
       window.history.scrollRestoration = "auto";
     };
   }, [pathname]);
-
-
 
   useEffect(() => {
     const { pathname } = location;
