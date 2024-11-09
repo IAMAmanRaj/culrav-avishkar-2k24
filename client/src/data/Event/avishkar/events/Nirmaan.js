@@ -66,6 +66,7 @@ const Nirmaan = {
       coordinators: [
         { name: "Pawan Kumar Agarwal", contact: "9358116201" },
         { name: "Deepesh Baberwal", contact: "8502882858" },
+        { name: "Sachin Meena", contact: "8824435162" }
       ],
     },
     {
@@ -87,6 +88,7 @@ const Nirmaan = {
         { name: "Pawan Kumar Agarwal", contact: "9358116201" },
         { name: "Dharam Singh Meena", contact: "9621712097" },
         { name: "Shubham Saurav", contact: "8709956325" },
+        { name: "Ashish Maurya", contact: "9621249054" }
       ],
     },
     {
@@ -166,6 +168,7 @@ const Nirmaan = {
       coordinators: [
         { name: "Pawan Kumar Agarwal", contact: "9358116201" },
         { name: "Dharam Singh Meena", contact: "9621712097" },
+        { name: "Priyanshu Ranjan Srivastava", contact: "9118272807" },
       ],
     },
   ],
