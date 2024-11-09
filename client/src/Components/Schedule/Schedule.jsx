@@ -23,9 +23,9 @@ const Schedule = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 top-[8rem] flex flex-col items-center justify-center px-4 py-8 md:py-16">
+      {/* <div className="relative z-10 top-[8rem] flex flex-col items-center justify-center px-4 py-8 md:py-16">
         {/* Header */}
-        <h1
+        {/* <h1
           className="text-white font-extrabold text-3xl md:text-5xl text-center"
           style={{ fontFamily: '"MOON GET!"' }}
         >
@@ -52,7 +52,7 @@ const Schedule = () => {
                     hover:scale-105 hover:shadow-lg transition-transform duration-200 ease-in-out"
                 >
                   {/* Header Label */}
-                  <div className="flex justify-center items-center bg-[#181818] w-full h-10 rounded-t-lg">
+                  {/* <div className="flex justify-center items-center bg-[#181818] w-full h-10 rounded-t-lg">
                     <p
                       className="text-xs md:text-base text-white font-bold tracking-wide"
                       style={{
@@ -89,6 +89,13 @@ const Schedule = () => {
             </div>
           ))}
         </div>
+      </div> */}
+
+      {/* New Content */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen">
+        <p className="text-white hover:cursor-pointer hover:text-[#F54E25] transition-all duration-300 font-extrabold text-3xl md:text-5xl text-center">
+          To be declared soon ...
+        </p>
       </div>
     </div>
   );

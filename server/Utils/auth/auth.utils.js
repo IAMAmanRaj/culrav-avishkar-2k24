@@ -14,7 +14,9 @@ export function checkEmail(email) {
 }
 
 export function checkPassword(password) {
+
   if (password.length < 8) {
+   
     return {
       state: "invalid",
       message: "Password must be at least 8 characters long",
@@ -27,17 +29,20 @@ export function checkPassword(password) {
     };
   }
   if (!/[a-z]/.test(password)) {
+   
     return {
       state: "invalid",
       message: "Password must contain at least one lowercase letter",
     };
   }
   if (!/[A-Z]/.test(password)) {
+    
     return {
       state: "invalid",
       message: "Password must contain at least one uppercase letter",
     };
   }
+  
   return {
     state: "valid",
     message: "Password is valid",

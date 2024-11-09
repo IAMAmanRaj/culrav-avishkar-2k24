@@ -40,9 +40,7 @@ function CulravEvent() {
       }
     };
     func();
-  }, []);
-
-
+  }, [EventId, Id, navigate]);
 
   const eventData = decodedData
     ? {
@@ -59,18 +57,16 @@ function CulravEvent() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const isAuthenticated = useAuth();
   const dispatch = useDispatch();
   const { token, user } = getUser();
   const [remainingTeams, setRemainingTeams] = useState([]);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated]);
-
   const handleModelOpen = async () => {
+    if (!token) {
+      toast.error("Please Login First !");
+      return;
+    }
+
     setIsModalOpen(true);
 
     try {
@@ -97,7 +93,7 @@ function CulravEvent() {
         );
       } else {
         console.log(res?.message);
-        toast.error("error while getting the teams");
+        toast.error("Error while getting the teams");
         dispatch(fetchTeamsFailure(res?.message));
       }
     } catch (err) {
@@ -243,4 +239,3 @@ function CulravEvent() {
 }
 
 export default CulravEvent;
-

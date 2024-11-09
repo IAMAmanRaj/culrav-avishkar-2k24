@@ -12,36 +12,25 @@ import useAuth from "../../lib/useAuth.js";
 import getUser from "../../Components/profile_DashBoard/userService.js";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import events from "@/data/Event/avishkar/events/AvishkarAllEvents";
 
 function AvishkarEvent() {
-  const { data } = useParams();
-  const decodedData = JSON.parse(decodeURIComponent(data));
-  const eventData = {
-    eventId: decodedData.eventId,
-    eventName: decodedData.eventName,
-    department: "NA",
-    minTeamSize: decodedData.minTeamSize,
-    maxTeamSize: decodedData.maxTeamSize,
-    eventCoordinators: decodedData.coordinators,
-    description: decodedData.description,
-    rules: decodedData.rules,
-  };
-  console.log(decodedData);
+  const { EventId, Id } = useParams();
+  const [decodedData, setdecodedData] = useState(null);
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [teams, setTeams] = useState([]);
 
-  const isAuthenticated = useAuth();
   const navigate = useNavigate();
 
   const { token, user } = getUser();
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  });
-
   const handleModelOpen = async () => {
+    if (!token) {
+      toast.error("Please Login first !");
+      return;
+    }
+
     setIsModalOpen(true);
 
     try {
@@ -60,6 +49,45 @@ function AvishkarEvent() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    console.log(EventId, Id);
+    const func = () => {
+      const mainEvent = events.find(event => event.id === parseInt(EventId));
+      if (mainEvent) {
+        const subEvent = mainEvent.events.find(subEvent => subEvent.eventId.toString() === Id);
+        if (subEvent) {
+          setdecodedData(subEvent);
+        } else {
+          navigate("/404");
+        }
+      } else {
+        navigate("/404");
+      }
+    };
+    func();
+  }, []);
+
+
+  
+  const eventData = decodedData
+    ? {
+      eventId: decodedData.eventId,
+      eventName: decodedData.eventName,
+      department: "NA",
+      minTeamSize: decodedData.minTeamSize,
+      maxTeamSize: decodedData.maxTeamSize,
+      eventCoordinators: decodedData.coordinators,
+      description: decodedData.description,
+      rules: decodedData.rules,
+    }
+    : null;
+
+
+    console.log(decodedData)
+
+
+
 
   return (
     <>
@@ -104,7 +132,7 @@ function AvishkarEvent() {
           }}
         >
           <span className="font-bionix text-[3vw] pl-[6%]">
-            {eventData.eventName}
+            {eventData?.eventName}
           </span>
         </div>
 
@@ -119,7 +147,7 @@ function AvishkarEvent() {
               className="w-full text-[2.5vw] font-bebas pl-[10%] pr-[10%]"
               style={{ wordSpacing: "0.2em" }}
             >
-              {eventData.description}
+              {eventData?.description}
             </p>
           </section>
 
@@ -129,7 +157,7 @@ function AvishkarEvent() {
               Rules
             </h2>
             <ul className="w-full mx-[5%] font-bebas space-y-4 items-start justify-center flex flex-col">
-              {eventData.rules.map((rule, index) => (
+              {eventData?.rules.map((rule, index) => (
                 <li
                   key={index}
                   className="flex items-start text-[2.5vw] mr-[10%]"
@@ -190,7 +218,7 @@ function AvishkarEvent() {
               Coordinators
             </h2>
             <div className="flex justify-around font-bionix text-[2.5vw]">
-              {eventData.eventCoordinators.map((coo, idx) => (
+              {eventData?.eventCoordinators.map((coo, idx) => (
                 <div>{coo.name}</div>
               ))}
             </div>

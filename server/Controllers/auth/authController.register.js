@@ -50,10 +50,16 @@ const Register = AsyncErrorHandler(async (req, res, next) => {
       }
     }
 
-    if (!checkPassword(password) || !checkName(name)) {
+    if (!checkName(name)) {
       return res.status(400).json({
         success: false,
-        message: "Invalid Username or Password",
+        message: "Invalid Name",
+      });
+    }
+    if (checkPassword(password).state === "invalid") {
+      return res.status(400).json({
+        success: false,
+        message: checkPassword(password).message,
       });
     }
 

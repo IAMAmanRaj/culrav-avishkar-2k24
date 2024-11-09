@@ -40,6 +40,7 @@
 
 // export default AvishkarEvents;
 import EventCard from "@/Components/Avishkar/EventCard";
+
 import AvishkarAllEvents from "@/data/Event/avishkar/events/AvishkarAllEvents";
 import aviskharbg from "@/images/aviskar-bg.png";
 import hoverimage from "@/images/hoveraviskhar.png";
@@ -49,8 +50,8 @@ import { useParams } from "react-router-dom";
 
 function AvishkarEvents() {
   const { data } = useParams();
-  const decodedData = JSON.parse(decodeURIComponent(data));
-  const events = decodedData;
+  const id = JSON.parse(decodeURIComponent(data));
+    const events = AvishkarAllEvents.filter((event)=> event.id === parseInt(id));
 
   return (
     <div
@@ -68,12 +69,13 @@ function AvishkarEvents() {
       </h1>
 
       <div className="grid grid-cols-1 w-full xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 4k:grid-cols-5 gap-x-4 md:gap-x-6 lg:gap-x-10 justify-items-center h-full p-[5%] pb-[8%]">
-        {events.map((event, index) => (
+        {events[0]?.events.map((event, index) => (
           <div
             key={index}
             className="relative group flex flex-col items-center w-[90%] h-[280px] sm:h-[300px] md:h-[350px] lg:h-[380px] lg:w-[380px]  p-[5%]  overflow-hidden "
           >
-            <MainEventCard event={event} />
+            <MainEventCard
+            Card id={id} event={event} />
           </div>
         ))}
       </div>
