@@ -4,11 +4,9 @@ import hoverImage from '@/images/hoveraviskhar.png';
 
 function EventCard({ event }) {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate(
-      `/avishkarEvents/${encodeURIComponent(JSON.stringify(event.events))}`
-    );
-  }
+    const handleClick = () => {
+      navigate(`/AvishkarEvents/${event.id}`);
+    };
   return (
     <div className="hover:cursor-pointer relative md:w-full w-[80%] h-full flex flex-col justify-between overflow-hidden transition-transform duration-500 ease-out group">
 

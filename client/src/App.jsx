@@ -76,20 +76,8 @@ const TitleUpdater = () => {
       case "/culrav-landing":
         title += " Culrav";
         break;
-      case "/culravevents":
-        title += " Culrav Events";
-        break;
-      case "/culraveventpage":
-        title += " Culrav Event Page";
-        break;
       case "/avishkar-landing":
         title += " Avishkar";
-        break;
-      case "/avishkarevents":
-        title += " Avishkar Events";
-        break;
-      case "/avishkareventpage":
-        title += " Avishkar Event Page";
         break;
       case "/team":
         title += " Team";
@@ -100,11 +88,24 @@ const TitleUpdater = () => {
       case "/sponsors":
         title += " Sponsors";
         break;
+        case "/schedule":
+          title += " Schedule";
+          break;
       case "/admin-panel":
         title += " Admin Panel";
         break;
-      default:
-        title += "";
+        default:
+          if (pathname.includes("/CulravEventPage")) {
+            title += " Event Page";
+          } else if (pathname.includes("/AvishkarEventPage")) {
+            title += " Event Page";
+          }else if (pathname.includes("/CulravEvents")) {
+            title += " Culrav Events";
+          }else if (pathname.includes("/AvishkarEvents")) {
+            title += " Avishkar Events";
+          } else {
+            title += "";
+          }
     }
 
     document.title = title;
@@ -137,8 +138,7 @@ function App() {
         <Route path="/Avishkar-Landing" element={<AvishkarLanding />} />
         <Route path="/AvishkarEvents" element={<AvishkarEvents />} />
         <Route path="/AvishkarEvents/:data" element={<AvishkarEvents />} />
-        <Route path="/AvishkarEventPage" element={<AvishkarEvent />} />
-        <Route path="/AvishkarEventPage/:data" element={<AvishkarEvent />} />
+        <Route path="/AvishkarEventPage/:EventId/:Id" element={<AvishkarEvent />} />
         <Route path="/team" element={<Team />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<UserProfilePage />} />

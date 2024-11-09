@@ -50,6 +50,7 @@ function CulravEvent() {
       eventName: decodedData.eventName,
       department: "NA",
       minTeamSize: decodedData.minTeamSize,
+      
       maxTeamSize: decodedData.maxTeamSize,
       eventCoordinators: decodedData.coordinators,
       description: decodedData.description,
