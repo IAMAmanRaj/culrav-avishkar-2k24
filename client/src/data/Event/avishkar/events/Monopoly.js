@@ -1,4 +1,3 @@
-
 import MonopolyPic from "../images/Main/MONOPOLY.webp";
 import MonopolySubPic from "../images/Sub/Monopoly.webp";
 
@@ -25,8 +24,8 @@ const Monopoly = {
       PsLink: "",
       coordinators: [
         { name: "Kajal Singh", contact: "8319989996" },
-        { name: "Yogesh Mishra", contact: "7417478430" },
-        { name: "Prajjwal Shukla", contact: "6387947075" },
+        { name: "Anshika Goel", contact: "8765284245" },
+        { name: "Shubhangi Mishra", contact: "8840537131" },
       ],
     },
     {
@@ -45,9 +44,9 @@ const Monopoly = {
       BGImageLink: MonopolySubPic,
       PsLink: "",
       coordinators: [
-        { name: "Anula Vishwakarma", contact: "8303361815" },
-        { name: "Anusha Muraka", contact: "9170493509" },
-        { name: "Ishan Kashyap", contact: "8542944249" },
+        { name: "Om Prakash Kumar", contact: "9693093526" },
+        { name: "Harsh Yadav", contact: "9761473867" },
+        { name: "Prakash Kumar", contact: "8287522862" },
       ],
     },
     {
@@ -66,9 +65,9 @@ const Monopoly = {
       BGImageLink: MonopolySubPic,
       PsLink: "",
       coordinators: [
-        { name: "Anubhuti Parihar", contact: "8896443544" },
-        { name: "Sakshi Kumari", contact: "7303501491" },
-        { name: "Shubhangi Mishra", contact: "7238082878" },
+        { name: "Dharya Akansha Horo", contact: "7257992948" },
+        { name: "Utsav Rani", contact: "7303501491" },
+        { name: "Kajal Singh", contact: "7238082878" },
       ],
     },
     {
@@ -86,9 +85,9 @@ const Monopoly = {
       BGImageLink: MonopolySubPic,
       PsLink: "",
       coordinators: [
-        { name: "Anshul Tale", contact: "9644202510" },
-        { name: "Shubhi Gupta", contact: "8957977946" },
-        { name: "Parul Samiksha", contact: "8470991072" },
+        { name: "Shubhangi Mishra", contact: "9644202510" },
+        { name: "Om Prakash Kumar", contact: "8957977946" },
+        { name: "Utsav Rani", contact: "8470991072" },
       ],
     },
     {
@@ -107,15 +106,12 @@ const Monopoly = {
       BGImageLink: MonopolySubPic,
       PsLink: "",
       coordinators: [
-        { name: "Babita Gupta", contact: "7267093014" },
-        { name: "Dharya Akansha Horo", contact: "7257992948" },
-        { name: "Anshika Goel", contact: "8853169987" },
+        { name: "Babita", contact: "7267093014" },
+        { name: "Anshika Goel", contact: "7257992948" },
+        { name: "Dharya Akansha Horo", contact: "8853169987" },
       ],
     },
   ],
-
-
 };
 
 export default Monopoly;
-

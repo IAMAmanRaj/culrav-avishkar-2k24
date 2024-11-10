@@ -1,4 +1,3 @@
-
 import OligopolyPic from "../images/Main/OLIGOPOLY.webp";
 import OligopolySubPic from "../images/Sub/Oligopoly.webp";
 
@@ -24,9 +23,9 @@ const Oligopoly = {
       BGImageLink: OligopolySubPic,
       PsLink: "",
       coordinators: [
-        { name: "Isha Rohitas", contact: "7999637764" },
-        { name: "Himanshu Agrawal", contact: "9630293924" },
-        { name: "Abhay Bhatt", contact: "7905851053" },
+        { name: "Kajal Singh", contact: "7999637764" },
+        { name: "Anjali Yadav", contact: "9630293924" },
+        { name: "Babita", contact: "7905851053" },
       ],
     },
     {
@@ -44,8 +43,8 @@ const Oligopoly = {
       BGImageLink: OligopolySubPic,
       PsLink: "",
       coordinators: [
-        { name: "Shubhangi Mishra", contact: "7238082878" },
-        { name: "Utsav Rani", contact: "8709726849" },
+        { name: "Vaibhav Mishra", contact: "7238082878" },
+        { name: "Harsh Yadav", contact: "8709726849" },
         { name: "Anjali Yadav", contact: "8303600726" },
       ],
     },
@@ -85,9 +84,9 @@ const Oligopoly = {
       BGImageLink: OligopolySubPic,
       PsLink: "",
       coordinators: [
-        { name: "Harshita Dubey", contact: "8318072660" },
-        { name: "Devyani Srivastava", contact: "9336293343" },
-        { name: "Anupam Gopal", contact: "9305886537" },
+        { name: "Shubhangi Mishra", contact: "8318072660" },
+        { name: "Prakash Kumar", contact: "9336293343" },
+        { name: "Harshita Dubey", contact: "9305886537" },
       ],
     },
   ],

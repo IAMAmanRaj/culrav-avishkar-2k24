@@ -38,7 +38,7 @@ const Profile = () => {
         backgroundRepeat: 'no-repeat', 
       }}
     >
-      <div className="px-9 text-xs xs:text-sm md:text-lg rounded-md py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
+      <div className="px-9 text-xs xs:text-sm md:text-md lg:text-lg rounded-md py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
         <div className="w-full h-[40px] flex mb-4">
           <div className="w-[20%] h-full flex">
             <h1 className="text-white flex items-center justify-center">Name</h1>

@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Button } from "@/ShadCnComponents/ui/button";
 import ScrollableDiv from "@/Components/profile_DashBoard/shared/ScrollableDiv";
-import { useNavigate } from "react-router-dom";
 import Alert from "../shared/Alert";
 import getUser from "../userService";
 import { deleteTeam } from "../services";
@@ -65,9 +64,10 @@ function UserTeams({ showTeamInfo }) {
   }
 
   return (
-    <div className={`md:w-[50vw]  ${myTeams.length === 0 || joinedTeams.length === 0 ? "lg:w-1/2" : "lg:w-full"} h-full flex flex-col lg:flex-row gap-10 lg:gap-5`}>
+    <div className={`md:w-[50vw]  ${myTeams.length === 0 || joinedTeams.length === 0 ? "lg:w-1/2" : "lg:w-full"} h-auto flex flex-col lg:flex-row gap-10 lg:gap-5`}>
       {myTeams.length > 0 && (
-        <ScrollableDiv title="My teams">
+        <ScrollableDiv title="My teams"
+        >
           {myTeams.map((team) => {
             return (
               <div

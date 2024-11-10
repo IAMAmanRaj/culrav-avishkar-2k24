@@ -140,7 +140,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
         )}
         {...props}
       />
-      <h1 className="text-2xl md:text-4xl text-white font-bebas hover:cursor-pointer hover:text-[#F54E25] transition-all duration-300">Culrav - Avishkar 2k24 Old Diaries...</h1>
+      <h1 className="text-2xl md:text-4xl text-white font-bebas hover:cursor-pointer hover:text-[#F54E25] transition-all duration-300">Culrav - Avishkar Old Diaries...</h1>
     </div>
     </>
   );

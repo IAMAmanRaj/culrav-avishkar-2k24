@@ -415,7 +415,7 @@ export const data = [
         linkedin: "https://linkedin.com/in/prteam3",
       },
       {
-        name: "Aniket Mohanti",
+        name: "Aniket Mohanty",
         email: "prteam1@example.com",
         img: AniketMohanti,
         linkedin: "https://linkedin.com/in/prteam1",

@@ -156,7 +156,7 @@ function TeamInfo({ team, handleShowAllTeams }) {
           </ScrollableDiv>
           <ScrollableDiv
             title="Team members"
-            titleStyle="ml-3 md:ml-5 text-xl mb-7 text-white"
+            titleStyle="ml-3  md:ml-5 text-xl mb-7 text-white"
           >
             {activeMembers.map((member) => {
               return (

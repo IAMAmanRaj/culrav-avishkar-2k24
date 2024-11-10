@@ -1,5 +1,4 @@
 import InvitationCard from "@/Components/profile_DashBoard/Invitation/InviteCard";
-import ScrollableDiv from "@/Components/profile_DashBoard/shared/ScrollableDiv";
 import ContentBox from "@/assets/userDashBoard/ContentBox.png";
 import { useEffect } from "react";
 import useAuth from "../../../lib/useAuth.js";

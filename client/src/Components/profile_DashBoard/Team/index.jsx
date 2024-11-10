@@ -69,11 +69,11 @@ function Team() {
   return (
     <>
       {showAllTeams ? (
-        <div className=" md:p-0 pt-20  pb-10 h-screen md:h-auto px-3 md:w-[74vw] 
+        <div className=" md:p-0 -mt-4  pb-10 h-screen overflow-y-scroll md:overflow-hidden md:h-auto px-3 md:w-[74vw] 
        bg-[#202020]/100  custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[60px] flex 
        justify-center items-center ">
           <div className="md:px-9 md:h-screen-minus-92 h-auto md:py-7 p-4   bg-dark_secondary grid  border-[#202020]/100 border-2 w-full ">
-            <div className=" h-[90%] w-full">
+            <div className=" h-[90%] mt-56 xs:mt-72 sm:mt-36 w-full">
               <UserTeams showTeamInfo={showTeamInfo} />
             </div>
           </div>
