@@ -29,8 +29,8 @@ app.get("/", (req, res) => {
 
 // Auth rate limiter
 const authLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 60 minutes
-  max: 3, // Limit to 3 requests per 60 minutes
+  windowMs: 5 * 60 * 1000, // 60 minutes
+  max: 1000, // Limit to 3 requests per 60 minutes
   message: { message: "Too many attempts, please try again after an hour" },
 });
 
@@ -38,7 +38,7 @@ const authLimiter = rateLimit({
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // All routes
-app.use("/api/auth/v1", authLimiter, authRoutes);
+app.use("/api/auth/v1", authRoutes);
 app.use("/api/admin/v1", AuthenticateToken, adminRouter);
 app.use("/api/team/v1", AuthenticateToken, teamRoutes);
 app.use("/api/event/v1", AuthenticateToken, eventRoutes);
