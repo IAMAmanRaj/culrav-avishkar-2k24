@@ -28,6 +28,7 @@ function EventCard({ roller, event }) {
         <img
           src={event.BGImageLink}
           alt="Event"
+          loading="lazy"
           className="w-full h-full object-fill"
         />
       </div>

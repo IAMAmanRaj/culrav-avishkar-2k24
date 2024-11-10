@@ -16,11 +16,13 @@ function EventCard({ event }) {
 
           src={event.BGImageLink} // Default image
           alt="Event"
+          loading="lazy"
           className="w-full h-full object-fill transition-opacity  duration-500 ease-in-out group-hover:opacity-0" // Fade out on hover
         />
         <img
           src={hoverImage} // Hover image
           alt="Event Hover"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-fill transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100" // Fade in on hover
         />
       </div>

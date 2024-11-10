@@ -11,8 +11,10 @@ import avishkar from "../../assets/Home/avishkar.webp";
 import grid from "../../assets/Home/grid.webp";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 const Schedule = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
   return (
     <div
       className="h-auto overflow-hidden flex flex-col bg-[#202020]/100"
@@ -34,7 +36,7 @@ const Schedule = () => {
               <img
                 src={culrav}
                 alt="Logo 1"
-                onClick={()=>navigate("/culrav-landing")}
+                onClick={() => navigate("/culrav-landing")}
                 className="object-cover  w-full h-full scale-[150%] md:scale-[100%] lg:scale-[120%] hover:cursor-pointer"
                 style={{ filter: 'drop-shadow(0 0 0.75rem rgb(255, 255, 255))' }}
               />
@@ -47,7 +49,7 @@ const Schedule = () => {
               }}>
               <img
                 src={avishkar}
-                onClick={()=>navigate("/avishkar-landing")}
+                onClick={() => navigate("/avishkar")}
                 alt="Logo 2"
                 className="object-cover   w-full h-full scale-[190%] md:scale-[130%] lg:scale-[150%] lg:w-full  hover:cursor-pointer"
                 style={{ filter: 'drop-shadow(0 0 0.75rem rgb(255, 217, 0))' }}
@@ -97,35 +99,33 @@ const Schedule = () => {
           </div>
 
           <div className="py-10 px-4 mt-10 md:h-auto w-full md:w-[78%] mb-[10%] lg:min-h-[50vh] custom1110:min-h-[30vh] flex flex-col items-center">
-            <Link to="/schedule" className="w-full">
-              <div className="hidden md:flex md:flex-wrap gap-4 md:justify-center">
-                <div className="flex flex-wrap gap-5 justify-center w-full">
-                  <ScheduleCard day={1} date={11} />
-                  <ScheduleCard day={2} date={12} />
-                  <ScheduleCard day={3} date={13} />
-                </div>
-                <div className="flex flex-wrap gap-5 justify-center w-full">
-                  <ScheduleCard day={4} date={14} />
-                  <ScheduleCard day={5} date={15} />
-                  <ScheduleCard day={6} date={16} />
-                </div>
+            <div className="hidden md:flex md:flex-wrap gap-4 md:justify-center">
+              <div className="flex flex-wrap gap-5 justify-center w-full">
+                <ScheduleCard day={1} date={11} />
+                <ScheduleCard day={2} date={12} />
+                <ScheduleCard day={3} date={13} />
               </div>
+              <div className="flex flex-wrap gap-5 justify-center w-full">
+                <ScheduleCard day={4} date={14} />
+                <ScheduleCard day={5} date={15} />
+                <ScheduleCard day={6} date={16} />
+              </div>
+            </div>
 
-              <div className="relative -top-8 flex flex-wrap gap-3 justify-center md:hidden">
-                <div className="flex flex-wrap justify-center gap-4 w-full">
-                  <ScheduleCard day={1} date={11} />
-                  <ScheduleCard day={2} date={12} />
-                </div>
-                <div className="flex flex-wrap justify-center gap-4 w-full">
-                  <ScheduleCard day={3} date={13} />
-                  <ScheduleCard day={4} date={14} />
-                </div>
-                <div className="flex flex-wrap justify-center gap-4 w-full">
-                  <ScheduleCard day={5} date={15} />
-                  <ScheduleCard day={6} date={16} />
-                </div>
+            <div className="relative -top-8 flex flex-wrap gap-3 justify-center md:hidden">
+              <div className="flex flex-wrap justify-center gap-4 w-full">
+                <ScheduleCard day={1} date={11} />
+                <ScheduleCard day={2} date={12} />
               </div>
-            </Link>
+              <div className="flex flex-wrap justify-center gap-4 w-full">
+                <ScheduleCard day={3} date={13} />
+                <ScheduleCard day={4} date={14} />
+              </div>
+              <div className="flex flex-wrap justify-center gap-4 w-full">
+                <ScheduleCard day={5} date={15} />
+                <ScheduleCard day={6} date={16} />
+              </div>
+            </div>
           </div>
           <div className="h-[40vh] relative md:hidden w-full">
             <div className=" z-10 absolute -bottom-[9rem] -left-[4.4rem] md:left-[-2.7rem] md:bottom-[-5.5rem] scale-[0.6] md:scale-75 custom1560:left-[0rem] custom1560:scale-100 custom1980:scale-[1.2] custom1980:left-[-4px]">

@@ -1,4 +1,4 @@
-import RasayanPic from "../images/Sub/Rasayans.webp";
+import RasayanPic from "../images/Main/Rasayans.webp";
 
 const Rasayans = {
   eventName: "Rasayans",
@@ -97,7 +97,7 @@ const Rasayans = {
         { name: "Amit Kumar", contact: "9631142204" },
         { name: "Prince Pal", contact: "7084349373" },
         { name: "Dharmesh Baghel", contact: "9285423732" },
-        { name: "Arpit Mittal", contact: "6378137978" }
+        { name: "Arpit Mittal", contact: "6378137978" },
       ],
     },
     {
@@ -167,7 +167,7 @@ const Rasayans = {
         { name: "Sheetal", contact: "8239391313" },
         { name: "Shashwat Kapoor", contact: "9696065829" },
         { name: "Dharmesh Baghel", contact: "9285423732" },
-        { name: "Manoj Kumar", contact: "7563843645" }
+        { name: "Manoj Kumar", contact: "7563843645" },
       ],
     },
   ],

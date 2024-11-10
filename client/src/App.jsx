@@ -23,6 +23,7 @@ import Home from "./pages/Home/HomePage";
 import PayFeesPage from "./pages/PayFees/PayRegistrationFeePage";
 import Team from "./pages/Team/TeamPage";
 import PrivateRoute from "./Components/General/PrivateRoute";
+import AdminRoute from "./Components/General/AdminRoute";
 import UserProfilePage from "./pages/UserDashboard/UserDashboardPage";
 import Schedule from "./Components/Schedule/Schedule";
 import Sponsors from "./Components/Sponsors/Sponsors";
@@ -146,11 +147,9 @@ function App() {
         </Route>
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/sponsors" element={<Sponsors />} />
-        {/* TODO: later make this a private route (checking if user is admin or not) */}
-        <Route
-          path="/admin-panelhrgergerhruertuyerwiyoteityo8ewr"
-          element={<VerticalSideBarAdmin />}
-        />
+        <Route element={<AdminRoute />}>
+          <Route path="/admin-panel" element={<VerticalSideBarAdmin />} />
+        </Route>
       </Routes>
       <Footer />
     </Router>

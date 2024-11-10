@@ -1,14 +1,7 @@
 import User from "../Models/user.model.js";
 import Team from "../Models/team.model.js";
 import Event from "../Models/event.model.js";
-const checkEmail = (email) => {
-  const [localPart, domain] = email.split("@");
-  if (domain === "mnnit.ac.in") {
-    return !localPart.includes("2021");
-  }
 
-  return true;
-};
 
 const getAllTeamsOfAnEvent = async (req, res, next) => {
   const { eventId } = req.params;
@@ -150,9 +143,6 @@ const registerForEvent = async (req, res, next) => {
         message: "you can not resgiter, only leader is allowed",
       });
     }
-
-    const email = user.email;
-    const answer = checkEmail(email);
 
     // if(!answer){
     //   return res.status(400).json({
