@@ -242,7 +242,7 @@ const scheduleData = {
     events: [
       {
         category: "ELECTROMANIA",
-        title: "Innoved Presentation",
+        title: "Innodev Presentation",
         round: "Final",
         venue: "GS-7",
         time: "10:00 AM - 1:00 PM",
