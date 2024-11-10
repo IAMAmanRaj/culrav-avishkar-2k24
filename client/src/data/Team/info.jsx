@@ -32,6 +32,8 @@ import SarthakDwivedi from "./images/TeamLeads/PR/Sarthak_Dwivedi.webp";
 import ShreyanshSingh from "./images/TeamLeads/PR/Shreyansh_Singh.webp";
 import SnehalTripathi from "./images/TeamLeads/PR/Snehal_Tripathi.webp";
 import SnehashishDutta from "./images/TeamLeads/PR/Snehashish_Dutta.webp";
+import AkshatVerma from "./images/TeamLeads/PR/Akshat_Verma.webp";
+import RohanSingh from "./images/TeamLeads/PR/Rohan_Singh.webp";
 
 //FS
 
@@ -442,6 +444,18 @@ export const data = [
         name: "Prakhyat Verma",
         email: "prteam3@example.com",
         img: PrakhyatVerma,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Akshat Verma",
+        email: "prteam3@example.com",
+        img: AkshatVerma,
+        linkedin: "https://linkedin.com/in/prteam3",
+      },
+      {
+        name: "Rohan Singh",
+        email: "prteam3@example.com",
+        img: RohanSingh,
         linkedin: "https://linkedin.com/in/prteam3",
       },
       {
