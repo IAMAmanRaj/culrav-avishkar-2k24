@@ -24,8 +24,12 @@ const Mechrocosm = {
       PsLink: "",
       coordinators: [
         { name: "Sumit Mishra", contact: "8853818768" },
-        { name: "Shreepati Kamlesh Thakur", contact: "8006058289" },
+        { name: "Kamal Ahmad", contact: "8006058289" },
+        { name: "Shretank Prakash", contact: "8006058289" },
         { name: "Pulkit SInghal", contact: "7906696918" },
+        { name: "Shreepati Kamlesh thakur", contact: "7906696918" },
+        { name: "Shivam kumar", contact: "7906696918" },
+        { name: "Satyam Singh", contact: "7906696918" },
       ],
     },
     {
@@ -43,7 +47,7 @@ const Mechrocosm = {
       BGImageLink: MechrocosmSubPic,
       PsLink: "",
       coordinators: [
-        { name: "Siddhesh Dongare", contact: "8828100580" },
+        { name: "Uttam Kumar Gupta", contact: "8828100580" },
         { name: "Prashant Gupta", contact: "8417065947" },
         { name: "Anshika Kushwaha", contact: "7800173762" },
         { name: "Suyash Tiwari", contact: "9839479590" },
@@ -87,9 +91,9 @@ const Mechrocosm = {
       PsLink: "",
       coordinators: [
         { name: "Vishal Pal", contact: "6387674208" },
-        { name: "Siddhesh Dongare", contact: "8828100580" },
-        { name: "Riya Singh", contact: "9837594686" },
-        { name: "Yash Agrawal", contact: "7060036209" },
+        { name: "Shubham Nirmal", contact: "8828100580" },
+        { name: "Kamal Ahmad", contact: "9837594686" },
+        { name: "Uttam Kumar Gupta", contact: "7060036209" },
       ],
     },
     {
@@ -149,10 +153,9 @@ const Mechrocosm = {
       BGImageLink: MechrocosmSubPic,
       PsLink: "",
       coordinators: [
-        { name: "Yash Agarwal", contact: "7060036209" },
-        { name: "Riya Singh", contact: "9837594686" },
+        { name: "Siddhesh dongare", contact: "7060036209" },
+        { name: "Shivam Kumar Singh", contact: "9837594686" },
         { name: "Taniya Singh", contact: "7818949254" },
-        { name: "Vishal Pal", contact: "6387674208" },
       ],
     },
     {
@@ -171,8 +174,9 @@ const Mechrocosm = {
       BGImageLink: MechrocosmSubPic,
       PsLink: "",
       coordinators: [
-        { name: "Sumit Mishra", contact: "8853818768" },
-        { name: "Shreepati Kamlesh Thakur", contact: "8006058289" },
+        { name: "Uttam Kumar Gupta", contact: "8853818768" },
+        { name: "Ayush Srivastav", contact: "8006058289" },
+        { name: "Prashant Gupta", contact: "8006058289" },
       ],
     },
   ],
