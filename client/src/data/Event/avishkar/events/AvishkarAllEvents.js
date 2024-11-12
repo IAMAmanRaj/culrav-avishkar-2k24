@@ -7,7 +7,6 @@ import Nirmaan from "./Nirmaan";
 import Oligopoly from "./Oligopoly";
 import PowerSurge from "./PowerSurge";
 import Rasayans from "./Rasayans";
-
 const AvishkarAllEvents = [
   { id: 1, ...CyberQuest },
   { id: 2, ...Electromania },
