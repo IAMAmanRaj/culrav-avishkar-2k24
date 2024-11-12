@@ -58,12 +58,9 @@ function EventCard2({ roller, event, mainevent }) {
 
           </span>
         </div>
-        <div className="absolute group-hover:hidden bottom-0 left-0 w-full px-2 z-20 hover:z-0 flex justify-center">
+        <div className="absolute  group-hover:hidden bottom-0 left-0 w-full px-2 z-20 hover:z-0 flex items-center justify-center">
           <span
-            className=" bottom-0 text-black font-bionix hover:z-0 "
-            style={{
-              fontSize: "clamp(1rem, 5vw, 1.8rem)"
-            }}
+            className=" bottom-0 text-black w-auto max-w-[90%] flex text-center text-[15px] xl:text-[18px] -mt-16 font-bionix hover:z-0 "
           >
             {event.eventName}
           </span>

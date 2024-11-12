@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 function MainEventCard({ roller,id, event }) {
   const navigate = useNavigate();
+  const location = useLocation()
 
   console.log(event
     
@@ -35,11 +36,11 @@ function MainEventCard({ roller,id, event }) {
         />
       </div>
       <div className="hover:cursor-pointer absolute z-30 bottom-0 w-full px-2 flex justify-center items-center h-[30%]">
-        <div className="absolute hover:z-30 bottom-0 left-0 w-full px-2 z-20 flex justify-center">
+        <div className="absolute hover:z-30 bottom-0 left-0 w-full px-2 z-20 flex justify-center h-[70px] ">
           {" "}
           {/* Added flex justify-center */}
           {/* Sliding White Background */}
-          <div className="absolute inset-0 bg-[#181818] transform translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"></div>
+          <div className={`absolute inset-0 bg-[#181818] ${location.pathname.includes("/AvishkarEvents") ? "border-2 border-t-0 border-white" : "border-none"} transform translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500`}></div>
 
           {/* Sliding Explore Text */}
           <span
@@ -50,27 +51,22 @@ function MainEventCard({ roller,id, event }) {
             }}
           >
             <span
-              className=" hover:lg:cursor-pointer  hover:text-[#F54E25] group-hover:text-[2rem] transition-all duration-300"
-              onClick={handleClick}
-            >
-              {" "}
-
-              Explore
-            </span>
+  className="hover:lg:cursor-pointer hover:text-[#F54E25] group-hover:text-[2rem] transition-all duration-300"
+  onClick={handleClick}
+>
+  {" "}
+  Explore
+</span>
 
           </span>
         </div>
-        <div className="group-hover:hidden absolute bottom-0 left-0 w-full px-2 z-20 hover:z-0 flex justify-center">
+        <div className="absolute  group-hover:hidden bottom-0 left-0 w-full px-2 z-20 hover:z-0 flex items-center justify-center">
           <span
-            className="  text-black font-bionix hover:z-0 "
-            style={{
-              fontSize: "clamp(1rem, 5vw, 1.6rem)"
-            }}
+            className=" bottom-0 text-black w-auto max-w-[85%] flex text-center text-[15px] pt-8 xl:text-[18px] -mt-16 font-bionix hover:z-0 "
           >
             {event.eventName}
           </span>
-        
-      </div>
+        </div>
     </div>
 
  
