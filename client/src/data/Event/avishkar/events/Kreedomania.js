@@ -38,8 +38,8 @@ const Kreedomania = {
       PsLink: "",
       coordinators: [
         { name: "Kumar Hotabya", contact: "+91-7488183939" },
-        { name: "Shashank Shivam", contact: "+91-6203830907" },
-        { name: "Abhiraj Goswami", contact: "+91-6203830907" },
+
+        { name: "Abhiraj Ganwani", contact: "+91-6203830907" },
       ],
     },
     {
@@ -49,7 +49,7 @@ const Kreedomania = {
         "INDIA KA BATTLEGROUNDS IS HERE. Georgo ho ya Pochinki, squad fights rukni nahi chahiyye. Let's go !",
       rules: [
         "ALL THE TEAMS WILL BE DIVIDED INTO SUBGROUPS",
-        "3 BATTLE ROYALE WILL BE PLAYED AND YOU’LL BE AWARDED POINTS IN EACH BR ACCORDING TO THE FOLLOWING POINT SYSTEM - #1 - 15 POINTS #2 - 12 POINTS #3 - 10 POINTS #4 - 8 POINTS #5 - 6 POINTS  #6 - 4 POINTS #7 - 2 POINTS  #(8-12) - 1 POINTS (AND 1 POINT FOR EACH KILL FOR ALL TEAMS)",
+        "3 BATTLE ROYALE WILL BE PLAYED AND YOU’LL BE AWARDED POINTS IN EACH BR ACCORDING TO THE FOLLOWING POINT SYSTEM - #1 - 10 POINTS #5 - 3 POINTS #2 - 6 POINTS #6 - 2 POINTS #3 - 5POINTS #(7-8) - 1 POINTS #4 - 4 POINTS #(9-16) - 0 POINTS (AND 1 POINT FOR EACH KILL FOR ALL TEAMS)",
         "TOP 8 TEAMS WILL MOVE ON TO THE NEXT ROUND FROM EACH GROUP.",
         "3 BATTLE ROYALE WILL BE PLAYED IN THE FINALS AND SAME POINT SYSTEM WILL BE FOLLOWED.",
         "ORGANIZERS DECISIONS WILL BE FINAL",
@@ -66,21 +66,39 @@ const Kreedomania = {
       ],
     },
     {
-      eventName: "Tekken",
+      eventName: "Mini Militia",
+      eventId: "102",
+      description: "Combat an intense battle at the arena with the Doodle Army",
+      rules: [
+        "The game will be played in a team death match format with a team size of 3.",
+        "Tournament will be played on the apk provided by the organisers",
+        "Map will be decided by the organisers on a random basis.",
+        "All teams will be divided in groups and 3 team death match will be played. The top 1 or 2 teams will proceed to the next round.",
+        "Finals will be played on 3 maps and the collective ranking system will be used for the final result.",
+        "Matches will be played offline",
+      ],
+
+      minTeamSize: 3,
+      maxTeamSize: 3,
+      BGImageLink: BgImg2,
+      PsLink: "",
+      coordinators: [
+        { name: "Shashank Shivam", contact: "+91-6203830907" },
+        { name: "Harsh Maharshi", contact: "+91-9079039894" },
+      ],
+    },
+    {
+      eventName: "Stumble Guys",
       eventId: "102",
       description:
-        "Tekken is a fighting game series that began in 1994 with the release of the original Tekken game",
+        "Stumble Guys is a multiplayer battle royale obstacle course game where players race to become the last one standing",
       rules: [
-        "THE TOURNAMENT WILL BE CONDUCTED IN OFFLINE MODE COMPLETELY.A TEAM WILL CONSIST OF 1 PLAYER",
-        "IT WILL BE A SINGLE KNOCK-OUT TOURNAMENT OF 1 VS 1.",
-        "ALL GAME SETTINGS, INCLUDING MATCH TIME, DIFFICULTY LEVEL, AND ROUND LENGTH, WILL BE DETERMINED BY THE TOURNAMENT ORGANIZER AND MUST BE AGREED UPON BY ALL PARTICIPANTS",
-        "In the event of a tied game , overtime periods are typically played until a golden goal (sudden-death goal) is scored",
-        " PARTICIPANTS MUST CHOOSE A CHARACTER FROM THE CURRENT TEKKEN 8 ROSTER.",
-        " CUSTOM CHARACTERS OR MODIFICATIONS ARE NOT ALLOWED",
-        "IN THE EVENT OF TWO PLAYERS SELECTING THE SAME CHARACTER, A TOSS WILL DECIDE WHO GETS TO USE THAT CHARACTER.",
-        "TIES: IN CASE OF A TIED MATCH, EXTRA ROUNDS OR SUDDEN-DEATH ROUNDS MAY BE EMPLOYED TO DETERMINE THE VICTOR, AS DECIDED BY THE TOURNAMENT ORGANIZER.",
-        " SETUP WILL BE PROVIDED BY COORDINATORS.",
+        "Game Settings: Default settings will apply to all rounds (randomized maps, obstacles, etc.). Players are prohibited from using custom skins or modifications.",
+        "Character Selection: Players may choose any character from the base game, but custom skins are not allowed.",
+        "Fair Play: Cheating, hacking, or use of third-party software will result in immediate disqualification. Any unsportsmanlike behavior, such as foul language or harassment, is grounds for disqualification.",
+        `Organizer’s Decisions: All decisions by the organizers are final and binding. Organizers will resolve any disputes or issues.`,
       ],
+
       minTeamSize: 1,
       maxTeamSize: 1,
       BGImageLink: BgImg2,
@@ -140,7 +158,7 @@ const Kreedomania = {
         "Free Fire is a free-to-play battle royale game developed and published by Garena for Android and iOS.",
       rules: [
         "ALL THE TEAMS WILL BE DIVIDED INTO SUBGROUPS",
-        "3 BATTLE ROYALE WILL BE PLAYED AND YOU’LL BE AWARDED POINTS IN EACH BR ACCORDING TO THE FOLLOWING POINT SYSTEM - #1 - 15 POINTS #5 - 6 POINTS #2 - 12 POINTS #6 - 4 POINTS #3 - 10 POINTS #7 - 2 POINTS #4 - 8 POINTS #(8-12) - 1 POINTS (AND 1 POINT FOR EACH KILL FOR ALL TEAMS)",
+        `3 BATTLE ROYALE WILL BE PLAYED AND YOU’LL BE AWARDED POINTS IN EACH BR ACCORDING TO THE FOLLOWING POINT SYSTEM #1 - 12 POINTS #7 - 4 POINTS #2 - 9 POINTS #6- 3 POINTS #3 - 8 POINTS #9 - 2 POINTS #4 - 7 POINTS #10 - 1 POINTS #5 - 6 POINTS #11- 0 POINTS #6 - 5 POINTS #12 - 0 POINTS (AND 1 POINT FOR EACH KILL FOR ALL TEAMS)`,
         "TOP 8 TEAMS WILL MOVE ON TO THE NEXT ROUND FROM EACH GROUP.",
         "THE NEXT FINAL ROUND WILL BE A SERIES OF BATTLE ROYALE CONSISTING OF 3 ROUNDS.",
         "SAME POINT SYSTEM WILL BE FOLLOWED",
