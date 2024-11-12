@@ -38,7 +38,7 @@ const Kreedomania = {
       PsLink: "",
       coordinators: [
         { name: "Kumar Hotabya", contact: "+91-7488183939" },
-
+        { name: "Shashank Shivam", contact: "+91-6203830907" },
         { name: "Abhiraj Ganwani", contact: "+91-6203830907" },
       ],
     },
@@ -103,7 +103,7 @@ const Kreedomania = {
       maxTeamSize: 1,
       BGImageLink: BgImg2,
       PsLink: "",
-      coordinators: [],
+      coordinators: [{ name: "Abhiraj Ganwani", contact: "+91-6203830907" }],
     },
     {
       eventName: "FIFA 23",
@@ -152,8 +152,30 @@ const Kreedomania = {
       ],
     },
     {
-      eventName: "Free Fire",
+      eventName: "COD Mobile",
       eventId: "106",
+      description:
+        "Unlock your potential in this fun FPS multiplayer shooter game. Roger that !",
+      r: "Start Time: Matches start promptly; teams must be ready on time.",
+      r: "Banned Operator Skills: Annihilator and War Machine.",
+      r: "Each team should have 5 player .",
+      r: "Scoring: Each mode follows its specific point or round system. Winners are determined by the best of the rounds.",
+      r: "The next final round will be a series of battle royale consisting of 3 rounds",
+      r: "same point system will be followed.",
+      r: "organizers decisions will be final",
+      r: "Room ID and password will be shared 15 minutes prior to the alloted timings and matches will start on time, we’ll not wait for anyone.",
+      minTeamSize: 5,
+      maxTeamSize: 5,
+      BGImageLink: BgImg2,
+      PsLink: "",
+      coordinators: [
+        { name: "Sanjay Dutta", contact: "+91-9956269745" },
+        { name: "Ritik Kumar", contact: "+91-9079039894" },
+      ],
+    },
+    {
+      eventName: "Free Fire",
+      eventId: "107",
       description:
         "Free Fire is a free-to-play battle royale game developed and published by Garena for Android and iOS.",
       rules: [
