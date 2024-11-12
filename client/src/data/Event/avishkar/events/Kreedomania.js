@@ -89,7 +89,7 @@ const Kreedomania = {
     },
     {
       eventName: "Stumble Guys",
-      eventId: "102",
+      eventId: "103",
       description:
         "Stumble Guys is a multiplayer battle royale obstacle course game where players race to become the last one standing",
       rules: [
@@ -107,7 +107,7 @@ const Kreedomania = {
     },
     {
       eventName: "FIFA 23",
-      eventId: "103",
+      eventId: "104",
       description:
         "Offline knockout format. Players select any regular season team; a toss determines first choice.",
       rules: [
@@ -130,7 +130,7 @@ const Kreedomania = {
     },
     {
       eventName: "Clash Royale",
-      eventId: "104",
+      eventId: "105",
       description:
         "Clash Royale is a real-time multiplayer game starring the Royales, your favourite Clash characters and much, much more.",
       rules: [
@@ -153,7 +153,7 @@ const Kreedomania = {
     },
     {
       eventName: "Free Fire",
-      eventId: "105",
+      eventId: "106",
       description:
         "Free Fire is a free-to-play battle royale game developed and published by Garena for Android and iOS.",
       rules: [
