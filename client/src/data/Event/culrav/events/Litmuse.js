@@ -121,7 +121,7 @@ const Litmuse = {
     },
     {
       eventName: "Laccuzzi",
-      eventId: "16",
+      eventId: "110",
       description: "It is a two-round event with eliminations in each one. It consists of 2 rounds. Written Round: The written quiz with questions from TV Series: Friends, Big Bang Theory, Sherlock, etc. And a choice between: Comic series: DC and Marvel Universe. Diamond, Raj Comics.... OR Anime-Manga: Pokémon, DBZ, Naruto, Death Note, etc. Final Round: It will be a gnosis styled quiz to be held during Culrav which will consist of questions ranging from all topics.",
       rules: [
 

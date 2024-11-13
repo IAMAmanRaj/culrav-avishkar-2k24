@@ -92,7 +92,7 @@ const CyberQuest = {
     },
     {
       eventName: "Webster",
-      eventId: "31",
+      eventId: "111",
       description:
         "WEBSTER IS A WEB DEVELOPMENT EVENT ORGANIZED TO INTRODUCE THE STUDENTS TO WEBSITE BUILDING TOOLS AND TECHNOLOGIES SUCH AS HTML, CSS, BOOTSTRAP, ANGULAR, REACT, NODE, DJANGO, ETC. INTERESTING PROBLEM STATEMENTS MAKE THE DEVELOPMENT EXPERIENCE FUN-FILLED AND ENRICHING.",
       rules: [
@@ -381,26 +381,6 @@ const CyberQuest = {
         { name: "Vikrant Singh", contact: "9651117667" },
         { name: "Rohan Singh", contact: "8920815421" },
         { name: "Shreyansh Singh", contact: "8765626232" },
-      ],
-    },
-    {
-      eventName: "CodeClash",
-      eventId: "10000",
-      description: "PREPARE FOR THE ULTIMATE SHOWDOWN! TWO CODERS STAND FACE TO FACE, KEYBOARDS READY, CODE BLAZING LIKE REVOLVERS IN THE WILD WEST. ONLY ONE WILL EMERGE VICTORIOUS. WILL YOU PULL THE TRIGGER FAST ENOUGH, OR WILL YOU BE LEFT IN THE DUST? ⚡ THE CLOCK IS TICKING, AND THERE'S NO ROOM FOR HESITATION. IT'S CODE OR BE CODED. READY... SET... DRAW",
-      rules: [
-        "Team size: 1",
-        "Team Eligibility: All branches",
-        "Winners: 2 ",
-        "Rounds 5",
-      ],
-      maxTeamSize: 1,
-      minTeamSize: 1,
-      BGImageLink: CyberSubPic,
-      PsLink: "",
-      coordinators: [
-        { name: "Bharat Adhikari", contact: "9319770845" },
-        { name: "Rohan Rao", contact: "8770573891" },
-
       ],
     },
   ],
