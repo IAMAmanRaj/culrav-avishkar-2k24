@@ -15,6 +15,7 @@ function Footer() {
     "/dashboard",
     "/culraveventpage",
     "/avishkareventpage",
+    "/outside-registration/payFee"
   ]; // Add routes where the footer should be hidden
 
   // Check if the current route matches any of the hidden routes
