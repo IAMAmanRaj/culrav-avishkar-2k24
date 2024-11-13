@@ -23,7 +23,7 @@ import {
 const router = express.Router();
 router.get("/getallFeePaid", isAdmin, getallFeePaid);
 router.get("/getallFeeNotPaid", isAdmin, getallFeeNotPaid);
-router.get("/getallTeamEvents/:eventId", isFestivalSecretary, getallTeamEvents);
+router.get("/getallTeamEvents/:eventId", isDepartmentCoordinator, getallTeamEvents);
 router.get(
   "/downloadAllEventTeamMembers/:eventId",
   isFestivalSecretary,
@@ -31,17 +31,17 @@ router.get(
 );
 router.get(
   "/downloadAllEventTeamMembers",
-  isFestivalSecretary,
+  isDepartmentCoordinator,
   downloadAllEventTeamMembers
 );
 router.get(
   "/downloadAcceptedTeamMembers/:eventId",
-  isFestivalSecretary,
+  isDepartmentCoordinator,
   downloadAcceptedTeamMembersEventId
 );
 router.get(
   "/downloadAcceptedTeamMembers",
-  isFestivalSecretary,
+  isDepartmentCoordinator,
   downloadAcceptedTeamMembers
 );
 router.post("/makedc", isFestivalSecretary, makedepartmentcoordinator);
