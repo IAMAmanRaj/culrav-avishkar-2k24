@@ -5,6 +5,7 @@ import Axios from "../profile_DashBoard/axiosService.js";
 import useAuth from "@/lib/useAuth";
 import { useNavigate } from "react-router-dom";
 import getUser from "../profile_DashBoard/userService";
+import toast from "react-hot-toast";
 const AllDC = () => {
   // const coordinators = [
   //   {
@@ -54,6 +55,11 @@ const AllDC = () => {
         });
         if (response?.data?.success === "true") {
           setCoordinators(response.data.data);
+          if (coordinators.length === 0) {
+            toast.success("No department coordinators found.");
+          } else {
+            toast.success("Department coordinators fetched successfully.");
+          }
         } else {
           setError(response.data.message);
         }

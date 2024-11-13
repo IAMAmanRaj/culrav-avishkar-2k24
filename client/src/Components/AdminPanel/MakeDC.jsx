@@ -2,17 +2,30 @@ import React from "react";
 import { useState } from "react";
 import ContentBox from "../../assets/userDashBoard/ContentBox.png";
 import axios from "axios";
+import Axios from "../profile_DashBoard/axiosService";
+import getUser from "../profile_DashBoard/userService";
+import toast from "react-hot-toast";
 const MakeDC = () => {
   const [email, setEmail] = useState("");
   const [department, setDepartment] = useState("");
+  const { user, token } = getUser();
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/admin/v1/makedc", {
-        email,
-        department,
-      });
-      alert(response.data.message);
+      const response = await Axios.post(
+        "/admin/v1/makedc",
+        {
+          email,
+          department,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      if (response?.data?.success) {
+        toast.success("Department Coordinator made successfully");
+      } else {
+        toast.error(response?.data?.message || "An error occurred");
+      }
     } catch (error) {
       console.error("Error making department coordinator:", error);
       alert(error.response?.data?.message || "An error occurred");
