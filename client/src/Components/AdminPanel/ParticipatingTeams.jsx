@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ContentBox from "../../assets/userDashBoard/ContentBox.png";
+import Axios from "../profile_DashBoard/axiosService";
+import getUser from "../profile_DashBoard/userService";
+import useAuth from "@/lib/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const ParticipatingTeams = () => {
   const [teams, setTeams] = useState([]); // State to hold the teams list
-  const [eventId, setEventId] = useState(""); 
+  const [eventId, setEventId] = useState("");
   const [message, setMessage] = useState("");
+  const { user, token } = getUser();
+  const isAuthenticated = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
+
   // Dummy data for teams
   const dummyTeams = [
     {
@@ -37,14 +51,14 @@ const ParticipatingTeams = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost:3000/api/admin/v1/getallTeamEvents/${eventId}`);
-      if (response.data.success === "true") {
+      const response = await Axios.get(
+        `/admin/v1/getallTeamEvents/${eventId}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (response?.data?.success) {
         const event = response.data.event;
         const formattedTeams = event.participatingTeams.map((team) => ({
           name: team.teamName,
-          // leader: team.teamLeader.name,
-          // members: team.acceptedMembers.map((member) => member.name).join(", "),
-          // event: event.eventName,
         }));
         setTeams(formattedTeams);
       } else {
@@ -84,7 +98,7 @@ const ParticipatingTeams = () => {
             </div>
           </div>
           <div className="mt-2">
-          <button
+            <button
               className="text-[30px] font-bebas flex items-center justify-center text-white bg-scheduleOrange h-[30px] w-[215px] py-[8px] px-[29px]"
               onClick={handleGetList}
             >

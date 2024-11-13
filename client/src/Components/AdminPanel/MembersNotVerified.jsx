@@ -1,5 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContentBox from "../../assets/userDashBoard/ContentBox.png";
+import useAuth from "@/lib/useAuth";
+import { useNavigate } from "react-router-dom";
+import getUser from "../profile_DashBoard/userService";
+import Axios from "../profile_DashBoard/axiosService";
+import toast from "react-hot-toast";
 
 // Dummy data for unverified users
 const unverifiedUsersData = [
@@ -29,10 +34,63 @@ const unverifiedUsersData = [
 const MembersNotVerified = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [notVerifiedUsers, setNotVerifiedUsers] = useState([]);
+
+  const isAuthenticated = useAuth();
+  const navigate = useNavigate();
+  const { user, token } = getUser();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    const fetchNotVerifiedUsers = async () => {
+      try {
+        const response = await Axios.get("/admin/v1/getallFeeNotPaid", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (response?.data?.success) {
+          const data = response?.data?.users;
+          setNotVerifiedUsers(data);
+        }
+      } catch (error) {
+        console.error("Error fetching not verified users:", error);
+      }
+    };
+
+    fetchNotVerifiedUsers();
+  }, [token]);
 
   const handleVerifyClick = (user) => {
     setSelectedUser(user); // Set the selected user to show in the modal
     setModalOpen(true); // Open the modal
+  };
+
+  const verify = async () => {
+    const verifyPayment = async () => {
+      try {
+        const response = await Axios.post(
+          "/admin/v1/verifypayment",
+          {
+            userid: user._id,
+            paymentstatus: true,
+            email: selectedUser.email,
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        if (response?.data?.success) {
+          console.log("Payment verified successfully!");
+          toast.success("Payment verified successfully!");
+          handleCloseModal();
+        }
+      } catch (error) {
+        console.error("Error verifying payment:", error);
+      }
+    };
+    verifyPayment();
   };
 
   const handleCloseModal = () => {
@@ -67,12 +125,12 @@ const MembersNotVerified = () => {
               </tr>
             </thead>
             <tbody>
-              {unverifiedUsersData.map((user, index) => (
+              {notVerifiedUsers.map((user, index) => (
                 <tr key={index} className="border-b">
-                  <td className="py-2 px-4">{user.name}</td>
-                  <td className="py-2 px-4">{user.college}</td>
-                  <td className="py-2 px-4">{user.email}</td>
-                  <td className="py-2 px-4">{user.phone}</td>
+                  <td className="py-2 px-4">{user?.name}</td>
+                  <td className="py-2 px-4">{user?.college}</td>
+                  <td className="py-2 px-4">{user?.email}</td>
+                  <td className="py-2 px-4">{user?.phone}</td>
                   <td className="py-2 px-4">
                     <button
                       className="text-white bg-scheduleOrange py-1 px-3 rounded"
@@ -95,7 +153,7 @@ const MembersNotVerified = () => {
               {selectedUser && (
                 <>
                   <img
-                    src={selectedUser.image}
+                    src={selectedUser?.paymentLink}
                     alt={selectedUser.name}
                     className="mb-4 rounded"
                   />
@@ -105,7 +163,7 @@ const MembersNotVerified = () => {
                 className="text-white bg-scheduleOrange py-2 px-4 rounded mt-4"
                 onClick={() => {
                   // Handle verification logic here
-                  console.log(`${selectedUser.name} has been verified!`);
+                  verify();
                   handleCloseModal();
                 }}
               >

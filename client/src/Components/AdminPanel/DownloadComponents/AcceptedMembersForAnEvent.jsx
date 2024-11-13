@@ -1,19 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Axios from "@/Components/profile_DashBoard/axiosService.js";
 import * as XLSX from "xlsx";
 import ContentBox from "../../../assets/userDashBoard/ContentBox.png";
+import useAuth from "@/lib/useAuth";
+import { useNavigate } from "react-router-dom";
+import getUser from "@/Components/profile_DashBoard/userService.js";
 
 const AcceptedMembersForAnEvent = () => {
   const [eventId, setEventId] = useState("");
-  const apiClient = axios.create({
-    baseURL: "http://localhost:3000",
-  });
+  const isAuthenticated = useAuth();
+  const navigate = useNavigate();
+  const { user, token } = getUser();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
 
   const handleDownload = async () => {
     try {
       // Send request to the API with the event ID as a parameter
-      const response = await apiClient.get(
-        `/api/admin/v1/downloadAcceptedTeamMembers/${eventId}`
+      const response = await Axios.get(
+        `/admin/v1/downloadAcceptedTeamMembers/${eventId}`,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       const { data, success } = response.data;
@@ -24,16 +35,23 @@ const AcceptedMembersForAnEvent = () => {
         const formattedData = [];
 
         // Format data into a structure suitable for XLSX
+        console.log(data);
         for (const eventName in data) {
           for (const teamName in data[eventName]) {
             const team = data[eventName][teamName];
             const row = {
-              Event: eventName,
-              Team: teamName,
+              EventName: eventName,
+              TeamName: team.TeamName,
               TeamSize: team.TeamSize,
-              Name: team["Name 1"],
-              Email: team["Email 1"],
-              Phone: team["Phone 1"],
+              MemberNames: `${team["Name 1"]} ${
+                team["Name 2"] ? ` + ${team["Name 2"]} ` : ""
+              } ${team["Name 3"] ? ` + ${team["Name 3"]} ` : " "} ${
+                team["Name 4"] ? ` + ${team["Name 4"]} ` : " "
+              } ${team["Name 5"] ? ` + ${team["Name 5"]}` : " "} ${
+                team["Name 6"] ? ` + ${team["Name 6"]}` : " "
+              }`,
+              OneMemberEmail: team["Email 1"],
+              OneMemberPhone: team["Phone 1"],
               College: team["College 1"],
             };
             formattedData.push(row);

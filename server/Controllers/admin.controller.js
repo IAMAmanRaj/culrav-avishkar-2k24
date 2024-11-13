@@ -14,8 +14,9 @@ const getallFeePaid = AsyncErrorHandler(async (req, res, next) => {
     users.map((user) => {
         delete user.password;
     });
+    const newUsers = users.filter((user) => !user.email.includes("@mnnit.ac.in"))
     return res.status(200).json({
-        users,
+        users: newUsers,
         success: true,
     });
 });
@@ -30,8 +31,10 @@ const getallFeeNotPaid = AsyncErrorHandler(async (req, res, next) => {
     users.map((user) => {
         delete user.password;
     });
+    const newUsers = users.filter((user) => !user.email.includes("@mnnit.ac.in"))
+
     return res.status(200).json({
-        users,
+        users: newUsers,
         success: true,
     });
 });
@@ -63,6 +66,7 @@ const getallTeamEvents = AsyncErrorHandler(async (req, res, next) => {
     return res.status(200).json({
         event,
         success: true,
+        len: event.length
     });
 });
 
@@ -373,8 +377,8 @@ const downloadAcceptedTeamMembersEventId = AsyncErrorHandler(
                     ...allEventTeamsFormatted,
 
                     [`Team ${index + 1}`]: {
-                        TeamName: team.name,
-                        TeamSize: team.size,
+                        TeamName: team.teamName,
+                        TeamSize: team.acceptedMembers.length,
                         ...singleTeamFormatted,
                     },
                 };
@@ -403,17 +407,17 @@ const makedepartmentcoordinator = async (req, res, next) => {
     if (!department) {
         return next(new Error('Department not found'));
     }
-    
+
     try {
         const user = await User.findOne({ email });
         if (!user) {
             return next(new Error('User not found'));
         }
-        if (user.role === 'dc') {
+        if (user.role === 'DC') {
             return next(new Error('User is already a departmental coordinator'));
         }
         user.department = department;
-        user.role = 'dc';
+        user.role = 'DC';
         await user.save();
         return res.status(200).json({ message: 'User role shifted to DC successfully', success: 'true' });
     } catch (err) {
@@ -423,98 +427,96 @@ const makedepartmentcoordinator = async (req, res, next) => {
 };
 
 
-const getalldepartmentcoordinators=async(req,res,next)=>{
-    try{
-        const user = await User.find({role:'dc'});
-        if(user.length==0){
-            res.status(400).json({message:'There are no departmental coordinators',success:'false'});
-            return ;
-        }
-        res.status(200).json({data:user,success:'true'});
+const getalldepartmentcoordinators = async (req, res, next) => {
+    try {
+        const user = await User.find({ role: 'DC' });
+        res.status(200).json({ data: user, success: 'true' });
     }
-    catch(err){
+    catch (err) {
         console.log(err);
         next(err);
     }
 }
 
-const getdepartmentcoordinatorsByDep = async (req,res,next) => {
+const getdepartmentcoordinatorsByDep = async (req, res, next) => {
     const { department } = req.body;
     if (!department) {
         return next(new Error('department is required'));
     }
     try {
-        const dcs = await User.find({ role:'dc',department });
-        if (dcs.length === 0) {
-            return res.status(404).json({ message: 'No departmental coordinators found for this department', success: false });
-        }
-        res.status(200).json({data:dcs,success:true});
+        const dcs = await User.find({ role: 'DC', department });
+        res.status(200).json({ data: dcs, success: true, message: 'Departmental coordinators fetched successfully' });
     } catch (err) {
         console.error(err);
         next(err);
     }
 }
 
-const deletedepartmentcoordinators=async(req,res,next)=>{
-    const {email} = req.body;
-    if(!email){
+const deletedepartmentcoordinators = async (req, res, next) => {
+    const { email } = req.body;
+    if (!email) {
         return next(new Error('Invalid email'));
     }
-    try{
-        const user = await User.findOne({email});
+    try {
+        const user = await User.findOne({ email });
         if (!user) {
             return next(new Error('User not found'));
         }
-        if(user.role!="dc"){
+        if (user.role != "DC") {
             return next(new Error('User is not a departmental coordinator'));
         }
-        user.role='user';
-        user.department=null;
+        user.role = 'user';
+        user.department = null;
         await user.save();
-        res.status(200).json({data:'dc role removed',success:'true'});
+        res.status(200).json({ data: 'dc role removed', success: 'true' });
     }
-    catch(err){
+    catch (err) {
         console.log(err);
         next(err);
     }
 }
 
 
-const verifypayment=async(req,res,next)=>{
-    const {email,paymentstatus,userid} = req.body;
-    if(!email){
+const verifypayment = async (req, res, next) => {
+    const { email, paymentstatus, userid } = req.body;
+    if (!email) {
         return next(new Error('Invalid email'));
     }
-    if(paymentstatus==null){
+    if (paymentstatus == null) {
         return next(new Error('status cannot be empty'));
     }
-    if(!userid){
+    if (!userid) {
         return next(new Error('userid cannot be empty'));
     }
-    try{
+    try {
         const user = await User.findById(userid);
-        if(!user){
+        if (!user) {
             return next(new Error('user should exist'));
         }
-        const verifyuser = await User.findOne({email});
-        if(!verifyuser){
+        const verifyuser = await User.findOne({ email });
+        if (!verifyuser) {
             return next(new Error('verifyuser should exist'));
         }
-        if(user.role!="fs"){
+        // console.log("user", user.role);
+        if (user.role === "FS" || user.role === "admin") {
+            if (paymentstatus) {
+                if (verifyuser.isFeePaid) {
+                    return next(new Error('User is already verified'));
+                }
+                verifyuser.isFeePaid = true;
+                await verifyuser.save();
+                const mail = await activationnotice(email, 'Your Account Has Been Activated by Payment Verification');
+                // console.log("mail", mail);
+                if (mail) {
+                    return res.status(200).json({ message: "User is verified", success: true });
+                }
+                return res.status(200).json({ message: "User is verified but unable to send the mail", success: true });
+            }
+        } else {
             return next(new Error('only festival secretary can verify the payment status'));
         }
-        if(paymentstatus){
-            verifyuser.isFeePaid=true;
-            await verifyuser.save();
-            const mail = await activationnotice(email, 'Your Account Has Been Activated by Payment Verification');
-            console.log("mail",mail);
-            if (mail) {
-                return res.status(200).json({ message: "User is verified", success: true });
-            }
-            return res.status(200).json({ message: "User is verified but unable to send the mail", success: true });
-        }
     }
-    catch(err){
+    catch (err) {
         next(err);
     }
 }
