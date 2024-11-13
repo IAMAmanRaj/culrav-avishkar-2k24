@@ -143,12 +143,12 @@ const registerForEvent = async (req, res, next) => {
       });
     }
 
-    // if(!answer){
-    //   return res.status(400).json({
-    //     success:false,
-    //     message:"You do not have permission to register."
-    //   })
-    // }
+    if (user.email.includes("2021")) {
+      return res.status(400).json({
+        success: false,
+        message: "You do not have permission to register."
+      })
+    }
 
     // get all the members[pending  + accepted] of current Team,
     //check if there are any pending members of the currentTeam, is so then this team can not register.
