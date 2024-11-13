@@ -100,7 +100,7 @@ const MembersNotVerified = () => {
 
   return (
     <div
-      className="md:w-[74vw] custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute flex justify-center items-center h-full md:h-auto"
+      className="md:w-[74vw] custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute flex justify-center items-center "
       style={{
         height: "100%",
         backgroundImage: `url(${ContentBox})`,
@@ -108,12 +108,12 @@ const MembersNotVerified = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="px-9 text-xs xs:text-sm md:text-lg rounded-md py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
+      <div className="px-9 mt-12 text-xs xs:text-sm md:text-lg rounded-md py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
         <h1 className="text-white text-center mb-4">
           List of Unverified Users
         </h1>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto h-[500px] overflow-y-scroll">
           <table className="min-w-full bg-white rounded-lg shadow-md">
             <thead>
               <tr className="bg-scheduleLargeText text-white">

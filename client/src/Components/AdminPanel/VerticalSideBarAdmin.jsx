@@ -11,6 +11,8 @@ import AcceptedMembersForAnEvent from "./DownloadComponents/AcceptedMembersForAn
 import TeamMembersAllEvents from "./DownloadComponents/TeamMembersAllEvents";
 import TeamMembersForAnEvent from "./DownloadComponents/TeamMembersForAnEvent";
 
+import { useSelector } from "react-redux";
+
 const VerticalSideBarAdmin = () => {
   const [activeItem, setActiveItem] = useState("Participating Teams List");
 
@@ -18,12 +20,16 @@ const VerticalSideBarAdmin = () => {
     setConfirmModalOpen(true);
   };
 
+  const user = useSelector((state) => state.user.currentUser);
+  const role = user?.role;
+
+
   const renderPageContent = () => {
     console.log("Rendering content for:", activeItem); // Added log
     switch (activeItem) {
       case "Participating Teams List":
         return <ParticipatingTeams />;
-      case "List of fee paid members":
+      case "List of fee paid members" && role === "admin":
         return <ListFeePaid />;
       // case "Download accepted team members for all the events":
       //   return <AcceptedTeamMembersAllEvents />;
@@ -48,11 +54,11 @@ const VerticalSideBarAdmin = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex w-full overflow-x-hidden h-full overflow-y-hidden">
         <div className="hidden md:block md:w-[26vw] custom1000:w-[20vw] custom1840:w-[17vw] w-[20vw] h-[100vh] bg-scheduleLargeText">
           <div className="h-[128px]"></div>
-          <div className="h-full relative flex flex-col gap-4 text-mineShaft w-full p-5 font-Manrope text-[16px]">
-            {[
+          <div className="h-full relative flex flex-col gap-4 text-mineShaft w-full py-6 px-2 font-Manrope text-[16px]">
+          {role === "admin" ?[
               "Participating Teams List",
               "List of fee paid members",
               // "Download accepted team members for all the events",
@@ -63,7 +69,10 @@ const VerticalSideBarAdmin = () => {
               "Get all departmental coordinators list",
               "Delete departmental coordinator",
               "Payment not verified",
-            ].map((item) => (
+            ]:[ "Participating Teams List",
+              "Download accepted team members for an event",
+            ]
+           .map((item) => (
               <div
                 key={item}
                 className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all duration-200 ${
@@ -76,12 +85,6 @@ const VerticalSideBarAdmin = () => {
                   console.log("Active item set to:", item); // Added log
                 }}
               >
-                <div
-                  className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
-                    activeItem === item ? "brightness-0" : ""
-                  }`}
-                  alt=""
-                />
                 <h1 className="relative top-[0.7px]">{item}</h1>
               </div>
             ))}

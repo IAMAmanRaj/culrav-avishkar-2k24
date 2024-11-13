@@ -4,6 +4,7 @@ function Footer() {
   const location = useLocation();
   const hiddenRoutes = [
     "/login",
+    "/admin-panel",
     "/register",
     "/profile",
     "/outside-registration",

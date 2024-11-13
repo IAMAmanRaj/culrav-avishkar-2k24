@@ -66,7 +66,7 @@ const ListFeePaid = () => {
       }}
     >
       <div className="px-9 text-xs xs:text-sm md:text-lg rounded-md py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
-        <div className="w-full flex flex-col mb-4">
+        <div className="w-full flex flex-col items-center mb-4">
           <h1 className="text-white items-center justify-center">
             List of all fee paid members
           </h1>

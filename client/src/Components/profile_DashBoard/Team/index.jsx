@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../lib/useAuth.js";
 import { getAllTeams, splitTeamsByLeader } from "../services.js";
 import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { fetchTeamsSuccess, fetchTeamsFailure } from "../../../redux/team/teamSlice";
 
 function Team() {
@@ -77,6 +78,7 @@ function Team() {
               <UserTeams showTeamInfo={showTeamInfo} />
             </div>
           </div>
+          <Toaster/>
         </div>
       ) : (
         <div className="h-auto overflow-x-hidden md:p-0 pt-20 pb-10  px-3 md:w-[74vw] bg-[#202020]/100  custom1000:w-[80vw] custom1840:w-[83vw] w-full absolute top-[60px] 
@@ -89,6 +91,7 @@ flex justify-center items-center
                  custom-scrollbar">
             <TeamInfo team={teamData} handleShowAllTeams={handleShowAllTeams} />
           </div>
+          <Toaster/>
         </div>
       )}
     </>

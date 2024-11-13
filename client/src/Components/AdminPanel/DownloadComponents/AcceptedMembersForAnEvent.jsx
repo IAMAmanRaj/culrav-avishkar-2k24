@@ -82,22 +82,22 @@ const AcceptedMembersForAnEvent = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="px-9 text-xs xs:text-sm md:text-lg rounded-md py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
+      <div className="px-9 text-[16px] xs:text-[20px] md:text-lg rounded-md py-7 bg-scheduleLargeText w-[90%] sm:w-[67%] md:w-[60%] max-w-[640px]">
         <h1 className="text-white text-center mb-4">
           Accepted Members for an Event
         </h1>
 
         {/* Event ID input */}
-        <div className="flex items-center mb-4">
-          <div className="w-[20%]">
+        <div className="flex flex-col gap-2 lg:flex-row items-center">
+          <div className="w-[30%]">
             <h1 className="text-white flex items-center justify-center">
-              Event ID:
+              Event ID :
             </h1>
           </div>
-          <div className="w-[80%] rounded-lg bg-lightMineshaft flex items-center px-6">
+          <div className="w-[80%] rounded-lg bg-lightMineshaft flex items-center px-6 ">
             <input
               type="text"
-              className="w-full bg-lightMineshaft text-mineShaft outline-none"
+              className="w-full h-[50px] bg-lightMineshaft py-6 text-mineShaft outline-none"
               placeholder="Enter Event ID"
               value={eventId}
               onChange={(e) => setEventId(e.target.value)}
@@ -106,9 +106,9 @@ const AcceptedMembersForAnEvent = () => {
         </div>
 
         {/* Download button */}
-        <div className="flex justify-around">
+        <div className="flex justify-around mt-8">
           <button
-            className="text-[30px] font-bebas flex items-center justify-center text-white bg-scheduleOrange h-[30px] w-[215px] py-[8px] px-[29px]"
+            className="text-[30px] font-bebas flex items-center justify-center text-white bg-scheduleOrange h-[40px] auto py-[8px] px-[29px]"
             onClick={handleDownload}
           >
             Download

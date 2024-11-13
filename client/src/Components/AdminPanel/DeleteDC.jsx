@@ -25,7 +25,7 @@ const DeleteDC = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (response?.data?.success) {
-        toast.success("Department coordinator role removed successfully.");
+        toast.success("Department coordinator removed successfully.");
       } else {
         toast.error(response?.data?.message);
       }
