@@ -20,8 +20,6 @@ const apiClient = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
 });
 
-
-
 function Login() {
   const { register, handleSubmit } = useForm();
   const [showPassword, setShowPassword] = useState(false);
@@ -32,7 +30,6 @@ function Login() {
 
   useEffect(() => {
     if (isAuthenticated) {
-
       navigate("/");
     }
   }, [isAuthenticated, navigate]);
@@ -61,14 +58,14 @@ function Login() {
       const errorMessage = error.response
         ? error.response.data.message
         : error.message;
-      if (errorMessage == "Please verify your email") {
+      if (errorMessage === "Please verify your email") {
         toast("Please verify your email !", {
           icon: "❗️",
           duration: 2000,
           className: "toast-yellow",
         });
         navigate("/verify-email", { state: { email: data.email } });
-      } else if (errorMessage == "Please pay the registration fee") {
+      } else if (errorMessage === "Please pay the registration fee") {
         toast(errorMessage, {
           icon: "⌛️",
           duration: 2000,
@@ -77,7 +74,7 @@ function Login() {
         navigate("/outside-registration/payFee", {
           state: { email: data.email },
         });
-      } else if (errorMessage == "Payment verification under process") {
+      } else if (errorMessage === "Payment verification under process") {
         toast(errorMessage, {
           icon: "⌛️",
           duration: 2000,
