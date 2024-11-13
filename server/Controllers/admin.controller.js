@@ -455,20 +455,29 @@ const getdepartmentcoordinatorsByDep = async (req, res, next) => {
 const deletedepartmentcoordinators = async (req, res, next) => {
     const { email } = req.body;
     if (!email) {
-        return next(new Error('Invalid email'));
+        return res.status(400).json({
+            success: false,
+            message: "Please enter the email"
+        })
     }
     try {
         const user = await User.findOne({ email });
         if (!user) {
-            return next(new Error('User not found'));
+            return res.status(400).json({
+                success: false,
+                message: "User not found"
+            })
         }
         if (user.role != "DC") {
-            return next(new Error('User is not a departmental coordinator'));
+            return res.status(400).json({
+                success: false,
+                message: "User is not a departmental coordinator."
+            })
         }
         user.role = 'user';
         user.department = null;
         await user.save();
-        res.status(200).json({ data: 'dc role removed', success: 'true' });
+        res.status(200).json({ message: 'dc role removed', success: 'true' });
     }
     catch (err) {
         console.log(err);
