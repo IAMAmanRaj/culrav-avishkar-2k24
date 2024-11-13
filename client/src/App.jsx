@@ -27,8 +27,8 @@ import AdminRoute from "./Components/General/AdminRoute";
 import UserProfilePage from "./pages/UserDashboard/UserDashboardPage";
 import Schedule from "./Components/Schedule/Schedule";
 import Sponsors from "./Components/Sponsors/Sponsors";
-import VerticalSideBarAdmin from "./Components/AdminPanel/VerticalSideBarAdmin";
 import ScrollToTop from "./Components/General/ScrollToTop";
+
 
 const TitleUpdater = () => {
   const location = useLocation();
@@ -148,7 +148,7 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/sponsors" element={<Sponsors />} />
         <Route element={<AdminRoute />}>
-          <Route path="/admin-panel" element={<VerticalSideBarAdmin />} />
+          <Route path="/admin-panel" element={<UserProfilePage/>} />
         </Route>
       </Routes>
       <Footer />

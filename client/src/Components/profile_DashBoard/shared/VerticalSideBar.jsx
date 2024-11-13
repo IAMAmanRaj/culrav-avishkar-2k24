@@ -16,11 +16,25 @@ import logout from "../../../assets/userDashBoard/VerticalNavIcons/logout.png";
 import toast, { Toaster } from "react-hot-toast";
 import LogoutConfirmModal from "@/pages/modal/LogoutConfirmModal";
 import { resetTeamState } from "@/redux/team/teamSlice";
+import { useSelector } from "react-redux";
+import ParticipatingTeams from "@/Components/AdminPanel/ParticipatingTeams";
+import ListFeePaid from "@/Components/AdminPanel/ListFeePaid";
+import MakeDC from "@/Components/AdminPanel/MakeDC";
+import DeleteDC from "@/Components/AdminPanel/DeleteDC";
+import AllDC from "@/Components/AdminPanel/AllDC";
+import MembersNotVerified from "@/Components/AdminPanel/MembersNotVerified";
+import AcceptedMembersForAnEvent from "@/Components/AdminPanel/DownloadComponents/AcceptedMembersForAnEvent";
+import { useLocation } from "react-router-dom";
 
-const VerticalSideBar = ({activeItem,setActiveItem}) => {
+const VerticalSideBar = ({ activeItem, setActiveItem }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
+
+  const user = useSelector((state) => state.user.currentUser);
+  const role = user?.role;
+
+  const path = useLocation().pathname;
 
   const handleLogout = () => {
     setConfirmModalOpen(true);
@@ -38,6 +52,20 @@ const VerticalSideBar = ({activeItem,setActiveItem}) => {
         return <CreateTeam />;
       case "View Invitation":
         return <Invitations />;
+      case "Participating Teams List":
+        return <ParticipatingTeams />;
+      case "List of fee paid members":
+        return role === "admin" ? <ListFeePaid /> : <div>Select a Page</div>;
+      case "Download accepted team members for an event":
+        return <AcceptedMembersForAnEvent />;
+      case "Make departmental coordinator":
+        return role === "admin" ? <MakeDC /> : <div>Select a Page</div>;
+      case "Get all departmental coordinators list":
+        return role === "admin" ? <AllDC /> : <div>Select a Page</div>;
+      case "Delete departmental coordinator":
+        return role === "admin" ? <DeleteDC /> : <div>Select a Page</div>;
+      case "Payment not verified":
+        return role === "admin" ? <MembersNotVerified /> : <div>Select a Page</div>;
       default:
         return <div>Select a Page</div>;
     }
@@ -85,79 +113,175 @@ const VerticalSideBar = ({activeItem,setActiveItem}) => {
               />
               <h1 className="relative top-[0.7px]">Profile</h1>
             </div>
+            
 
             <div className="flex flex-col gap-1">
-              <div
-                className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all duration-200 ${
-                  activeItem === "Upload Resume"
-                    ? "bg-white text-zinc-700"
-                    : "hover:text-zinc-700 hover:bg-white"
-                }`}
-                onClick={() => setActiveItem("Upload Resume")}
-              >
-                <img
-                  className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
-                    activeItem === "Upload Resume" ? "brightness-0" : ""
-                  }`}
-                  src={History}
-                  alt=""
-                />
-                <h1>Upload Resume</h1>
-              </div>
+              {role === "User" && path === "/dashboard" ? (
+                <>
+                  <div
+                    className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all duration-200 ${
+                      activeItem === "Upload Resume"
+                        ? "bg-white text-zinc-700"
+                        : "hover:text-zinc-700 hover:bg-white"
+                    }`}
+                    onClick={() => setActiveItem("Upload Resume")}
+                  >
+                    <img
+                      className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
+                        activeItem === "Upload Resume" ? "brightness-0" : ""
+                      }`}
+                      src={History}
+                      alt=""
+                    />
+                    <h1>Upload Resume</h1>
+                  </div>
 
-              <div
-                className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all duration-200 ${
-                  activeItem === "My Teams"
-                    ? "bg-white text-zinc-700"
-                    : "hover:text-zinc-700 hover:bg-white"
-                }`}
-                onClick={() => setActiveItem("My Teams")}
-              >
-                <img
-                  className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
-                    activeItem === "My Teams" ? "brightness-0" : ""
-                  }`}
-                  src={usersround}
-                  alt=""
-                />
-                <h1>My Teams</h1>
-              </div>
+                  <div
+                    className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all duration-200 ${
+                      activeItem === "My Teams"
+                        ? "bg-white text-zinc-700"
+                        : "hover:text-zinc-700 hover:bg-white"
+                    }`}
+                    onClick={() => setActiveItem("My Teams")}
+                  >
+                    <img
+                      className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
+                        activeItem === "My Teams" ? "brightness-0" : ""
+                      }`}
+                      src={usersround}
+                      alt=""
+                    />
+                    <h1>My Teams</h1>
+                  </div>
 
-              <div
-                className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
-                  activeItem === "Create Team"
-                    ? "bg-white text-zinc-700"
-                    : "hover:text-zinc-700 hover:bg-white"
-                }`}
-                onClick={() => setActiveItem("Create Team")}
-              >
-                <img
-                  className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
-                    activeItem === "Create Team" ? "brightness-0" : ""
-                  }`}
-                  src={userroundplus}
-                  alt=""
-                />
-                <h1>Create Team</h1>
-              </div>
+                  <div
+                    className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                      activeItem === "Create Team"
+                        ? "bg-white text-zinc-700"
+                        : "hover:text-zinc-700 hover:bg-white"
+                    }`}
+                    onClick={() => setActiveItem("Create Team")}
+                  >
+                    <img
+                      className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
+                        activeItem === "Create Team" ? "brightness-0" : ""
+                      }`}
+                      src={userroundplus}
+                      alt=""
+                    />
+                    <h1>Create Team</h1>
+                  </div>
 
-              <div
-                className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
-                  activeItem === "View Invitation"
-                    ? "bg-white text-zinc-700"
-                    : "hover:text-zinc-700 hover:bg-white"
-                }`}
-                onClick={() => setActiveItem("View Invitation")}
-              >
-                <img
-                  className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
-                    activeItem === "View Invitation" ? "brightness-0" : ""
-                  }`}
-                  src={Frame}
-                  alt=""
-                />
-                <h1>View Invitation</h1>
-              </div>
+                  <div
+                    className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                      activeItem === "View Invitation"
+                        ? "bg-white text-zinc-700"
+                        : "hover:text-zinc-700 hover:bg-white"
+                    }`}
+                    onClick={() => setActiveItem("View Invitation")}
+                  >
+                    <img
+                      className={`w-[24px] h-[24px] filter transition-all group-hover:brightness-0 ${
+                        activeItem === "View Invitation" ? "brightness-0" : ""
+                      }`}
+                      src={Frame}
+                      alt=""
+                    />
+                    <h1>View Invitation</h1>
+                  </div>
+                </>
+              ) : path === "/admin-panel" ? (
+                role === "admin" || role === "FS" ? (
+                  <>
+                    <div
+                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all duration-200 ${
+                        activeItem === "Participating Teams List"
+                          ? "bg-white text-zinc-700"
+                          : "hover:text-zinc-700 hover:bg-white"
+                      }`}
+                      onClick={() => setActiveItem("Participating Teams List")}
+                    >
+                      <h1>Participating Teams List</h1>
+                    </div>
+
+                    <div
+                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all duration-200 ${
+                        activeItem === "List of fee paid members"
+                          ? "bg-white text-zinc-700"
+                          : "hover:text-zinc-700 hover:bg-white"
+                      }`}
+                      onClick={() => setActiveItem("List of fee paid members")}
+                    >
+                      <h1>List of fee paid members</h1>
+                    </div>
+
+                    <div
+                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                        activeItem === "Download accepted team members for an event"
+                          ? "bg-white text-zinc-700"
+                          : "hover:text-zinc-700 hover:bg-white"
+                      }`}
+                      onClick={() => setActiveItem("Download accepted team members for an event")}
+                    >
+                      <h1>Download accepted team members for an event</h1>
+                    </div>
+
+                    <div
+                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                        activeItem === "Make departmental coordinator"
+                          ? "bg-white text-zinc-700"
+                          : "hover:text-zinc-700 hover:bg-white"
+                      }`}
+                      onClick={() => setActiveItem("Make departmental coordinator")}
+                    >
+                      <h1>Make departmental coordinator</h1>
+                    </div>
+                    <div
+                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                        activeItem === "Get all departmental coordinators list"
+                          ? "bg-white text-zinc-700"
+                          : "hover:text-zinc-700 hover:bg-white"
+                      }`}
+                      onClick={() => setActiveItem("Get all departmental coordinators list")}
+                    >
+                      <h1>Get all departmental coordinators list</h1>
+                    </div>
+                    <div
+                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                        activeItem === "Delete departmental coordinator"
+                          ? "bg-white text-zinc-700"
+                          : "hover:text-zinc-700 hover:bg-white"
+                      }`}
+                      onClick={() => setActiveItem("Delete departmental coordinator")}
+                    >
+                      <h1>Delete departmental coordinator</h1>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                        activeItem === "Participating Teams List"
+                          ? "bg-white text-zinc-700"
+                          : "hover:text-zinc-700 hover:bg-white"
+                      }`}
+                      onClick={() => setActiveItem("Participating Teams List")}
+                    >
+                      <h1>Participating Teams List</h1>
+                    </div>
+                    <div
+                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                        activeItem === "Download accepted team members for an event"
+                          ? "bg-white text-zinc-700"
+                          : "hover:text-zinc-700 hover:bg-white"
+                      }`}
+                      onClick={() => setActiveItem("Download accepted team members for an event")}
+                    >
+                      <h1>Download accepted team members for an event</h1>
+                    </div>
+                  </>
+                )
+              ) : null}
             </div>
 
             <div className="absolute bottom-[24vh] cursor-pointer flex flex-col-reverse">
