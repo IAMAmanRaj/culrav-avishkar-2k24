@@ -30,7 +30,6 @@ function VerifyEmail() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(location);
     if (!email || email.trim() === "") {
       navigate("/registration");
     }
@@ -40,8 +39,6 @@ function VerifyEmail() {
   const check = async (data) => {
     try {
       // Logging OTP for debugging
-      console.log(data.otp);
-
       // Sending POST request to the API with OTP (token)
       const response = await apiClient.post(`/auth/v1/verify`, {
         token: data.otp,

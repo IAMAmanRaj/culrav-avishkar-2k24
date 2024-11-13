@@ -8,7 +8,6 @@ import {
   getAllTeams,
   splitTeamsByLeader,
 } from "../../Components/profile_DashBoard/services.js";
-import useAuth from "../../lib/useAuth.js";
 import getUser from "../../Components/profile_DashBoard/userService.js";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -57,6 +56,7 @@ function AvishkarEvent() {
       if (mainEvent) {
         const subEvent = mainEvent.events.find(subEvent => subEvent.eventId.toString() === Id);
         if (subEvent) {
+          console.log("subEvent",subEvent);
           setdecodedData(subEvent);
         } else {
           navigate("/404");

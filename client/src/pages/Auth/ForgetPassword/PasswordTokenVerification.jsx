@@ -24,7 +24,6 @@ function ForgetPasswordTokenVerification() {
   // Function to handle form submission and verification
   const check = async (data) => {
     try {
-      console.log(data.otp);
       // Sending POST request to the API with OTP (token)
       const response = await apiClient.post(
         `/auth/v1/forgotPasswordVerification`,

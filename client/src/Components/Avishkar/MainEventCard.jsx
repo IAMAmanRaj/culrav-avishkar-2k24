@@ -3,11 +3,6 @@ import { useLocation } from "react-router-dom";
 function MainEventCard({ roller,id, event }) {
   const navigate = useNavigate();
   const location = useLocation()
-
-  console.log(event
-    
-  )
-
   const handleClick = () => {
     navigate(`/AvishkarEventPage/${id}/${event.eventId}`);
    

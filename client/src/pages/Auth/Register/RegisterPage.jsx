@@ -38,7 +38,7 @@ function Register() {
 
   const create = async (data) => {
     try {
-      console.log(data);
+   
       setSubmitting(true);
       const response = await apiClient.post(`/auth/v1/register`, {
         name: data.name,

@@ -6,7 +6,7 @@ function EventCard2({ roller, event, mainevent }) {
   const [isSelected, setIsSelected] = useState(false);
 
   const navigate = useNavigate();
-  console.log(event)
+
   const handleClick = () => {
     navigate(`/CulravEventPage/${mainevent.id}/${event.eventId}`);
   };

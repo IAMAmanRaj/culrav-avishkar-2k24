@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 function EventCard({ roller, event }) {
   const navigate = useNavigate();
-  console.log(event);
 
   const handleClick = () => {
     navigate(

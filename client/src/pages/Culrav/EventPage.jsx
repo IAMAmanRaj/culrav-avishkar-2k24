@@ -76,7 +76,6 @@ function CulravEvent() {
         const totalTeams = res?.totalTeams;
         const { matchingLeaderTeams, nonMatchingLeaderTeams } = splitTeamsByLeader({ totalTeams, givenLeaderId });
 
-        console.log("matchingLeaderTeams", matchingLeaderTeams);
         setRemainingTeams(
           excludeAlreadyRegisteredTeams({
             matchingLeaderTeams,
@@ -84,7 +83,7 @@ function CulravEvent() {
           })
         );
 
-        console.log("these are remaining teams", remainingTeams);
+
         dispatch(
           fetchTeamsSuccess({
             myTeams: matchingLeaderTeams,
@@ -92,7 +91,7 @@ function CulravEvent() {
           })
         );
       } else {
-        console.log(res?.message);
+        
         toast.error("Error while getting the teams");
         dispatch(fetchTeamsFailure(res?.message));
       }

@@ -153,13 +153,13 @@ const Kreedomania = {
     },
     {
       eventName: "COD Mobile",
-      eventId: "106",
+      eventId: "108",
       description:
         "Unlock your potential in this fun FPS multiplayer shooter game. Roger that !",
       rules: [
         "Start Time: Matches start promptly; teams must be ready on time.",
         "Banned Operator Skills: Annihilator and War Machine.",
-        "Each team should have 5 player .",
+        "Each team should have 5 players .",
         "Scoring: Each mode follows its specific point or round system. Winners are determined by the best of the rounds.",
         "The next final round will be a series of battle royale consisting of 3 rounds",
         "same point system will be followed.",
@@ -175,6 +175,7 @@ const Kreedomania = {
         { name: "Ritik Kumar", contact: "+91-9079039894" },
       ],
     },
+    
     {
       eventName: "Free Fire",
       eventId: "107",

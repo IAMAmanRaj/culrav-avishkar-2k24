@@ -2,7 +2,6 @@ import User from "../Models/user.model.js";
 import Team from "../Models/team.model.js";
 import Event from "../Models/event.model.js";
 
-
 const getAllTeamsOfAnEvent = async (req, res, next) => {
   const { eventId } = req.params;
 
@@ -97,7 +96,7 @@ const registerForEvent = async (req, res, next) => {
     });
 
     if (!event) {
-      //firts create the event. then register the team in the event.
+      //first create the event. then register the team in the event.
       event = await Event.create({
         eventId,
         eventName,
@@ -140,7 +139,7 @@ const registerForEvent = async (req, res, next) => {
     if (providedUserId != leaderId) {
       return res.status(400).json({
         success: false,
-        message: "you can not resgiter, only leader is allowed",
+        message: "you can not register, only leader is allowed",
       });
     }
 
@@ -175,7 +174,7 @@ const registerForEvent = async (req, res, next) => {
     if (totalLen < event.minTeamSize) {
       return res.status(400).json({
         success: false,
-        message: `team size is small. team size shuold be atleast ${event.minTeamSize}`,
+        message: `team size is small. team size should be atleast ${event.minTeamSize}`,
       });
     }
 

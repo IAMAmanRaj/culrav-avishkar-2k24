@@ -1,16 +1,12 @@
 import { useEffect } from "react";
 import EventCard from "@/Components/Avishkar/EventCard";
-import MainEvent from "@/Components/Avishkar/MainEventCard";
-import aviskarbg from '@/images/aviskar-bg.png';
-import cardBg from '@/images/imageavishkar.png';
+
 import avishkarImage from "@/assets/Home/avishkar.webp";
 import AvishkarAllEvents from "@/data/Event/avishkar/events/AvishkarAllEvents";
 
 function AvishkarLanding() {
 
-    const mainevent = MainEvent;
     const events = AvishkarAllEvents;
-    console.log(events);
 
 
     return (

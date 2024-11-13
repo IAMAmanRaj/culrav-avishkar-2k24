@@ -91,7 +91,6 @@ const QR = () => {
         }
       );
 
-      console.log("Cloudinary Response:", response.data);
       setUploadedUrl(response.data.secure_url);
       alert("Payment screenshot uploaded successfully!");
     } catch (error) {
@@ -111,7 +110,6 @@ const QR = () => {
       alert("Please upload a payment screenshot before submitting.");
       return;
     }
-    console.log("Form submitted with payment URL:", uploadedUrl);
   };
 
   return (

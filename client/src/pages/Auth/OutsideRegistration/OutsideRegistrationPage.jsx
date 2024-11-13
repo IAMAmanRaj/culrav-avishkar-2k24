@@ -38,7 +38,6 @@ function OutsideRegistration() {
 
   const create = async (data) => {
     try {
-      console.log(data);
       setSubmitting(true);
       const response = await apiClient.post(`/auth/v1/register`, {
         name: data.name,
@@ -58,7 +57,6 @@ function OutsideRegistration() {
           className: "toast-success",
         });
         navigate("/verify-email", { state: { email: data.email } });
-        console.log("User now went to verify user");
       }
     } catch (error) {
       setSubmitting(false);

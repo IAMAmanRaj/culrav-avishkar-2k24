@@ -10,7 +10,7 @@ const createTeam = async ({ leader, teamName, teamSize, token }) => {
 
     return response?.data;
   } catch (err) {
-    console.log(err);
+
     return err?.response?.data;
   }
 };
@@ -23,7 +23,6 @@ const getInvitations = async ({ userId, token }) => {
 
     return response?.data;
   } catch (err) {
-    console.log(err);
     return err?.response?.data;
   }
 };
@@ -37,7 +36,7 @@ const getAllTeams = async ({ userId, token }) => {
 
     return response?.data;
   } catch (err) {
-    console.log(err);
+
     return err?.response?.data;
   }
 };
@@ -58,8 +57,6 @@ const splitTeamsByLeader = ({ totalTeams, givenLeaderId }) => {
 };
 
 const excludeAlreadyRegisteredTeams = ({ matchingLeaderTeams, eventID }) => {
-  //console.log("matchingLeaderTeams", matchingLeaderTeams);
-  console.log("eventID", eventID);
   return matchingLeaderTeams.filter(
     (team) => !team.registeredEvents.some((event) => event.eventId === eventID)
   );
@@ -75,7 +72,6 @@ const updateResume = async ({ email, resumeLink, token }) => {
 
     return response?.data;
   } catch (err) {
-    console.log(err);
     return err?.response?.data;
   }
 };
@@ -90,7 +86,7 @@ const acceptInvite = async ({ userId, teamId, token }) => {
 
     return response?.data;
   } catch (err) {
-    console.log(err);
+
     return err?.response?.data;
   }
 };
@@ -105,7 +101,7 @@ const rejectInvite = async ({ userId, teamId, token }) => {
 
     return response?.data;
   } catch (err) {
-    console.log(err);
+
     return err?.response?.data;
   }
 };
@@ -119,7 +115,7 @@ const sendInvitation = async ({ teamName, leaderId, sendToEmail, token }) => {
     );
     return response?.data;
   } catch (err) {
-    console.log(err);
+
     return err?.response?.data;
   }
 };

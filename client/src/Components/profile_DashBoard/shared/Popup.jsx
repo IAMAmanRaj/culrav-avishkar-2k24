@@ -57,7 +57,6 @@ const Popup = ({activeItem,setActiveItem}) => {
   }, [isOpen]);
 
   const renderPageContent = () => {
-    console.log("Rendering");
     console.log(activeItem);
     switch (activeItem) {
       case "Profile":

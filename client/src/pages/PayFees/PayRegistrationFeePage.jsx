@@ -25,7 +25,6 @@ function PayRegistrationFeePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email;
-console.log("hi", email);
   useEffect(() => {
     if (!email) {
       navigate("/outside-registration");
@@ -37,7 +36,6 @@ console.log("hi", email);
     console.log(data);
 
     if (!data.image) {
-      console.log("No image");
       toast.error("No image uploaded. Please upload an image.", {
         style: {
           marginTop: "50px",
@@ -64,7 +62,6 @@ console.log("hi", email);
       const paymentScreenshot = data.image[0];
       const uploadedUrl = await uploadToCloudinary(paymentScreenshot);
       if (!uploadedUrl) {
-        console.log("Image not able to upload");
         toast.error("Image upload failed. Please try again.", {
           style: {
             marginTop: "50px",
@@ -106,7 +103,6 @@ console.log("hi", email);
   // Function to upload to Cloudinary
   const uploadToCloudinary = async (paymentScreenshot) => {
     if (!paymentScreenshot) {
-      console.log("Please upload a screenshot first.");
       toast.error("Please upload a screenshot first.", {
         style: {
           marginTop: "50px",
