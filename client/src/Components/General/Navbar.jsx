@@ -3,10 +3,15 @@ import HamburgerMenu from "./HamburgerMenu";
 import useAuth from "@/lib/useAuth";
 import { Toaster } from "react-hot-toast";
 import logo from "../../assets/general/logo.webp";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   const navigate = useNavigate();
   const isAuthenticated = useAuth();
+
+  const user = useSelector((state) => state.user.currentUser);
+  const role = user?.role;
+
 
   const handleLogoClick = () => {
     console.log("clicked")
@@ -69,9 +74,10 @@ function Navbar() {
         {isAuthenticated ? (
           <button
             className="auth w-[11vw] lg:w-[7.1vw] h-[47px] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500"
-            onClick={() => navigate("/dashboard")}
+            
           >
-            <h1 className="lg:text-[1.2vw] md:text-[1.5vw] ">PROFILE</h1>
+            { role=="User"?<h1 onClick={() => navigate("/dashboard")} className="lg:text-[1.2vw] md:text-[1.5vw] ">PROFILE</h1>:<h1 onClick={() => navigate("/admin-panel")} className="lg:text-[1.2vw] md:text-[1.5vw]">ADMIN</h1>}
+            
           </button>
         ) : (
           <button

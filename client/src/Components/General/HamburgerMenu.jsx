@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Hamburger from "hamburger-react";
 import useAuth from "../../lib/useAuth";
-
+import { useSelector } from "react-redux";
 import hamburgerBg from "../../assets/Home/HamburgerBg.jpg";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,8 @@ const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const auth = useAuth();
+  const user = useSelector((state) => state.user.currentUser);
+  const role = user?.role;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -61,14 +63,25 @@ const HamburgerMenu = () => {
             </li>
           </ul>
           {auth ? (
-            <a href="/dashboard">
-              <button
-                className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${isOpen ? "block" : "hidden"
-                  }`}
-              >
-                <h1 className="text-[2.2rem]">PROFILE</h1>
-              </button>
-            </a>
+            role === "User" ? (
+              <a href="/dashboard">
+                <button
+                  className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${isOpen ? "block" : "hidden"
+                    }`}
+                >
+                  <h1 className="text-[2.2rem]">PROFILE</h1>
+                </button>
+              </a>
+            ) : (
+              <a href="/admin-panel">
+                <button
+                  className={`md:flex w-[9.8rem] h-[4rem] tracking-wider bg-register text-white items-center justify-center font-semibold font-bebas hover:text-register hover:bg-white transition-all duration-500 ${isOpen ? "block" : "hidden"
+                    }`}
+                >
+                  <h1 className="text-[2.2rem]">ADMIN</h1>
+                </button>
+              </a>
+            )
           ) : (
             <a href="/registration">
               <button
