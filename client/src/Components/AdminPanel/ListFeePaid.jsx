@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContentBox from "../../assets/userDashBoard/ContentBox.png";
+import useAuth from "@/lib/useAuth";
+import { useNavigate } from "react-router-dom";
+import getUser from "../profile_DashBoard/userService";
+import Axios from "../profile_DashBoard/axiosService";
 
 const ListFeePaid = () => {
   const [feePaidMembers, setFeePaidMembers] = useState([]); // State to hold fee-paid members list
@@ -26,8 +30,29 @@ const ListFeePaid = () => {
     },
   ];
 
-  const handleGetList = () => {
-    setFeePaidMembers(dummyMembers); // Update state with dummy data when the button is clicked
+  const isAuthenticated = useAuth();
+  const navigate = useNavigate();
+  const { user, token } = getUser();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated]);
+
+  const handleGetList = async () => {
+    try {
+      const response = await Axios.get("/admin/v1/getallFeePaid", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response?.data?.success) {
+        setFeePaidMembers(response?.data?.users);
+      } else {
+        console.log("some error occured");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 import { Outlet, Navigate } from "react-router-dom";
 
 const AdminRoute = () => {
-  const { token, role } = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user.currentUser);
+  const token = useSelector((state) => state.user.token);
+
+  const role = user?.role;
 
   if (!token) {
     return <Navigate to="/login" />;

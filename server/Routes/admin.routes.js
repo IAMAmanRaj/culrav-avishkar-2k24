@@ -23,31 +23,31 @@ import {
 const router = express.Router();
 router.get("/getallFeePaid", isAdmin, getallFeePaid);
 router.get("/getallFeeNotPaid", isAdmin, getallFeeNotPaid);
-router.use("/getallTeamEvents/:eventId", isAdmin, getallTeamEvents);
-router.use(
+router.get("/getallTeamEvents/:eventId", isDepartmentCoordinator, getallTeamEvents);
+router.get(
   "/downloadAllEventTeamMembers/:eventId",
-  isAdmin,
+  isFestivalSecretary,
   downloadAllEventTeamMembersEventId
 );
-router.use(
+router.get(
   "/downloadAllEventTeamMembers",
-  isFestivalSecretary,
+  isDepartmentCoordinator,
   downloadAllEventTeamMembers
 );
-router.use(
+router.get(
   "/downloadAcceptedTeamMembers/:eventId",
-  isAdmin,
+  isDepartmentCoordinator,
   downloadAcceptedTeamMembersEventId
 );
-router.use(
+router.get(
   "/downloadAcceptedTeamMembers",
-  //   isAdmin,
+  isDepartmentCoordinator,
   downloadAcceptedTeamMembers
 );
-router.post("/makedc",isFestivalSecretary, makedepartmentcoordinator);
-router.get("/getalldcs",isFestivalSecretary, getalldepartmentcoordinators);
-router.get("/getdcsBydep",isFestivalSecretary,getdepartmentcoordinatorsByDep);
-router.post("/deletedcs",isFestivalSecretary,deletedepartmentcoordinators);
+router.post("/makedc", isFestivalSecretary, makedepartmentcoordinator);
+router.get("/getalldcs", isFestivalSecretary, getalldepartmentcoordinators);
+router.get("/getdcsBydep", isFestivalSecretary, getdepartmentcoordinatorsByDep);
+router.post("/deletedcs", isFestivalSecretary, deletedepartmentcoordinators);
 router.post("/verifypayment", isFestivalSecretary, verifypayment);
 
 export default router;

@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ContentBox from "../../assets/userDashBoard/ContentBox.png";
+import Axios from "../profile_DashBoard/axiosService";
+import toast from "react-hot-toast";
+import getUser from "../profile_DashBoard/userService";
 
 const DeleteDC = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  const { user, token } = getUser();
 
   const handleDelete = async () => {
     setMessage(""); // Clear previous messages
@@ -14,15 +19,19 @@ const DeleteDC = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/admin/v1/deletedcs", { email });
-      if (response.data.success === "true") {
-        setMessage("Department coordinator role removed successfully.");
+      const response = await Axios.post(
+        "/admin/v1/deletedcs",
+        { email },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (response?.data?.success) {
+        toast.success("Department coordinator role removed successfully.");
       } else {
-        setMessage(response.data.message || "Failed to delete department coordinator.");
+        toast.error(response?.data?.message);
       }
     } catch (error) {
       console.error("Error deleting department coordinator:", error);
-      setMessage("An error occurred. Please try again.");
+      toast.error(`${error?.response?.data?.message || "An error occurred."}`);
     }
   };
 

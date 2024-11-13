@@ -25,12 +25,12 @@ const VerticalSideBarAdmin = () => {
         return <ParticipatingTeams />;
       case "List of fee paid members":
         return <ListFeePaid />;
-      case "Download accepted team members for all the events":
-        return <AcceptedTeamMembersAllEvents />;
-      case "Download team members for all the events":
-        return <TeamMembersAllEvents />;
-      case "Download team members for an event":
-        return <TeamMembersForAnEvent />;
+      // case "Download accepted team members for all the events":
+      //   return <AcceptedTeamMembersAllEvents />;
+      // case "Download team members for all the events":
+      //   return <TeamMembersAllEvents />;
+      // case "Download team members for an event":
+      //   return <TeamMembersForAnEvent />;
       case "Download accepted team members for an event":
         return <AcceptedMembersForAnEvent />;
       case "Make departmental coordinator":
@@ -55,9 +55,9 @@ const VerticalSideBarAdmin = () => {
             {[
               "Participating Teams List",
               "List of fee paid members",
-              "Download accepted team members for all the events",
-              "Download team members for all the events",
-              "Download team members for an event",
+              // "Download accepted team members for all the events",
+              // "Download team members for all the events",
+              // "Download team members for an event",
               "Download accepted team members for an event",
               "Make departmental coordinator",
               "Get all departmental coordinators list",
