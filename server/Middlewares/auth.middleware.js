@@ -20,24 +20,24 @@ function AuthenticateToken(req, res, next) {
     if (!payload) {
       return res.status(400).json({
         success: false,
-        message: "User does not exist."
-      })
+        message: "User does not exist.",
+      });
     }
 
     const user = User.findOne({ _id: payload.id });
     if (!user) {
       res.status(400).json({
         success: false,
-        message: "User not found"
-      })
+        message: "User not found",
+      });
     }
-    req.user = payload
+    req.user = payload;
     next();
   } catch (err) {
     res.status(401).json({
       success: false,
-      message: "Invalid token"
-    })
+      message: "Invalid token",
+    });
   }
 }
 
@@ -46,8 +46,8 @@ async function isFestivalSecretary(req, res, next) {
   if (!id) {
     return res.status(400).json({
       success: false,
-      message: "Id is undefined"
-    })
+      message: "Id is undefined",
+    });
   }
 
   try {
@@ -56,24 +56,22 @@ async function isFestivalSecretary(req, res, next) {
     if (!user) {
       return res.status(400).json({
         success: false,
-        message: "You are not allowed to access this route"
-      })
+        message: "You are not allowed to access this route",
+      });
     }
 
     const role = user.role;
-    if (role === 'FS' || role === 'admin') {
+    if (role === "FS" || role === "admin") {
       return next();
     } else {
       return res.status(400).json({
         success: false,
-        message: "Only DC is allowed to access this route"
-      })
+        message: "Only FS is allowed to access this route",
+      });
     }
-
   } catch (err) {
     next(err);
   }
-
 }
 
 async function isDepartmentCoordinator(req, res, next) {
@@ -81,8 +79,8 @@ async function isDepartmentCoordinator(req, res, next) {
   if (!id) {
     return res.status(400).json({
       success: false,
-      message: "Id is undefined"
-    })
+      message: "Id is undefined",
+    });
   }
 
   try {
@@ -91,20 +89,19 @@ async function isDepartmentCoordinator(req, res, next) {
     if (!user) {
       return res.status(400).json({
         success: false,
-        message: "You are not allowed to access this route"
-      })
+        message: "You are not allowed to access this route",
+      });
     }
 
     const role = user.role;
-    if (role === 'DC' || role === 'admin') {
+    if (role === "DC" || role === "admin") {
       return next();
     } else {
       return res.status(400).json({
         success: false,
-        message: "Only DC is allowed to access this route"
-      })
+        message: "Only DC is allowed to access this route",
+      });
     }
-
   } catch (err) {
     next(err);
   }
@@ -115,8 +112,8 @@ async function isAdmin(req, res, next) {
   if (!id) {
     return res.status(400).json({
       success: false,
-      message: "Id is undefined"
-    })
+      message: "Id is undefined",
+    });
   }
 
   try {
@@ -124,18 +121,18 @@ async function isAdmin(req, res, next) {
     if (!user) {
       return res.status(400).json({
         success: false,
-        message: "You are not allowed to access this route"
-      })
+        message: "You are not allowed to access this route",
+      });
     }
 
     const role = user.role;
-    if (role === 'admin' || role === "FS") {
+    if (role === "admin" || role === "FS") {
       return next();
     } else {
       return res.status(400).json({
         success: false,
-        message: "You are not allowed to access this route"
-      })
+        message: "You are not allowed to access this route",
+      });
     }
   } catch (err) {
     next(err);
