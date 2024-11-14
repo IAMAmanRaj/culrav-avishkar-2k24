@@ -10,7 +10,7 @@ const Razzmatazz = {
   events: [
     {
       eventName: "DESI SYNC",
-      eventId: "25",
+      eventId: "112",
       description: "Folklore Group Dance Competition DANCE – Defeat All Negativity (via) Creative Expression. The spirited dance moves of cultural dance charge with your energy, so as the harmonious melodies handed down precisely through ages reverberate through the air, brace yourself to live through this shared experience of humanity and a celebration of diverse cultures. Get in the groove, bring out your best moves, and set the stage of DESI SYNC on fire.",
       rules: [
         { r: "First year, Second year, and third year can participate." },
@@ -30,7 +30,7 @@ const Razzmatazz = {
       coordinators: [
         { name: "Ananya Jain", phone: "963474830" },
         { name: "Dipesh Duhan", phone: "9813988999" },
-        { name: "Abhangi Nishika", phone: "9033594565" }
+        { name: "Abhangi Nishika", phone: "9033594565"}
       ]
     }
     ,
