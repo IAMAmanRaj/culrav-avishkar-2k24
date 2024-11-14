@@ -24,7 +24,7 @@ const Razzmatazz = {
         { r: "The performance should be in cohesion with the integrity of the fest. The song selected must not contain any vulgarity." }
       ],
       minTeamSize: 4,
-      maxTeamSize: 25,
+      maxTeamSize: 100,
       BGImageLink: BgImg2,
       PsLink: "",
       coordinators: [
