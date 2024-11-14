@@ -12,14 +12,15 @@ import getUser from "../../Components/profile_DashBoard/userService.js";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import events from "@/data/Event/avishkar/events/AvishkarAllEvents";
+import { useSelector } from "react-redux";
 
 function AvishkarEvent() {
   const { EventId, Id } = useParams();
   const [decodedData, setdecodedData] = useState(null);
-  
+  const userTeams= useSelector((state) => state.team.myTeams)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [teams, setTeams] = useState([]);
-
+  
   const navigate = useNavigate();
 
   const { token, user } = getUser();
@@ -27,6 +28,15 @@ function AvishkarEvent() {
   const handleModelOpen = async () => {
     if (!token) {
       toast.error("Please Login first !");
+      return;
+    }
+
+    if(userTeams.length===0){
+
+      toast.error("Create a Team, Invite members and then register !", {
+        duration: 2000,
+        className: "toast-error",
+      });
       return;
     }
 
