@@ -62,8 +62,10 @@ const Profile = () => {
             <h1 className="text-white flex items-center justify-center">Email</h1>
           </div>
           <div className="w-[80%] rounded-lg h-full bg-lightMineshaft flex items-center px-6">
-            <h1 className="text-mineShaft flex items-center justify-center">{user?.email}</h1>
-          </div>
+  <h1 className="text-mineShaft flex items-center justify-center">
+    {user?.email.length > 10 ? `${user.email.substring(0, 20)}...` : user?.email}
+  </h1>
+</div>
         </div>
 
         <div className="w-full h-[40px] flex mb-4">

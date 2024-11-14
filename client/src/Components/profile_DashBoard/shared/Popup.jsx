@@ -229,7 +229,7 @@ const Popup = ({ activeItem, setActiveItem }) => {
                       Participating Teams List
                     </li>
                     <li
-                      className={`hover:text-customOrange cursor-pointer ${
+                      className={`hover:text-customOrange flex text-center cursor-pointer ${
                         activeItem === "Download accepted team members for an event"
                           ? "text-customOrange"
                           : ""
