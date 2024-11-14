@@ -25,7 +25,7 @@ function CulravEvent() {
   const [decodedData, setdecodedData] = useState(null);
   const navigate = useNavigate();
   const userTeams= useSelector((state) => state.team.myTeams)
-  const role = user?.role;
+ 
   useEffect(() => {
     const func = () => {
       const mainEvent = events.find(event => event.id === parseInt(EventId));
@@ -61,6 +61,7 @@ function CulravEvent() {
   const dispatch = useDispatch();
   const { token, user } = getUser();
   const [remainingTeams, setRemainingTeams] = useState([]);
+  const role = user?.role;
 
   const handleModelOpen = async () => {
     if (!token) {

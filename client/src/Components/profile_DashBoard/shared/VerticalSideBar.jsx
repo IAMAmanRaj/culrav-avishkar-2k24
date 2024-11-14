@@ -260,7 +260,7 @@ const VerticalSideBar = ({ activeItem, setActiveItem }) => {
                 ) : (
                   <>
                     <div
-                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                      className={`group w-full h-[49px] text-[15px] mb-4 border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
                         activeItem === "Participating Teams List"
                           ? "bg-white text-zinc-700"
                           : "hover:text-zinc-700 hover:bg-white"
@@ -270,7 +270,7 @@ const VerticalSideBar = ({ activeItem, setActiveItem }) => {
                       <h1>Participating Teams List</h1>
                     </div>
                     <div
-                      className={`group w-full h-[49px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
+                      className={`group w-full h-auto text-[15px] border-0 cursor-pointer rounded-[6px] flex items-center px-2 gap-3 transition-all hover:text-zinc-700 duration-200 ${
                         activeItem === "Download accepted team members for an event"
                           ? "bg-white text-zinc-700"
                           : "hover:text-zinc-700 hover:bg-white"

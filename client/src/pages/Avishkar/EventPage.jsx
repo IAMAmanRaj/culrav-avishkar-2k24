@@ -20,10 +20,11 @@ function AvishkarEvent() {
   const userTeams= useSelector((state) => state.team.myTeams)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [teams, setTeams] = useState([]);
-  const role = user?.role;
+
   const navigate = useNavigate();
 
   const { token, user } = getUser();
+  const role = user?.role;
 
   const handleModelOpen = async () => {
     if (!token) {
