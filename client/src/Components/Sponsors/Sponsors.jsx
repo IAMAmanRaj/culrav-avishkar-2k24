@@ -18,6 +18,8 @@ import kdmLogo from "../../assets/sponsors/ksm.webp";
 import beardoLogo from "../../assets/sponsors/beardo.webp";
 import dkmslogo from "../../assets/sponsors/dkms.jpg";
 import jioSaavnLogo from "../../assets/sponsors/jiosaavan.webp";
+import eventara from "../../assets/sponsors/eventara.jpeg";
+import sanskriti from "../../assets/sponsors/sanskriti.jpeg";
 
 // More Sponsors
 import nbcLogo from "../../assets/sponsors/nbc.webp";
@@ -27,6 +29,8 @@ import quillbotLogo from "../../assets/sponsors/quillbot.png";
 import cocaColaLogo from "../../assets/sponsors/cocacola.png";
 import codingNinjasLogo from "../../assets/sponsors/codingninjas.jpeg";
 import upTourismLogo from "../../assets/sponsors/uptourism.png";
+import duke from "../../assets/sponsors/duke.png";
+import iihm from "../../assets/sponsors/IIHM.png";
 
 const Sponsors = () => {
   const sponsorData = [
@@ -43,16 +47,20 @@ const Sponsors = () => {
     { title: "PREMIUM MOBILE ACCESSORIES PARTNER", logo: kdmLogo },
     { title: "OFFICIAL GROOMING PARTNER", logo: beardoLogo },
     { title: "SOCIAL INITIATIVE PARTNER", logo: dkmslogo },
+    { title: "FESTIVAL PARTNER", logo: eventara },
     { title: "MUSIC STREAMING PARTNER", logo: jioSaavnLogo },
+    { title: "CULTURAL PARTNER", logo: sanskriti },
   ];
 
   const moreSponsors = [
+    { logo: duke },
     { logo: nbcLogo },
     { logo: htlLogo },
     { logo: internshalaLogo },
     { logo: quillbotLogo },
     { logo: cocaColaLogo },
     { logo: codingNinjasLogo },
+    { logo: iihm },
     { logo: upTourismLogo },
   ];
 
