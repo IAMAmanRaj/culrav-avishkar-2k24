@@ -1,11 +1,46 @@
-import React from 'react';
-import noise from '../../assets/Sc-assets/noise.png';
-import grid from '../../assets/Sc-assets/Grid.png';
-import elements from '../../assets/Sc-assets/element.png';
+import React from "react";
+import noise from "../../assets/Sc-assets/noise.png";
+import grid from "../../assets/Sc-assets/Grid.png";
+import triangle from "../../assets/Sc-assets/triangle.png";
 
-const Schedule = () => {
+// Import sponsor logos
+import sbiLogo from "../../assets/sponsors/sbi.webp";
+import bpclLogo from "../../assets/sponsors/bpcl.webp";
+import licLogo from "../../assets/sponsors/lic.webp";
+import bobLogo from "../../assets/sponsors/bob.webp";
+import wacomLogo from "../../assets/sponsors/wacom.webp";
+import redfmLogo from "../../assets/sponsors/redfm.webp";
+// import dainikJagranLogo from "../../assets/sponsors/dainik-jagran.webp";
+import safexpressLogo from "../../assets/sponsors/safeexpress.webp";
+import jkCementLogo from "../../assets/sponsors/JKCEMENT.NS_BIG.webp";
+import codingBlocksLogo from "../../assets/sponsors/codingbloacks.webp";
+import kdmLogo from "../../assets/sponsors/ksm.webp";
+// import beardoLogo from "../../assets/sponsors/beardo.webp";
+// import eventaraLogo from "../../assets/sponsors/eventara.webp";
+// import jioSaavnLogo from "../../assets/sponsors/jio-saavn.webp";
+// import sanskritiVibhagLogo from "../../assets/sponsors/sanskriti-vibhag.webp";
+
+const Sponsors = () => {
+  const sponsorData = [
+    { title: "TITLE SPONSOR", logo: sbiLogo },
+    { title: "GOLD PARTNER", logo: bpclLogo },
+    { title: "INSURANCE PARTNER", logo: licLogo },
+    { title: "EXECUTIVE SPONSOR", logo: bobLogo },
+    { title: "OFFICIAL GIFTING PARTNER", logo: wacomLogo },
+    { title: "RADIO PARTNER", logo: redfmLogo },
+    // { title: "OFFICIAL PRINT MEDIA PARTNERS", logo: dainikJagranLogo },
+    { title: "OFFICIAL SUPPLY CHAIN PARTNER", logo: safexpressLogo },
+    { title: "CEMENTING PARTNER", logo: jkCementLogo },
+    { title: "CODING PLATFORM PARTNER", logo: codingBlocksLogo },
+    { title: "PREMIUM MOBILE ACCESSORIES PARTNER", logo: kdmLogo },
+    // { title: "OFFICIAL GROOMING PARTNER", logo: beardoLogo },
+    // { title: "FESTIVAL PARTNER", logo: eventaraLogo },
+    // { title: "MUSIC STREAMING PARTNER", logo: jioSaavnLogo },
+    // { title: "CULTURAL PARTNER", logo: sanskritiVibhagLogo },
+  ];
+
   return (
-    <div className="relative z-20 w-full min-h-screen bg-[#202020] overflow-hidden">
+    <div className="w-full relative z-20 min-h-screen bg-[#202020] flex flex-col items-center justify-start px-4 sm:px-8 pt-24 md:pb-24">
       <img
         src={noise}
         alt="Noise Background"
@@ -17,88 +52,43 @@ const Schedule = () => {
         className="absolute inset-0 w-full h-full object-cover opacity-80"
       />
       <img
-        src={elements}
+        src={triangle}
         alt="Design Elements"
-        className="absolute top-0 left-0 w-full h-auto max-h-[200px] md:max-h-[400px] object-cover"
+        className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Content */}
-      {/* <div className="relative z-10 top-[8rem] flex flex-col items-center justify-center px-4 py-8 md:py-16">
-        {/* Header */}
-        {/* <h1
-          className="text-white font-extrabold text-3xl md:text-5xl text-center"
-          style={{ fontFamily: '"MOON GET!"' }}
-        >
-          DAY 1
+      <div className="relative z-10 flex flex-col items-center py-20">
+        {/* Main Title */}
+        <h1 className="text-white font-[Bionix] text-5xl sm:text-6xl md:text-7xl font-extrabold text-center mb-12">
+          SPONSORS
         </h1>
-        <p
-          className="mt-2 text-[#F54E25] text-lg md:text-2xl font-extrabold"
-          style={{ fontFamily: '"MOON GET!"' }}
-        >
-          November 9, 2024
-        </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-full max-w-[1220px] px-4 mb-[7rem]">
-          {[1, 2, 3].map((_, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center gap-6 p-2 w-full"
-            >
-              {[1, 2, 3].map((_, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center gap-4 bg-[#FFFAF0] 
-                    p-4 rounded-lg shadow-sm w-full
-                    hover:scale-105 hover:shadow-lg transition-transform duration-200 ease-in-out"
-                >
-                  {/* Header Label */}
-                  {/* <div className="flex justify-center items-center bg-[#181818] w-full h-10 rounded-t-lg">
-                    <p
-                      className="text-xs md:text-base text-white font-bold tracking-wide"
-                      style={{
-                        fontFamily: '"MOON GET!"',
-                        textTransform: 'uppercase',
-                        textAlign: 'center',
-                      }}
-                    >
-                      Spandan
-                    </p>
-                  </div>
+        {/* Sponsors List */}
+        {sponsorData.map((section, index) => (
+          <div key={index} className="w-full max-w-6xl mx-auto mt-14 space-y-12">
+            {/* Section Title */}
+            <h2 className="text-[#F54E25] font-[Bionix] text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-center">
+              {section.title}
+            </h2>
 
-                  <p
-                    className="text-center uppercase text-lg md:text-2xl font-bold tracking-wide"
-                    style={{
-                      color: '#181818',
-                      fontFamily: '"MOON GET!"',
-                      letterSpacing: '0.84px',
-                    }}
-                  >
-                    MR AND<br />MISS SPANDAN
-                  </p>
-
-                  <div className="flex justify-center items-center w-full h-10 bg-[#F54E25] rounded-b-lg">
-                    <p
-                      className="text-xs md:text-base font-extrabold text-[#FFFAF0] uppercase tracking-wider"
-                      style={{ fontFamily: '"MOON GET!"' }}
-                    >
-                      09 AM - 10 AM
-                    </p>
-                  </div>
-                </div>
-              ))}
+            {/* Sponsor Box with Image */}
+            <div className="flex flex-wrap justify-center gap-8 sm:gap-12 px-4">
+              <div
+                className="w-56 h-40 sm:w-64 sm:h-48 bg-transparent flex items-center justify-center rounded-lg hover:scale-110 hover:shadow-lg transition-transform duration-200 ease-in-out"
+              >
+                {/* Sponsor Logo Image */}
+                <img
+                  src={section.logo}
+                  alt={`${section.title} Logo`}
+                  className="w-3/4 h-auto object-contain"
+                />
+              </div>
             </div>
-          ))}
-        </div>
-      </div> */}
-
-      {/* New Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen">
-        <p className=" font-extrabold text-white hover:cursor-pointer hover:text-[#F54F26] transition-all duration-300 text-3xl sm:text-4xl md:text-5xl  lg:text-5xl text-center">
-          To be revealed soon ...
-        </p>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Schedule;
+export default Sponsors;
