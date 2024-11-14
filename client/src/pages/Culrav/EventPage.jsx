@@ -24,7 +24,8 @@ function CulravEvent() {
   const { EventId, Id } = useParams();
   const [decodedData, setdecodedData] = useState(null);
   const navigate = useNavigate();
-
+  const userTeams= useSelector((state) => state.team.myTeams)
+  const role = user?.role;
   useEffect(() => {
     const func = () => {
       const mainEvent = events.find(event => event.id === parseInt(EventId));
@@ -64,6 +65,22 @@ function CulravEvent() {
   const handleModelOpen = async () => {
     if (!token) {
       toast.error("Please Login First !");
+      return;
+    }
+    if(role==="admin"){
+      toast.error("You can't register for events !", {
+        duration: 2000,
+        className: "toast-error",
+      });
+      return;
+    }
+
+    if(userTeams.length===0){
+
+      toast.error("Create a Team, Invite members and then Register !", {
+        duration: 2000,
+        className: "toast-error",
+      });
       return;
     }
 

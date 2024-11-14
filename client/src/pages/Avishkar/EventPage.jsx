@@ -20,7 +20,7 @@ function AvishkarEvent() {
   const userTeams= useSelector((state) => state.team.myTeams)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [teams, setTeams] = useState([]);
-  
+  const role = user?.role;
   const navigate = useNavigate();
 
   const { token, user } = getUser();
@@ -28,6 +28,13 @@ function AvishkarEvent() {
   const handleModelOpen = async () => {
     if (!token) {
       toast.error("Please Login first !");
+      return;
+    }
+    if(role==="admin"){
+      toast.error("You can't register for events !", {
+        duration: 2000,
+        className: "toast-error",
+      });
       return;
     }
 
