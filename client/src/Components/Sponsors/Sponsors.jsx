@@ -8,17 +8,25 @@ import sbiLogo from "../../assets/sponsors/sbi.webp";
 import bpclLogo from "../../assets/sponsors/bpcl.webp";
 import licLogo from "../../assets/sponsors/lic.webp";
 import bobLogo from "../../assets/sponsors/bob.webp";
-import wacomLogo from "../../assets/sponsors/wacom.webp";
+import wacomLogo from "../../assets/sponsors/wacomu.jpg";
 import redfmLogo from "../../assets/sponsors/redfm.webp";
-// import dainikJagranLogo from "../../assets/sponsors/dainik-jagran.webp";
+import dainikJagranLogo from "../../assets/sponsors/dainik.webp";
 import safexpressLogo from "../../assets/sponsors/safeexpress.webp";
 import jkCementLogo from "../../assets/sponsors/JKCEMENT.NS_BIG.webp";
 import codingBlocksLogo from "../../assets/sponsors/codingbloacks.webp";
 import kdmLogo from "../../assets/sponsors/ksm.webp";
-// import beardoLogo from "../../assets/sponsors/beardo.webp";
-// import eventaraLogo from "../../assets/sponsors/eventara.webp";
-// import jioSaavnLogo from "../../assets/sponsors/jio-saavn.webp";
-// import sanskritiVibhagLogo from "../../assets/sponsors/sanskriti-vibhag.webp";
+import beardoLogo from "../../assets/sponsors/beardo.webp";
+import dkmslogo from "../../assets/sponsors/dkms.jpg";
+import jioSaavnLogo from "../../assets/sponsors/jiosaavan.webp";
+
+// More Sponsors
+import nbcLogo from "../../assets/sponsors/nbc.webp";
+import htlLogo from "../../assets/sponsors/htl.png";
+import internshalaLogo from "../../assets/sponsors/internshala.png";
+import quillbotLogo from "../../assets/sponsors/quillbot.png";
+import cocaColaLogo from "../../assets/sponsors/cocacola.png";
+import codingNinjasLogo from "../../assets/sponsors/codingninjas.jpeg";
+import upTourismLogo from "../../assets/sponsors/uptourism.png";
 
 const Sponsors = () => {
   const sponsorData = [
@@ -28,15 +36,24 @@ const Sponsors = () => {
     { title: "EXECUTIVE SPONSOR", logo: bobLogo },
     { title: "OFFICIAL GIFTING PARTNER", logo: wacomLogo },
     { title: "RADIO PARTNER", logo: redfmLogo },
-    // { title: "OFFICIAL PRINT MEDIA PARTNERS", logo: dainikJagranLogo },
+    { title: "OFFICIAL PRINT MEDIA PARTNERS", logo: dainikJagranLogo },
     { title: "OFFICIAL SUPPLY CHAIN PARTNER", logo: safexpressLogo },
     { title: "CEMENTING PARTNER", logo: jkCementLogo },
     { title: "CODING PLATFORM PARTNER", logo: codingBlocksLogo },
     { title: "PREMIUM MOBILE ACCESSORIES PARTNER", logo: kdmLogo },
-    // { title: "OFFICIAL GROOMING PARTNER", logo: beardoLogo },
-    // { title: "FESTIVAL PARTNER", logo: eventaraLogo },
-    // { title: "MUSIC STREAMING PARTNER", logo: jioSaavnLogo },
-    // { title: "CULTURAL PARTNER", logo: sanskritiVibhagLogo },
+    { title: "OFFICIAL GROOMING PARTNER", logo: beardoLogo },
+    { title: "SOCIAL INITIATIVE PARTNER", logo: dkmslogo },
+    { title: "MUSIC STREAMING PARTNER", logo: jioSaavnLogo },
+  ];
+
+  const moreSponsors = [
+    { logo: nbcLogo },
+    { logo: htlLogo },
+    { logo: internshalaLogo },
+    { logo: quillbotLogo },
+    { logo: cocaColaLogo },
+    { logo: codingNinjasLogo },
+    { logo: upTourismLogo },
   ];
 
   return (
@@ -86,6 +103,30 @@ const Sponsors = () => {
             </div>
           </div>
         ))}
+
+        {/* More Sponsors Section */}
+        <div className="w-full max-w-6xl mx-auto mt-24 space-y-12">
+          <h2 className="text-[#F54E25] font-[Bionix] text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-center">
+            MORE SPONSORS
+          </h2>
+
+          {/* More Sponsors Box with Images */}
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-12 px-4">
+            {moreSponsors.map((sponsor, index) => (
+              <div
+                key={index}
+                className="w-56 h-40 sm:w-64 sm:h-48 bg-transparent flex items-center justify-center rounded-lg hover:scale-110 hover:shadow-lg transition-transform duration-200 ease-in-out"
+              >
+                {/* Sponsor Logo Image */}
+                <img
+                  src={sponsor.logo}
+                  alt={`More Sponsor Logo ${index + 1}`}
+                  className="w-3/4 h-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
