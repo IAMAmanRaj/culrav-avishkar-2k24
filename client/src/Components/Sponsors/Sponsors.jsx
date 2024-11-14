@@ -9,7 +9,7 @@ import bpclLogo from "../../assets/sponsors/bpcl.webp";
 import licLogo from "../../assets/sponsors/lic.webp";
 import bobLogo from "../../assets/sponsors/bob.webp";
 import wacomLogo from "../../assets/sponsors/wacomu.jpg";
-import redfmLogo from "../../assets/sponsors/redfm.webp";
+import redfmLogo from "../../assets/sponsors/redfm.png";
 import dainikJagranLogo from "../../assets/sponsors/dainik.webp";
 import safexpressLogo from "../../assets/sponsors/safeexpress.webp";
 import jkCementLogo from "../../assets/sponsors/JKCEMENT.NS_BIG.webp";
@@ -90,14 +90,14 @@ const Sponsors = () => {
 
         {/* Sponsors List */}
         {sponsorData.map((section, index) => (
-          <div key={index} className="w-full max-w-6xl mx-auto mt-14 space-y-12">
+          <div key={index} className="w-full max-w-6xl mx-auto mt-14 space-y-24">
             {/* Section Title */}
             <h2 className="text-[#F54E25] font-[Bionix] text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-center">
               {section.title}
             </h2>
 
             {/* Sponsor Box with Image */}
-            <div className="flex flex-wrap justify-center gap-8 sm:gap-12 px-4">
+            <div className="flex flex-wrap justify-center gap-8 sm:gap-16 px-4">
               <div
                 className="w-56 h-40 sm:w-64 sm:h-48 bg-transparent flex items-center justify-center rounded-lg hover:scale-110 hover:shadow-lg transition-transform duration-200 ease-in-out"
               >
@@ -105,7 +105,7 @@ const Sponsors = () => {
                 <img
                   src={section.logo}
                   alt={`${section.title} Logo`}
-                  className="w-3/4 h-auto object-contain"
+                  className="w-3/4 h-auto scale-150 object-contain"
                 />
               </div>
             </div>
