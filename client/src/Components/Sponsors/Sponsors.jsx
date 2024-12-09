@@ -28,7 +28,7 @@ import internshalaLogo from "../../assets/sponsors/internshala.png";
 import quillbotLogo from "../../assets/sponsors/quillbot.png";
 import cocaColaLogo from "../../assets/sponsors/cocacola.png";
 import codingNinjasLogo from "../../assets/sponsors/codingninjas.jpeg";
-import upTourismLogo from "../../assets/sponsors/uptourism.png";
+import upTourismLogo from "../../assets/sponsors/UpTourism.jpg";
 import duke from "../../assets/sponsors/duke.png";
 import iihm from "../../assets/sponsors/IIHM.png";
 
@@ -90,7 +90,10 @@ const Sponsors = () => {
 
         {/* Sponsors List */}
         {sponsorData.map((section, index) => (
-          <div key={index} className="w-full max-w-6xl mx-auto mt-14 space-y-24">
+          <div
+            key={index}
+            className="w-full max-w-6xl mx-auto mt-14 space-y-24"
+          >
             {/* Section Title */}
             <h2 className="text-[#F54E25] font-[Bionix] text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-center">
               {section.title}
@@ -98,9 +101,7 @@ const Sponsors = () => {
 
             {/* Sponsor Box with Image */}
             <div className="flex flex-wrap justify-center gap-8 sm:gap-16 px-4">
-              <div
-                className="w-56 h-40 sm:w-64 sm:h-48 bg-transparent flex items-center justify-center rounded-lg hover:scale-110 hover:shadow-lg transition-transform duration-200 ease-in-out"
-              >
+              <div className="w-56 h-40 sm:w-64 sm:h-48 bg-transparent flex items-center justify-center rounded-lg hover:scale-110 hover:shadow-lg transition-transform duration-200 ease-in-out">
                 {/* Sponsor Logo Image */}
                 <img
                   src={section.logo}
@@ -115,7 +116,7 @@ const Sponsors = () => {
         {/* More Sponsors Section */}
         <div className="w-full max-w-6xl mx-auto mt-24 space-y-12">
           <h2 className="text-[#F54E25] font-[Bionix] text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-center">
-            MORE SPONSORS
+            OFFICIAL SPONSORS
           </h2>
 
           {/* More Sponsors Box with Images */}
