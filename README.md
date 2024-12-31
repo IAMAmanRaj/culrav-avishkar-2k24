@@ -1,4 +1,3 @@
-![Code frequency](https://github.com/user-attachments/assets/f698c072-9338-4062-8c1f-22ed242f5396)
 # 🎉 Culrav-Avishkar 2k24 Official Website
 
 
