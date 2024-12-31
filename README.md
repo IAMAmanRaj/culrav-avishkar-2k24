@@ -6,15 +6,11 @@
 
 Welcome to the Official Culrav-Avishkar 2k24 Website Repository ! This project was built as part of the annual techno-cultural fest of our institute, combining cutting-edge web technologies and teamwork to deliver a seamless user experience.
 
-
 ## Intro
 The Website starts off with a sleek animated video asset that was made provided by the MHM Team.
 ![Screenshot (501)](https://github.com/user-attachments/assets/5173c7a1-34ab-4c5f-9dfb-9165af8fe93d)
 
 ## Sneak peak into different Sections of the website :
-
-
-
 
 ## We had a sleek gallery section on the home page to show past culrav-avishkar memories
 ![Screenshot (516)](https://github.com/user-attachments/assets/f09874d6-7493-4de8-be85-8a030fb5303e)
@@ -69,12 +65,15 @@ So , this graph shows the amount of commits that were merged into main branch of
 ## Forks 
 ![Screenshot 2024-12-31 170416](https://github.com/user-attachments/assets/9f9ecaee-8cfd-454e-b3f9-90cb7bd9c9aa)
 
-
-
 ## Google Search Console Results
 The Google search analytics clearly showcased our website's exceptional performance, climbing to the top in terms of user engagement and widespread publicity.
 
 ![Screenshot 2024-12-30 232652](https://github.com/user-attachments/assets/3a4ad26f-d8fb-4127-b5e5-c878534ce8e9)
+
+## Team
+Introducing you to the Incredible Web Team behind the success. It would not have been possible without them !
+
+![image (4)](https://github.com/user-attachments/assets/b5bf4bab-6aca-43ad-8586-8b42c57819b2)
 
 
 ## Technologies Used
