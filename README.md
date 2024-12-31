@@ -7,7 +7,7 @@
 Welcome to the Official Culrav-Avishkar 2k24 Website Repository ! This project was built as part of the annual techno-cultural fest of our institute, combining cutting-edge web technologies and teamwork to deliver a seamless user experience.
 
 ## Intro
-The Website starts off with a sleek animated video asset that was made provided by the MHM Team.
+The Website starts off with a sleek animated video asset that was provided by the MHM Team.
 ![Screenshot (501)](https://github.com/user-attachments/assets/5173c7a1-34ab-4c5f-9dfb-9165af8fe93d)
 
 ## Sneak peak into different Sections of the website :
