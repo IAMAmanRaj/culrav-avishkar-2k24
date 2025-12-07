@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import axios from "axios";
 import * as XLSX from "xlsx";
 import ContentBox from "../../../assets/userDashBoard/ContentBox.png";
+import Axios from "@/Components/profile_DashBoard/axiosService";
 
 const AcceptedMembersForAnEvent = () => {
   const [eventId, setEventId] = useState("");
-  const apiClient = axios.create({
-    baseURL: "http://localhost:3000",
-  });
 
   const handleDownload = async () => {
     try {
-      const response = await apiClient.get(
-        `/api/admin/v1/downloadAllEventTeamMembers/${eventId}`
+      const response = await Axios.get(
+        `/admin/v1/downloadAllEventTeamMembers/${eventId}`
       );
 
       const { data, success } = response.data;

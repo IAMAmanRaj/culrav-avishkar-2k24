@@ -1,6 +1,5 @@
 import { Button } from "@/ShadCnComponents/ui/button.jsx";
 import Input from "@/ShadCnComponents/ui/Input";
-import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { useEffect, useState } from "react";
@@ -9,10 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../lib/useAuth";
 import toast, { Toaster } from "react-hot-toast";
 import overlay1 from "../../../assets/Overlay1.png";
+import Axios from "@/Components/profile_DashBoard/axiosService";
 
-const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL, // Base URL for all requests
-});
 
 function OutsideRegistration() {
   const navigate = useNavigate();
@@ -39,7 +36,7 @@ function OutsideRegistration() {
   const create = async (data) => {
     try {
       setSubmitting(true);
-      const response = await apiClient.post(`/auth/v1/register`, {
+      const response = await Axios.post(`/auth/v1/register`, {
         name: data.name,
         email: data.email,
         password: data.password,

@@ -1,6 +1,5 @@
 import { Button } from "@/ShadCnComponents/ui/button";
 import Input from "@/ShadCnComponents/ui/Input";
-import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,10 +14,7 @@ import {
 } from "@/redux/auth/authSlice";
 import { ClipLoader } from "react-spinners";
 import toast, { Toaster } from "react-hot-toast";
-
-const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
-});
+import Axios from "@/Components/profile_DashBoard/axiosService";
 
 function Login() {
   const { register, handleSubmit } = useForm();
@@ -41,7 +37,7 @@ function Login() {
   const userlogin = async (data) => {
     try {
       dispatch(signInStart());
-      const response = await apiClient.post(`/auth/v1/login`, data);
+      const response = await Axios.post(`/auth/v1/login`, data);
       const responseData = response.data;
 
       if (response.status === 200) {

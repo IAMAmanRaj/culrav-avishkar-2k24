@@ -1,12 +1,9 @@
-import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import overlay1 from "../../../assets/Overlay1.png";
-const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL, // Base URL for all requests
-});
+import Axios from "@/Components/profile_DashBoard/axiosService";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +14,7 @@ const ForgetPassword = () => {
     e.preventDefault();
     setisSending(true);
     try {
-      const result = await apiClient.post(
+      const result = await Axios.post(
         `/auth/v1/sendForgotPasswordToken`,
         { email }
       );

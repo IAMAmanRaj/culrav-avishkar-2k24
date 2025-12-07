@@ -1,17 +1,12 @@
 import { Button } from "@/ShadCnComponents/ui/button";
 import Input from "@/ShadCnComponents/ui/Input";
-import axios from "axios";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import useAuth from "../../../lib/useAuth";
 import overlay1 from "../../../assets/Overlay1.png";
+import Axios from "@/Components/profile_DashBoard/axiosService";
 
-// Base URL for all requests (updated for better fallback)
-const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL, // Use proper env variable for the base URL
-});
 
 function VerifyEmail() {
   const location = useLocation();
@@ -40,7 +35,7 @@ function VerifyEmail() {
     try {
       // Logging OTP for debugging
       // Sending POST request to the API with OTP (token)
-      const response = await apiClient.post(`/auth/v1/verify`, {
+      const response = await Axios.post(`/auth/v1/verify`, {
         token: data.otp,
         email,
       }); // Added email in the request

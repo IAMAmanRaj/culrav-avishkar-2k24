@@ -18,11 +18,15 @@ dotenv.config();
 const app = express();
 app.use(morgan("📋[server-log]: :method :url :status :response-time ms"));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
+);
 
 // Connect to the MongoDB
 connectDB();
-
 app.get("/", (req, res) => {
   res.send("Welcome to the API");
 });
@@ -47,8 +51,12 @@ app.use("/api/event/v1", AuthenticateToken, eventRoutes);
 // Don't change the position of this errorHandler, because this should be the last middleware to catch all the errors.
 app.use(errorHandler);
 
-const server = app.listen(3000, () => {
-  console.log("Server is listening on port http://localhost:3000".bgCyan);
+const PORT = process.env.PORT || 3000;
+
+const server = app.listen(PORT, () => {
+  console.log(
+    `🚀 Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
+  );
 });
 
 // If nothing works

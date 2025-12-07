@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import ContentBox from "../../assets/userDashBoard/ContentBox.png";
 import Axios from "../profile_DashBoard/axiosService";
 import toast from "react-hot-toast";

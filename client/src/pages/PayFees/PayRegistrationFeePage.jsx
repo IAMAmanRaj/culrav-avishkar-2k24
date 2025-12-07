@@ -1,15 +1,13 @@
 import { Button } from "@/ShadCnComponents/ui/button.jsx";
 import Input from "@/ShadCnComponents/ui/Input";
-import axios from "axios";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
+import Axios from "@/Components/profile_DashBoard/axiosService";
+import axios from "axios";
 
-const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL, // Base URL for all requests
-});
 
 function PayRegistrationFeePage() {
   const [submitting, setSubmitting] = useState(false);
@@ -71,7 +69,7 @@ function PayRegistrationFeePage() {
         return;
       }
 
-      const res = await apiClient.post("/auth/v1/registerOutside", {
+      const res = await Axios.post("/auth/v1/registerOutside", {
         email,
         paymentLink: uploadedUrl,
         isOtherCollege: true,

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import ContentBox from "../../assets/userDashBoard/ContentBox.png";
-import axios from "axios";
 import Axios from "../profile_DashBoard/axiosService";
 import getUser from "../profile_DashBoard/userService";
 import toast from "react-hot-toast";
