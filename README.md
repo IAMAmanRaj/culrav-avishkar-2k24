@@ -3,6 +3,12 @@
 
 ![Screenshot (500)](https://github.com/user-attachments/assets/b85c68c8-5981-41e2-ba80-7c16f8cf0950)
 
+🚀 Live Deployment
+
+Frontend: https://culrav-avishkar-2k24-client.vercel.app
+
+Backend: https://culrav-avishkar-2k24-server.vercel.app/api
+
 
 Welcome to the Official Culrav-Avishkar 2k24 Website Repository ! This project was built as part of the annual techno-cultural fest of our institute, combining cutting-edge web technologies and teamwork to deliver a seamless user experience.
 
