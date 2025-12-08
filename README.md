@@ -153,7 +153,7 @@ npm start
 
 To run this project, you will need to add the following environment variables to your .env file inside root folder
 
-`MONGO`
+`MONGO`= Database URL
 
 `JWT_SECRET`
 
@@ -166,6 +166,10 @@ To run this project, you will need to add the following environment variables to
 `PASSCODE`
 
 `baseURL`
+
+`CLIENT_URL`= http://localhost:{PORT_NUMBER}, the local port at which your frontend server is running. 
+
+`NODE_ENV`= local
 
 you need to add the following environment variables to your .env file inside client folder
 
